@@ -1,0 +1,50 @@
+<div class="{{ class | default: '' }} " style="{{ style | default: '' }}"  >
+
+      <div
+            class="{% if animation_setting == true %} cardcontainer {% endif %} default_mobile {{textbox_position}} flex flex-1 flex-shrink-0 bg-gray-100 overflow-hidden relative h-[100vh]">
+            <!-- image - start -->
+            {% if image %}
+            <img sizes="
+                        (min-width: 1280px) 1500px,
+                        (min-width: 1024px) 1250px,
+                        (min-width: 768px) 1000px,
+                        (min-width: 640px) 720px,
+                        600px
+                        " srcset="
+                        {{ image | img_url: '600x' }} 600w,
+                        {{ image | img_url: '720x' }} 720w,
+                        {{ image | img_url: '1000x' }} 1000w,
+                        {{ image | img_url: '1250x' }} 1250w,
+                        {{ image | img_url: '1500x' }} 1500w
+                        " src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
+                  class="swiper-lazy w-full h-full object-cover object-center absolute inset-0">
+            {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'wiper-lazy h-full object-cover object-center absolute' }}
+            {% endif %}
+            <!-- image - end -->
+
+            <!-- overlay - start -->
+            {% if overlay_set == true %}
+                  <div class="bg-gray-300 mix-blend-multiply absolute inset-0"></div>
+            {% endif %}
+            
+            <!-- overlay - end -->
+
+            <!-- text start -->
+            <div class="default_mobile {{textbox_position}}" {% if animation_setting == true %} data-aos="fade-up" data-aos-delay="300" data-aos-offset="0" data-aos-duration="3000" {% endif %}>
+                  <div {{ block.shopify_attributes }} class="flex flex-col relative {{text_align}} {{color_schema}} {{textbox_location}} p-6 w-[20rem] md:w-[29rem]">
+                        <div class="slideshow_header font-bold py-2 tracking-widest" style="color:{{color_title}}; font-size:{{slider_font_size}}px;">{{ headline }}</div>
+                        <p class="my-4 md:mb-8 tracking-wider leading-6 mx-2 " style="color:{{color_text}}; font-size:{{slider_sub_size}}px;">{{ text }}</p>
+
+                        <div class="py-2 inline-block">
+                        <a href="{{ button-url }}"
+                              class="mx-2 {{color_button}} {{button_color_hover}} text-sm md:text-base text-center outline-none transition duration-100 {{button_size}} {% if button_round_off == true %} button_round {% endif %}" style="border:1px solid {{border_color}}; color:{{border_color}};">
+                              {{button-text }}</a>
+                        </div>
+                  </div>
+            </div>
+            <!-- text end -->
+      </div>
+
+</div>
+

@@ -1,0 +1,102 @@
+<!doctype html>
+<style>
+  html{
+    padding-bottom: 0 !important;
+  }
+</style>
+<html lang="{{ request.locale.iso_code }}" class="overflow-y-scroll">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preload" href="{{ 'bundle.css' | asset_url }}" as="style">
+  <link rel="preload" href="{{ 'bundle.js' | asset_url }}" as="script">
+
+
+  <title>{{ page_title | escape }}</title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% if canonical_url != blank %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% endif %}
+  
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+
+  {{ 'bundle.css' | asset_url | stylesheet_tag }}
+  <link id="theme_style" href="{{ 'theme.css' | asset_url }}" rel="stylesheet" >
+  <link id="aos_style" href="{{ 'aos.css' | asset_url }}" rel="stylesheet" >
+
+  <!-- header hook for Shopify plugins -->
+  {{ content_for_header }}
+  
+      <!-- DEFINITIONS -->
+      <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body class="min-h-screen lg:overflow-hidden">
+  {% if request.page_type == 'captcha' %}
+  {% comment %}
+  fix: Shopify automatically inserts script tags on captcha pages into the content_for_layout tag
+  but vue removes any script tags on mount, so don't initialize the vue instance on captcha pages
+  {% endcomment %}
+  {% render 'template-captcha' %}
+  {% else %}
+  <div id="app" class="min-h-screen flex flex-col font-sans">
+    {% section 'layout-header' %}
+
+    <main id="main" role="main"
+      class="flex-1 bg-color {% if request.page_type == 'index' %}{% else %}{% endif %}">
+      {{ content_for_layout }}
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    {% render 'ajaxify-cart' %}
+    {% section 'layout-footer' %}
+    {% section 'layout-mobile-navigation' %}
+
+    <!-- <transition name="slide-mobile-menu" x-cloak>
+      {% render 'layout-mobile-menu'%}
+    </transition> -->
+  </div>
+  {% endif %}
+
+  <!-- webpack bundle -->
+  <script src="{{ 'bundle.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'local.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'count.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'recommendation.js' | asset_url }}" defer="defer"></script>
+  
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  
+  <script>
+   
+    
+    document.addEventListener('shopify:section:select', function(event) {
+      AOS.init();
+    });
+    AOS.init();
+  </script>
+</body>
+
+
+
+</html>

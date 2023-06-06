@@ -1,0 +1,159 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {
+          }
+        },
+        "selected_variant": {
+          "type": "selected_variant",
+          "settings": {
+          }
+        },
+        "checkout_buttons": {
+          "type": "checkout_buttons",
+          "settings": {
+          }
+        },
+        "social": {
+          "type": "social",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "rating",
+        "price",
+        "quantity",
+        "selected_variant",
+        "checkout_buttons",
+        "social"
+      ],
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 3,
+        "padding_bottom": 5,
+        "animation_setting": true,
+        "text_align": "font_left",
+        "color_button": "background_transparent",
+        "button_color_hover": "button_third_color",
+        "border_color": "#6f665d",
+        "title_color": "#6f665d",
+        "base_color": "#926d5a",
+        "point_color": "#6f665d",
+        "dropdown_color": "forth_color",
+        "hover_schema": "nav_color_third"
+      }
+    },
+    "Dropdown": {
+      "type": "section-faq",
+      "blocks": {
+        "dropdown-1": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "This is dropdown title",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#a76561",
+            "dropdown_text": "#a76561"
+          }
+        },
+        "dropdown-2": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "This is dropdown title",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#a76561",
+            "dropdown_text": "#a76561"
+          }
+        },
+        "dropdown-3": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "This is dropdown title",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#a76561",
+            "dropdown_text": "#a76561"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown-1",
+        "dropdown-2",
+        "dropdown-3"
+      ],
+      "settings": {
+        "color_schema": "second_color",
+        "padding_top": 4,
+        "padding_bottom": 6,
+        "animation_setting": true,
+        "title_align": "font_center",
+        "headline": "Frequently asked questions",
+        "text": "",
+        "color_title": "#a76561",
+        "color_sub_title": "#c99794",
+        "point_color": "#c87d89"
+      }
+    },
+    "1665092556888e2ec5": {
+      "type": "apps",
+      "blocks": {
+        "4d6d7df0-5b0d-4291-888d-fa61aea76b80": {
+          "type": "shopify:\/\/apps\/product-reviews\/blocks\/reviews\/bae150af-8da8-48b2-9867-398188115e5f",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "4d6d7df0-5b0d-4291-888d-fa61aea76b80"
+      ],
+      "settings": {
+      }
+    },
+    "Recommendation": {
+      "type": "section-recommendation",
+      "settings": {
+        "headline": "You may also like",
+        "color_title": "#a76561",
+        "show_product_recommendations": true,
+        "animation_setting": true,
+        "color_schema": "background_transparent",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "title_align": "font_center",
+        "base_color": "#c87d89",
+        "point_color": "#926d5a"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "Dropdown",
+    "1665092556888e2ec5",
+    "Recommendation"
+  ]
+}

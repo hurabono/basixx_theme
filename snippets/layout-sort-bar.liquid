@@ -1,0 +1,26 @@
+  <div class="{{filter_box_color}}" style="color: {{filter_font_color}};">
+      <div class="max-w-[1440px] m-auto flex justify-between h-16 m-auto items-center px-4">
+
+        <div class="hidden sm:flex items-center">
+          {{ amount }} {% if amount > 1 %}{{ 'common.products' | t }}{% else %}{{ 'common.product' | t }}{% endif %}
+        </div>
+        {% unless template == 'search' %}
+          <div class="flex items-center">
+            <div class="flex mr-[1rem] cursor-pointer" onclick="openNav()">
+              <div class="h-full flex items-center tracking-wider uppercase mr-4">
+                filter
+              </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+                </svg>
+              </div>
+            <div class="h-full hidden sm:flex items-center tracking-wider uppercase mr-4">
+              {{ 'common.sort' | t }}
+            </div>
+            <div class="h-full pr-1">
+              {% render 'layout-select-sort' %}
+            </div>
+          </div>
+        {% endunless %}
+      </div>
+  </div>

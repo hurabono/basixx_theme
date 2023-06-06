@@ -1,0 +1,49 @@
+{{ 'theme.css' | asset_url | stylesheet_tag }}
+
+<div class="py-6 sm:py-0 overflow-hidden">
+  <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
+    <div class="grid sm:grid-cols-2 gap-8 sm:gap-12">
+      <!-- image - start -->
+      <div class="h-80 md:h-[100vh] bg-gray-100 overflow-hidden shadow-lg sm:shadow-none rounded-lg sm:rounded-none">
+        {% if section.settings.image != blank %}
+          <img src="{{section.settings.image | img_url: 'master' }}" alt="{{block.settings.image.alt}}" loading="lazy" class="w-full h-full object-cover object-center">
+          {% else %}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'w-full h-full object-cover object-center' }}
+        {% endif %}
+      </div>
+      <!-- image - end -->
+
+      <!-- content - start -->
+      <div class="flex flex-col justify-center items-center sm:items-start md:py-24 lg:py-32 xl:py-64">
+        <p class="tracking-widest customer_point_color text-sm md:text-base font-semibold uppercase mb-4">{{ '404.title' | t }}</p>
+        <h1 class="tracking-widest customer_title_color text-2xl md:text-3xl font-bold text-center sm:text-left mb-2">{{ '404.text' | t }}</h1>
+
+        <p class="tracking-wider py-8 customer_text_color md:text-lg text-center sm:text-left mb-8">{{section.settings.description}}</p>
+
+        <a href="{{ routes.root_url }}" class="customer_button_color customer_button_border px-5 py-2 inline-flex justify-center">
+          {{ 'action.continue_shopping' | t }} {% render 'icon-chevron-right', class: 'w-4 h-auto ml-1' style: 'margin-top: 2px;' %}
+        </a>      </div>
+      <!-- content - end -->
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+"name": "404 page",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "404 Banner Image"
+},
+{
+"type": "textarea",
+"id": "description",
+"label": "coming soon description (optional)",
+"default":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+}
+]
+}
+{% endschema %}

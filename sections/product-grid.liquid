@@ -1,0 +1,264 @@
+
+
+  {% paginate collection.products by 16 %}
+  {% if collection and collection.products %}
+    {% assign amount = collection.all_products_count %}
+    {% render 'layout-sort-bar', amount: amount, filter_box_color:section.settings.filter_box_color filter_font_color:section.settings.filter_font_color %}
+
+<div class="{{section.settings.color_schema}}">
+  <div  id="main-filter" class="max-w-[1440px] m-auto m-auto flex overflow-hidden px-4 py-16" {% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+    <div id="main-toggle">
+      {% render 'layout-select-filter', point_color: section.settings.point_color filter_box_color:section.settings.filter_box_color filter_font_color: section.settings.filter_font_color%}
+    </div>
+
+
+  <div class="w-full grid sm:grid-cols-2 md:grid-cols-2 {{section.settings.column_design}} gap-x-6 gap-y-5 lg:gap-y-12" style="grid-template-rows:fit-content(100%)">
+    {% for product in collection.products %}
+      {% render 'layout-product', product: product,
+      show_vendor:section.settings.show_vendor 
+      show_rating: section.settings.show_rating 
+      product_box_color:section.settings.product_box_color
+      box_shadow: section.settings.box_shadow
+      box_border: section.settings.box_border
+      show_line: section.settings.show_line
+      product_point_color: section.settings.product_point_color
+      product_title_align: section.settings.product_title_align
+      product_title_color: section.settings.product_title_color
+      point_color:section.settings.point_color
+       mouseover_image:section.settings.mouseover_image
+      %}
+    {% endfor %}
+  </div>
+{% else %}
+  <div>
+    {{ 'common.no_products' | t }}
+  </div>
+{% endif %}
+</div>
+{% render 'layout-pagination', paginate: paginate %}
+{% endpaginate %}
+</div>
+
+
+
+
+{% schema %}
+{
+"name": "Product grid",
+"settings": [
+{
+  "type": "header",
+  "content": "General settings",
+  "info": "Product grid general settings"
+},
+{
+  "type":"select",
+  "id":"color_schema",
+  "label":"Background color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"fifth_color"
+ },
+ {
+  "type":"select",
+  "id":"column_design",
+  "label":"Column selector",
+  "options":[
+     {
+        "value":"three_column",
+        "label":"Three column"
+     },
+     {
+        "value":"four_column",
+        "label":"Four column"
+     }
+  ],
+  "default":"four_column"
+ },
+{
+  "type": "checkbox",
+  "id": "show_vendor",
+  "default": true,
+  "label": "show vendor"
+},
+{
+  "type": "checkbox",
+  "id": "show_rating",
+  "default": true,
+  "label": "show rating"
+},
+{
+  "type": "checkbox",
+  "id": "box_shadow",
+  "default": true,
+  "label": "Box Shadow"
+},
+{
+  "type": "checkbox",
+  "id": "show_line",
+  "default": false,
+  "label": "Show the box line"
+},
+{
+  "type": "checkbox",
+  "id": "animation_setting",
+  "default": false,
+  "label": "Animation turn on"
+  },
+  {
+    "type": "checkbox",
+    "id": "mouseover_image",
+    "default": true,
+    "label": "Show mouseover Image"
+  },
+{
+  "type": "header",
+  "content": "Product Filter",
+  "info": "Setting product top filter design"
+},
+{
+  "type":"select",
+  "id":"filter_box_color",
+  "label":"Filter box color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"forth_color"
+ },
+ {
+  "type": "color",
+  "id": "filter_font_color",
+  "label": "Filter Font color",
+  "default": "#1878B9"
+},
+{
+  "type": "header",
+  "content": "Product settings",
+  "info": "Setting product grid color and tite align"
+},
+{
+  "type":"select",
+  "id":"product_box_color",
+  "label":"Product box color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"forth_color"
+ },
+ {
+  "type":"select",
+  "id":"product_title_align",
+  "label":"product title align",
+  "options":[
+     {
+        "value":"font_left",
+        "label":"Left"
+     },
+     {
+        "value":"font_right",
+        "label":"Right"
+     },
+     {
+        "value":"font_center",
+        "label":"Center"
+     }
+  ],
+  "default":"font_center"
+ },
+ {
+  "type": "color",
+  "id": "product_title_color",
+  "label": "Product title color",
+  "default": "#4b4b4b"
+},
+ {
+  "type": "color",
+  "id": "point_color",
+  "label": "Product Sub color",
+  "default": "#F9E7D3"
+},
+{
+  "type": "color",
+  "id": "box_border",
+  "label": "Box border color",
+  "default": "#1878B9"
+},
+ {
+  "type": "color",
+  "id":"product_point_color",
+  "label": "Product point color",
+  "default": "#C33131"
+}
+]
+}
+{% endschema %}

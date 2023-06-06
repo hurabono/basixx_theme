@@ -1,0 +1,362 @@
+{% assign image = section.settings.image %}
+
+
+<section class="swiper mySwiper">
+      <div class="swiper-wrapper">
+         {% for block in section.blocks %}
+         {% case block.type %}
+           {% when 'slideshow' %}
+             <div class="swiper-slide" {{ block.shopify_attributes }}>
+               {% render 'section-slide',
+             image: block.settings.image
+             headline: block.settings.headline
+             color_title:block.settings.color_title
+             color_text:block.settings.color_text
+             color_schema:block.settings.color_schema
+             text: block.settings.text
+             button-url: block.settings.button-url
+             button-text: block.settings.button-text
+             border_color:block.settings.border_color
+             color_button:block.settings.color_button
+             button_color_hover:block.settings.button_color_hover
+             textbox_position:block.settings.textbox_position
+             textbox_location:block.settings.textbox_location
+             overlay_set:block.settings.overlay_set
+             text_align:block.settings.text_align
+             button_size:block.settings.button_size
+             button_round_off:block.settings.button_round_off
+             slider_font_size:section.settings.slider_font_size
+             slider_sub_size:section.settings.slider_sub_size
+             animation_setting:section.settings.animation_setting
+             %}
+             </div>
+         {% endcase %}
+       {% endfor %}
+      </div>
+      <div class="swiper-button-next arrow_color"></div>
+      <div class="swiper-button-prev arrow_color"></div>
+      <div class="swiper-pagination" style="bottom:22px;"></div>
+</section>
+
+
+
+
+{% schema %}
+{
+"name": "Slideshow",
+"class": "shopify-section-vue",
+"settings":[
+{
+   "type": "header",
+   "content": "Slideshow Font size",
+   "info": "Setting slideshow font size. Please setting custom font in the typography section."
+},
+{
+   "type": "range",
+   "id": "slider_font_size",
+   "label": "Slide Header font size",
+   "default":56,
+   "min": 30,
+   "max": 80,
+   "step": 1,
+   "unit": "px"
+ },
+ {
+   "type": "range",
+   "id": "slider_sub_size",
+   "label": "Slide sub font size",
+   "default":18,
+   "min": 12,
+   "max": 50,
+   "step": 1,
+   "unit": "px"
+ },
+ {
+   "type": "checkbox",
+   "id": "animation_setting",
+   "default": false,
+   "label": "Animation turn on"
+}
+],
+"blocks": [
+{
+"type": "slideshow",
+"name": "slideshow",
+"limit": 3,
+"settings": [
+{
+   "type": "header",
+   "content": "Slide show Image",
+   "info": "Settings Slideshow Image and Button"
+},
+{
+   "type":"select",
+   "id":"text_align",
+   "label":"Title align",
+   "options":[
+      {
+         "value":"font_left",
+         "label":"Left"
+      },
+      {
+         "value":"font_right",
+         "label":"Right"
+      },
+      {
+         "value":"font_center",
+         "label":"Center"
+      }
+   ],
+   "default":"font_center"
+ },
+{
+   "type": "checkbox",
+   "id": "overlay_set",
+   "default": true,
+   "label": "Overlay cover"
+ },
+{
+   "type": "image_picker",
+   "id": "image",
+   "label": "t:common.image"
+   },
+   {
+   "type": "text",
+   "id": "headline",
+   "label": "t:common.headline",
+   "default": "Headline"
+},
+{
+   "type": "textarea",
+   "id": "text",
+   "label": "t:common.text",
+   "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+},
+{
+   "type": "url",
+   "id": "button-url",
+   "label": "t:common.button.url"
+},
+{
+   "type": "text",
+   "id": "button-text",
+   "label": "t:common.button.text",
+   "default": "Button"
+},
+{
+   "type": "header",
+   "content": "Slide show Textbox settings",
+   "info": "Settings Slideshow Textbox and colors"
+},
+{
+      "type":"select",
+      "id":"color_schema",
+      "label":"Background color",
+      "options":[
+         {
+            "value":"first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"third_color",
+            "label":"Third Color"
+         },
+         {
+            "value":"forth_color",
+            "label":"Forth Color"
+         },
+         {
+            "value":"fifth_color",
+            "label":"Fifth Color"
+         },
+         {
+            "value":"background_transparent",
+            "label":"Transparent Color"
+         }
+      ],
+      "default":"fifth_color"
+},
+{
+      "type": "color",
+      "id": "color_title",
+      "label": "Title color",
+      "default": "#6F665D"
+},
+{
+      "type": "color",
+      "id": "color_text",
+      "label": "Text color",
+      "default": "#BAA098"
+},
+{
+   "type":"select",
+   "id":"button_size",
+   "label":"Button size",
+   "options":[
+      {
+         "value":"button_small",
+         "label":"Small"
+      },
+      {
+         "value":"button_medium",
+         "label":"Medium"
+      },
+      {
+         "value":"button_large",
+         "label":"Large"
+      },
+      {
+       "value":"button_xlarge",
+       "label":"Extra large"
+     }
+   ],
+   "default":"button_medium"
+  },
+  {
+   "type": "checkbox",
+   "id": "button_round_off",
+   "default": false,
+   "label": "Button round"
+ },
+{
+   "type":"select",
+   "id":"color_button",
+   "label":"Button color",
+   "options":[
+      {
+         "value":"first_color",
+         "label":"First Color"
+      },
+      {
+         "value":"second_color",
+         "label":"Second Color"
+      },
+      {
+         "value":"third_color",
+         "label":"Third Color"
+      },
+      {
+         "value":"forth_color",
+         "label":"Forth Color"
+      },
+      {
+         "value":"fifth_color",
+         "label":"Fifth Color"
+      },
+      {
+         "value":"background_transparent",
+         "label":"Transparent Color"
+      }
+   ],
+   "default":"fifth_color"
+},
+{
+   "type":"select",
+   "id":"button_color_hover",
+   "label":"Button moseover color",
+   "options":[
+      {
+         "value":"button_first_color",
+         "label":"First Color"
+      },
+      {
+         "value":"button_second_color",
+         "label":"Second Color"
+      },
+      {
+         "value":"button_third_color",
+         "label":"Third Color"
+      },
+      {
+         "value":"button_forth_color",
+         "label":"Forth Color"
+      },
+      {
+         "value":"button_fifth_color",
+         "label":"Fifth Color"
+      },
+      {
+         "value":"button_background_transparent",
+         "label":"Transparent Color"
+      }
+   ],
+   "default":"button_fifth_color"
+},
+{
+   "type": "color",
+   "id": "border_color",
+   "label": "Button border color",
+   "default": "#6F665D"
+},
+{
+   "type": "header",
+   "content": "Textbox position",
+   "info": "Settings Slideshow textbox position"
+},
+{
+      "type":"select",
+      "id":"textbox_position",
+      "label":"Textbox position X",
+      "options":[
+         {
+            "value":"textbox_center",
+            "label":"Center"
+         },
+         {
+            "value":"textbox_right",
+            "label":"Right"
+         },
+         {
+            "value":"textbox_left",
+            "label":"Left"
+         }
+      ],
+      "default":"textbox_center"
+},
+{
+      "type":"select",
+      "id":"textbox_location",
+      "label":"Textbox position Y",
+      "options":[
+         {
+            "value":"location_center",
+            "label":"canter"
+         },
+         {
+            "value":"location_top",
+            "label":"top"
+         },
+         {
+            "value":"location_bottom",
+            "label":"bottom"
+         }
+      ],
+      "default":"location_center"
+}
+
+]
+}
+],
+"presets": [
+{
+"name": "Slideshow",
+"category": "Images",
+"blocks": [
+{
+"type": "slideshow"
+},
+{
+"type": "slideshow"
+},
+{
+"type": "slideshow"
+}
+]
+}
+]
+}
+{% endschema %}

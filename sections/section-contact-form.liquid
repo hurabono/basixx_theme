@@ -1,0 +1,438 @@
+<style>
+  .form_border{
+    border: none !important;
+  }
+</style>
+
+<section class=" {{section.settings.color_schema}} text-gray-600 body-font relative" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+      <div class="max-w-[1440px] m-auto px-5 m-auto lg:flex sm:flex-nowrap flex-wrap">
+        <div class="flex lg:w-1/2 bg-gray-300 rounded-lg overflow-hidden mr-0 lg:mr-10 p-10 items-end justify-start relative">
+          {% if section.settings.contact_image %}
+              <img sizes="
+              (min-width: 1280px) 1500px,
+              (min-width: 1024px) 1250px,
+              (min-width: 768px) 1000px,
+              (min-width: 640px) 720px,
+              600px
+            " srcset="
+              {{ section.settings.contact_image | img_url: '600x' }} 600w,
+              {{ section.settings.contact_image | img_url: '720x' }} 720w,
+              {{ section.settings.contact_image | img_url: '1000x' }} 1000w,
+              {{ section.settings.contact_image | img_url: '1250x' }} 1250w,
+              {{ section.settings.contact_image | img_url: '1500x' }} 1500w
+            " src="{{ section.settings.contact_image | img_url: '1500x' }}" alt="{{ section.settings.contact_image.alt }}" loading="lazy"
+                class="w-full h-full object-cover object-center absolute inset-0">
+              {%else%}
+          {% endif %}
+
+          <div class="relative flex flex-wrap py-6 rounded shadow-md" style="background: {{section.settings.point_color}};">
+            <div class="lg:w-1/2 px-6">
+              <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs" style="color:{{section.settings.title_color}};">{{ section.settings.address }}</h2>
+              <p class="mt-1" style="color: {{section.settings.base_color}};">{{ section.settings.address_text }}</p>
+            </div>
+            <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+              <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs" style="color:{{section.settings.title_color}};">{{ section.settings.email }}</h2>
+              <a class="text-indigo-500 leading-relaxed" style="color: {{section.settings.base_color}};">{{ section.settings.email_address }}</a>
+              <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4" style="color:{{section.settings.title_color}};">{{ section.settings.phone_number_title }}</h2>
+              <p class="leading-relaxed" style="color: {{section.settings.base_color}};">{{ section.settings.phone_number }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2 flex flex-col {{section.settings.text_align}} md:ml-auto w-full md:mt-0 py-6 lg:py-0">
+          <div class="pb-4 text-xl tracking-wider" style="color:{{section.settings.title_color}};">{{ section.settings.headline }}</div>
+          <div class="pb-4 leading-8 tracking-wider" style="color: {{section.settings.base_color}};">{{ section.settings.form_text }}</div>
+          {% form 'contact' %}
+        <div>
+          
+            {% if form.posted_successfully? %}
+            <div class="py-4 text-lg tracking-wider" style="color:{{section.settings.title_color}};">{{ 'contact.response' | t }}</div>
+            {% endif %}
+
+            {% if form.errors %}
+            {% capture error_text %}
+              <div class="py-4 text-lg tracking-wider" style="color:{{section.settings.title_color}};">{{ form.errors | default_errors }}</div>
+            {% endcapture%}
+    
+            {% render 'layout-message',
+              type: 'error'
+              text: error_text
+              class: 'mb-8'
+            %}
+          {% endif %}
+    
+          <div class="flex flex-wrap md:flex-nowrap md:gap-x-6 tracking-wider">
+            <div class="w-full lg:w-1/2 mb-4 sm:mb-6">
+              <label
+                for="ContactFormName"
+                class="block"
+                style="color:{{section.settings.title_color}};"
+              >
+                {{ 'form.name' | t }}*
+              </label>
+    
+              <input
+                type="text"
+                name="contact[name]"
+                id="ContactFormName"
+                value="{% if form.name %}{{ form.name }}{% endif %}"
+                class="w-full {% if section.settings.form_border == true %} form_border {% endif %}"
+                style="background: {{section.settings.point_color}}; border: 1px solid {{section.settings.base_color}};"
+                required
+              >
+            </div>
+    
+            <div class="w-full md:w-1/2 mb-4 sm:mb-6">
+              <label
+                for="ContactFormEmail"
+                class="block"
+                style="color:{{section.settings.title_color}};"
+              >
+                {{ 'form.email' | t }}*
+              </label>
+    
+              <input
+                type="email"
+                name="contact[email]"
+                id="ContactFormEmail"
+                value="{% if form.email %}{{ form.email }}{% endif %}"
+                class="w-full {% if section.settings.form_border == true %} form_border {% endif %}"
+                style="background: {{section.settings.point_color}}; border: 1px solid {{section.settings.base_color}};"
+                required
+              >
+            </div>
+          </div>
+    
+          <div class="mb-4 sm:mb-6">
+            <label
+              for="ContactFormPhone"
+              class="block"
+              style="color:{{section.settings.title_color}};"
+            >
+              {{ 'form.phone' | t }}
+            </label>
+    
+            <input
+              type="tel"
+              name="contact[phone]"
+              id="ContactFormPhone"
+              value="{% if form.phone %}{{ form.phone }}{% endif %}"
+              class="w-full {% if section.settings.form_border == true %} form_border {% endif %}"
+              style="background: {{section.settings.point_color}}; border: 1px solid {{section.settings.base_color}};"
+            >
+          </div>
+    
+          <div class="mb-4 sm:mb-6">
+            <label
+              for="ContactFormMessage"
+              class="block"
+              style="color:{{section.settings.title_color}};"
+            >
+              {{ 'form.message' | t }}*
+            </label>
+    
+            <textarea
+              rows="10"
+              name="contact[body]"
+              id="ContactFormMessage"
+              class="w-full {% if section.settings.form_border == true %} form_border {% endif %}"
+              style="background: {{section.settings.point_color}}; border: 1px solid {{section.settings.base_color}};"
+              required
+            >
+              {% if form.body %}
+                {{ form.body }}
+              {% endif %}
+            </textarea>
+          </div>
+    
+          <div class="flex flex-wrap justify-between items-center">
+            <button class="{% if section.settings.button_round_off == true %} button_round {% endif %} {{section.settings.color_button}} {{section.settings.button_color_hover}} {{section.settings.button_size}}" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+              {{ 'action.send' | t }}
+            </button>
+    
+            <div class="text-sm mt-4 sm:mt-0" style="color:{{section.settings.title_color}};">
+              *{{ 'form.required' | t }}
+            </div>
+          </div>
+        </div>
+      {% endform %}
+          </div>
+      </div>
+</section>
+    
+    {% schema %}
+    {
+    "name": "Contact form",
+    "settings": [
+    {
+      "type":"select",
+      "id":"color_schema",
+      "label":"Background color",
+      "options":[
+         {
+            "value":"first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"third_color",
+            "label":"Third Color"
+         },
+         {
+          "value":"forth_color",
+          "label":"Forth Color"
+        },
+        {
+          "value":"fifth_color",
+          "label":"Fifth Color"
+        },
+        {
+          "value":"background_transparent",
+          "label":"Transparent Color"
+        }
+      ],
+      "default":"forth_color"
+     },
+     {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+     {
+      "type": "header",
+      "content": "Contact Image Settings",
+      "info": "Image and Business Information Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "contact_image",
+        "label": "Contact Image"
+      },
+      {
+        "type":"text",
+        "id":"address",
+        "label":"Business info Title",
+        "default":"ADDRESS"
+     },
+     {
+        "type":"textarea",
+        "id":"address_text",
+        "label":"Business Info Text",
+        "default":"Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-5678."
+      },
+      {
+        "type":"text",
+        "id":"email",
+        "label":"Business Info sub title 1",
+        "default":"EMAIL"
+      },
+      {
+        "type":"text",
+        "id":"email_address",
+        "label":"Business Info sub Text 1",
+        "default":"example@email.com"
+      },
+      {
+        "type":"text",
+        "id":"phone_number_title",
+        "label":"Business Info sub title 2",
+        "default":"PHONE"
+      },
+      {
+        "type":"text",
+        "id":"phone_number",
+        "label":"Business Info sub Text 2",
+        "default":"123-456-7890"
+      },
+      {
+        "type": "header",
+        "content": "Contact Form Settings",
+        "info": "Contact Form color, line settings"
+      },
+      {
+        "type":"select",
+        "id":"text_align",
+        "label":"Form Text align",
+        "options":[
+           {
+              "value":"font_left",
+              "label":"Left"
+           },
+           {
+              "value":"font_right",
+              "label":"Right"
+           },
+           {
+              "value":"font_center",
+              "label":"Center"
+           }
+        ],
+        "default":"font_left"
+      },
+      {
+        "type": "checkbox",
+        "id": "form_border",
+        "default": false,
+        "label": "Turn off Form line"
+      },
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Form headline",
+        "default":"WE'D LOVE TO HEAR FROM YOU"
+      },
+      {
+          "type":"richtext",
+          "id":"form_text",
+          "label":"Form Text"
+      },
+      {
+        "type": "header",
+        "content": "Color Settings",
+        "info": "Setting Button,Text,Line colors"
+      },
+      {
+        "type":"select",
+        "id":"button_size",
+        "label":"Button size",
+        "options":[
+           {
+              "value":"button_small",
+              "label":"Small"
+           },
+           {
+              "value":"button_medium",
+              "label":"Medium"
+           },
+           {
+              "value":"button_large",
+              "label":"Large"
+           },
+           {
+            "value":"button_xlarge",
+            "label":"Extra large"
+          }
+        ],
+        "default":"button_medium"
+       },
+       {
+        "type": "checkbox",
+        "id": "button_round_off",
+        "default": false,
+        "label": "Button round"
+      },
+      {
+        "type":"select",
+        "id":"color_button",
+        "label":"Button color",
+        "options":[
+           {
+              "value":"first_color",
+              "label":"First Color"
+           },
+           {
+              "value":"second_color",
+              "label":"Second Color"
+           },
+           {
+              "value":"third_color",
+              "label":"Third Color"
+           },
+           {
+              "value":"forth_color",
+              "label":"Forth Color"
+           },
+           {
+              "value":"fifth_color",
+              "label":"Fifth Color"
+           },
+           {
+              "value":"background_transparent",
+              "label":"Transparent Color"
+           }
+        ],
+        "default":"fifth_color"
+      },
+      {
+        "type":"select",
+        "id":"button_color_hover",
+        "label":"Button moseover color",
+        "options":[
+           {
+              "value":"button_first_color",
+              "label":"First Color"
+           },
+           {
+              "value":"button_second_color",
+              "label":"Second Color"
+           },
+           {
+              "value":"button_third_color",
+              "label":"Third Color"
+           },
+           {
+              "value":"button_forth_color",
+              "label":"Forth Color"
+           },
+           {
+              "value":"button_fifth_color",
+              "label":"Fifth Color"
+           },
+           {
+              "value":"button_background_transparent",
+              "label":"Transparent Color"
+           }
+        ],
+        "default":"button_third_color"
+      },
+      {
+      "type": "color",
+      "id": "border_color",
+      "label": "Button border color",
+      "default": "#6F665D"
+      },
+      {
+        "type": "color",
+        "id": "base_color",
+        "label": "Base color",
+        "default": "#926D5A"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Form Title color",
+        "default": "#8E2F2A"
+      },
+      {
+        "type": "color",
+        "id": "point_color",
+        "label": "Point color",
+        "default": "#F2EDE9"
+      }
+    ],
+    "presets": [
+        {
+        "name": "Contact Setting",
+        "category": "Image"
+        }
+      ]
+    }
+    {% endschema %}

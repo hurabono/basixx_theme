@@ -1,0 +1,475 @@
+<style>
+  img{
+    margin: 0 auto;
+  }
+
+  #comments p{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+  }
+</style>
+
+<article class="{{section.settings.color_schema}}"
+style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+{% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500" {% endif %}>
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'article_title' %}
+        <div class="max-w-5xl mx-auto {{section.settings.text_align}} px-4">
+          <a href="{{blog.url}}" class="text-base uppercase text-gray-500 block" style="color: {{section.settings.point_color}};">{{blog.title}}</a>
+          <h1 class="text-2xl md:text-4xl font-bold mb-2 md:mb-4 tracking-widest" style="color: {{section.settings.title_color}};">
+          {{ article.title }}
+          </h1>
+        </div>
+      {% when 'article_author' %}
+        <div class="max-w-5xl mx-auto text-sm {{section.settings.text_align}} pb-4 px-4" style="color: {{section.settings.point_color}};">
+          {% if section.settings.enable_author%}
+            {% if article.author %}
+            {{ 'common.by' | t }} {{ article.user.name }}
+            {% endif %} 
+          {% endif %}
+        </div>
+      {% when 'article_published_date' %}
+        <div class="max-w-5xl mx-auto text-sm px-4 {{section.settings.text_align}} pb-6 border-b" style="color: {{section.settings.point_color}}; border-bottom:1px solid {{section.settings.border_color}};">
+          {% if section.settings.enable_published_date %}
+            {{ article.published_at | date: format: 'month_day_year' }}
+          {% endif %}
+        </div>
+      {% when 'featured_image' %}
+        <div class="md:mx-auto overflow-hidden mb-8 relative">
+          {% if article.image != blank %}
+            <img
+              sizes="
+                (min-width: 640px) 750px,
+                (min-width: 480px) 600px,
+                450px
+              "
+              srcset="
+                {{ article | img_url: '450x' }} 450w,
+                {{ article | img_url: '600x' }} 600w,
+                {{ article | img_url: '750x' }} 750w,
+              "
+              src="{{ article | img_url: '750x' }}"
+              alt="{{ article.image.alt | escape }}"
+              loading="lazy"
+              class="w-full h-80 md:h-96 object-cover object-center overflow-hidden "
+            >
+            <!-- overlay - start -->
+          <div class="{% if section.settings.overlay == true %} bg-gray-300 mix-blend-multiply absolute inset-0 {%endif%}"></div>
+          <!-- overlay - end -->
+          {% else %}
+            <div class="w-full h-80 md:h-96 object-cover object-center {{section.settings.thumnail_color}}"></div>
+        {% endif %}
+        </div>
+      {% when 'article_content' %}
+        <div class="{{section.settings.content_text_align}} tracking-wider leading-8 max-w-5xl mx-auto py-16 px-4" style="color: {{section.settings.content_color}};">
+          {{ article.content }}
+        </div>
+      {% else %}
+        
+    {% endcase %}
+  {% endfor %}
+
+
+</article>
+
+
+{% if blog.comments_enabled? %}
+<div class="{{section.settings.comment_bg}}">
+  <div id="comments" class="py-8 flex justify-center items-center" style="color: {{section.settings.content_color}};">
+    {% if article.comments_count > 0  %}
+      <div class="flex-1 items-center justify-center mx-auto max-w-5xl px-4">
+        <h1 class="text-lg mb-4 font-medium uppercase" style="color: {{section.settings.title_color}};">
+          comments
+        </h1>
+          {% paginate article.comments by 5 %}
+            {% for comment in article.comments %}
+              <div class="flex-1 border my-4 py-2 sm:px-6 sm:py-4 leading-relaxed" style="border:1px solid {{section.settings.border_color}};">
+                <span class="comment-author px-2" style="color: {{section.settings.title_color}};">{{comment.author}}</span>
+                <span class="text-xs" style="color: {{section.settings.point_color}};">{{comment.created_at | date: format: 'date' }}</span>
+                  {{comment.content}}
+              </div>             
+            {% endfor %}
+
+            {% if paginate.pages > 1 %}
+              {{paginate | default_pagination }}
+            {% endif %}
+          {% endpaginate %}
+      </div>
+    {% else %}
+    <div class="flex-1 border mx-4 py-2 px-6 py-4 leading-relaxed items-center justify-center mx-auto max-w-4xl" style="border:1px solid {{section.settings.border_color}};">
+      There is no comments in this article
+    </div>
+     
+    {% endif %}
+  </div>
+
+
+  <div id="comment_form" class="pb-8">
+    {% form 'new_comment', article %}
+      <div class="flex-1 mx-auto items-center justify-center max-w-5xl">
+        <div class="px-1 md:flex mb-3">
+          <div class="mx-3 md:w-1/2">
+            <label for="comment_author" class="text-gray-700 font-medium uppercase text-xs mb-2" style="color: {{section.settings.title_color}};">Name</label>
+            <input 
+            type="text" 
+            name="comment[author]" 
+            id="comment_author" 
+            class="w-full text-gray-500 border py-3 px-4 mb-3 focus:outline-none"
+            placeholder="Jane Doe"
+            style="border:1px solid {{section.settings.border_color}};"
+            required
+            >
+          </div>
+          <div class="mx-3 md:w-1/2">
+            <label for="comment_email" class="text-gray-700 font-medium uppercase text-xs mb-2" style="color: {{section.settings.title_color}};">Email</label>
+            <input 
+            type="email" 
+            name="comment[email]" 
+            id="comment_email" 
+            class="w-full text-gray-500 border py-3 px-4 mb-3 focus:outline-none"
+            placeholder="JaneDoe@gmail.com"
+            style="border:1px solid {{section.settings.border_color}};"
+            required
+            >
+          </div>
+        </div>
+
+        <div class="px-1 md:flex mb-3">
+          <div class="md:w-full px-3">
+            <label for="comment_content" class="text-gray-700 font-medium uppercase text-xs mb-2" style="color: {{section.settings.title_color}};"> Comment </label>
+            <textarea class="w-full text-gray-500 resize-none h-20 py-2 px-3 focus:outline-none" style="border:1px solid {{section.settings.border_color}};" name="comment[body]" id="comment_content" required></textarea>
+          </div>
+        </div>
+
+        <div class="px-1 md:flex mb-3">
+          <div class="md:w-full px-3">
+            <input type="submit" class="w-full cursor-pointer px-4 py-2 border text-base font-medium text-white bg-gray-500 {{section.settings.color_button}} {{section.settings.button_color_hover}}" value="Comment" style="border: 1px solid {{section.settings.button_border_color}}; color:{{section.settings.button_border_color}};">
+          </div>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+  
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name":"Main Article",
+  "settings":[
+  {
+    "type": "header",
+    "content": "Blog Contents"
+  },
+  {
+    "type":"select",
+    "id":"color_schema",
+    "label":"Background color",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"background_transparent"
+   },
+   {
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":0,
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+{
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+   {
+    "type":"select",
+    "id":"thumnail_color",
+    "label":"Thumnail Background color",
+    "info": "This selector is for empty thumnail. if you do not upload blog thumnail photo, The color will show up",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"second_color"
+   },
+    {
+      "type":"checkbox",
+      "id":"enable_author",
+      "default": true,
+      "label": "Display Author name"
+    },
+    {
+      "type":"checkbox",
+      "id":"enable_published_date",
+      "default": true,
+      "label": "Display Pulished date"
+    },
+    {
+      "type":"checkbox",
+      "id":"overlay",
+      "default": true,
+      "label": "Thumnail Image overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "animation_setting",
+      "default": false,
+      "label": "Animation turn on"
+      },
+    {
+      "type":"select",
+      "id":"text_align",
+      "label":"Title align",
+      "options":[
+         {
+            "value":"font_left",
+            "label":"Left"
+         },
+         {
+            "value":"font_right",
+            "label":"Right"
+         },
+         {
+            "value":"font_center",
+            "label":"Center"
+         }
+      ],
+      "default":"font_center"
+    },
+    {
+      "type":"select",
+      "id":"content_text_align",
+      "label":"Content Text Align",
+      "options":[
+         {
+            "value":"font_left",
+            "label":"Left"
+         },
+         {
+            "value":"font_right",
+            "label":"Right"
+         },
+         {
+            "value":"font_center",
+            "label":"Center"
+         }
+      ],
+      "default":"font_left"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Blog Title color",
+      "default": "#6F665D"
+    },
+    {
+      "type": "color",
+      "id": "point_color",
+      "label": "Blog point color",
+      "default": "#A45F5F"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "blog Content color",
+      "default": "#694D3E"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "blog border color",
+      "default": "#694D3E"
+    },
+    {
+      "type": "header",
+      "content": "Comment Form Settings"
+    },
+    {
+      "type":"select",
+      "id":"comment_bg",
+      "label":"Background color",
+      "options":[
+         {
+            "value":"first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"third_color",
+            "label":"Third Color"
+         },
+         {
+          "value":"forth_color",
+          "label":"Forth Color"
+        },
+        {
+          "value":"fifth_color",
+          "label":"Fifth Color"
+        },
+        {
+          "value":"background_transparent",
+          "label":"Transparent Color"
+        }
+      ],
+      "default":"third_color"
+     },
+    {
+      "type":"select",
+      "id":"color_button",
+      "label":"Button color",
+      "options":[
+         {
+            "value":"first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"third_color",
+            "label":"Third Color"
+         },
+         {
+            "value":"forth_color",
+            "label":"Forth Color"
+         },
+         {
+            "value":"fifth_color",
+            "label":"Fifth Color"
+         },
+         {
+            "value":"background_transparent",
+            "label":"Transparent Color"
+         }
+      ],
+      "default":"second_color"
+    },
+    {
+      "type":"select",
+      "id":"button_color_hover",
+      "label":"Button moseover color",
+      "options":[
+         {
+            "value":"button_first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"button_second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"button_third_color",
+            "label":"Third Color"
+         },
+         {
+            "value":"button_forth_color",
+            "label":"Forth Color"
+         },
+         {
+            "value":"button_fifth_color",
+            "label":"Fifth Color"
+         },
+         {
+            "value":"button_background_transparent",
+            "label":"Transparent Color"
+         }
+      ],
+      "default":"button_third_color"
+    },
+    {
+    "type": "color",
+    "id": "button_border_color",
+    "label": "Button border color",
+    "default": "#6F665D"
+    }
+  ],
+  "blocks":[
+      {
+        "type":"article_title",
+        "name": "Title",
+        "limit": 1
+      },
+      {
+        "type":"article_author",
+        "name": "Author",
+        "limit": 1
+      },
+      {
+        "type":"article_published_date",
+        "name": "Published Date",
+        "limit": 1
+      },
+      {
+        "type":"featured_image",
+        "name": "Thumnail",
+        "limit": 1
+      },
+      {
+        "type":"article_content",
+        "name": "Content",
+        "limit": 1
+      }
+  ]
+}
+{% endschema %}

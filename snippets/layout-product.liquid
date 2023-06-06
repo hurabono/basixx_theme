@@ -1,0 +1,120 @@
+ {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+<style>
+  .borderline{
+    border: 1px solid {{box_border}};
+  }
+</style>
+
+
+ <div class="grid grid-view-item {% if show_line != false %} borderline {% endif %}">
+  <a href="{{ product.url | within: collection }}" class="block group block relative grid-view-item__link {% if product.images.size > 1 %} has-secondary{% endif %} ">
+    <img
+    sizes="
+      (min-width: 768px) 450px,
+      630px
+    "
+    srcset="
+      {{ product.featured_image.src | img_url: '450x' }} 450w,
+      {{ product.featured_image.src | img_url: '630x' }} 630w
+    "
+    src="{{ product.featured_image.src | img_url: '630x' }}"
+    alt="{{ product.featured_image.alt | escape }}"
+    loading="lazy"
+    class="w-full h-full object-cover object-center {% if mouseover_image == true %}grid-view-item__image{% endif %}"
+  >
+    {% if mouseover_image == true %}
+    {% if product.images.size > 1 %} 
+      <img class="secondary w-full h-full object-cover object-center"
+        sizes="
+          (min-width: 768px) 450px,
+          630px
+        "
+        srcset="
+          {{ product.images.last | img_url: '450x' }} 450w,
+          {{ product.images.last | img_url: '630x' }} 630w
+        "
+        src="{{ product.images.last | img_url: '630x' }}"
+        alt="{{ product.images.last.alt | escape }}"> 
+     {% endif %}
+    {% endif %}
+    {% if product.price < product.compare_at_price %}
+      <div class="text-sm font-medium shadow-md tracking-wider uppercase absolute top-[11px] left-[-11px] px-[1rem] py-1" style="background-color: {{point_color}}; color:{{product_point_color}};">
+        {{ 'common.sale' | t }}
+      </div>
+    {% endif %}
+  </a>
+
+  <div class="flex flex-col justify-center {{product_box_color}} {% if box_shadow == true %} shadow-md {% endif %} py-4 px-3 {{product_title_align}}" style="color: {{product_title_color}}; justify-content:center;">
+    
+    {%- if show_vendor -%}
+    <a href="{{ product.url | within: collection }}" class="block text-xs">
+      {{ product.vendor }}
+    </a>
+    {% endif %}
+
+    {% if product.title %}
+      <a href="{{ product.url | within: collection }}" class="text-lg" style="font-size: {{product_font_size}}rem;">
+        {{ product.title | strip_html | truncate: 20}}
+      </a>
+    {% endif %}
+
+    {%- if show_rating -%}
+    {% liquid
+      assign rating_decimal = 0
+      assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+      if decimal >= 0.3 and decimal <= 0.7
+        assign rating_decimal = 0.5
+      elsif decimal > 0.7
+        assign rating_decimal = 1
+      endif
+    %}
+      <div class="flex {{product_title_align}} items-center">
+        {% if product.metafields.reviews.rating_count > 0 %}
+        <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+          <span aria-hidden="true" class="rating-star" 
+          style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};
+           --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; 
+           --rating-decimal: {{ rating_decimal }};">
+           </span>
+        </div>
+        <p class="rating-text caption">
+          <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
+        </p>
+        <p class="rating-count caption">
+          <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+          <!-- <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} total reviews</span> -->
+        </p>
+          {%else%}
+          <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+            <span aria-hidden="true" class="no-rating" 
+            style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};
+             --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; 
+             --rating-decimal: {{ rating_decimal }};">
+             </span>
+          </div>
+          <p class="rating-count caption">
+            <span aria-hidden="true">(0)</span>
+          </p>
+        {% endif %}
+      </div>
+    {%endif%}
+
+    {% if product.available %}
+      <div>
+        <span class="text-lg" {% if product.compare_at_price %} style="color: {{product_point_color}};" {% endif %}>
+          {{ product.price | money }}
+        </span>
+
+        {% if product.compare_at_price %}
+          <del class="ml-2 text-sm">
+            {{ product.compare_at_price | money }}
+          </del>
+        {% endif %}
+      </div>
+       {% else %}
+      <div>
+        {{ 'common.sold_out' | t }}
+      </div>
+    {% endif %}
+  </div>
+</div>

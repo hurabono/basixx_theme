@@ -1,0 +1,345 @@
+  <div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+    <div class="max-w-screen-lg px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+    {% if cart.item_count > 0 %}
+      <form action="{{routes.cart_url}}?locale={{ request.locale.iso_code }}" method="POST" novalidate>
+        <input type="hidden" name="attributes[locale]" value="{{ request.locale.iso_code }}" />
+        <div class="flex flex-col gap-4 md:gap-6 mb-6 sm:mb-8">
+          {% for item in cart.items %}
+              <!-- product - start -->
+              <div class=" {{section.settings.box_color}} flex flex-wrap rounded-lg overflow-hidden gap-x-4 sm:gap-y-4 lg:gap-6" style="border: 1px solid {{section.settings.border_color}};">
+                <a href="{{ item.url | within: collections.all }}" class="group w-32 w-40 md:w-[14rem] h-48 sm:h-56 block bg-gray-100 overflow-hidden relative">
+                  {% if item.image %}
+                      <img
+                        sizes="
+                            (min-width: 768px) 275px,400px"
+                              srcset="
+                                {{ item.image | img_url: '275x' }} 275w,
+                                {{ item.image | img_url: '400x' }} 400w
+                              "
+                              src="{{ item.image | img_url: '400x' }}"
+                              alt="{{ item.title | escape }}"
+                              loading="lazy"
+                              class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                            >
+                    {%else%}
+                        {{'product-1' | placeholder_svg_tag: 'w-full h-full object-cover object-center group-hover:scale-110 transition duration-200'}}
+                  {% endif %}
+                </a>
+        
+                <div class="flex flex-col justify-between flex-1 py-4">
+                  <div>
+                    {% if item.title %}
+                    <a href="{{ item.url | within: collection }}" class="inline-block text-lg lg:text-xl font-bold transition mb-1" style="color: {{section.settings.main_color}};"> {{ item.title }}</a>
+                    {%endif%}
+
+                    {% if item.options_with_values %}
+                    {% for option in item.options_with_values %}
+                    <span class="block" style="color: {{section.settings.point_color}};">{{ option.name }}: {{ option.value }}</span>
+                    {%endfor%}
+                    {%endif%}
+                  </div>
+        
+                  <div>
+                    <span class="block md:text-lg font-bold mb-1" style="color: {{section.settings.main_color}};">
+                      {{ item.price | money }}
+                    </span>
+                  </div>
+                </div>
+        
+                <div class="w-full sm:w-auto flex justify-between border-t sm:border-none p-4 sm:pl-0 lg:p-6 lg:pl-0">
+                  <div class="flex flex-col items-start gap-2">
+                      <div class="qty">
+
+                        <!-- <input type="number" name="updates[]" value="{{product.quantity}}" min="1" id="updates_{{forloop.index}}" class="w-20 border p-2 cart__qty-input" data-quantity-input> -->
+                        <!-- <span class="md:hidden">{{ 'common.quantity' | t }}</span> x{{ product.quantity }} -->
+                        <div class="qty_control">
+                          <div class="qtycard">
+                            <span class="btnqty qtyminus icon icon-minus" style="color: {{section.settings.point_color}};">-</span>
+                            <input type="text" id="updates_{{forloop.index}}" name="updates[]" value="{{item.quantity}}" min="1" class="quantity-selector quantity-input" readonly="">
+                            <span class="btnqty qtyplus icon icon-plus" style="color: {{section.settings.point_color}};">+</span>
+                          </div>
+                        </div>
+                      </div> 
+        
+                    <a href="{{ routes.cart_change_url }}?line={{forloop.index}}&quantity=0" class="text-sm font-semibold select-none" style="color: {{section.settings.main_color}};">Delete</a>
+                  </div>
+        
+                  <div class="pt-3 md:pt-2 ml-4 md:ml-8 lg:ml-16" style="color: {{section.settings.main_color}};">
+                    <span class="block md:text-lg font-bold">
+                      {% if item.original_line_price != item.line_price %}
+                      {{ item.original_line_price | money }}
+                      {% endif %}
+              
+                      <span class="md:hidden">{{ 'common.total' | t }}</span> {{ item.line_price | money }}
+              
+                      {% for discount in item.discounts %}
+                      {{ discount.title }}
+                      {% endfor %}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- product - end -->
+          {%endfor%}
+
+          <div class="flex flex-col items-start justify-center rounded-lg">
+            <label for="cart_notes" class="my-1">Cart Notes</label>
+            <textarea name="note" id="cart_notes" class="w-full m-auto" cols="50" rows="5" style="border: 1px solid {{section.settings.border_color}};"></textarea>
+          </div>
+        </div>
+        
+            <!-- totals - start -->
+            <div class="flex flex-col items-end gap-4">
+              <div class="{{section.settings.box_color}} w-full sm:max-w-xs rounded-lg p-4" style="border: 1px solid {{section.settings.border_color}};">
+                <div class="space-y-1">
+                  <div class="flex justify-between gap-4" style="color: {{section.settings.point_color}};">
+                    <span>{{ 'cart.subtotal' | t }}</span>
+                    <span>{{ cart.total_price | money_with_currency }}</span>
+                  </div>
+                </div>
+        
+                <div class="pt-4 mt-4" style="border-top: 1px solid {{section.settings.point_color}};">
+                  <div class="flex justify-between items-start gap-4" style="color: {{section.settings.main_color}};">
+                    <span class="text-lg font-bold">Total</span>
+        
+                    <span class="flex flex-col items-end">
+                      <span class="text-lg font-bold">{{ cart.total_price | money_with_currency }}</span>
+                      <span class="text-sm" style="color: {{section.settings.point_color}};">
+                        {% if shop.taxes_included %}
+                          {{ 'common.including_tax' | t }}
+                        {% else %}
+                          {{ 'common.excluding_tax' | t }}
+                        {% endif %}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="my-2 w-[100%] lg:w-[20.5%]">
+                <button
+                type="submit"
+                name="update"
+                class="w-full py-2 {{section.settings.color_button}} {{section.settings.button_color_hover}}"
+                style="border: 1px solid {{section.settings.button_border_color}}; color:{{section.settings.button_border_color}};"
+              >
+                update
+              </button>
+              </div>
+      
+              <div class="my-2 w-[100%] lg:w-[20.5%]">
+                <button
+                name="checkout"
+                class="w-full py-2 {{section.settings.color_button}} {{section.settings.button_color_hover}}"
+                style="border: 1px solid {{section.settings.button_border_color}}; color:{{section.settings.button_border_color}};"
+                >
+                {{ 'action.checkout' | t }}
+                </button>
+              </div>
+            </div>
+            <!-- totals - end -->
+          </div>
+
+      </form>
+      {% else %}
+        <div class="flex flex-col justify-center items-center p-[2rem]" style="color: {{section.settings.point_color}};">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-18 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <p class="text-center py-2 text-lg" style="color: {{section.settings.main_color}};">{{ 'cart.empty_cart' | t }}</p>
+        </div>
+    
+        <div class="text-center">
+          <a href="{{ routes.all_products_collection_url }}" class="px-4 py-2 {{section.settings.color_button}} {{section.settings.button_color_hover}} inline-flex justify-center"
+          style="border: 1px solid {{section.settings.button_border_color}}; color:{{section.settings.button_border_color}};">
+            {{ 'action.continue_shopping' | t }} {% render 'icon-chevron-right', class: 'w-4 h-auto', style: 'margin-top: 2px;' %}
+          </a>
+        </div>
+    {% endif%}
+  </div>
+
+{% schema %}
+
+{
+"name": "Main Cart",
+"settings": [
+{
+  "type":"select",
+  "id":"color_schema",
+  "label":"Background color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"background_transparent"
+ },
+ {
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+{
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+ {
+  "type": "checkbox",
+  "id": "animation_setting",
+  "default": false,
+  "label": "Animation turn on"
+  },
+{
+  "type": "color",
+  "id": "main_color",
+  "label": "Main font color",
+  "default": "#7B3F3F"
+},
+{
+  "type": "color",
+  "id": "point_color",
+  "label": "Point color",
+  "default": "#BAA098"
+},
+{
+  "type": "color",
+  "id": "border_color",
+  "label": "Border color",
+  "default": "#E8D5D4"
+},
+{
+  "type":"select",
+  "id":"box_color",
+  "label":"Box color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"forth_color"
+ },
+ {
+  "type":"select",
+  "id":"color_button",
+  "label":"Button color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+        "value":"forth_color",
+        "label":"Forth Color"
+     },
+     {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+     },
+     {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+     }
+  ],
+  "default":"third_color"
+},
+{
+  "type":"select",
+  "id":"button_color_hover",
+  "label":"Button moseover color",
+  "options":[
+     {
+        "value":"button_first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"button_second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"button_third_color",
+        "label":"Third Color"
+     },
+     {
+        "value":"button_forth_color",
+        "label":"Forth Color"
+     },
+     {
+        "value":"button_fifth_color",
+        "label":"Fifth Color"
+     },
+     {
+        "value":"button_background_transparent",
+        "label":"Transparent Color"
+     }
+  ],
+  "default":"button_second_color"
+},
+{
+"type": "color",
+"id": "button_border_color",
+"label": "Button border color",
+"default": "#ffffff"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,54 @@
+<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+
+  <a href="{{ product.url | within: collection }}" class="block group block relative">
+    <img sizes="
+                              (min-width: 768px) 450px,
+                              630px
+                            " srcset="
+                              {{ product.featured_image.src | img_url: '450x' }} 450w,
+                              {{ product.featured_image.src | img_url: '630x' }} 630w
+                            " src="{{ product.featured_image.src | img_url: '630x' }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy" class="w-full 2xl:h-[30rem] xl:h-[25rem] lg:h-[18rem] object-cover object-center">
+
+    {% if product.price < product.compare_at_price %}
+      <div class="text-sm tracking-wider uppercase absolute top-[11px] left-[-11px] px-[1rem] py-1" style="background: {{product_badge_color}}; color:{{product_title_color}};">
+        {{ 'common.sale' | t }}
+      </div>
+    {% endif %}
+  </a>
+
+  <div class="{{product_title}} mt-4 text-center" style="color: {{product_title_color}};">
+
+    {% if vendor_set == true %}
+      <a href="{{ product.url | within: collection }}" class="block text-xs">
+        {{ product.vendor }}
+      </a>
+    {% endif %}
+
+
+
+    {% if product.title %}
+      <a href="{{ product.url | within: collection }}" class="text-base leading-8 tracking-wider">
+        {{ product.title | strip_html | truncate: 20 }}
+      </a>
+    {% endif %}
+
+    {% if product.available %}
+      <div>
+        <span class="text-lg {% if product.compare_at_price %} text-lg {% endif %}" {% if product.compare_at_price %} style="color: {{product_point_color}};" {% endif %}>
+          {{ product.price | money }}
+        </span>
+
+        {% if product.compare_at_price %}
+          <del class="ml-2">
+            {{ product.compare_at_price | money }}
+          </del>
+        {% endif %}
+      </div>
+    {% else %}
+      <div>
+        {{ 'common.sold_out' | t }}
+      </div>
+    {% endif %}
+  </div>
+</div> 

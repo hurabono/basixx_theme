@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-blog",
+      "settings": {
+        "color_schema": "second_color",
+        "image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE_1.png",
+        "banner_top_size": "banner_top_medium",
+        "banner_bottom_size": "banner_bottom_small",
+        "overlay_set": true,
+        "text_align": "font_left",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "text_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "main-blog-list",
+      "settings": {
+        "column_design": "two_column",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "animation_setting": false,
+        "color_schema": "background_transparent",
+        "textbox_color": "forth_color",
+        "text_color": "#926d5a",
+        "point_color": "#daccc1",
+        "title_color": "#6f665d"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

@@ -1,0 +1,171 @@
+{% assign image = section.settings.image %}
+
+<div
+  class="{{section.settings.color_schema}} {{section.settings.banner_top_size}} {{section.settings.banner_bottom_size}} min-h-96 flex items-center flex-1 flex-shrink-0 overflow-hidden relative">
+  
+  <!-- image - start -->
+  {% if image %}
+  <img sizes="
+  (min-width: 1280px) 1500px,
+  (min-width: 1024px) 1250px,
+  (min-width: 768px) 1000px,
+  (min-width: 640px) 720px,
+  600px
+" srcset="
+  {{ image | img_url: '600x' }} 600w,
+  {{ image | img_url: '720x' }} 720w,
+  {{ image | img_url: '1000x' }} 1000w,
+  {{ image | img_url: '1250x' }} 1250w,
+  {{ image | img_url: '1500x' }} 1500w
+" src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
+    class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {%endif%}">
+  {%else%}
+  {% endif %}
+  <!-- image - end -->
+
+
+  <!-- text start -->
+  <div class="flex flex-col relative px-8 p-4 w-[1440px] m-auto {{section.settings.text_align}}">
+    <h1 class="w-full py-4 text-4xl font-bold tracking-widest" style="color: {{section.settings.text_color}};"> {{ collection.title}}</h1>
+    <div class="subfont_size py-8 tracking-wider leading-8" style="color: {{section.settings.text_color}};">
+      {{ collection.description }}
+    </div>
+  </div>
+  <!-- text end -->
+</div>
+
+
+{% schema %}
+{
+"name": "Collection Banner",
+"settings": [
+{
+  "type": "header",
+  "content": "General settings",
+  "info": "Base background color and image settings"
+},
+{
+  "type":"select",
+  "id":"color_schema",
+  "label":"Background color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"third_color"
+ },
+{
+"type": "image_picker",
+"id": "image",
+"label": "Collection Banner image"
+},
+{
+  "type":"select",
+  "id":"banner_top_size",
+  "label":"Banner Top size",
+  "options":[
+     {
+        "value":"banner_top_small",
+        "label":"Small"
+     },
+     {
+        "value":"banner_top_medium",
+        "label":"Medium"
+     },
+     {
+        "value":"banner_top_large",
+        "label":"Large"
+     },
+     {
+        "value":"banner_top_xlarge",
+        "label":"xLarge"
+     }
+  ],
+  "default":"banner_top_xlarge"
+},
+{
+  "type":"select",
+  "id":"banner_bottom_size",
+  "label":"Banner Bottom size",
+  "options":[
+     {
+        "value":"banner_bottom_small",
+        "label":"Small"
+     },
+     {
+        "value":"banner_bottom_medium",
+        "label":"Medium"
+     },
+     {
+        "value":"banner_bottom_large",
+        "label":"Large"
+     },
+     {
+        "value":"banner_bottom_xlarge",
+        "label":"xLarge"
+     }
+  ],
+  "default":"banner_bottom_small"
+},
+{
+  "type": "checkbox",
+  "id": "overlay_set",
+  "default": true,
+  "label": "Overlay cover"
+},
+{
+  "type": "header",
+  "content": "Collection Text",
+  "info": "Collection Content settings"
+},
+{
+  "type":"select",
+  "id":"text_align",
+  "label":"Text align",
+  "options":[
+     {
+        "value":"font_left",
+        "label":"Left"
+     },
+     {
+        "value":"font_right",
+        "label":"Right"
+     },
+     {
+        "value":"font_center",
+        "label":"Center"
+     }
+  ],
+  "default":"font_center"
+},
+{
+  "type": "color",
+  "id": "text_color",
+  "label": "Text box color",
+  "default": "#fff"
+}
+]
+}
+{% endschema %}

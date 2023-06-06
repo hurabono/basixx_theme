@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "collection-banner": {
+      "type": "main-collection",
+      "settings": {
+        "color_schema": "second_color",
+        "image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE_7.png",
+        "banner_top_size": "banner_top_medium",
+        "banner_bottom_size": "banner_bottom_large",
+        "overlay_set": true,
+        "text_align": "font_left",
+        "text_color": "#ffffff"
+      }
+    },
+    "16686478830ff2e856": {
+      "type": "apps",
+      "disabled": true,
+      "blocks": {
+        "957a4f05-0b54-42f2-8844-604ec847f981": {
+          "type": "shopify:\/\/apps\/categories-uncomplicated\/blocks\/category-icons\/2d8e3108-b94b-4b0c-8f03-e3726bad87be",
+          "settings": {
+            "show_large_up": "5up",
+            "show_medium_up": "3up",
+            "show_small_up": "2up",
+            "show_product_counts": true,
+            "hide_empty_subcategories": false,
+            "show_collection_images": "alwaysimage",
+            "title_text_align": ""
+          }
+        }
+      },
+      "block_order": [
+        "957a4f05-0b54-42f2-8844-604ec847f981"
+      ],
+      "settings": {
+      }
+    },
+    "collection-grid": {
+      "type": "layout-collection-grid",
+      "blocks": {
+        "collection-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vegan-candle"
+          }
+        },
+        "collection-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "collection-3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "summer-discount"
+          }
+        },
+        "collection-4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "for-gift"
+          }
+        }
+      },
+      "block_order": [
+        "collection-1",
+        "collection-2",
+        "collection-3",
+        "collection-4"
+      ],
+      "settings": {
+        "color_schema": "second_color",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "animation_setting": false,
+        "image_round": true,
+        "color_collection_title": "#6f665d"
+      }
+    },
+    "product-grid": {
+      "type": "product-grid",
+      "settings": {
+        "color_schema": "fifth_color",
+        "column_design": "four_column",
+        "show_vendor": true,
+        "show_rating": true,
+        "box_shadow": true,
+        "show_line": false,
+        "animation_setting": false,
+        "mouseover_image": true,
+        "filter_box_color": "forth_color",
+        "filter_font_color": "#1878b9",
+        "product_box_color": "forth_color",
+        "product_title_align": "font_center",
+        "product_title_color": "#4b4b4b",
+        "point_color": "#f9e7d3",
+        "box_border": "#1878b9",
+        "product_point_color": "#c33131"
+      }
+    }
+  },
+  "order": [
+    "collection-banner",
+    "16686478830ff2e856",
+    "collection-grid",
+    "product-grid"
+  ]
+}

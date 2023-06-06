@@ -1,0 +1,101 @@
+{% layout 'gift_card' %}
+{{ 'vendor/qrcode.js' | shopify_asset_url | script_tag }}
+{{ 'giftcard.css' | asset_url | stylesheet_tag }}
+
+<div class="container max-w-screen-md pt-16 md:pt-20">
+  <div class="text-lg md:text-lg text-center mb-2 md:mb-2 text-gray-500	uppercase">
+    gift card
+  </div>
+  <h1 class="text-2xl md:text-3xl text-center mb-6 md:mb-10">
+    {{ shop.name }}
+  </h1>
+
+  <svg xmlns="http://www.w3.org/2000/svg" class="gift_icon h-12 w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+  </svg>
+
+  <div class="max-w-sm border mx-auto p-6 mb-16">
+    <div class="flex justify-between mb-12">
+      <div class="text-2xl font-bold">
+        {{ 'gift_card.title' | t }}
+      </div>
+
+      {% comment %} value - start {% endcomment %}
+        {% if gift_card.enabled %}
+          <div>
+            {% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency %}
+            {% assign formatted_current_balance = gift_card.balance | money %}
+
+            {% if gift_card.balance != gift_card.initial_value %}
+              <span class="mr-1">
+                {{ 'gift_card.left' | t }}
+              </span>
+
+              {{ formatted_current_balance }}
+            {% else %}
+              <span class="mr-1">
+                {{ 'gift_card.value' | t }}
+              </span>
+
+              <span class="text-xl sm:text-2xl font-bold">
+                {{ formatted_initial_value }}
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% comment %} value - end {% endcomment %}
+    </div>
+    
+    <div id="qr-code" ></div>
+
+    {% comment %} code - start {% endcomment %}
+      <div class="bg-gray-100 text-gray-600 text-sm sm:text-lg text-center px-4 py-3">
+        {% if gift_card.enabled %}
+          {{ gift_card.code | format_code }}
+        {% else %}
+          {{ 'gift_card.disabled' | t }}
+        {% endif %}
+      </div>
+    {% comment %} code - end {% endcomment %}
+
+    {% comment %} expire date - start {% endcomment %}
+      {% assign gift_card_expiry_date = gift_card.expires_on | date: format: 'month_day_year' %}
+
+      {% if gift_card.expired and gift_card.enabled %}
+        <div class="text-xs text-gray-600 text-center mt-4">
+          {{ 'gift_card.expired' | t }} {{ gift_card_expiry_date }}
+        </div>
+      {% endif %}
+
+      {% if gift_card.expired != true and gift_card.expires_on and gift_card.enabled %}
+        <div class="text-xs text-gray-600 text-center mt-4">
+          {{ 'gift_card.expires' | t }} {{ gift_card_expiry_date }}
+        </div>
+      {% endif %}
+    {% comment %} expire date - end {% endcomment %}
+  </div>
+
+  {% if gift_card.enabled and gift_card.expired != true %}
+    <div class="flex flex-col items-center">
+      <p class="mb-4">
+        {{ 'gift_card.redeem' | t }}
+      </p>
+
+      <a
+        href="{{ shop.url }}"
+        class="button button-primary"
+        target="_blank"
+      >
+        {{ shop.name }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  new QRCode(document.getElementById('qr-code'), {
+    text: '{{ gift_card.qr_identifier }}',
+    width: 120,
+    height: 120
+  });
+</script>

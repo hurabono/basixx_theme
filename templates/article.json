@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "title": {
+          "type": "article_title",
+          "settings": {
+          }
+        },
+        "author": {
+          "type": "article_author",
+          "settings": {
+          }
+        },
+        "publised_date": {
+          "type": "article_published_date",
+          "settings": {
+          }
+        },
+        "image": {
+          "type": "featured_image",
+          "settings": {
+          }
+        },
+        "content": {
+          "type": "article_content",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "image",
+        "title",
+        "author",
+        "publised_date",
+        "content"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

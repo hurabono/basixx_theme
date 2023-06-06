@@ -1,0 +1,363 @@
+<section class="{{section.settings.color_schema}}">
+
+  <!-- text start -->
+  <div class="mx-auto mx-[3rem]" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+    <div {% if section.settings.animation_setting == true %}data-aos="fade-up"data-aos-duration="3000"{% endif %} class="mx-[1.5rem] {{section.settings.textbox_align}}">
+
+      <div class="richtext_font {{section.settings.title_align}} mb-[1.2rem] text-2xl lg:text-4xl font-bold tracking-wider" style="color:{{section.settings.color_title}}; font-size:{{section.settings.banner_title_font_size}}px;">
+        {{ section.settings.headline }}
+      </div>
+
+      <div class="{{section.settings.title_align}} my-8 leading-8 tracking-wider" style="color:{{section.settings.color_desciption}}; font-size:{{section.settings.banner_font_size}}px;">
+        {{ section.settings.text }}
+      </div>
+
+      {%- if section.settings.button-text != blank -%}
+        <div class="py-6 px-2 inline-block">
+          <a href="{{section.settings.button-url}}" class="{{section.settings.color_button}} {{section.settings.button_color_hover}} text-sm md:text-base text-center outline-none transition duration-100 {% if section.settings.button_round_off == true %} button_round {% endif %} {{section.settings.button_size_first}}" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+            {{section.settings.button-text}}
+          </a>
+        </div>
+      {% endif %}
+
+      {%- if section.settings.button-text_second != blank -%}
+        <div class="py-6 px-2 inline-block">
+          <a href="{{section.settings.button-url_second}}" class="{{section.settings.color_button_second}} {{section.settings.button_color_hover_second}} text-sm md:text-base text-center outline-none transition duration-100 {% if section.settings.button_round_off == true %} button_round {% endif %} {{section.settings.button_size_second}}" style="border:1px solid {{section.settings.border_color_second}}; color:{{section.settings.border_color_second}};">
+            {{section.settings.button-text_second}}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <!-- text end -->
+
+</section>
+
+
+{% schema %}
+  {
+    "name": "Rich Text",
+    "class": "shopify-section-vue",
+    "settings": [
+      {
+        "type": "select",
+        "id": "color_schema",
+        "label": "Background color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "third_color"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_round_off",
+        "default": false,
+        "label": "Button round"
+      },
+      {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": false,
+        "label": "Animation turn on"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "header",
+        "content": "Text Contents settings",
+        "info": "Rich Text contents"
+      }, {
+        "type": "range",
+        "id": "banner_title_font_size",
+        "label": "Title font size",
+        "default": 45,
+        "min": 20,
+        "max": 60,
+        "step": 1,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "id": "banner_font_size",
+        "label": "Banner font size",
+        "default": 15,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      }, {
+        "type": "text",
+        "id": "headline",
+        "label": "t:common.headline",
+        "default": "Headline"
+      }, {
+        "type": "color",
+        "id": "color_title",
+        "label": "Header Text color",
+        "default": "#fafafa"
+      }, {
+        "type": "richtext",
+        "id": "text",
+        "label": "Paragraph"
+      }, {
+        "type": "color",
+        "id": "color_desciption",
+        "label": "Text color",
+        "default": "#fafafa"
+      }, {
+        "type": "select",
+        "id": "textbox_align",
+        "label": "Title align",
+        "options": [
+          {
+            "value": "font_left",
+            "label": "Left"
+          }, {
+            "value": "font_right",
+            "label": "Right"
+          }, {
+            "value": "font_center",
+            "label": "Center"
+          }
+        ],
+        "default": "font_center"
+      }, {
+        "type": "header",
+        "content": "Button settings",
+        "info": "Setting button color, mouseover color. Two buttons available. "
+      }, {
+        "type": "header",
+        "content": "Button 1"
+      }, {
+        "type": "select",
+        "id": "button_size_first",
+        "label": "Button size",
+        "options": [
+          {
+            "value": "button_small",
+            "label": "Small"
+          }, {
+            "value": "button_medium",
+            "label": "Medium"
+          }, {
+            "value": "button_large",
+            "label": "Large"
+          }, {
+            "value": "button_xlarge",
+            "label": "Extra large"
+          }
+        ],
+        "default": "button_medium"
+      }, {
+        "type": "text",
+        "id": "button-text",
+        "label": "t:common.button.text",
+        "default": "Button"
+      }, {
+        "type": "url",
+        "id": "button-url",
+        "label": "t:common.button.url"
+      }, {
+        "type": "select",
+        "id": "color_button",
+        "label": "Button color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "second_color"
+      }, {
+        "type": "select",
+        "id": "button_color_hover",
+        "label": "Button moseover color",
+        "options": [
+          {
+            "value": "button_first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "button_second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "button_third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "button_forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "button_fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "button_background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "button_third_color"
+      }, {
+        "type": "color",
+        "id": "border_color",
+        "label": "Button border color",
+        "default": "#6F665D"
+      }, {
+        "type": "header",
+        "content": "Button 2"
+      }, {
+        "type": "select",
+        "id": "button_size_second",
+        "label": "Button size",
+        "options": [
+          {
+            "value": "button_small",
+            "label": "Small"
+          }, {
+            "value": "button_medium",
+            "label": "Medium"
+          }, {
+            "value": "button_large",
+            "label": "Large"
+          }, {
+            "value": "button_xlarge",
+            "label": "Extra large"
+          }
+        ],
+        "default": "button_medium"
+      }, {
+        "type": "text",
+        "id": "button-text_second",
+        "label": "Button Text",
+        "default": "Button"
+      }, {
+        "type": "url",
+        "id": "button-url_second",
+        "label": "Button URL"
+      }, {
+        "type": "select",
+        "id": "color_button_second",
+        "label": "Button color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "second_color"
+      }, {
+        "type": "select",
+        "id": "button_color_hover_second",
+        "label": "Button moseover color",
+        "options": [
+          {
+            "value": "button_first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "button_second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "button_third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "button_forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "button_fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "button_background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "button_third_color"
+      }, {
+        "type": "color",
+        "id": "border_color_second",
+        "label": "Button border color",
+        "default": "#6F665D"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich Text",
+        "category": "text"
+      }
+    ]
+  }
+{% endschema %} 

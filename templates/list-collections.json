@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "collection-banner": {
+      "type": "main-list-collections",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE6.png",
+        "banner_top_size": "banner_top_medium",
+        "color_schema": "third_color",
+        "banner_bottom_size": "banner_bottom_small",
+        "overlay_set": false,
+        "text_align": "font_left",
+        "headline": "Collection HeadLine",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "text_color": "#6f665d"
+      }
+    },
+    "collection-lists": {
+      "type": "section-collection-list",
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "color_textbox": "background_transparent",
+        "overlay_set": true,
+        "animation_setting": false,
+        "column_design": "three_column",
+        "show_shopname": true,
+        "text_align": "font_center",
+        "collection_title_size": 23,
+        "textbox_position": "collection_center",
+        "text_color": "#ffffff",
+        "point_color": "#fafafa"
+      }
+    }
+  },
+  "order": [
+    "collection-banner",
+    "collection-lists"
+  ]
+}

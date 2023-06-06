@@ -1,0 +1,37 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-cart-banner",
+      "settings": {
+        "color_schema": "second_color",
+        "image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE_6.png",
+        "banner_top_size": "banner_top_medium",
+        "banner_bottom_size": "banner_bottom_medium",
+        "overlay_set": true,
+        "text_align": "font_center",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "text_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "animation_setting": false,
+        "main_color": "#7B3F3F",
+        "point_color": "#BAA098",
+        "border_color": "#E8D5D4",
+        "box_color": "second_color",
+        "color_button": "third_color",
+        "button_color_hover": "button_second_color",
+        "button_border_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

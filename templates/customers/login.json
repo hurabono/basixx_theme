@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "template": {
+      "type": "template-customer-login",
+      "settings": {
+        "animation_setting": true,
+        "padding_top": 5,
+        "padding_bottom": 6
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
+}

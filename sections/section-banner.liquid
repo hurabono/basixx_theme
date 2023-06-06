@@ -1,0 +1,281 @@
+{% assign image = section.settings.image %}
+    <div class="flex flex-col {{section.settings.img_array}}" {% if section.settings.animation_setting == true %} data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"data-aos-duration="3000"{% endif %}>
+    <div class="h-[32rem] overflow-hidden w-full lg:w-1/2">
+      {% if image %}
+      <img sizes="
+            (min-width: 1536px) 1000px,
+            (min-width: 1280px) 850px,
+            (min-width: 1024px) 700px,
+            (min-width: 768px) 400px,
+            (min-width: 640px) 500px,
+            600px
+          " srcset="
+            {{ image | img_url: '400x' }} 400w,
+            {{ image | img_url: '500x' }} 500w,
+            {{ image | img_url: '600x' }} 600w,
+            {{ image | img_url: '700x' }} 700w,
+            {{ image | img_url: '850x' }} 850w,
+            {{ image | img_url: '1000x' }} 1000w
+          " src="{{ image | img_url: '1000x' }}" alt="{{ image.alt }}" loading="lazy"
+        class="w-full h-full object-cover object-center">
+      {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
+      {% endif %}
+    </div>
+
+    <div class="flex flex-col justify-center items-start p-8 py-10 md:p-12 w-full lg:w-1/2 {{section.settings.text_align}} {{section.settings.text_background}}">
+      <div class="text-2xl lg:text-3xl font-bold mb-2 tracking-widest" style="color: {{section.settings.header_color}};">
+        {{ section.settings.headline }}
+      </div>
+
+      <div class="my-8 tracking-wider leading-8" style="color: {{section.settings.text_color}};">
+        {{ section.settings.text }}
+      </div>
+      {% if section.settings.button-text != blank %}
+      <a href="{{ section.settings.button-url }}"  class="{% if section.settings.button_round_off == true %} button_round {% endif %} {{section.settings.color_button}} {{section.settings.button_color_hover}} text-sm md:text-base text-center outline-none transition duration-100 {{section.settings.button_size}}" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+        {{ section.settings.button-text }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+
+{% schema %}
+{
+"name": "t:sections.banner.name",
+"class": "shopify-section-vue",
+"settings": [
+{
+  "type": "header",
+  "content": "General settings"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "t:common.image"
+},
+   {
+    "type":"select",
+    "id":"img_array",
+    "label":"Image location",
+    "options":[
+       {
+          "value":"left_img",
+          "label":"Left"
+       },
+       {
+          "value":"right_img",
+          "label":"Right"
+       }
+    ],
+    "default":"left_img"
+},
+{
+    "type": "checkbox",
+    "id": "animation_setting",
+    "default": false,
+    "label": "Animation turn on"
+},
+ {
+  "type": "header",
+  "content": "Text settings"
+},
+{
+  "type":"select",
+  "id":"text_background",
+  "label":"Textbox color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"third_color"
+ },
+{
+"type": "text",
+"id": "headline",
+"label": "t:common.headline",
+"default": "Headline"
+},
+{
+  "type":"select",
+  "id":"text_align",
+  "label":"Text align",
+  "options":[
+     {
+        "value":"banner_font_left",
+        "label":"Left"
+     },
+     {
+        "value":"banner_font_right",
+        "label":"Right"
+     },
+     {
+        "value":"banner_font_center",
+        "label":"Center"
+     }
+  ],
+  "default":"banner_font_center"
+},
+{
+"type": "textarea",
+"id": "text",
+"label": "t:common.text",
+"default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+},
+{
+"type": "color",
+"id": "header_color",
+"label": "Header color",
+"default": "#6F665D"
+},
+{
+"type": "color",
+"id": "text_color",
+"label": "Text color",
+"default": "#6F665D"
+},
+{
+  "type": "header",
+  "content": "Button settings"
+},
+{
+   "type":"select",
+   "id":"button_size",
+   "label":"Button size",
+   "options":[
+      {
+         "value":"button_small",
+         "label":"Small"
+      },
+      {
+         "value":"button_medium",
+         "label":"Medium"
+      },
+      {
+         "value":"button_large",
+         "label":"Large"
+      },
+      {
+       "value":"button_xlarge",
+       "label":"Extra large"
+     }
+   ],
+   "default":"button_medium"
+  },
+  {
+   "type": "checkbox",
+   "id": "button_round_off",
+   "default": false,
+   "label": "Button round"
+ },
+{
+"type": "url",
+"id": "button-url",
+"label": "t:common.button.url"
+},
+{
+"type": "text",
+"id": "button-text",
+"label": "t:common.button.text",
+"default": "Button"
+},
+{
+  "type":"select",
+  "id":"color_button",
+  "label":"Button color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+        "value":"forth_color",
+        "label":"Forth Color"
+     },
+     {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+     },
+     {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+     }
+  ],
+  "default":"second_color"
+},
+{
+  "type":"select",
+  "id":"button_color_hover",
+  "label":"Button moseover color",
+  "options":[
+     {
+        "value":"button_first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"button_second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"button_third_color",
+        "label":"Third Color"
+     },
+     {
+        "value":"button_forth_color",
+        "label":"Forth Color"
+     },
+     {
+        "value":"button_fifth_color",
+        "label":"Fifth Color"
+     },
+     {
+        "value":"button_background_transparent",
+        "label":"Transparent Color"
+     }
+  ],
+  "default":"button_third_color"
+},
+{
+"type": "color",
+"id": "border_color",
+"label": "Button border color",
+"default": "#6F665D"
+}
+],
+"presets": [
+{
+"name": "t:sections.banner.name",
+"category": "Image"
+}
+]
+}
+{% endschema %}

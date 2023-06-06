@@ -1,0 +1,143 @@
+<div class="py-6 md:py-0" data-aos="fade-in" {% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+      <div class="max-w-screen-xl px-4 md:px-8 mx-auto" x-data="{ loginForm: true, pwRecoverForm: false }">
+        <div x-show="loginForm">
+          
+    
+          <!-- content - start -->
+          <div style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+            <div class="max-w-screen-2xl mx-auto">
+              <h2 class="text-2xl lg:text-3xl text-center mb-4 md:mb-8 customer_title_color">Login</h2>
+                  
+              {% form 'customer_login', class:'max-w-lg mx-auto' %}
+
+                <div class="flex flex-col gap-4 p-4 md:p-8">
+                  <div>
+                    <label for="email_address" class="inline-block customer_text_color text-sm sm:text-base mb-2">Email</label>
+                    <input type="email" name="customer[email]" id="email_address" autocomplete="email" placeholder="Email address" class="w-full customer_border_color focus:outline-none px-3 py-2"  />
+                  </div>
+          
+                  {% if form.password_needed %}
+                  <div>
+                  <label for="password" class="inline-block customer_text_color text-sm sm:text-base mb-2">Password</label>
+                  <input type="password" name="customer[password]" id="password" autocomplete="current-password" placeholder="Password" class="w-full customer_border_color focus:outline-none px-3 py-2" />
+                  </div>      
+                  {% endif %}
+                  {% if form.errors %}
+                  <div class="relative border border-red-400 bg-red-100 text-red-800 px-4 py-3" role="alert">
+                        <p>Please check your E-mail or password again</p>
+                        <p class="block sm:inline">{{ form.errors | default_errors }}</p>
+                  </div>
+                  {% endif %}
+                  <button type="submit" class="block text-sm md:text-base text-center px-8 py-3 customer_button_color customer_button_border">Log in</button>
+          
+                  <div class="flex justify-center items-center relative">
+                    <span class="customer_text_color text-sm relative px-4">Forgot your password? <a x-on:click="loginForm = false; pwRecoverForm = true" href="#" class="customer_point_color underline"> click here </a></span>
+                  </div>
+                </div>
+                <div class="flex justify-center">
+                  <a href="{{routes.account_url}}/register" class="text-center customer_point_color underline">Create account </a>
+                </div>
+                <div class="flex justify-center">
+                  <a href="{{ shop.url }}" class="text-center customer_point_color underline">Return to store </a>
+                </div>
+      
+             {% endform %}
+
+             <!-- guest login -->
+              {% if shop.checkout.guest_login %}
+              <div class="max-w-screen-2xl mx-auto mt-16">
+                <h2 class="customer_title_color text-xl uppercase text-center mb-4 md:mb-3">guest login</h2>
+                <p class="block customer_text_color my-2 text-center"> process checkout without log in </p>
+                {% form 'guest_login' %}
+                  <div class="flex flex-col gap-4 p-4 md:p-8 mx-8">
+                    <button type="submit" class="block text-sm md:text-base text-center px-8 py-3 customer_button_color customer_button_border max-w-4xl m-auto"> continue </button>
+                  </div>
+                {% endform %}
+              {% endif %}
+
+            </div>
+          </div>
+          <!-- content - end -->
+          </div>
+
+
+          <!-- recover password -->
+          <div x-show="pwRecoverForm" class="max-w-screen-xl px-4 md:px-8 mx-auto">
+            <div>
+              
+        
+              <!-- content - start -->
+              <div class="py-10 md:py-[16rem]">
+                <div class="max-w-screen-2xl mx-auto">
+                  <h2 class="text-2xl lg:text-3xl text-center mb-4 md:mb-8 customer_title_color">Recover your password</h2>
+                      
+                  {% form 'recover_customer_password', class:'max-w-lg mx-auto' %}
+    
+                    <div class="flex flex-col gap-4 p-4 md:p-8">
+                      <div>
+                        <label for="email" class="customer_text_color inline-block text-sm sm:text-base mb-2">Email</label>
+                        <input type="email" name="email" id="email" autocomplete="email" placeholder="Email address" class="w-full customer_border_color px-3 py-2"  />
+                      </div>
+              
+                      {% if form.errors %}
+                      <div class="relative border border-red-400 bg-red-100 text-red-800 px-4 py-3" role="alert">
+                            <p>Please check your E-mail again</p>
+                            <p class="block sm:inline">{{ form.errors | default_errors }}</p>
+                      </div>
+                      {% endif %}
+
+                      <button type="submit" class="block customer_button_color customer_button_border text-sm md:text-base font-semibold text-center px-8 py-3">recover password</button>
+              
+                      <div class="flex justify-center items-center relative">
+                        <span class="customer_text_color text-sm relative px-4"> Do you have your Email? <a href="{{routes.account_url}}/register" class="customer_point_color underline"> Create account </a></span>
+                      </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <a x-on:click="loginForm = true; pwRecoverForm = false" href="#" class="text-center customer_point_color underline">Back to login </a>
+                    </div>
+                    <div class="flex justify-center">
+                      <a href="{{ shop.url }}" class="text-center customer_point_color underline">Return to store </a>
+                    </div>
+          
+                 {% endform %}
+    
+                </div>
+              </div>
+              <!-- content - end -->
+            </div>
+          </div>
+      </div>
+    </div>
+
+    {% schema %}
+    {
+      "settings": [
+      {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": true,
+        "label": "Animation turn on"
+        },
+        {
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":15,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+{
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":6,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ }
+      ]
+    }
+    {% endschema %}

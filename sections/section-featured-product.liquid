@@ -1,0 +1,607 @@
+{%- assign product = all_products[section.settings.featured_product] -%}
+{% assign selected_variant = product.selected_or_first_available_variant %}
+{{ 'drop_down.css' | asset_url | stylesheet_tag }}
+<style>
+  .options-container::-webkit-scrollbar {
+    width: 8px;
+    background: {{ section.settings.point_color | color_modify: 'alpha', 0.7 }};
+  }
+
+  .options-container::-webkit-scrollbar-thumb {
+    background: {{ section.settings.point_color }};
+  }
+</style>
+
+
+
+{% if product == empty %}
+  {%- assign section_onboarding = true -%}
+{% endif %}
+
+<div class="{{section.settings.color_schema}}">
+
+  <div class="page-width" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" {% if section.settings.animation_setting == true %} data-aos="fade-up"data-aos-duration="3000"{% endif %}>
+    <meta itemprop="name" content="{{ product.title }}">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+    <meta itemprop="image" content="{{ product.featured_image.src | img_url: '800x' }}">
+
+    {%- assign current_variant = product.selected_or_first_available_variant -%}
+
+    <div class="container 2xl:w-[1440px] mx-auto" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+
+        <!-- left prodcut media -->
+        <div class="product--medias">
+          <!-- product image  -->
+          <div class="block overflow-hidden">
+            <div class="productSwiper">
+              <div class="swiper-wrapper">
+                {% if product.media != blank %}
+                  {% for media in product.media %}
+                    <div class="swiper-slide">
+                      <div class="h-100 overflow-hidden p-2">
+                        {%render 'product-media', media: media%}
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'w-full h-full border bg-white' }}
+                {%endif%}
+              </div>
+            </div>
+          </div>
+
+          <!-- small slider  -->
+          <div>
+            <div thumbsSlider="" class="productSwiper2 overflow-hidden">
+              <div class="swiper-wrapper ">
+                {% if product.media != blank %}
+                  {% for media in product.media %}
+                    <div class="swiper-slide" style="cursor:pointer;">
+                      <div class="h-100 overflow-hidden p-2">
+                        {%render 'product-media', media: media%}
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'swiper-slide h-100 overflow-hidden p-2 mt-2 border bg-white' }}
+                  {{ 'product-2' | placeholder_svg_tag: 'swiper-slide h-100 overflow-hidden p-2 mt-2 border bg-white' }}
+                  {{ 'product-3' | placeholder_svg_tag: 'swiper-slide h-100 overflow-hidden p-2 mt-2 border bg-white' }}
+                  {{ 'product-4' | placeholder_svg_tag: 'swiper-slide h-100 overflow-hidden p-2 mt-2 border bg-white' }}
+                {% endif %}
+              </div>
+              <div class="swiper-pagination_product m-auto" style="width: fit-content;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- product imformation -->
+        <div class="product--information px-[1rem]">
+
+          {% unless section_onboarding %}
+            {%- assign compare_at_price = current_variant.compare_at_price -%}
+            {%- assign price = current_variant.price -%}
+            {%- assign price_varies = current_variant.price_varies -%}
+            {%- assign available = current_variant.available -%}
+            {%- assign compare_at_price = 19.99 -%}
+            {%- assign price = 19.99 -%}
+            {%- assign price_varies = false -%}
+            {%- assign available = true -%}
+          {% endunless %}
+
+          <!-- product vendor -->
+          {% if section.settings.show_vendor %}
+            {% if product.media != blank %}
+              <div class="my-3">
+                <span itemprop="brand" class="text-sm" style="color:{{section.settings.base_color}};">{{ product.vendor }}
+                </span>
+              </div>
+            {% else %}
+              <span itemprop="brand" class="text-sm text-gray-500">product vendor</span>
+            {%endif%}
+          {% endif %}
+
+          <!-- product title -->
+          <div class="my-3" style="color: {{section.settings.title_color}};">
+            {% if product.media != blank %}
+              <div itemprop="name" class="text-3xl font-bold">{{ product.title }}
+              </div>
+            {% else %}
+              <div itemprop="name" class="text-3xl font-bold uppercase">product title</div>
+            {%endif%}
+          </div>
+
+          <!-- product offer block -->
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+            <!-- product price -->
+            <div class="my-3" id="price-{{section.id}}">
+
+              {% if product.media != blank %}
+                <span class="text-lg line-through" style="color:{{section.settings.base_color}};">
+                  {{selected_variant.compare_at_price | money}}
+                </span>
+                <span class="text-2xl font-bold ml-2 text-gray-500" style="color: {{section.settings.point_color}};">
+                  {{selected_variant.price | money}}
+                </span>
+              {% else %}
+                <span class="text-lg text-gray-500 line-through">
+                  19.99
+                </span>
+                <span class="text-2xl font-bold ml-2 text-gray-500">
+                  9.99
+                </span>
+              {%endif%}
+
+              <!-- price Sale bedge -->
+              {% if selected_variant.price < selected_variant.compare_at_price %}
+                <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4">Sale</span>
+              {% endif %}
+            </div>
+
+
+            <!-- when product available -->
+            {% if current_variant != blank %}
+              {% form 'product', product, id:'product-form', novalidate:'novalidate' %}
+                <!-- product quantity selector -->
+
+                <div class="my-3">
+                  {% if section.settings.show_quantity_selector %}
+                    <div class="product-form__item product-form__item--quantity">
+                      <div class="flex flex-col items-start gap-2">
+                        <div class="qty">
+                          <div class="qty_control">
+                            <label for="Quantity-{{ section.id }}" style="font-size: 0.8rem; color:{{section.settings.base_color}};">Quantity
+                            </label>
+                            <div class="qtycard bg-white px-2">
+                              <span class="btnqty qtyminus icon icon-minus">-</span>
+                              <input type="text" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly="" style="background-color:transparent;">
+                              <span class="btnqty qtyplus icon icon-plus">+</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+                <input type="hidden" name="id" value="{{selected_variant.id}}">
+                <!-- product variant -->
+                <div class="my-3">
+                  {% unless product.has_only_default_variant %}
+                    <variant-selector data-url="{{product.url}}" data-section="{{section.id}}">
+                      {%- for option in product.options_with_values -%}
+                        {% assign link_handle = option.name | replace: '-', '_' %}
+
+                        <fieldset class="product-form__input" x-data="{ {{ link_handle }}: false, option: '' }">
+                          <legend class="form__label selected" x-on:click="{{ link_handle }} = ! {{ link_handle }}" style="color:{{section.settings.base_color}}; border-bottom: 1px solid {{section.settings.point_color}};">{{ option.name }}
+                            /
+                            <span x-text="option"></span>
+                          </legend>
+
+                          <div class="options-container {{section.settings.dropdown_color}} ">
+                            {%- for value in option.values -%}
+                              <div x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-3" x-show="{{ link_handle }}" x-on:click.away="{{ link_handle }} = false" class="option {{section.settings.hover_schema}}" style="color: {{section.settings.point_color}};">
+                                <input x-model="option" class="radio" type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" name="{{ option.name }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked
+                                  {% endif %}><label class="w-full block" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                  {{ value }}
+                                </label>
+                              </div>
+                            {%- endfor -%}
+                          </div>
+                        </fieldset>
+                      {%- endfor -%}
+                      <script type="application/json">
+                        {{ product.variants | json }}
+                      </script>
+                    </variant-selector>
+                  {% endunless %}
+                </div>
+
+                <!-- product button -->
+                <div class="my-3">
+                  <button class="{{section.settings.color_button}} {{section.settings.button_color_hover}} w-full text-sm md:text-base text-center outline-none transition duration-100 py-3 px-3" type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+                    <span id="AddToCartText-{{ section.id }}">
+                      {% unless selected_variant.available %}
+                        Sold Out
+                      {% else %}
+                        Add to cart
+                      {% endunless %}
+                    </span>
+                  </button>
+                </div>
+              {% endform %}
+
+              <!-- when product is empty -->
+            {% else %}
+              <div class="my-3">
+                {% if section.settings.show_quantity_selector %}
+                  <div class="product-form__item product-form__item--quantity">
+                    <div class="flex flex-col items-start gap-2">
+                      <div class="qty">
+                        <div class="qty_control">
+                          <label class="text-sm" for="Quantity-{{ section.id }}">Quantity
+                          </label>
+                          <div class="qtycard px-2">
+                            <span class="btnqty qtyminus icon icon-minus">-</span>
+                            <input type="text" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly="">
+                            <span class="btnqty qtyplus icon icon-plus">+</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+
+              <!-- product button -->
+              <div class="my-3">
+                <button class="{{section.settings.color_button}} {{section.settings.button_color_hover}} w-full text-sm md:text-base text-center outline-none transition duration-100 py-3 px-3" type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+                  <span id="AddToCartText-{{ section.id }}">
+                    {% unless selected_variant.available %}
+                      Sold Out
+                    {% else %}
+                      Add to cart
+                    {% endunless %}
+                  </span>
+                </button>
+              </div>
+
+            {% endif %}
+          </div>
+
+          <!-- product description -->
+          <div class="my-6 leading-8 tracking-wider" style="color: {{section.settings.base_color}};">
+            {% unless product == empty %}
+              {{ product.description | strip_html | truncate: 200  }}
+            {% else %}
+              <div class="text-gray leading-8 tracking-wider">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              </div>
+            {% endunless %}
+          </div>
+
+          <!-- product view details button -->
+          <div class="my-6 flex justify-between" style="color: {{section.settings.point_color}};">
+            {% unless product == empty %}
+              <a class="underline font-medium text-lg" href="{{product.url}}">view details</a>
+            {% endunless %}
+            <!-- social sharing -->
+            {% if section.settings.show_share_buttons %}
+              {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, icon_color:section.settings.point_color %}
+            {% endif %}
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  class VariantSelector extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener("change", this.onVariantChange);
+    }
+
+    onVariantChange() {
+      this.getSelectedOptions();
+      this.getSelectedVariant();
+
+      if (this.currentVariant) {
+        this.updateURL();
+        this.updateFormID();
+        this.updatePrice();
+      }
+    }
+
+    getSelectedOptions() {
+
+      this.options = Array.from(this.querySelectorAll('input:checked'), (select) => select.value);
+      console.log(this.options, "This options!");
+    }
+
+    getVariantJSON() {
+      this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+      return this.variantData;
+    }
+
+    getSelectedVariant() {
+      this.currentVariant = this.getVariantJSON().find((variant) => {
+        const findings = !variant.options.map((option, index) => {
+          return this.options[index] === option;
+        }).includes(false);
+
+        if (findings) 
+          return variant;
+        
+
+
+      });
+
+      console.log(this.currentVariant);
+    }
+
+    updateURL() {
+      if (!this.currentVariant) 
+        return;
+      
+
+
+      window.history.replaceState({}, '', `${
+        this.dataset.url
+      }?variant=${
+        this.currentVariant.id
+      }`);
+    }
+
+    updateFormID() {
+      const form_input = document.querySelector("#product-form").querySelector('input[name="id"]');
+      form_input.value = this.currentVariant.id;
+    }
+
+    updatePrice() {
+      fetch(`${
+        this.dataset.url
+      }?variant=${
+        this.currentVariant.id
+      }&section_id=${
+        this.dataset.section
+      }`).then((response) => response.text()).then((responseText) => {
+        const id = `price-${
+          this.dataset.section
+        }`;
+        const html = new DOMParser().parseFromString(responseText, 'text/html');
+        const oldPrice = document.getElementById(id);
+        const newPrice = html.getElementById(id);
+
+        if (oldPrice && newPrice) 
+          oldPrice.innerHTML = newPrice.innerHTML;
+        
+
+
+      });
+    }
+  }
+
+  customElements.define("variant-selector", VariantSelector);
+</script>
+
+{% schema %}
+  {
+    "name": "Featured product",
+    "class": "index-section index-section--featured-product",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product settings",
+        "info": "Setting Featured product"
+      },
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_selector",
+        "label": "Show quantity selector",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": false,
+        "label": "Animation turn on"
+      }, {
+        "type": "header",
+        "content": "Color settings",
+        "info": "Setting Product Text and Box color settings"
+      }, {
+        "type": "select",
+        "id": "color_schema",
+        "label": "Background color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "fifth_color"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "color",
+        "id": "title_color",
+        "label": "Product Title color",
+        "default": "#6F665D"
+      }, {
+        "type": "color",
+        "id": "base_color",
+        "label": "Main text Text color",
+        "default": "#926D5A"
+      }, {
+        "type": "color",
+        "id": "point_color",
+        "label": "Point color",
+        "default": "#4b4b4b"
+      }, {
+        "type": "select",
+        "id": "dropdown_color",
+        "label": "Dropdown color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "forth_color"
+      }, {
+        "type": "select",
+        "id": "hover_schema",
+        "label": "Dropbox mouse over",
+        "options": [
+          {
+            "value": "nav_color_first",
+            "label": "First Color"
+          },
+          {
+            "value": "nav_color_second",
+            "label": "Second Color"
+          },
+          {
+            "value": "nav_color_third",
+            "label": "Third Color"
+          },
+          {
+            "value": "nav_color_forth",
+            "label": "Forth Color"
+          }, {
+            "value": "nav_color_fifth",
+            "label": "Fifth Color"
+          }
+        ],
+        "default": "nav_color_third"
+      }, {
+        "type": "header",
+        "content": "Product Button settings",
+        "info": "Setting Featured prodcut button"
+      }, {
+        "type": "select",
+        "id": "color_button",
+        "label": "Button color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "second_color"
+      }, {
+        "type": "select",
+        "id": "button_color_hover",
+        "label": "Button moseover color",
+        "options": [
+          {
+            "value": "button_first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "button_second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "button_third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "button_forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "button_fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "button_background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "button_third_color"
+      }, {
+        "type": "color",
+        "id": "border_color",
+        "label": "Button border color",
+        "default": "#6F665D"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured product",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %} 

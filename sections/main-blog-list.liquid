@@ -1,0 +1,223 @@
+<section class="{{section.settings.color_schema}} body-font overflow-hidden">
+  {% paginate blog.articles by 8 %}
+  <div class="px-2 md:px-5 mx-auto"
+    style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+    {% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+    <div class="grid md:grid-cols-2 {{section.settings.column_design}} gap-4 md:gap-4 xl:max-w-[1440px] m-auto flex flex-wrap">
+      {% for article in blog.articles %}
+      <div class="p-6 {{section.settings.textbox_color}} ">
+        <span class="inline-block py-1 px-2 rounded text-xs font-medium tracking-widest" style="color: {{section.settings.text_color}}; background:{{section.settings.point_color}};">{{ article.published_at | date: format: 'month_day_year' }}</span>
+        <h2 class="sm:text-3xl text-2xl title-font mt-4 mb-4 font-medium uppercase" >
+          {% if article.title %}
+                <a href="{{ article.url }}" style="color: {{section.settings.title_color}};">
+                  {{ article.title }}
+                </a>
+          {% endif %}
+        </h2>
+        
+          {% if article.image != blank%}  
+          <div class="w-full h-[300px] overflow-hidden rounded-lg my-4">
+          <img
+                srcset="{%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                  {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                  {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                  {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                  {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                  {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                  {{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                src="{{ article.image.src | image_url: width: 533 }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                alt="{{ article.image.src.alt | escape }}"
+                class="w-full h-full object-cover object-center inset-0"
+                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                width="{{ article.image.width }}"
+                height="{{ article.image.height }}"
+                
+              >
+          </div>
+          <p class="leading-relaxed mb-8" style="color: {{section.settings.text_color}};">
+            {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt }}
+                  {% else %}
+                    {{ article.content | strip_html | truncate: 100 }}
+            {% endif %}
+          </p>
+          {% else %}
+          <p class="tracking-wider leading-8 leading-relaxed mb-8" style="color: {{section.settings.text_color}};">
+            {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt }}
+                  {% else %}
+                    {{ article.content | strip_html | truncate: 300 }}
+            {% endif %}
+          </p>
+          {% endif %}
+      
+       
+        <div class="flex items-center justify-between pb-4 mb-4 w-full" style="border-bottom: 1px solid {{section.settings.point_color}};">
+          <a href="{{ article.url }}" class="inline-block py-1 px-2 rounded inline-flex items-center tracking-widest"  style="color: {{section.settings.text_color}}; background:{{section.settings.point_color}};">Read More
+          </a>
+          
+          <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+            <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+            </svg>{{article.comments_count}}
+          </span>
+        </div>
+        <a class="inline-flex items-center">
+          <span class="flex-grow flex flex-col">
+            <span class="title-font font-medium" style="color: {{section.settings.title_color}};">{% if article.author %}{{ 'common.by' | t }} {{ article.author }}{% endif %}</span>
+          </span>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% render 'layout-pagination', paginate: paginate %}
+  {% endpaginate %}
+</section>
+
+{% schema %}
+{
+"name": "Main Blog List",
+"settings": [
+{
+  "type": "header",
+  "content": "Blog Column",
+  "info": "Setting Blog girds"
+},
+{
+  "type":"select",
+  "id":"column_design",
+  "label":"Column selector",
+  "options":[
+     {
+        "value":"two_column",
+        "label":"Two column"
+     },
+     {
+        "value":"three_column",
+        "label":"Three column"
+     },
+     {
+        "value":"four_column",
+        "label":"Four column"
+     }
+  ],
+  "default":"two_column"
+ },
+ {
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+{
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+ {
+  "type": "checkbox",
+  "id": "animation_setting",
+  "default": false,
+  "label": "Animation turn on"
+  },
+{
+  "type": "header",
+  "content": "Blog color",
+  "info": "Setting background and blog colors"
+},
+{
+  "type":"select",
+  "id":"color_schema",
+  "label":"Background color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"background_transparent"
+ },
+ {
+  "type":"select",
+  "id":"textbox_color",
+  "label":"Textbox color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"forth_color"
+ },
+ {
+  "type": "color",
+  "id": "text_color",
+  "label": "Text box color",
+  "default": "#926D5A"
+},
+{
+  "type": "color",
+  "id": "point_color",
+  "label": "Point color",
+  "default": "#DACCC1"
+},
+{
+  "type": "color",
+  "id": "title_color",
+  "label": "title color",
+  "default": "#6F665D"
+}
+]
+}
+{% endschema %}    

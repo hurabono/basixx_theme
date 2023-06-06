@@ -1,0 +1,159 @@
+<div class="container xl:w-[1200px] mx-auto" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-4 customer_title_color tracking-wider">
+    {{ 'customer.account.title' | t }}
+  </h1>
+
+  <div class="text-center mb-8 md:mb-16 customer_point_color tracking-widest">
+    <a href="{{ routes.account_logout_url }}" class="text-sm underline">
+      {{ 'action.log_out' | t }}
+    </a>
+  </div>
+
+  <div class="flex flex-col-reverse lg:grid lg:grid-cols-4 gap-8">
+    <div class="lg:col-span-3">
+      <div class="text-lg lg:text-xl font-bold mb-6 md:mb-8 customer_title_color tracking-widest">
+        {{ 'customer.account.order_history' | t }}
+      </div>
+
+      {% paginate customer.orders by 12 %}
+        <div class="space-y-4">
+          {% if customer.orders.size > 0 %}
+            <div class="hidden lg:grid grid-cols-9 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4" style="border-bottom: 1px solid {{settings.customer_border_color | color_modify: 'alpha', 0.7 }};">
+              <div class="lg:col-span-2 customer_point_color">
+                {{ 'customer.account.order_number' | t }}
+              </div>
+
+              <div class="col-span-2 customer_point_color">
+                {{ 'customer.account.order_date' | t }}
+              </div>
+
+              <div class="col-span-2 customer_point_color">
+                {{ 'customer.account.payment_status' | t }}
+              </div>
+
+              <div class="col-span-2 customer_point_color">
+                {{ 'customer.account.fulfillment_status' | t }}
+              </div>
+
+              <div class="customer_point_color">
+                {{ 'customer.account.total' | t }}
+              </div>
+            </div>
+
+            {% for order in customer.orders %}
+              <div class="grid lg:grid-cols-9 gap-4 md:gap-4 lg:border-none p-4 lg:p-0">
+                <div class="lg:col-span-2 flex justify-between items-center border-b lg:border-0 pb-4 lg:pb-0 customer_text_color">
+                  <span class="lg:hidden tracking-wider">
+                    {{ 'customer.account.order_number' | t }}
+                  </span>
+
+                  <a href="{{ order.customer_url }}" class="customer_button_color customer_button_border tracking-widest px-4 py-2">
+                    {{ order.name }}
+                  </a>
+                </div>
+
+                <div class="lg:col-span-2 flex justify-between items-end lg:items-center customer_text_color">
+                  <span class="lg:hidden tracking-wider">
+                    {{ 'customer.account.order_date' | t }}
+                  </span>
+
+                  {{ order.created_at | date: format: 'month_day_year' }}
+                </div>
+
+                <div class="lg:col-span-2 flex justify-between items-end lg:items-center customer_text_color">
+                  <span class="lg:hidden tracking-wider">
+                    {{ 'customer.account.payment_status' | t }}
+                  </span>
+
+                  {% render 'layout-account-financial-status', order: order %}
+                </div>
+
+
+                <div class="lg:col-span-2 flex justify-between items-end lg:items-center customer_text_color">
+                  <span class="lg:hidden tracking-wider">
+                    {{ 'customer.account.fulfillment_status' | t }}
+                  </span>
+
+                  {% render 'layout-account-fulfillment-status', order: order %}
+                </div>
+
+                <div class="flex mt-6 md:mt-0 justify-between items-end lg:items-center font-bold lg:font-normal customer_text_color">
+                  <span class="lg:hidden tracking-wider">
+                    {{ 'customer.account.total' | t }}
+                  </span>
+
+                  {{ order.total_price | money }}
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="customer_point_color">
+              {{ 'customer.account.no_orders' | t }}
+            </p>
+          {% endif %}
+        </div>
+
+        {% render 'layout-pagination', paginate: paginate %}
+      {% endpaginate %}
+    </div>
+
+    <div class="col-span-1">
+      <div class="text-lg lg:text-xl font-bold mb-6 customer_title_color tracking-widest">
+        {{ 'customer.account.addresses' | t }}
+      </div>
+
+      <div class="border relative customer_border_color customer_box_color tracking-wider">
+        {% unless customer.default_address == blank %}
+          <div class=" p-4">
+            <span class="absolute top-0 right-0 customer_text_color customer_button_color text-sm tracking-widest uppercase rounded-full px-3 py-1 -mt-4 mr-4">
+              {{ 'common.default' | t }}
+            </span>
+
+            <div class="customer_text_color">
+              {{ customer.default_address | format_address }}
+            </div>
+          </div>
+        {% endunless %}
+
+        <div class="p-4">
+          <a href="{{ routes.account_addresses_url }}" class="flex justify-center text-center customer_button_color customer_button_border px-4 py-3 w-full">
+            {{ 'action.edit_addresses' | t }}
+            ({{ customer.addresses_count }}
+            )
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": true,
+        "label": "Animation turn on"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top controll",
+        "default": 15,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }
+    ]
+  }
+{% endschema %} 

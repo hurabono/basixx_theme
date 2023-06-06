@@ -1,0 +1,316 @@
+
+
+<div class="{{section.settings.color_schema}}">
+  <div class="container lg:max-w-[1440px] m-auto" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+    <h1 class="text-2xl md:text-3xl font-bold text-center py-8 tracking-widest" style="color: {{section.settings.search_title_color}};">
+      {{ 'search.title' | t }}
+    </h1>
+
+
+    {% if search.performed %}
+    {% if search and search.results != empty %}
+    <div class="px-2 text-center pb-4" style="color: {{section.settings.search_subtitle_color}};">
+      {% assign amount = search.results_count %}
+      {{ amount }} {% if amount > 1 %}{{ 'common.products' | t }}{% else %}{{ 'common.product' | t }}{% endif %}
+    </div>
+      
+    {% endif %}
+  {% endif %}
+  
+    <div class="max-w-screen-sm flex mx-auto mb-12 md:mb-16">
+      <form
+        action="{{ routes.search_url }}"
+        method="get"
+        role="search"
+        class="w-full flex"
+      >
+        {% comment %} search only in products {% endcomment %}
+        <input type="hidden" name="type" value="product" />
+  
+        <input
+          type="text"
+          id="Search"
+          name="q"
+          value="{{ search.terms }}"
+          placeholder="{{ 'search.placeholder' | t }}"
+          class="w-full rounded-r-none px-3"
+          style="border: 1px solid {{section.settings.border_color}};"
+        >
+  
+        <button class="{{section.settings.color_button}} {{section.settings.button_color_hover}} mx-2 px-6 py-auto w-auto inline-flex items-center flex-shrink-0 rounded-l-none" style="border: 1px solid {{section.settings.border_color}}; color: {{section.settings.search_subtitle_color}};">
+          {% render 'icon-search', class: 'w-6 h-auto sm:mr-2' %}
+  
+          <span class="hidden sm:inline-block">
+            {{ 'action.to_search' | t }}
+          </span>
+        </button>
+      </form>
+    </div>
+  
+    {% paginate search.results by 16 %}
+      {% if search.performed %}
+        {% if search and search.results != empty %}
+          
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 py-16">
+            {% for product in search.results %}
+              {% render 'layout-product', product: product
+              show_vendor:section.settings.show_vendor 
+              product_title_align: section.settings.product_title_align
+              product_title_color: section.settings.product_title_color
+              product_point_color: section.settings.product_point_color
+              point_color: section.settings.point_color
+              product_box_color:section.settings.product_box_color
+              show_line: section.settings.show_line
+              box_border: section.settings.box_border
+              %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="text-center" style="color: {{section.settings.point_color}};">
+            {{ 'search.no_results' | t }}
+          </div>
+        {% endif %}
+      {% endif %}
+  
+      {% render 'layout-pagination', paginate: paginate %}
+    {% endpaginate %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name":"Search",
+  "settings":[
+  {
+    "type":"select",
+    "id":"color_schema",
+    "label":"Background color",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"third_color"
+   },
+   {
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":12,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "label": "Padding Bottom controll",
+    "default":4,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "unit": "rem"
+  },
+   {
+    "type": "header",
+    "content": "Search bar settings"
+  },
+  {
+    "type": "color",
+    "id": "search_title_color",
+    "label": "Search title color",
+    "default": "#4b4b4b"
+  },
+  {
+    "type": "color",
+    "id": "search_subtitle_color",
+    "label": "Search subtitle Border",
+    "default": "#9F6A6A"
+  },
+  {
+    "type":"select",
+    "id":"color_button",
+    "label":"Button color",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+          "value":"forth_color",
+          "label":"Forth Color"
+       },
+       {
+          "value":"fifth_color",
+          "label":"Fifth Color"
+       },
+       {
+          "value":"background_transparent",
+          "label":"Transparent Color"
+       }
+    ],
+    "default":"second_color"
+  },
+  {
+    "type":"select",
+    "id":"button_color_hover",
+    "label":"Button mouseover color",
+    "options":[
+       {
+          "value":"button_first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"button_second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"button_third_color",
+          "label":"Third Color"
+       },
+       {
+          "value":"button_forth_color",
+          "label":"Forth Color"
+       },
+       {
+          "value":"button_fifth_color",
+          "label":"Fifth Color"
+       },
+       {
+          "value":"button_background_transparent",
+          "label":"Transparent Color"
+       }
+    ],
+    "default":"button_third_color"
+  },
+  {
+  "type": "color",
+  "id": "border_color",
+  "label": "Button border color",
+  "default": "#6F665D"
+  },
+   {
+    "type": "header",
+    "content": "Search Product Settings"
+  },
+  {
+    "type": "checkbox",
+    "id": "show_vendor",
+    "default": true,
+    "label": "show vendor"
+  },
+  {
+    "type":"select",
+    "id":"product_title_align",
+    "label":"product title align",
+    "options":[
+       {
+          "value":"font_left",
+          "label":"Left"
+       },
+       {
+          "value":"font_right",
+          "label":"Right"
+       },
+       {
+          "value":"font_center",
+          "label":"Center"
+       }
+    ],
+    "default":"font_center"
+   },
+   {
+    "type": "color",
+    "id": "product_title_color",
+    "label": "Product title color",
+    "default": "#4b4b4b"
+  },
+  {
+    "type": "color",
+    "id":"product_point_color",
+    "label": "Product point color",
+    "default": "#C33131"
+  },
+  {
+    "type": "color",
+    "id": "point_color",
+    "label": "Product Badge color",
+    "default": "#F9E7D3"
+  },
+  {
+    "type":"select",
+    "id":"product_box_color",
+    "label":"Product box color",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"forth_color"
+   },
+   {
+    "type": "checkbox",
+    "id": "show_line",
+    "default": false,
+    "label": "Show the box line"
+  },
+  {
+    "type": "color",
+    "id": "box_border",
+    "label": "Box border color",
+    "default": "#1878B9"
+  }
+  ]
+}
+{% endschema %}

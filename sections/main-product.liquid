@@ -1,0 +1,629 @@
+<style>
+.options-container::-webkit-scrollbar{
+      width: 8px;
+      background: {{section.settings.point_color | color_modify: 'alpha', 0.7 }};
+}
+
+.options-container::-webkit-scrollbar-thumb{
+      background: {{section.settings.point_color}};
+}
+
+</style>
+
+
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = selected_variant.featured_image | default: product.featured_image %}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'drop_down.css' | asset_url | stylesheet_tag }}
+
+<style>
+.shopify-payment-button__more-options {
+  visibility: visible !important;
+  text-decoration: underline;
+  background-color: none;
+  color: {{section.settings.point_color}};
+}
+
+.button-shopify-buy-it-now .shopify-payment-button__button {
+  background:{{section.settings.point_color}};
+}
+
+.button-shopify-buy-it-now .shopify-payment-button__button:hover{
+  background:{{section.settings.base_color}};
+}
+</style>
+
+<div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+  <div class="max-w-6xl mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+    <div class="p-[1rem] grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="product--medias">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        </div>
+          <div class="block overflow-hidden">
+            <div class="productSwiper">
+                  <div class="swiper-wrapper">
+                        {% for media in product.media %}
+                              <div class="swiper-slide">
+                                    <div class="h-100 p-2">
+                                          {%render 'product-media', media: media%}
+                                    </div>
+                              </div>
+                        {% endfor %}
+                  </div>
+            </div>
+          </div>
+  
+          <div>
+            <div thumbsSlider="" class="productSwiper2 overflow-hidden">
+                  <div class="swiper-wrapper">
+                        {% for media in product.media %}
+                              <div class="swiper-slide" style="cursor:pointer;">
+                                    <div class="h-100 overflow-hidden p-2">
+                                          {%render 'product-media', media: media%}
+                                    </div>
+                              </div>
+                        {% endfor %}
+                  </div>
+                  <div class="swiper-pagination_product m-auto" style="width: fit-content;"></div>
+            </div>
+          </div>
+      </div>
+      {% form 'product', product, id: 'product-form', novalidate: 'novalidate' %}
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'vendor' %}
+                  {%if product.vendor%}
+                  <span itemprop="brand" class="text-sm text-gray-500" style="color:{{section.settings.base_color}};">{{ product.vendor }}</span>
+                  {%endif%}
+                  
+                {% when 'title' %}
+                  {% if product.title %}
+                  <h1 class="text-2xl lg:text-3xl font-bold md:mb-4" style="color:{{section.settings.title_color}};">
+                    {{ product.title }}
+                  </h1>
+                  {% endif %}
+  
+                {% when 'price' %}
+                    {% if selected_variant.available %}
+                    <div class="my-3" id="price-{{section.id}}">
+  
+                            <span class="text-lg text-gray-500 line-through"
+                                  style="color:{{section.settings.base_color}};"
+                            >
+                                  {{selected_variant.compare_at_price | money}}
+                            </span>
+                            <span class="text-2xl font-bold ml-2" style="color:{{section.settings.point_color}};">
+                                  {{selected_variant.price | money}}
+                            </span>
+  
+                      <!-- price Sale bedge -->
+                      {% if selected_variant.price < selected_variant.compare_at_price %}
+                            <span class="px-5 py-1 text-sm font-bold point_color rounded-full text-white mx-4">Sale</span>
+                      {% endif %}
+                    </div>
+                  {% else %}
+                    <div class="mb-6">
+                      {{ 'common.sold_out' | t }}
+                    </div>
+                  {% endif %}
+                {% when 'quantity' %}
+                  <div class="flex items-end gap-4 mb-6">
+                  {% if selected_variant.available %}
+                  <div class="product-form__item product-form__item--quantity">
+                    <div class="flex flex-col items-start gap-2">
+                          <div class="qty">
+                                <div class="qty_control">
+                                  <label for="Quantity-{{ section.id }}" style="font-size:0.8rem; color:{{section.settings.base_color}};">Quantity </label>
+                                  <div class="qtycard border px-2 bg-white">
+                                      <span class="btnqty qtyminus icon icon-minus">-</span>
+                                      <input type="text" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly="">
+                                      <span class="btnqty qtyplus icon icon-plus">+</span>
+                                </div>
+                                </div>
+                          </div> 
+                    </div>
+                    </div>
+                  {% endif %}
+                  </div>
+                {% when 'selected_variant' %}
+                <input type="hidden" name="id" value="{{selected_variant.id}}">
+                         <!-- product variant -->
+                         
+  
+                         <div class="my-3">
+                               {% unless product.has_only_default_variant %}
+                               <variant-selector data-url="{{product.url}}" data-section="{{section.id}}">
+                                {%- for option in product.options_with_values -%}
+                                {% assign link_handle = option.name | replace: '-', '_' %}
+  
+                                      <fieldset class="product-form__input" x-data="{ {{ link_handle }}: false, option: '' }">
+                                            <legend class="form__label selected tracking-wider" x-on:click="{{ link_handle }} = ! {{ link_handle }}" style="color:{{section.settings.base_color}}; border-bottom: 1px solid {{section.settings.point_color}};">{{ option.name }} / <span x-text="option"></span> </legend>
+                                            
+                                            <div class="options-container {{section.settings.dropdown_color}}">
+                                              {%- for value in option.values -%}
+                                            <div x-cloak 
+                                            x-transition:enter="transition ease-out duration-300"
+                                            x-transition:enter-start="opacity-0 translate-y-3"
+                                            x-transition:enter-end="opacity-100 translate-y-0"
+                                            x-transition:leave="transition ease-out duration-300"
+                                            x-transition:leave-start="opacity-100 translate-y-0"
+                                            x-transition:leave-end="opacity-0 translate-y-3"
+                                            x-show="{{ link_handle }}"  x-on:click.away="{{ link_handle }} = false"
+                                            class="option {{section.settings.hover_schema}}" style="color: {{section.settings.point_color}};">
+                                              <input
+                                            x-model="option"
+                                            class="radio"
+                                            type="radio"
+                                            id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                            name="{{ option.name }}"
+                                            value="{{ value | escape }}"
+                                            
+                                            {% if option.selected_value == value %}
+                                                  checked
+                                            {% endif %}
+                                            >
+                                            <label class="w-full block" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                            {{ value }}
+                                            </label>
+                                            </div>
+                                            {%- endfor -%}
+                                            </div>
+                                      </fieldset>
+                                {%- endfor -%}
+                                <script type="application/json">
+                                {{ product.variants | json }}
+                                </script>
+                               </variant-selector>
+                               {% endunless %}                             
+                         </div>
+                  
+                {% when 'checkout_buttons' %}
+                  
+                    {% if selected_variant.available %}
+                    <div>
+                      <button type="submit" name="add" class="{{section.settings.color_button}} {{section.settings.button_color_hover}} w-full h-12" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+                        {{ 'action.add_to_cart' | t }}
+                      </button>
+                    </div>
+                        <div class="button-shopify-buy-it-now my-4">
+                          {{ form | payment_button }}
+                        </div>
+                    {% endif %}
+  
+                
+                
+                {% when 'social' %}
+                  <!-- social sharing -->
+                  <div class="py-4">
+                    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, icon_color:section.settings.point_color %} 
+                  </div>
+
+                {% when 'rating' %}
+                {% liquid
+                  assign rating_decimal = 0
+                  assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                  if decimal >= 0.3 and decimal <= 0.7
+                    assign rating_decimal = 0.5
+                  elsif decimal > 0.7
+                    assign rating_decimal = 1
+                  endif
+                %}
+                  <div class="flex items-center">
+                    {% if product.metafields.reviews.rating_count > 0 %}
+                    <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+                      <span aria-hidden="true" class="rating-star" 
+                      style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};
+                       --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; 
+                       --rating-decimal: {{ rating_decimal }};">
+                       </span>
+                    </div>
+                    <p class="rating-text caption">
+                      <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
+                    </p>
+                    <p class="rating-count caption">
+                      <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                      <!-- <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} total reviews</span> -->
+                    </p>
+                      {%else%}
+                      <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+                        <span aria-hidden="true" class="no-rating" 
+                        style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};
+                         --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; 
+                         --rating-decimal: {{ rating_decimal }};">
+                         </span>
+                      </div>
+                      <p class="rating-count caption">
+                        <span aria-hidden="true">(0)</span>
+                      </p>
+                    {% endif %}
+                  </div>
+                
+                {% else %}
+              {% endcase %}  
+            {% endfor %}
+      </div>
+        {% if product.description %}
+            <h1 class="pt-8 px-6 text-2xl {{section.settings.text_align}} " style="color: {{section.settings.title_color}};">About product</h1>
+            <div class="py-6 px-6 leading-8 tracking-wider {{section.settings.text_align}}" style="color: {{section.settings.base_color}};">
+                {{ product.description }}
+            </div>
+        {% endif %}
+    </div>
+    {% endform %}
+  </div>  
+</div>
+
+
+
+
+<script>
+  class VariantSelector extends HTMLElement{
+        constructor(){
+           super();
+           this.addEventListener("change", this.onVariantChange);   
+        }
+  
+        onVariantChange(){
+             this.getSelectedOptions();
+             this.getSelectedVariant();
+  
+             if(this.currentVariant){
+              this.updateURL();
+              this.updateFormID();
+              this.updatePrice();
+             }
+        }
+  
+        getSelectedOptions(){
+              
+              this.options = Array.from(this.querySelectorAll('input:checked'), (select)=>select.value);
+              console.log(this.options, "This options!");
+        }
+  
+        getVariantJSON(){
+            this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+            return this.variantData;
+        }
+  
+        getSelectedVariant(){
+              this.currentVariant = this.getVariantJSON().find(
+                    (variant) =>{
+                          const findings = !variant.options.map(
+                                (option, index) =>{
+                                      return this.options[index] === option;
+                                }
+                          ).includes(false);
+  
+                          if(findings) return variant;
+                    }
+              );
+  
+              console.log(this.currentVariant);
+        }
+  
+        updateURL(){
+              if(!this.currentVariant) return;
+              window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+        }
+        
+        updateFormID(){
+              const form_input = document.querySelector("#product-form").querySelector('input[name="id"]');
+              form_input.value = this.currentVariant.id;
+        }
+  
+        updatePrice(){
+              fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+              .then((response)=>response.text())
+              .then((responseText)=>{
+                    const id = `price-${this.dataset.section}`;
+                    const html = new DOMParser().parseFromString(responseText, 'text/html');
+                    const oldPrice = document.getElementById(id);
+                    const newPrice = html.getElementById(id);
+  
+                    if(oldPrice && newPrice) oldPrice.innerHTML = newPrice.innerHTML;
+              });
+        }
+  }
+  
+  customElements.define("variant-selector", VariantSelector);
+  </script>
+
+
+
+{% schema %}
+{
+  "name":"Product",
+  "max_blocks": 9,
+  "settings":[
+  {
+    "type": "header",
+    "content": "General settings",
+    "info": "Background color, text align"
+  },
+  {
+    "type":"select",
+    "id":"color_schema",
+    "label":"Background color",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"forth_color"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":14,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":5,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "checkbox",
+      "id": "animation_setting",
+      "default": false,
+      "label": "Animation turn on"
+    },
+    {
+      "type":"select",
+      "id":"text_align",
+      "label":"Description text align",
+      "options":[
+         {
+            "value":"font_left",
+            "label":"Left"
+         },
+         {
+            "value":"font_right",
+            "label":"Right"
+         },
+         {
+            "value":"font_center",
+            "label":"Center"
+         }
+      ],
+      "default":"font_center"
+    },
+    {
+      "type": "header",
+      "content": "Button",
+      "info": "Settings button and text color and mouseover color"
+    },
+    {
+      "type":"select",
+      "id":"color_button",
+      "label":"Button color",
+      "options":[
+         {
+            "value":"first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"third_color",
+            "label":"Third Color"
+         },
+         {
+            "value":"forth_color",
+            "label":"Forth Color"
+         },
+         {
+            "value":"fifth_color",
+            "label":"Fifth Color"
+         },
+         {
+            "value":"background_transparent",
+            "label":"Transparent Color"
+         }
+      ],
+      "default":"background_transparent"
+   },
+   {
+      "type":"select",
+      "id":"button_color_hover",
+      "label":"Button moseover color",
+      "options":[
+         {
+            "value":"button_first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"button_second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"button_third_color",
+            "label":"Third Color"
+         },
+         {
+            "value":"button_forth_color",
+            "label":"Forth Color"
+         },
+         {
+            "value":"button_fifth_color",
+            "label":"Fifth Color"
+         },
+         {
+            "value":"button_background_transparent",
+            "label":"Transparent Color"
+         }
+      ],
+      "default":"button_third_color"
+   },
+  {
+    "type": "color",
+    "id": "border_color",
+    "label": "Button border color",
+    "default": "#6F665D"
+  },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Product Title color",
+      "default": "#6F665D"
+    },
+    {
+      "type": "color",
+      "id": "base_color",
+      "label": "Main text Text color",
+      "default": "#926D5A"
+    },
+    {
+      "type": "color",
+      "id": "point_color",
+      "label": "Point color",
+      "default": "#6F665D"
+    },
+    {
+      "type": "header",
+      "content": "Selection Dropdown color"
+    },
+    {
+      "type":"select",
+      "id":"dropdown_color",
+      "label":"Dropdown color",
+      "options":[
+         {
+            "value":"first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"third_color",
+            "label":"Third Color"
+         },
+         {
+          "value":"forth_color",
+          "label":"Forth Color"
+        },
+        {
+          "value":"fifth_color",
+          "label":"Fifth Color"
+        },
+        {
+          "value":"background_transparent",
+          "label":"Transparent Color"
+        }
+      ],
+      "default":"forth_color"
+     },
+     {
+      "type":"select",
+      "id":"hover_schema",
+      "label":"Dropbox mouse over",
+      "options":[
+         {
+            "value":"nav_color_first",
+            "label":"First Color"
+         },
+         {
+            "value":"nav_color_second",
+            "label":"Second Color"
+         },
+         {
+            "value":"nav_color_third",
+            "label":"Third Color"
+         },
+         {
+          "value":"nav_color_forth",
+          "label":"Forth Color"
+          },
+          {
+            "value":"nav_color_fifth",
+            "label":"Fifth Color"
+         }
+      ],
+      "default":"nav_color_third"
+   }
+  ],
+  "blocks":[
+    {
+      "type":"vendor",
+      "name":"Vendor",
+      "limit":1
+    },
+    {
+      "type":"title",
+      "name":"Title",
+      "limit":1
+    },
+    {
+      "type":"price",
+      "name":"Price",
+      "limit":1
+    },
+    {
+      "type":"selected_variant",
+      "name":"Variants",
+      "limit":1
+    },
+    {
+      "type":"quantity",
+      "name":"Quantity",
+      "limit":1
+    },
+    {
+      "type":"social",
+      "name":"Social Shareing",
+      "limit":1
+    },
+    {
+      "type":"checkout_buttons",
+      "name":"Checkout Buttons",
+      "limit":1
+    },
+    {
+      "type": "rating",
+      "name": "rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Rating is shopify app riquired"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,126 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-page-contact",
+      "settings": {
+        "color_schema": "second_color",
+        "image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE_3_5826bb42-7ba8-4a25-a580-5e354e772e40.png",
+        "banner_top_size": "banner_top_medium",
+        "banner_bottom_size": "banner_bottom_medium",
+        "overlay_set": true,
+        "text_align": "font_left",
+        "headline": "Main Page HeadLine",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "text_color": "#ffffff"
+      }
+    },
+    "faq": {
+      "type": "section-faq",
+      "blocks": {
+        "dropdown-1": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "This is dropdown title",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#a76561",
+            "dropdown_text": "#a76561"
+          }
+        },
+        "dropdown-2": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "This is dropdown title",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#a76561",
+            "dropdown_text": "#a76561"
+          }
+        },
+        "dropdown-3": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "This is dropdown title",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#a76561",
+            "dropdown_text": "#a76561"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown-1",
+        "dropdown-2",
+        "dropdown-3"
+      ],
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "animation_setting": false,
+        "title_align": "font_center",
+        "headline": "Frequently asked questions",
+        "text": "",
+        "color_title": "#a76561",
+        "color_sub_title": "#c99794",
+        "point_color": "#c87d89"
+      }
+    },
+    "bf3d2823-b8ca-4bfb-845d-48eec193f6a7": {
+      "type": "section-hero",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/plants-and-table-decorations.jpg",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "overlay_set": true,
+        "image_fixed": true,
+        "banner_title_font_size": 45,
+        "banner_font_size": 15,
+        "animation_setting": false,
+        "headline": "Headline",
+        "color_title": "#fafafa",
+        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "color_desciption": "#fafafa",
+        "textbox_align": "font_center",
+        "textbox_color": "background_transparent",
+        "button_size": "button_large",
+        "button_round_off": false,
+        "button-url": "",
+        "button-text": "Button",
+        "color_button": "second_color",
+        "button_color_hover": "button_third_color",
+        "border_color": "#6f665d"
+      }
+    },
+    "contact": {
+      "type": "section-contact-form",
+      "settings": {
+        "color_schema": "second_color",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "contact_image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE_3_5826bb42-7ba8-4a25-a580-5e354e772e40.png",
+        "address": "ADDRESS",
+        "address_text": "Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-5678.",
+        "email": "EMAIL",
+        "email_address": "example@email.com",
+        "phone_number_title": "PHONE",
+        "phone_number": "123-456-7890",
+        "text_align": "font_left",
+        "form_border": false,
+        "headline": "WE'D LOVE TO HEAR FROM YOU",
+        "form_text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "button_size": "button_medium",
+        "button_round_off": false,
+        "color_button": "fifth_color",
+        "button_color_hover": "button_third_color",
+        "border_color": "#6f665d",
+        "base_color": "#926d5a",
+        "title_color": "#8e2f2a",
+        "point_color": "#f2ede9"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "faq",
+    "bf3d2823-b8ca-4bfb-845d-48eec193f6a7",
+    "contact"
+  ]
+}

@@ -1,0 +1,648 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Mono Fragrance",
+    "theme_version": "2.0.0",
+    "theme_author": "Stephanie",
+    "theme_documentation_url": "https:\/\/THEME_DOCUMENTATION_URL.com",
+    "theme_support_url": "https:\/\/THEME_SUPPORT_URL.com"
+  },
+  {
+    "name": "Theme Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Main Colors Setting"
+      },
+      {
+        "type": "color",
+        "id": "first_color",
+        "label": "First Color",
+        "default": "#6F665D"
+      },
+      {
+        "type": "color",
+        "id": "second_color",
+        "label": "Second Color",
+        "default": "#DACCC1"
+      },
+      {
+        "type": "color",
+        "id": "third_color",
+        "label": "Third Color",
+        "default": "#BAA098"
+      },
+      {
+        "type": "color",
+        "id": "forth_color",
+        "label": "Forth Color",
+        "default": "#E8D5D4"
+      },
+      {
+        "type": "color",
+        "id": "fifth_color",
+        "label": "Fifth Color",
+        "default": "#E9E9E9"
+      },
+      {
+        "type": "color",
+        "id": "page_background_color",
+        "label": "Background Color",
+        "default": "#FAFAFA"
+      },
+      {
+        "type": "color",
+        "id": "point_color",
+        "label": "point Color",
+        "default": "#926D5A"
+      }
+    ]
+  },
+  {
+    "name": "Navigation color",
+    "settings": [
+      {
+        "type": "color",
+        "id": "nav_color",
+        "label": "navigation Color",
+        "default": "#926D5A"
+      },
+      {
+        "type": "range",
+        "id": "opacity_color",
+        "label": "navigation opacity color",
+        "default": 0.5,
+        "min": 0,
+        "max": 1,
+        "step": 0.1
+      }
+    ]
+  },
+  {
+    "name": "Photo menu settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "photo_link",
+        "label": "Photo collection link"
+      },
+      {
+        "type": "header",
+        "content": "First Photo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "photo_menu_first",
+        "label": "First Menu image"
+      },
+      {
+        "type": "text",
+        "id": "first_collection_title",
+        "label": "Collection title",
+        "default": "Collection Title"
+      },
+      {
+        "type": "text",
+        "id": "first_photo_menu_title",
+        "label": "First Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "first_photo_menu_link",
+        "label": "First Image Link"
+      },
+      {
+        "type": "header",
+        "content": "Second Photo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "photo_menu_second",
+        "label": "Second Menu image"
+      },
+      {
+        "type": "text",
+        "id": "Second_collection_title",
+        "label": "Collection title",
+        "default": "Collection Title"
+      },
+      {
+        "type": "text",
+        "id": "second_photo_menu_title",
+        "label": "Second Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "second_photo_menu_link",
+        "label": "Second Image Link"
+      },
+      {
+        "type": "header",
+        "content": "Third Photo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "photo_menu_third",
+        "label": "Third Menu image"
+      },
+      {
+        "type": "text",
+        "id": "third_collection_title",
+        "label": "Collection title",
+        "default": "Collection Title"
+      },
+      {
+        "type": "text",
+        "id": "third_photo_menu_title",
+        "label": "Third Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "third_photo_menu_link",
+        "label": "Third Image Link"
+      },
+      {
+        "type": "header",
+        "content": "Forth Photo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "photo_menu_forth",
+        "label": "Forth Menu image"
+      },
+      {
+        "type": "text",
+        "id": "forth_collection_title",
+        "label": "Collection title",
+        "default": "Collection Title"
+      },
+      {
+        "type": "text",
+        "id": "forth_photo_menu_title",
+        "label": "Forth Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "forth_photo_menu_link",
+        "label": "Forth Image Link"
+      }
+    ]
+  },
+  {
+    "name": "Mega menu settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "nav_link",
+        "label": "Button link"
+      },
+      {
+        "type": "header",
+        "content": "Photo Settings",
+        "info": "Setting Collection photos"
+      },
+      {
+        "type": "image_picker",
+        "id": "menu_image_first",
+        "label": "First Menu image"
+      },
+      {
+        "type": "text",
+        "id": "first_image_title",
+        "label": "First Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "first_image_link",
+        "label": "First Image Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "menu_image_second",
+        "label": "Second Menu image"
+      },
+      {
+        "type": "text",
+        "id": "second_image_title",
+        "label": "Second Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "second_image_link",
+        "label": "Second Image Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "menu_image_third",
+        "label": "Third Menu image"
+      },
+      {
+        "type": "text",
+        "id": "third_image_title",
+        "label": "Third Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "third_image_link",
+        "label": "Third Image Link"
+      },
+      {
+        "type": "color",
+        "id": "headmenu_color",
+        "label": "Header Color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "mega_submenu_color",
+        "label": "Submenu link Color",
+        "default": "#926D5A"
+      },
+      {
+        "type": "header",
+        "content": "First Column settings",
+        "info": "Setting link your custom selections"
+      },
+      {
+        "type": "text",
+        "id": "First_header_title",
+        "label": "First Header Title",
+        "default": "Category"
+      },
+      {
+        "type": "url",
+        "id": "First_header_link",
+        "label": "First header link"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_1",
+        "label": "Menu Title 1",
+        "default": "Menu Link title 1"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_1",
+        "label": "Menu Link 1"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_2",
+        "label": "Menu Title 2",
+        "default": "Menu Link title 2"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_2",
+        "label": "Menu Link 2"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_3",
+        "label": "Menu Title 3",
+        "default": "Menu Link title 3"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_3",
+        "label": "Menu Link 3"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_4",
+        "label": "Menu Title 4",
+        "default": "Menu Link title 4"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_4",
+        "label": "Menu Link 4"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_5",
+        "label": "Menu Title 5",
+        "default": "Menu Link title 5"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_5",
+        "label": "Menu Link 5"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_6",
+        "label": "Menu Title 6",
+        "default": "Menu Link title 7"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_6",
+        "label": "Menu Link 6"
+      },
+      {
+        "type": "header",
+        "content": "Second Column settings",
+        "info": "Setting link your custom selections"
+      },
+      {
+        "type": "text",
+        "id": "Second_header_title",
+        "label": "Second Header Title",
+        "default": "Category"
+      },
+      {
+        "type": "url",
+        "id": "Second_header_link",
+        "label": "Second header link"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_7",
+        "label": "Menu Title 7",
+        "default": "Menu Link title 1"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_7",
+        "label": "Menu Link 7"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_8",
+        "label": "Menu Title 8",
+        "default": "Menu Link title 2"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_8",
+        "label": "Menu Link 8"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_9",
+        "label": "Menu Title 9",
+        "default": "Menu Link title 3"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_9",
+        "label": "Menu Link 9"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_10",
+        "label": "Menu Title 10",
+        "default": "Menu Link title 4"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_10",
+        "label": "Menu Link 10"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_11",
+        "label": "Menu Title 11",
+        "default": "Menu Link title 5"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_11",
+        "label": "Menu Link 11"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_12",
+        "label": "Menu Title 12",
+        "default": "Menu Link title 6"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_12",
+        "label": "Menu Link 12"
+      },
+      {
+        "type": "header",
+        "content": "Third Column settings",
+        "info": "Third link your custom selections"
+      },
+      {
+        "type": "text",
+        "id": "Third_header_title",
+        "label": "Second Header Title",
+        "default": "Category"
+      },
+      {
+        "type": "url",
+        "id": "Third_header_link",
+        "label": "Second header link"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_13",
+        "label": "Menu Title 13",
+        "default": "Menu Link title 1"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_13",
+        "label": "Menu Link 7"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_14",
+        "label": "Menu Title 14",
+        "default": "Menu Link title 2"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_14",
+        "label": "Menu Link 14"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_15",
+        "label": "Menu Title 15",
+        "default": "Menu Link title 3"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_15",
+        "label": "Menu Link 15"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_16",
+        "label": "Menu Title 16",
+        "default": "Menu Link title 4"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_16",
+        "label": "Menu Link 16"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_17",
+        "label": "Menu Title 17",
+        "default": "Menu Link title 5"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_17",
+        "label": "Menu Link 17"
+      },
+      {
+        "type": "text",
+        "id": "menu_title_18",
+        "label": "Menu Title 18",
+        "default": "Menu Link title 6"
+      },
+      {
+        "type": "url",
+        "id": "menu_link_18",
+        "label": "Menu Link 18"
+      }
+    ]
+  },
+  {
+    "name": "Customer Page color settings",
+    "settings": [
+      {
+        "type": "color",
+        "id": "customer_box_color",
+        "label": "Box Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "customer_title_color",
+        "label": "Title Color",
+        "default": "#6F665D"
+      },
+      {
+        "type": "color",
+        "id": "customer_text_color",
+        "label": "Text Color",
+        "default": "#AE7E66"
+      },
+      {
+        "type": "color",
+        "id": "customer_point_color",
+        "label": "point Color",
+        "default": "#BAA098"
+      },
+      {
+        "type": "color",
+        "id": "customer_border_color",
+        "label": "Border Color",
+        "default": "#D9DAC1"
+      },
+      {
+        "type": "color",
+        "id": "customer_button_color",
+        "label": "Button Color",
+        "default": "#E8D5D4"
+      },
+      {
+        "type": "color",
+        "id": "customer_mouseover_color",
+        "label": "Mouseover Color",
+        "default": "#DACCC1"
+      },
+      {
+        "type": "color",
+        "id": "customer_button_border",
+        "label": "Button Border Color",
+        "default": "#926D5A"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Body text"
+      },
+      {
+        "type": "font_picker",
+        "id": "base_font_new",
+        "label": "Font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "header",
+        "content": "Header font settings",
+        "info": "Section header font, header and subfont size"
+      },
+      {
+        "type": "font_picker",
+        "id": "header_font_new",
+        "label": "Font",
+        "default": "work_sans_n6"
+      },
+      {
+        "type": "range",
+        "id": "header_base_size",
+        "label": "Section title font size",
+        "default": 26,
+        "min": 20,
+        "max": 60,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "subfont_size",
+        "label": "Section Subfont size",
+        "default": 15,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Slideshow font style",
+        "info": "Only slidshow font style. please check slideshow section to set font size"
+      },
+      {
+        "type": "font_picker",
+        "id": "slideshow_header",
+        "label": "Slideshow font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "header",
+        "content": "Rich text font style",
+        "info": "Please check richtext section to set font size"
+      },
+      {
+        "type": "font_picker",
+        "id": "richtext_font",
+        "label": "Richtext Section Font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "header",
+        "content": "Hero banner font style",
+        "info": "Please check hero section to set font size"
+      },
+      {
+        "type": "font_picker",
+        "id": "hero_header",
+        "label": "Hero Banner Font",
+        "default": "work_sans_n4"
+      }
+    ]
+  }
+]

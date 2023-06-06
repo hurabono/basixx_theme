@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "banner": {
+      "type": "template-customer-register-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE_5.png",
+        "banner_top_size": "banner_top_medium",
+        "banner_bottom_size": "banner_bottom_medium",
+        "overlay_set": true,
+        "headline": "Registration",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "color_schema": "second_color",
+        "text_align": "font_center",
+        "text_color": "#ffffff"
+      }
+    },
+    "template": {
+      "type": "template-customer-register",
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 1,
+        "padding_bottom": 4,
+        "animation_setting": true,
+        "font_color": "#BAA098",
+        "form_border_color": "#E8D5D4",
+        "color_button": "second_color",
+        "button_color_hover": "button_third_color",
+        "border_color": "#926D5A"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "template"
+  ]
+}

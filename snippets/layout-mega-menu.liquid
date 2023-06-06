@@ -1,0 +1,40 @@
+    <!-- menu - start -->
+    <div class="hidden absolute z-50 lg:block bg-gray-50 border rounded-lg shadow-lg overflow-hidden" style="width:max-content">
+      <div class="max-w-screen-lg flex items-center gap-7 p-8 mx-auto">
+        <div class="w-2/3 grid grid-cols-2 gap-3">
+          <!-- link - start -->
+          {%for link in section.settings.menu.links %}
+          {%for childlink in link.links%}
+          <a href="{{childlink.url}}" class="group flex gap-4">
+              <div class="font-semibold mb-1">{{childlink.title}}</div>
+          </a>
+          <p class="text-sm text-gray-500">
+            {% if childlink.links != blank %}
+            <ul class="grandchild">
+            {% for grandchild_link in childlink.links %}  
+              <li {% if grandchild_link.active %}class="active {% if grandchild_link.child_active %}child-active{% endif %}"{% endif %}><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          {% endif %}   
+        </p>
+          {%endfor%}
+          <!-- link - end -->
+          {%endfor%}
+        </div>
+
+        <!-- promo - start -->
+        <div class="w-2/3 border rounded-lg overflow-hidden">
+          <div class="h-48 bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1619118884592-11b151f1ae11?auto=format&q=75&fit=crop&w=320" loading="lazy" alt="Photo by Fakurian Design" class="w-full h-full object-cover object-center" />
+          </div>
+
+          <div class="flex justify-between items-center bg-white gap-2 p-3">
+            <p class="text-gray-500 text-sm">This is some simple filler text.</p>
+
+            <a href="#" class="inline-block shrink-0 bg-white hover:bg-gray-50 active:bg-gray-100 focus-visible:ring ring-indigo-300 text-indigo-500 text-sm font-semibold border rounded-lg outline-none transition duration-100 px-3 py-1">More</a>
+          </div>
+        </div>
+        <!-- promo - end -->
+      </div>
+    </div>
+    <!-- menu - end -->
