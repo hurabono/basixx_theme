@@ -77,23 +77,6 @@
     },
     "16686493743fcb3f2a": {
       "type": "apps",
-      "blocks": {
-        "9b94b870-06e2-4c58-a5fd-94339fc5dfe0": {
-          "type": "shopify:\/\/apps\/categories-uncomplicated\/blocks\/category-icons\/2d8e3108-b94b-4b0c-8f03-e3726bad87be",
-          "settings": {
-            "show_large_up": "4up",
-            "show_medium_up": "3up",
-            "show_small_up": "2up",
-            "show_product_counts": true,
-            "hide_empty_subcategories": false,
-            "show_collection_images": "alwaysimage",
-            "title_text_align": ""
-          }
-        }
-      },
-      "block_order": [
-        "9b94b870-06e2-4c58-a5fd-94339fc5dfe0"
-      ],
       "settings": {
       }
     },
