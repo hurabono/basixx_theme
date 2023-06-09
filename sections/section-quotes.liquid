@@ -1,56 +1,96 @@
+<style>
+    .text_queote_arrow_color{
+    color: {{ section.settings.text_quote_arrow_icons }};
+    background: {{ section.settings.text_quote_button_background }};
+    border: 2px solid {{ section.settings.text_quote_arrow_border }};
+    transition: 0.5s;
+  }
+
+  .text_queote_arrow_color:hover{
+  color:{{ section.settings.text_quote_arrow_icons_mouseover }};
+  background:{{ section.settings.text_quote_button_bg_mouseover }};
+  border: 2px solid {{ section.settings.text_quote_arrow_border_mouseover }};
+  }
+  
+</style>
+
+
 <div class="{{section.settings.color_schema}}">
-  <div class="container 2xl:w-[1440px] mx-auto"
+  <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8"
     style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
-    {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000" {% endif %}>
+    {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="500" {% endif %}>
     {% if section.settings.headline %}
       <h1 class="{{section.settings.title_align}} text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-16 px-6" style="color: {{section.settings.title_color}};">
         {{ section.settings.headline }}
       </h1>
     {% endif %}
   
-    <div class="md:grid lg:grid-cols-3">
-      {% for block in section.blocks %}
-      <div class="flex flex-col px-2 py-6 ">
-        {% if section.settings.image_onboarding == true %}
-              <div class="rounded-full w-[150px] h-[150px] m-auto overflow-hidden mb-8" {{ block.shopify_attributes }}>
-                  {% if block.settings.image != blank %}
-                  <img
-                    sizes="
-                    (min-width: 1280px) 1500px,
-                    (min-width: 1024px) 1250px,
-                    (min-width: 768px) 1000px,
-                    (min-width: 640px) 720px,
-                    600px
-                  " srcset="
-                    {{ block.settings.image | img_url: '600x' }} 600w,
-                    {{ block.settings.image | img_url: '720x' }} 720w,
-                    {{ block.settings.image | img_url: '1000x' }} 1000w,
-                    {{ block.settings.image | img_url: '1250x' }} 1250w,
-                    {{ block.settings.image | img_url: '1500x' }} 1500w
-                  "
-                    src="{{ block.settings.image | img_url: '500x' }}"
-                    alt="{{ block.settings.image.alt }}"
-                    loading="lazy"
-                    class="w-full h-full object-cover object-center {% if block.settings.image_round == true %} rounded-t-full {% endif %}"
-                  >
-                  {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'w-full h-full bg-white' }}
-                {% endif %}
+    <div class="">
+      <div class="swiper quote_swiper flex-col lg:flex-row">
+        <div class="swiper-wrapper">
+          
+              {% for block in section.blocks %}
+              <div class="swiper-slide">
+              <div class="flex flex-col px-2 py-6 ">
+                {% if section.settings.image_onboarding == true %}
+                      <div class="rounded-full w-[150px] h-[150px] m-auto overflow-hidden mb-8" {{ block.shopify_attributes }}>
+                          {% if block.settings.image != blank %}
+                          <img
+                            sizes="
+                            (min-width: 1280px) 1500px,
+                            (min-width: 1024px) 1250px,
+                            (min-width: 768px) 1000px,
+                            (min-width: 640px) 720px,
+                            600px
+                          " srcset="
+                            {{ block.settings.image | img_url: '600x' }} 600w,
+                            {{ block.settings.image | img_url: '720x' }} 720w,
+                            {{ block.settings.image | img_url: '1000x' }} 1000w,
+                            {{ block.settings.image | img_url: '1250x' }} 1250w,
+                            {{ block.settings.image | img_url: '1500x' }} 1500w
+                          "
+                            src="{{ block.settings.image | img_url: '500x' }}"
+                            alt="{{ block.settings.image.alt }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover object-center {% if block.settings.image_round == true %} rounded-t-full {% endif %}"
+                          >
+                          {% else %}
+                          {{ 'image' | placeholder_svg_tag: 'w-full h-full bg-white' }}
+                        {% endif %}
+                      </div>
+                {% endif %} 
+                <div class="{{block.settings.textbox_color}} p-4">
+                  {% render 'section-quote',
+                  text: block.settings.quote-text
+                  author: block.settings.quote-author
+                  star_rating_box:block.settings.star_rating_box
+                  quotation_show:section.settings.quotation_show
+                  text_color:block.settings.text_color
+                  subtext_color:block.settings.subtext_color
+                  icon_color:block.settings.icon_color
+                %}
+                </div>
               </div>
-        {% endif %} 
-        <div class="{{block.settings.textbox_color}} p-4">
-          {% render 'section-quote',
-          text: block.settings.quote-text
-          author: block.settings.quote-author
-          star_rating_box:block.settings.star_rating_box
-          quotation_show:section.settings.quotation_show
-          text_color:block.settings.text_color
-          subtext_color:block.settings.subtext_color
-          icon_color:block.settings.icon_color
-        %}
+              </div>
+              {% endfor %}
+          
+        </div>
+        <div class="flex justify-between">
+                  <div class="quote-swiper-button-prev bg-white p-3 mr-2 text_queote_arrow_color">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
+                    </svg>
+                  </div>
+                  <div class="quote-swiper-button-next bg-white p-3 text_queote_arrow_color">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+                    </svg>
+                  </div> 
+        </div>
+        <div class="flex justify-center ml-[6.5rem]">
+            <div class="swiper-quote-pagination mx-auto"></div>
         </div>
       </div>
-      {% endfor %}
     </div>
   </div>
 </div>
@@ -117,6 +157,12 @@
     "default": false,
     "label": "Animation turn on"
     },
+     {
+    "type": "checkbox",
+    "id": "image_round",
+    "default": true,
+    "label": "Image Round"
+    },
    {
     "type": "header",
     "content": "Title settings",
@@ -169,13 +215,57 @@
       "id": "quotation_show",
       "default": true,
       "label": "Show quotation mark"
-    }
+    },
+    {
+        "type": "header",
+        "content": "Arrow Buttons",
+        "info": "Slide Show Arrow Button Settings"
+      },
+      {
+      "type": "color",
+      "id": "text_quote_button_background",
+      "label": "Button background",
+      "default": "#fafafa"
+      },
+      {
+            "type": "color",
+            "id": "text_quote_arrow_icons",
+            "label": "Arrow Icon color",
+            "default": "#BAA098"
+      },
+      {
+            "type": "color",
+            "id": "text_quote_arrow_border",
+            "label": "Arrow box line",
+            "default": "#BAA098"
+      },
+      {
+        "type": "header",
+        "content": "Arrow mouseover"
+      },
+      {
+            "type": "color",
+            "id": "text_quote_button_bg_mouseover",
+            "label": "Button background",
+            "default": "#fafafa"
+      },
+      {
+            "type": "color",
+            "id": "text_quote_arrow_icons_mouseover",
+            "label": "Arrow Icon color",
+            "default": "#BAA098"
+      },
+      {
+            "type": "color",
+            "id": "text_quote_arrow_border_mouseover",
+            "label": "Arrow box line",
+            "default": "#BAA098"
+      }
   ],
   "blocks": [
     {
       "type": "quote",
       "name": "t:sections.quotes.settings.quote",
-      "limit": 3,
       "settings": [
       {
         "type": "header",

@@ -1,0 +1,498 @@
+<style>
+
+  .image_height{
+    height:20rem;
+  }
+  .featured_column_arrow_color{
+    color: {{section.settings.arrow_icons}};
+    background:{{section.settings.arrow_box}};
+    border: 2px solid {{section.settings.arrow_border}};
+    transition:0.5s;
+   }
+
+  .featured_column_arrow_color:hover {
+   color: {{section.settings.arrow_icons_mouseover}};
+   background:{{section.settings.arrow_box_mouseover}};
+   border: 2px solid {{section.settings.arrow_border_mouseover}};
+ }
+
+ .columnSlider_button{
+   background: {{ section.settings.color_button }};
+   color: {{ section.settings.border_color }};
+   border: 1px solid {{ section.settings.border_color}};
+   transition:0.3s;
+ }
+
+ .columnSlider_button:hover{
+   background: {{ section.settings.button_color_hover }};
+   color: {{ section.settings.border_mouseover }};
+   border: 1px solid {{ section.settings.border_mouseover}};
+ }
+</style>
+
+<div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+  <section class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
+
+    <div class="mx-auto">
+
+      {%- comment -%} headline {%- endcomment -%}
+      <div class="md:mx-[1rem] mb-[1.5rem] flex flex-col {{section.settings.text_align}}">
+          <div class="Left_titlebox">
+            {% if section.settings.subtitle != blank %}
+                <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{section.settings.subtitle}}
+                </span>
+              {% endif %}
+              {% if section.settings.headline != blank %}
+                <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                  {{ section.settings.headline }}
+                </h1>
+              {% endif %}
+                <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{ section.settings.text }}
+                 </div>  
+            </div>
+      </div>
+      
+      <div class="column-slider overflow-hidden">
+            <div class="swiper-wrapper">
+
+                  {% for block in section.blocks %}
+                  <div class="swiper-slide">
+                  
+                  {% if section.settings.image_onboarding == true %}
+                  <div class="grid w-full lg:rounded-sm image_height overflow-hidden justify-center {% if block.settings.image == blank %}bg-white{% endif %}" {{ block.shopify_attributes }}>
+                        {% if block.settings.image != blank %}
+                        <img
+                        sizes="
+                        (min-width: 1280px) 1500px,
+                        (min-width: 1024px) 1250px,
+                        (min-width: 768px) 1000px,
+                        (min-width: 640px) 720px,
+                        600px
+                        " srcset="
+                        {{ block.settings.image | img_url: '600x' }} 600w,
+                        {{ block.settings.image | img_url: '720x' }} 720w,
+                        {{ block.settings.image | img_url: '1000x' }} 1000w,
+                        {{ block.settings.image | img_url: '1250x' }} 1250w,
+                        {{ block.settings.image | img_url: '1500x' }} 1500w
+                        "
+                        src="{{ block.settings.image | img_url: '500x' }}"
+                        alt="{{ block.settings.image.alt }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover object-center"
+                        >
+                        {% else %}
+                        {{ 'image' | placeholder_svg_tag: 'w-full h-full bg-white object-cover object-center' }}
+                  {% endif %}
+                  </div>
+                  {% endif %} 
+                  <div class="w-full {{block.settings.color_box_schema}} block {{block.settings.textbox_title_align}} p-6 ">
+                  {% if block.settings.block_subtitle != blank %}
+                  <span class="block text-xs mt-4 leading-8 tracking-wider" style="color:{{block.settings.grid_color_title}};">
+                        {{block.settings.block_subtitle}}
+                  </span>
+                  {% endif %}
+                  <h2 class="text-xl font-medium title-font tracking-widest" style="color:{{block.settings.grid_header_color_title}};">{{block.settings.headline}}</h2>
+                  <div class="text-sm leading-relaxed mt-2 leading-8 tracking-wider py-4" style="color:{{block.settings.grid_color_title}};">{{block.settings.grid-text}}</div>
+                  {%- if block.settings.button-text != blank -%}
+                        <div class="py-4 inline-block">
+                              <a href="{{ block.settings.button-url }}"
+                                    class="tracking-widest mx-2 text-center columnSlider_button outline-none transition duration-100 {{block.settings.button_size}} {% if block.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{block.settings.border_color}}; color:{{block.settings.border_color}};">
+                                    {{block.settings.button-text }}</a>
+                              </div>
+                  {% endif %}
+                  </div>
+                  </div>
+                  {% endfor %}
+
+            </div>
+      </div>
+      <div class="column-slider-pagination mt-[2rem]" style="display:flex; justify-content:center; align-items:center;"></div>
+            <div class="flex justify-between mt-[-1rem]">
+                  <div class="swiper-column-prev p-3 featured_column_arrow_color">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
+                  </svg>
+                  </div>
+                              
+                  <div class="swiper-column-next p-3 featured_column_arrow_color">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+                  </svg>
+                  </div>
+            </div>
+      
+      
+    </div>
+  
+  </section>
+</div>
+
+{% schema %}
+{
+  "name":"Column Slider",
+  "class":"shopify-section-vue",
+  "settings":[
+  {
+   "type":"select",
+   "id":"color_schema",
+   "label":"Background color",
+   "options":[
+      {
+         "value":"first_color",
+         "label":"First Color"
+      },
+      {
+         "value":"second_color",
+         "label":"Second Color"
+      },
+      {
+         "value":"third_color",
+         "label":"Third Color"
+      },
+      {
+       "value":"forth_color",
+       "label":"Forth Color"
+     },
+     {
+       "value":"fifth_color",
+       "label":"Fifth Color"
+     },
+     {
+       "value":"background_transparent",
+       "label":"Transparent Color"
+     }
+   ],
+   "default":"third_color"
+  },
+   {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+   },
+   {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+   },
+   {
+        "type":"text",
+        "id":"subtitle",
+        "label":"subtitle",
+        "default":"Real Estate Agency"
+     },
+     {
+        "type":"text",
+        "id":"headline",
+        "label":"t:common.headline",
+        "default":"Our store"
+     },
+     {
+      "type":"richtext",
+      "id":"text",
+      "label":"t:common.headline"
+    },
+    {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text align",
+            "options": [
+              {
+                "value": "font_left",
+                "label": "Left"
+              }, {
+                "value": "font_right",
+                "label": "Right"
+              }, {
+                "value": "font_center",
+                "label": "Center"
+              }
+            ],
+            "default": "font_center"
+          },
+    {
+      "type": "checkbox",
+      "id": "image_onboarding",
+      "default": true,
+      "label": "Image show up"
+    },
+    {
+      "type": "checkbox",
+      "id": "animation_setting",
+      "default": false,
+      "label": "Animation turn on"
+   },
+   {
+      "type": "header",
+      "content": "Color Settings"
+   },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Section title color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "color_text_title",
+        "label": "Section Description color",
+        "default": "#4b4b4b"
+   },
+   {
+            "type": "header",
+            "content": "Button color"
+          },
+          {
+            "type": "color",
+            "id": "color_button",
+            "label": "Button color",
+            "default": "#6F665D"
+            },
+
+            {
+            "type": "color",
+            "id": "border_color",
+            "label": "Button border color",
+            "default": "#6F665D"
+            },
+            {
+            "type": "header",
+            "content": "Button mouseover"
+            },
+            {
+            "type": "color",
+            "id": "button_color_hover",
+            "label": "Button mouseover",
+            "default": "#fff"
+            },
+            {
+            "type": "color",
+            "id": "border_mouseover",
+            "label": "Border mouseover",
+            "default": "#6F665D"
+   },
+   {
+      "type": "header",
+      "content": "Arrow Color"
+   },
+    {
+        "type": "color",
+        "id": "arrow_icons",
+        "label": "Arrow Icon Color",
+        "default": "#ccc"
+      },
+   {
+        "type": "color",
+        "id": "arrow_box",
+        "label": "Arrow box color",
+        "default": "#fff"
+   },
+   {
+        "type": "color",
+        "id": "arrow_border",
+        "label": "Arrow line color",
+        "default": "#ccc"
+   },
+   {
+      "type": "header",
+      "content": "Arrow mouseover color"
+   },
+   {
+        "type": "color",
+        "id": "arrow_icons_mouseover",
+        "label": "Arrow Icon Color",
+        "default": "#fff"
+   },
+   {
+        "type": "color",
+        "id": "arrow_box_mouseover",
+        "label": "Arrow box color",
+        "default": "#ccc"
+   },
+   {
+        "type": "color",
+        "id": "arrow_border_mouseover",
+        "label": "Arrow line color",
+        "default": "#fff"
+   }
+  ],
+  "blocks":[
+     {
+        "type":"column",
+        "name":"t:common.image",
+        "limit":16,
+        "settings":[
+        {
+         "type": "header",
+         "content": "Block Image settings",
+         "info": "setting block image"
+         },
+           {
+              "type":"image_picker",
+              "id":"image",
+              "label":"t:common.image"
+           },
+          {
+            "type": "header",
+            "content": "Text Box settings",
+            "info": "setting block text contents"
+          },
+          {
+               "type":"text",
+               "id":"block_subtitle",
+               "label":"subtitle",
+               "default":"Real Estate Agency"
+            },
+            {
+              "type":"text",
+              "id":"headline",
+              "label":"t:common.headline",
+              "default":"Title"
+           },
+           {
+              "type":"richtext",
+              "id":"grid-text",
+              "label":"Grid Text"
+           },
+           {
+            "type":"select",
+            "id":"textbox_title_align",
+            "label":"Textbox title align",
+            "options":[
+               {
+                  "value":"font_left",
+                  "label":"Left"
+               },
+               {
+                  "value":"font_right",
+                  "label":"Right"
+               },
+               {
+                  "value":"font_center",
+                  "label":"Center"
+               }
+            ],
+            "default":"font_center"
+           },
+          {
+            "type":"select",
+            "id":"color_box_schema",
+            "label":"Text Box color",
+            "options":[
+               {
+                  "value":"first_color",
+                  "label":"First Color"
+               },
+               {
+                  "value":"second_color",
+                  "label":"Second Color"
+               },
+               {
+                  "value":"third_color",
+                  "label":"Third Color"
+               },
+               {
+                "value":"forth_color",
+                "label":"Forth Color"
+              },
+              {
+                "value":"fifth_color",
+                "label":"Fifth Color"
+              },
+              {
+                "value":"background_transparent",
+                "label":"Transparent Color"
+              }
+            ],
+            "default":"fifth_color"
+           },
+           {
+            "type": "color",
+            "id": "grid_header_color_title",
+            "label": "Grid title color",
+            "default": "#4b4b4b"
+          },
+          {
+            "type": "color",
+            "id": "grid_color_title",
+            "label": "Grid Description color",
+            "default": "#4b4b4b"
+          },
+          {
+            "type": "header",
+            "content": "Button settings"
+          },
+           {
+            "type":"select",
+            "id":"button_size",
+            "label":"Button size",
+            "options":[
+               {
+                  "value":"button_small",
+                  "label":"Small"
+               },
+               {
+                  "value":"button_medium",
+                  "label":"Medium"
+               },
+               {
+                  "value":"button_large",
+                  "label":"Large"
+               },
+               {
+               "value":"button_xlarge",
+               "label":"Extra large"
+            }
+            ],
+            "default":"button_small"
+         },
+         {
+            "type": "checkbox",
+            "id": "button_round_off",
+            "default": false,
+            "label": "Button round"
+         },
+         {
+         "type": "url",
+         "id": "button-url",
+         "label": "t:common.button.url"
+         },
+         {
+         "type": "text",
+         "id": "button-text",
+         "label": "t:common.button.text",
+         "default": "Button"
+         }
+        ]
+     }
+  ],
+  "presets":[
+     {
+        "name":"Column Slider",
+        "category":"column",
+        "blocks":[
+           {
+              "type":"column"
+           },
+           {
+              "type":"column"
+           },
+           {
+              "type":"column"
+           }
+        ]
+     }
+  ]
+}
+{% endschema %}

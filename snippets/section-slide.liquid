@@ -1,7 +1,29 @@
-<div class="{{ class | default: '' }} " style="{{ style | default: '' }}"  >
+<style>
+@media(max-width: 767px){
+      .txtbox_mobile{
+            border: none !important;
+            min-height: 400px;
+            width: 100vw;
+            justify-content:center;
+      }
+
+      .hidden_arrow{
+            display: none;
+      }
+
+    .moblie-image{
+      height:500px;
+    }
+
+}
+</style>
+
+
 
       <div
-            class="{% if animation_setting == true %} cardcontainer {% endif %} default_mobile {{textbox_position}} flex flex-1 flex-shrink-0 bg-gray-100 overflow-hidden relative h-[100vh]">
+            class="{% if animation_setting == true %} cardcontainer {% endif %} default_mobile {{textbox_position}} flex flex-col md:flex-1 flex-shrink-0 bg-gray-100 relative overflow-hidden"
+            style="padding-top:{{padding_top}}rem; padding-bottom:{{padding_bottom}}rem;"
+      >
             <!-- image - start -->
             {% if image %}
             <img sizes="
@@ -17,34 +39,78 @@
                         {{ image | img_url: '1250x' }} 1250w,
                         {{ image | img_url: '1500x' }} 1500w
                         " src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
-                  class="swiper-lazy w-full h-full object-cover object-center absolute inset-0">
+                  class="swiper-lazy w-full min-h-[400px] md:h-full object-cover object-center relative md:absolute md:inset-0 moblie-image">
             {% else %}
-            {{ 'lifestyle-1' | placeholder_svg_tag: 'wiper-lazy h-full object-cover object-center absolute' }}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'swiper-lazy min-h-[400px] md:h-full object-cover object-center relative md:absolute' }}
             {% endif %}
             <!-- image - end -->
 
             <!-- overlay - start -->
             {% if overlay_set == true %}
-                  <div class="bg-gray-300 mix-blend-multiply absolute inset-0"></div>
+                  <div class="hidden md:bg-gray-300 md:mix-blend-multiply absolute inset-0"></div>
             {% endif %}
             
             <!-- overlay - end -->
 
             <!-- text start -->
-            <div class="default_mobile {{textbox_position}}" {% if animation_setting == true %} data-aos="fade-up" data-aos-delay="300" data-aos-offset="0" data-aos-duration="3000" {% endif %}>
-                  <div {{ block.shopify_attributes }} class="flex flex-col relative {{text_align}} {{color_schema}} {{textbox_location}} p-6 w-[20rem] md:w-[29rem]">
-                        <div class="slideshow_header font-bold py-2 tracking-widest" style="color:{{color_title}}; font-size:{{slider_font_size}}px;">{{ headline }}</div>
-                        <p class="my-4 md:mb-8 tracking-wider leading-6 mx-2 " style="color:{{color_text}}; font-size:{{slider_sub_size}}px;">{{ text }}</p>
+            <div class="default_mobile {{textbox_position}}" {% if animation_setting == true %} data-swiper-animation="animate__fadeInUp" {% endif %}>
+                  
+                  <div {{ block.shopify_attributes }} class="txtbox_mobile flex flex-col relative {{text_align}} {{color_schema}} {{ mobile_color }} {{textbox_location}} p-6 w-[22rem] md:w-[29rem]"
+                        style="border: 2px solid {{textbox_border}};"
+                  >
+                        <div class="hidden_arrow relative w-full top-[-6rem] flex justify-end ml-0 md:ml-[1.5rem]">
+                              
+                               <div class=" arrow-border swiper-slideshow-prev p-3 mr-2 featured_slider_arrow_color">
+                                    &#10229;
+                              </div>
+                              <div class=" arrow-border swiper-slideshow-next p-3 featured_slider_arrow_color">
+                                    &#10230;
+                              </div> 
+                              
 
-                        <div class="py-2 inline-block">
+                        </div>
+                        <div class="relative top-[-2rem] flex justify-center" style="color:{{color_text}};">
+                              {{ subicon }}
+                        </div>
+                        <div class="relative top-[-2rem] slideshow_header font-bold py-2 tracking-widest" style="color:{{color_title}}; font-size:{{slider_font_size}}px;">
+                              {{ headline }}
+                        </div>
+                        <p class="relative top-[-3rem] my-4 md:mb-8 tracking-wider leading-8 mx-2 " style="color:{{color_text}}; font-size:{{slider_sub_size}}px;">
+                              {{ text }}
+                        </p>
+                        
+                        <div class="relative top-[-3.5rem]">
+                              <ul class="flex justify-between">
+                                    {% if boxtext1 != blank %}
+                                    <li class="text-xs md:text-sm tracking-wider border w-1/3 md:w-full m-1 flex flex-col md:flex-row justify-evenly items-center py-2">
+                                          {{iconbox1}} <span class="p-2 md:p-0">{{boxtext1}}</span>
+                                    </li>
+                                    {% endif %}
+
+                                    {% if boxtext2 != blank %}
+                                    <li class="text-xs md:text-sm tracking-wider border w-1/3 md:w-full m-1 flex flex-col md:flex-row px-2 justify-evenly items-center py-2">
+                                          {{iconbox2}} <span class="p-2 md:p-0"> {{boxtext2}}</span>
+                                    </li>
+                                    {% endif %}
+                                    
+                                    {% if boxtext3 != blank %}
+                                    <li class="text-xs md:text-sm tracking-wider border w-1/3 md:w-full m-1 flex flex-col md:flex-row px-2 justify-evenly items-center py-2">
+                                          {{iconbox3}}  <span class="p-2 md:p-0"> {{boxtext3}} </span>
+                                    </li>
+                                    {% endif %}
+                              </ul>
+                        </div>
+
+                         <div class="py-2 inline-block">
                         <a href="{{ button-url }}"
-                              class="mx-2 {{color_button}} {{button_color_hover}} text-sm md:text-base text-center outline-none transition duration-100 {{button_size}} {% if button_round_off == true %} button_round {% endif %}" style="border:1px solid {{border_color}}; color:{{border_color}};">
+                              class="text-bold relative top-[-1.5rem] mx-2 tracking-widest text-center font-bold outline-none transition duration-100 pb-2 text-2xl
+                              {% if button_round_off == true %} button_round {% endif %}" 
+                              style="border-bottom:2px solid {{border_color}}; color:{{border_color}};">
+
                               {{button-text }}</a>
                         </div>
                   </div>
             </div>
             <!-- text end -->
       </div>
-
-</div>
 

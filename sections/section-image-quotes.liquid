@@ -1,0 +1,410 @@
+<style>
+    .image_queote_arrow_color{
+    color: {{ section.settings.image_quote_arrow_icons }};
+    background: {{ section.settings.image_quote_button_background }};
+    border: 2px solid {{ section.settings.image_quote_arrow_border }};
+    transition: 0.5s;
+  }
+
+  .image_queote_arrow_color:hover{
+  color:{{ section.settings.image_quote_arrow_icons_mouseover }};
+  background:{{ section.settings.image_quote_button_bg_mouseover }};
+  border: 2px solid {{ section.settings.image_quote_arrow_border_mouseover }};
+  }
+</style>
+
+<div class="{{section.settings.color_schema}}">
+  <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8"
+    style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+    {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="500" {% endif %}>
+    
+    {% if section.settings.subtitle != blank %}
+        <div class="{{section.settings.title_align}} text-xs leading-8 tracking-wider" style="color:{{section.settings.color_desciption}};">
+          {{ section.settings.subtitle }}
+        </div>
+    {% endif %}
+
+    {% if section.settings.headline %}
+      <h1 class="{{section.settings.title_align}} text-2xl lg:text-3xl font-bold text-center mb-8 px-6" style="color: {{section.settings.title_color}};">
+        {{ section.settings.headline }}
+      </h1>
+    {% endif %}
+
+    {% if section.settings.text %}
+    <div class="{{section.settings.title_align}} subfont_size w-full mb-4 md:mb-8 leading-9 tracking-wider" 
+        style="color:{{section.settings.color_desciption}};">
+        {{ section.settings.text }}
+    </div>
+    {% endif %}
+
+  
+    <div class="">
+
+      <div class="swiper photoQuote_swiper flex-col lg:flex-row">
+        <div class="swiper-wrapper">
+          
+              {% for block in section.blocks %}
+              <div class="swiper-slide">
+              <div class="grid grid-col md:grid-cols-2 gap-10 ">
+                  {%- comment -%} photo area {%- endcomment -%}
+                  <div class="w-full h-[500px] overflow-hidden">
+                  {% if block.settings.image != blank %}
+                        <img 
+                                    srcset="{%- if block.settings.image.width >= 550 -%}{{ block.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                                    {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+                                    {%- if block.settings.image.width >= 990 -%}{{ block.settings.image | image_url: width: 990 }} 990w,{%- endif -%}
+                                    {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                    {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                    {%- if block.settings.image.width >= 2200 -%}{{ block.settings.image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                                    {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                                    {{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
+                                    src="{{ block.settings.image | image_url: width: 1500 }}"
+                                    sizes="(min-width: {{ settings.page_width }}px) {% if block.blocks.size == 1 %}calc({{ block.page_width }}px - 100px){% else %}{{ block.page_width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if section.blocks.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                                    alt="{{ block.settings.image.alt | escape }}"
+                                    loading="lazy"
+                                    width="{{ block.settings.image.width }}"
+                                    height="{{ block.settings.image.height }}"
+                        class="w-full h-full object-cover object-center inset-0 overflow-hidden">
+                  {%- else -%}
+                        <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://dummyimage.com/1000x1124">
+                  {% endif %}    
+                  </div>
+                  
+                  {%- comment -%} quote area {%- endcomment -%}
+                <div class="flex justify-center items-center {{block.settings.textbox_color}} p-4">
+                  {% render 'section-quote',
+                  text: block.settings.quote-text
+                  author: block.settings.quote-author
+                  star_rating_box:block.settings.star_rating_box
+                  quotation_show:section.settings.quotation_show
+                  text_color:block.settings.text_color
+                  subtext_color:block.settings.subtext_color
+                  icon_color:block.settings.icon_color
+                  quote_text_size:block.settings.quote_text_size
+                  quote_authorText_size:block.settings.quote_authorText_size
+                %}
+                </div>
+              </div>
+              </div>
+              {% endfor %}
+          
+        </div>
+        <div class="flex justify-between mt-10">
+
+          <div class="photoQuote-swiper-button-prev p-3 mr-2 image_queote_arrow_color">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
+            </svg>
+          </div>
+          <div class="photoQuote-swiper-button-next p-3 image_queote_arrow_color">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+            </svg>
+          </div> 
+
+        </div>
+        <div class="flex justify-center ml-[5rem]">
+            <div class="swiper-photoQuote-pagination mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image quote",
+  "settings": [
+  {
+    "type":"select",
+    "id":"color_schema",
+    "label":"Background color",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"fifth_color"
+   },
+   {
+    "type": "range",
+    "id": "padding_top",
+    "label": "Padding Top controll",
+    "default":4,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "unit": "rem"
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "label": "Padding Bottom controll",
+    "default":4,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "unit": "rem"
+  },
+   {
+    "type": "checkbox",
+    "id": "animation_setting",
+    "default": false,
+    "label": "Animation turn on"
+    },
+     {
+      "type": "checkbox",
+      "id": "quotation_show",
+      "default": true,
+      "label": "Show quotation mark"
+    },
+     {
+        "type": "header",
+        "content": "Arrow Buttons",
+        "info": "Slide Show Arrow Button Settings"
+      },
+      {
+      "type": "color",
+      "id": "image_quote_button_background",
+      "label": "Button background",
+      "default": "#fafafa"
+      },
+      {
+            "type": "color",
+            "id": "image_quote_arrow_icons",
+            "label": "Arrow Icon color",
+            "default": "#BAA098"
+      },
+      {
+            "type": "color",
+            "id": "image_quote_arrow_border",
+            "label": "Arrow box line",
+            "default": "#BAA098"
+      },
+      {
+        "type": "header",
+        "content": "Arrow mouseover"
+      },
+      {
+            "type": "color",
+            "id": "image_quote_button_bg_mouseover",
+            "label": "Button background",
+            "default": "#fafafa"
+      },
+      {
+            "type": "color",
+            "id": "image_quote_arrow_icons_mouseover",
+            "label": "Arrow Icon color",
+            "default": "#BAA098"
+      },
+      {
+            "type": "color",
+            "id": "image_quote_arrow_border_mouseover",
+            "label": "Arrow box line",
+            "default": "#BAA098"
+      },
+   {
+    "type": "header",
+    "content": "Title settings",
+    "info": "Title color and setting text align"
+    },
+    {
+      "type":"select",
+      "id":"title_align",
+      "label":"Title align",
+      "options":[
+            {
+            "value":"font_left",
+            "label":"Left"
+            },
+            {
+            "value":"font_right",
+            "label":"Right"
+            },
+            {
+            "value":"font_center",
+            "label":"Center"
+            }
+      ],
+      "default":"font_center"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "H Real Esate"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.headline",
+      "default": "What others say about us"
+    },
+    {
+        "type": "richtext",
+        "id": "text",
+        "label": "t:common.text"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Quote Title color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "color_desciption",
+      "label": "Quote Text color",
+      "default": "#fafafa"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "t:sections.quotes.settings.quote",
+      "settings": [
+      {
+        "type": "header",
+        "content": "Contents Settings",
+        "info": "Content Block Image and text settings."
+      },
+      {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+      },
+      {
+        "type": "range",
+        "id": "quote_text_size",
+        "label": "Banner font size",
+        "default": 24,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "quote_authorText_size",
+        "label": "Banner font size",
+        "default": 12,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "text",
+        "id": "star_rating_box",
+        "label": "Star rating"
+      },
+        {
+          "type": "textarea",
+          "id": "quote-text",
+          "label": "t:common.text",
+          "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+        },
+        {
+          "type": "text",
+          "id": "quote-author",
+          "label": "t:common.author",
+          "default": "Author's name"
+        },
+        {
+          "type": "header",
+          "content": "Contents Color",
+          "info": "Content text Color settings"
+        },
+        {
+          "type":"select",
+          "id":"textbox_color",
+          "label":"Background color",
+          "options":[
+             {
+                "value":"first_color",
+                "label":"First Color"
+             },
+             {
+                "value":"second_color",
+                "label":"Second Color"
+             },
+             {
+                "value":"third_color",
+                "label":"Third Color"
+             },
+             {
+              "value":"forth_color",
+              "label":"Forth Color"
+            },
+            {
+              "value":"fifth_color",
+              "label":"Fifth Color"
+            },
+            {
+              "value":"background_transparent",
+              "label":"Transparent Color"
+            }
+          ],
+          "default":"third_color"
+         },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#6F665D"
+        },
+        {
+          "type": "color",
+          "id": "subtext_color",
+          "label": "Subtext Color",
+          "default": "#6F665D"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon color",
+          "default": "#6F665D"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Photo Quote",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

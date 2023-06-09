@@ -1,0 +1,312 @@
+<style>
+   .title-font{
+      color: {{ section.settings.text_font_color}};
+      transition:0.5s;
+   }
+   .title-font:hover{
+      color: {{ section.settings.text_font_color | color_modify: 'alpha', 0.7 }};
+   }
+</style>
+
+<div id="bg-image" class="{{section.settings.color_schema}}" 
+      style="{% if section.settings.image %} background-image:url('{{ section.settings.image.src | img_url: 'master' }}'); background-size: cover; background-position: center; {% endif %} padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+
+<section class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="400" {% endif %}>
+    <div class="md:mx-[1rem] mb-[1.5rem] flex flex-col {{section.settings.text_align}}">
+          <div>
+            {% if section.settings.subtitle != blank %}
+                <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{section.settings.subtitle}}
+                </span>
+              {% endif %}
+              {% if section.settings.headline != blank %}
+                <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                  {{ section.settings.headline }}
+                </h1>
+              {% endif %}
+                <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{ section.settings.text }}
+                 </div>  
+            </div>
+    </div>
+
+      <section class="text-gray-600 body-font">
+      <div class="flex flex-wrap -m-2">
+            {% for block in section.blocks %}
+            <div class="p-2 lg:w-1/3 md:w-1/2 w-full flex justify-center items-center">
+            <div class="h-full flex items-center p-4 {% if section.settings.show_boxcolors%} {{section.settings.boxes_color}} rounded-lg {% endif%}">
+            {% if block.settings.profile_image != blank %}
+                  <img
+                  sizes="
+                  (min-width: 1280px) 1500px,
+                  (min-width: 1024px) 1250px,
+                  (min-width: 768px) 1000px,
+                  (min-width: 640px) 720px,
+                  600px
+                  " srcset="
+                  {{ block.settings.profile_image | img_url: '600x' }} 600w,
+                  {{ block.settings.profile_image | img_url: '720x' }} 720w,
+                  {{ block.settings.profile_image | img_url: '1000x' }} 1000w,
+                  {{ block.settings.profile_image | img_url: '1250x' }} 1250w,
+                  {{ block.settings.profile_image | img_url: '1500x' }} 1500w
+                  "
+                  src="{{ block.settings.profile_image | img_url: '500x' }}"
+                  alt="{{ block.settings.profile_image.alt }}"
+                  loading="lazy"
+                  class="w-24 h-24 object-cover object-center rounded-full mr-4"
+                  >
+                  {% else %}
+
+                  {{ 'image' | placeholder_svg_tag: 'w-24 h-24 bg-white rounded-full mr-4' }}
+            {% endif %}
+
+               <div class="flex-grow">
+                  <h2 class="title-font font-bold"> <a href="{{ block.settings.text_url }}"> {{block.settings.text_block}} </a> </h2>
+                  <p style="color: {{section.settings.sub_text_color}};"> {{block.settings.sub_text_block}} </p>
+               </div>
+
+            </div>
+            </div>
+            {% endfor %}
+      </div>
+</section>
+
+</section>
+
+</div>
+
+
+
+{% schema %}
+{
+"name":"Photo Text Box",
+  "class":"shopify-section-vue",
+  "settings":[
+   {
+   "type":"select",
+   "id":"color_schema",
+   "label":"Background color",
+   "options":[
+      {
+         "value":"first_color",
+         "label":"First Color"
+      },
+      {
+         "value":"second_color",
+         "label":"Second Color"
+      },
+      {
+         "value":"third_color",
+         "label":"Third Color"
+      },
+      {
+       "value":"forth_color",
+       "label":"Forth Color"
+     },
+     {
+       "value":"fifth_color",
+       "label":"Fifth Color"
+     },
+     {
+       "value":"background_transparent",
+       "label":"Transparent Color"
+     }
+   ],
+   "default":"third_color"
+  },
+   {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+   },
+   {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+   },
+   {
+        "type":"text",
+        "id":"subtitle",
+        "label":"subtitle",
+        "default":"Real Estate Agency"
+     },
+     {
+        "type":"text",
+        "id":"headline",
+        "label":"t:common.headline",
+        "default":"Our store"
+     },
+     {
+      "type":"richtext",
+      "id":"text",
+      "label":"t:common.headline"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text align",
+      "options": [
+            {
+                "value": "font_left",
+                "label": "Left"
+            },
+            {
+                "value": "font_right",
+                "label": "Right"
+            },
+            {
+                "value": "font_center",
+                "label": "Center"
+            }
+      ],
+      "default": "font_center"
+      },
+      {
+      "type": "checkbox",
+      "id": "animation_setting",
+      "default": false,
+      "label": "Animation turn on"
+      },
+      {
+      "type": "header",
+      "content": "color settings",
+      "info": "Setting your textbox and font colors"
+      },
+      {
+         "type":"select",
+         "id":"boxes_color",
+         "label":"Background color",
+         "options":[
+            {
+               "value":"first_color",
+               "label":"First Color"
+            },
+            {
+               "value":"second_color",
+               "label":"Second Color"
+            },
+            {
+               "value":"third_color",
+               "label":"Third Color"
+            },
+            {
+            "value":"forth_color",
+            "label":"Forth Color"
+         },
+         {
+            "value":"fifth_color",
+            "label":"Fifth Color"
+         },
+         {
+            "value":"background_transparent",
+            "label":"Transparent Color"
+         }
+         ],
+         "default":"third_color"
+      },
+      {
+      "type": "checkbox",
+      "id": "show_boxcolors",
+      "default": false,
+      "label": "Show box colors"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Section title color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "color_text_title",
+        "label": "Section Description color",
+        "default": "#4b4b4b"
+      },
+      {
+      "type": "header",
+      "content": "color settings",
+      "info": "Block Text Colors"
+      },
+      {
+      "type": "color",
+      "id": "text_font_color",
+      "label": "Ttitle Text color",
+      "default": "#4b4b4b"
+      },
+      {
+      "type": "color",
+      "id": "sub_text_color",
+      "label": "sub text Colors",
+      "default": "#ccc"
+      }
+
+  ],
+  "blocks":[
+    {
+      "type":"column",
+        "name":"Photo Text Box",
+        "limit":6,
+        "settings":[
+            {
+            "type": "image_picker",
+            "id": "profile_image",
+            "label": "Profile Image"
+            },
+            {
+              "type":"text",
+              "id":"text_block",
+              "label":"Text box block",
+              "default":"John Doe"
+           },
+           {
+              "type":"text",
+              "id":"sub_text_block",
+              "label":"Sub Text box block",
+              "default":"Position"
+           },
+           {
+              "type":"url",
+              "id":"text_url",
+              "label":"Text url"
+           }
+        ]
+    }
+  ],
+"presets":[
+      {
+        "name":"Photo Text Box",
+        "category":"column",
+        "blocks":[
+           {
+              "type":"column"
+           },
+           {
+              "type":"column"
+           },
+           {
+              "type":"column"
+           },
+           {
+              "type":"column"
+           },
+           {
+              "type":"column"
+           },
+           {
+              "type":"column"
+           }
+        ]
+     }
+  ]
+}
+{% endschema %}

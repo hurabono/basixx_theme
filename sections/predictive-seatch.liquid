@@ -1,0 +1,43 @@
+{%- if predictive_search.performed -%}
+  <div id="predictive-search-results" class="relative p-4 top-0 left-0 border mt-4 mx-4 bg-white">
+    {%- if predictive_search.resources.products.size > 0 -%}
+      <h3 id="predictive-search-products" class="predictive-search__heading py-3 mb-3 border-b">
+        Property
+      </h3>
+    {%- endif -%}
+    <ul id="predictive-search-results-list" class="predictive-search__results-list" role="listbox" aria-labelledby="predictive-search-products">
+      {%- for product in predictive_search.resources.products -%}
+        <li class="predictive-search__list-item" role="option">
+          <a href="{{ product.url }}" class="predictive-search__item flex items-center my-[1rem]" tabindex="-1">
+            {%- if product.featured_media != blank -%}
+              <img class="predictive-search__image rounded-md"
+                src="{{ product.featured_media | img_url: '150x' }}"
+                alt="{{ product.featured_media.alt }}"
+                width="50"
+                height="{{ 50 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
+              >
+            {%- endif -%}
+            <div class="predictive-search__item-content">
+              
+            <div class="predictive-search__item-vendor text-xs px-2 text-gray-500">{{ product.vendor }}</div>
+             
+            <span class="predictive-search__item-heading px-2">{{ product.title }}</span>
+
+            <span class="predictive-search__item-heading px-2 text-xs">
+                  {% if product.available %}
+                  {{ product.metafields.custom.symbol_first.value }}
+                  {% endif %}
+                  </span>
+              
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+      <li class="predictive-search__list-item" role="option">
+        <button class="predictive-search__item mt-2" tabindex="-1">
+          Search for “{{ predictive_search.terms }}”
+        </button>
+      </li>
+    </ul>
+  </div>
+{%- endif -%}

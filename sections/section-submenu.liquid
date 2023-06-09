@@ -1,0 +1,124 @@
+<div class="{{section.settings.color_schema}}"  style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+      <div class="xl:max-w-[1320px] px-4 mx-auto">
+            <div class="flex flex-col md:flex-row {{section.settings.text_align}} items-center" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="300" {% endif %}>
+                  {% for link in section.settings.submenu.links %}
+                  <div class="mx-4 my-2 md:my-0 tracking-wider" style="color: {{section.settings.footer_text_color}};">
+                  <a style="color:{{section.settings.font_color}}; font-size: {{section.settings.font_size}}px;" href="{{ link.url }}">{{ link.title }}</a>
+                  </div>
+                  {% endfor %}
+            </div>
+      </div>
+</div>
+
+{%- schema -%}
+{
+      
+"name": "Sub Manu",
+"class": "shopify-section-vue",
+"settings": [
+      {
+        "type": "link_list",
+        "id": "submenu",
+        "label": "Sub nevigation menu"
+      },
+      {
+        "type": "select",
+        "id": "color_schema",
+        "label": "Background color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "second_color"
+      },
+      {
+       "type": "checkbox",
+       "id": "animation_setting",
+       "default": false,
+       "label": "Animation turn on"
+       },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":0,
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+      },
+      {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":4,
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+      },
+      {
+   "type":"select",
+   "id":"text_align",
+   "label":"Text align",
+   "options":[
+      {
+         "value":"font_left",
+         "label":"Left"
+      },
+      {
+         "value":"font_right",
+         "label":"Right"
+      },
+      {
+         "value":"font_center",
+         "label":"Center"
+      }
+   ],
+   "default":"font_center"
+ },
+  {
+        "type": "color",
+        "id": "font_color",
+        "label": "Font color",
+        "default": "#BAA098"
+},
+{
+        "type": "range",
+        "id": "font_size",
+        "label": "Banner font size",
+        "default": 15,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+}
+],
+"presets": [
+{
+"name": "Sub Navigation",
+"category": "Manu"
+}
+]
+}
+{%- endschema -%}

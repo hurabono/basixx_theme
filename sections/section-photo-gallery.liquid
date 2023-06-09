@@ -1,0 +1,412 @@
+<section class="{{section.settings.color_schema}}">
+
+  <div class="relative"
+  style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" 
+            {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000" {% endif %}>
+    <section class="2xl:max-w-[1320px] px-4 md:px-8 mx-auto">
+      
+      {%- comment -%} headline {%- endcomment -%}
+      <div class="flex flex-col">
+          <div class="Left_titlebox">
+              {% if section.settings.headline != blank %}
+                <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider {{section.settings.text_align}}" style="color:{{section.settings.color_title}};">
+                  {{ section.settings.headline }}
+                </h1>
+              {% endif %}
+
+             {% if section.settings.text != blank %}
+                <div class="subfont_size my-8 leading-8 tracking-wider {{section.settings.text_align}}" style="color:{{section.settings.color_sub_title}};">
+                  {{ section.settings.text }}
+                 </div>
+              {% endif %} 
+            
+            </div>
+            {%- if section.settings.button-text != blank -%}
+              <div class="py-2 inline-block {{section.settings.button_align}}">
+                  <a href="{{ section.settings.button-url }}"
+                    class="tracking-widest mx-2 {{section.settings.color_button}} {{section.settings.button_color_hover}} text-center outline-none transition duration-100 {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+                    {{section.settings.button-text }}</a>
+              </div>
+          {% endif %}
+      </div>
+    </section>
+    
+  
+    <div class="grid grid-cols-2 lg:grid-cols-4" data-section-id="{{ section.id }}">
+      {% assign link_handle = section.id | replace: '-', '_' %}
+      {% for block in section.blocks %}
+            {% if block.settings.image != blank %}
+                  <div x-data="{ {{ link_handle }}: false }">
+                  <div class="w-full gallery-h" x-on:click="{{ link_handle }} = ! {{ link_handle }}">
+                        <img 
+                               srcset="{%- if block.settings.image.width >= 550 -%}{{ block.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                              {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+                              {%- if block.settings.image.width >= 990 -%}{{ block.settings.image | image_url: width: 990 }} 990w,{%- endif -%}
+                              {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                              {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                              {%- if block.settings.image.width >= 2200 -%}{{ block.settings.image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                              {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                              {{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
+                              src="{{ block.settings.image | image_url: width: 1500 }}"
+                              sizes="(min-width: {{ settings.page_width }}px) {% if section.blocks.size == 1 %}calc({{ settings.page_width }}px - 100px){% else %}{{ settings.page_width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if section.blocks.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                              alt="{{ block.settings.image.alt | escape }}"
+                              loading="lazy"
+                              width="{{ block.settings.image.width }}"
+                              height="{{ block.settings.image.height }}"
+                              class="w-full h-full object-cover object-center overflow-hidden cursor-pointer">
+                  </div>
+                  {%- comment -%} modal page {%- endcomment -%}
+                        <div class="modal absolute w-full left-0"
+                        x-cloak 
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 translate-y-3"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-out duration-300"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-3"  
+                        x-show="{{ link_handle }}"  
+                        x-on:click.away="{{ link_handle }} = false"
+                        >     
+                        <div class="w-[1000px] bg-white mx-auto border rounded-sm overflow-hidden shadow-lg gallery-modal">
+                              <div class="flex justify-end items-center py-2 px-2">
+                              <button x-on:click="{{ link_handle }} = false" class="customer_point_color">
+                              {% render 'icon-cancel' %}
+                              </button>
+                              </div>
+                              <img 
+                               srcset="{%- if block.settings.image.width >= 550 -%}{{ block.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                              {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+                              {%- if block.settings.image.width >= 990 -%}{{ block.settings.image | image_url: width: 990 }} 990w,{%- endif -%}
+                              {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                              {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                              {%- if block.settings.image.width >= 2200 -%}{{ block.settings.image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                              {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                              {{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
+                              src="{{ block.settings.image | image_url: 'master' }}"
+                              sizes="(min-width: {{ settings.page_width }}px) {% if section.blocks.size == 1 %}calc({{ settings.page_width }}px - 100px){% else %}{{ settings.page_width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if section.blocks.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                              alt="{{ block.settings.image.alt | escape }}"
+                              loading="lazy"
+                              width="{{ block.settings.image.width }}"
+                              height="{{ block.settings.image.height }}"
+                              class="w-full object-center overflow-hidden">
+                        </div>
+                        </div>
+                  </div>
+            {%- else -%}
+                  <div class="grid">
+                  <div class="flex relative">
+                  <div class="w-full">
+                        <img alt="gallery" class="w-full object-cover object-center" src="https://dummyimage.com/600x500">
+                  </div>
+                  </div>
+                  </div>
+            {% endif %}
+      {% endfor %}
+    </div>
+
+    </section>
+  </div>
+</section>
+
+{%- schema -%}
+{
+      "name": "Photo Gallery",
+      "class": "shopify-section-vue",
+      "settings": [
+            {
+  "type": "header",
+  "content": "General settings"
+},
+{
+        "type": "select",
+        "id": "color_schema",
+        "label": "Background color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "background_transparent"
+},
+{
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": false,
+        "label": "Animation turn on"
+},
+{
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top control",
+        "default": 4,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+},
+{
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom control",
+        "default": 4,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+},
+{
+            "type": "select",
+            "id": "text_align",
+            "label": "Text align",
+            "options": [
+              {
+                "value": "font_left",
+                "label": "Left"
+              }, {
+                "value": "font_right",
+                "label": "Right"
+              }, {
+                "value": "font_center",
+                "label": "Center"
+              }
+            ],
+            "default": "font_center"
+},
+{
+      "type": "header",
+      "content": "Title Button settings",
+      "info": "Title button, mouseover color"
+    },
+     {
+              "type":"select",
+              "id":"button_align",
+              "label":"Button align",
+              "options":[
+                    {
+                    "value":"font_left",
+                    "label":"Left"
+                    },
+                    {
+                    "value":"font_right",
+                    "label":"Right"
+                    },
+                    {
+                    "value":"font_center",
+                    "label":"Center"
+                    }
+              ],
+              "default":"font_center"
+          },
+           {
+            "type":"select",
+            "id":"button_size",
+            "label":"Button size",
+            "options":[
+            {
+            "value":"button_small",
+            "label":"Small"
+            },
+            {
+            "value":"button_medium",
+            "label":"Medium"
+            },
+            {
+            "value":"button_large",
+            "label":"Large"
+            },
+            {
+            "value":"button_xlarge",
+            "label":"Extra large"
+      }
+      ],
+            "default":"button_medium"
+      },
+      {
+      "type":"select",
+      "id":"color_button",
+      "label":"Button color",
+      "options":[
+      {
+            "value":"first_color",
+            "label":"First Color"
+      },
+      {
+            "value":"second_color",
+            "label":"Second Color"
+      },
+      {
+            "value":"third_color",
+            "label":"Third Color"
+      },
+      {
+            "value":"forth_color",
+            "label":"Forth Color"
+      },
+      {
+            "value":"fifth_color",
+            "label":"Fifth Color"
+      },
+      {
+            "value":"background_transparent",
+            "label":"Transparent Color"
+      }
+      ],
+      "default":"second_color"
+      },
+      {
+      "type":"select",
+      "id":"button_color_hover",
+      "label":"Button moseover color",
+      "options":[
+      {
+            "value":"button_first_color",
+            "label":"First Color"
+      },
+      {
+            "value":"button_second_color",
+            "label":"Second Color"
+      },
+      {
+            "value":"button_third_color",
+            "label":"Third Color"
+      },
+      {
+            "value":"button_forth_color",
+            "label":"Forth Color"
+      },
+      {
+            "value":"button_fifth_color",
+            "label":"Fifth Color"
+      },
+      {
+            "value":"button_background_transparent",
+            "label":"Transparent Color"
+      }
+      ],
+      "default":"button_third_color"
+      },
+      {
+      "type": "color",
+      "id": "border_color",
+      "label": "Button border color",
+      "default": "#6F665D"
+      },
+{
+      "type": "header",
+      "content": "Title settings",
+      "info": "Section Title and color settings"
+},
+{
+      "type": "text",
+      "id": "headline",
+      "label":"headline",
+      "default": "Headline"
+},
+{
+      "type": "richtext",
+      "id": "text",
+      "label": "t:common.text"
+},
+{
+      "type": "color",
+      "id": "color_title",
+      "label": "Section title color",
+      "default": "#4b4b4b"
+},
+{
+      "type": "color",
+      "id": "color_sub_title",
+      "label": "Section Description color",
+      "default": "#4b4b4b"
+},
+{
+      "type": "header",
+      "content": "Button settings",
+      "info": "Button color and mouse over color settings"
+},
+{
+      "type": "url",
+      "id": "button-url",
+      "label": "t:common.button.url"
+},
+{
+      "type": "text",
+      "id": "button-text",
+      "label": "t:common.button.text",
+      "default": "view more"
+},
+{
+      "type": "color",
+      "id":"button_color",
+      "label": "Button color",
+      "default": "#4b4b4b"
+}
+
+],
+      "blocks": [
+{
+      "type": "photo",
+      "name": "Photo Block",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+}
+ ],
+"presets": [
+{
+"name": "Photo Gallery",
+"category": "Images",
+"blocks": [
+          {
+            "type": "photo"
+          },
+          {
+            "type": "photo"
+          },
+          {
+            "type": "photo"
+          },
+          {
+            "type": "photo"
+          },
+          {
+            "type": "photo"
+          },
+          {
+            "type": "photo"
+          },
+          {
+            "type": "photo"
+          },
+          {
+            "type": "photo"
+          }
+        ]
+}
+]
+}
+{%- endschema -%}

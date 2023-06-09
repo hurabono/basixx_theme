@@ -48,7 +48,7 @@
       {% endif %}
     </div>
 
-    <div class="{{section.settings.textbox_color_schema}} {{section.settings.textbox_align}} absolute top-[30rem] {{section.settings.textbox_position}} p-[2rem] md:w-[32rem] flex flex-col justify-center md:p-8 z-10" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000" {% endif %}>
+    <div class="{{section.settings.textbox_color_schema}} {{section.settings.textbox_align}} absolute top-[25rem] {{section.settings.textbox_position}} p-[2rem] md:w-[32rem] flex flex-col justify-center md:p-8 z-10" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="350" {% endif %}>
       <h1 class="text-2xl lg:text-3xl font-bold mb-2" style="color:{{section.settings.textbox_header_color}};">
         {{ section.settings.headline }}
       </h1>
@@ -59,20 +59,22 @@
   
       <div>
       {%- if section.settings.button-text != blank -%}
-         <div class="py-3 inline-block">
-           <a href="{{section.settings.button-url}}"
-             class="{% if section.settings.button_round_off == true %} button_round {% endif %} {{section.settings.color_button}} {{section.settings.button_color_hover}} mx-3 text-sm md:text-base text-center outline-none transition duration-100 {{section.settings.button_size}}" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
-             {{section.settings.button-text}}
-           </a>
+         <div class="py-3 inline-block mx-3">
+              <div class="py-2 inline-block">
+                  <a href="{{ section.settings.button-url }}"
+                    class="mx-2 {{section.settings.color_button}} {{section.settings.button_color_hover}} tracking-widest text-center outline-none transition duration-100 {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+                    {{section.settings.button-text }}</a>
+              </div>
          </div>     
      {% endif %}
 
      {%- if section.settings.button-text_second != blank -%}
-           <div class="py-3 inline-block">
-           <a href="{{section.settings.button-url_second}}"
-             class="{% if section.settings.button_round_off == true %} button_round {% endif %} {{section.settings.color_button_second}} {{section.settings.button_color_hover_second}} text-sm md:text-base text-center outline-none transition duration-100 {{section.settings.button_size}} " style="border:1px solid {{section.settings.border_color_second}}; color:{{section.settings.border_color_second}};">
-             {{section.settings.button-text_second}}
-           </a>
+           <div class="py-3 inline-block mx-3">
+              <div class="py-2 inline-block">
+                  <a href="{{ section.settings.button-url_second }}"
+                    class="mx-2 {{section.settings.color_button_second}} {{section.settings.button_color_hover_second}} tracking-widest text-center outline-none transition duration-100 {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{section.settings.border_color_second}}; color:{{section.settings.border_color_second}};">
+                    {{section.settings.button-text_second }}</a>
+              </div>
            </div>
      {% endif %} 
       </div>
@@ -83,7 +85,7 @@
 
 {% schema %}
 {
-"name": "2 Image Banner",
+"name": "Two Images Banner",
 "class": "shopify-section-vue",
 "settings": [
 {
@@ -234,28 +236,24 @@
        "label":"Extra large"
      }
    ],
-   "default":"button_medium"
+   "default":"button_small"
   },
-  {
+   {
    "type": "checkbox",
    "id": "button_round_off",
    "default": false,
    "label": "Button round"
  },
 {
-   "type": "header",
-   "content": "Button 1"
+"type": "url",
+"id": "button-url",
+"label": "t:common.button.url"
 },
 {
-   "type": "text",
-   "id": "button-text",
-   "label": "t:common.button.text",
-   "default": "Button"
-},
-{
-   "type": "url",
-   "id": "button-url",
-   "label": "t:common.button.url"
+"type": "text",
+"id": "button-text",
+"label": "t:common.button.text",
+"default": "Button"
 },
 {
   "type":"select",
@@ -332,90 +330,90 @@
    "content": "Button 2"
 },
 {
-   "type": "text",
-   "id": "button-text_second",
-   "label": "Button Text",
-   "default": "Button"
+"type": "url",
+"id": "button-url_second",
+"label": "t:common.button.url"
 },
 {
-   "type": "url",
-   "id": "button-url_second",
-   "label": "Button URL"
+"type": "text",
+"id": "button-text_second",
+"label": "t:common.button.text",
+"default": "Button"
 },
 {
-     "type":"select",
-     "id":"color_button_second",
-     "label":"Button color",
-     "options":[
-        {
-           "value":"first_color",
-           "label":"First Color"
-        },
-        {
-           "value":"second_color",
-           "label":"Second Color"
-        },
-        {
-           "value":"third_color",
-           "label":"Third Color"
-        },
-        {
-           "value":"forth_color",
-           "label":"Forth Color"
-        },
-        {
-           "value":"fifth_color",
-           "label":"Fifth Color"
-        },
-        {
-           "value":"background_transparent",
-           "label":"Transparent Color"
-        }
-     ],
-     "default":"second_color"
-   },
-   {
-     "type":"select",
-     "id":"button_color_hover_second",
-     "label":"Button moseover color",
-     "options":[
-        {
-           "value":"button_first_color",
-           "label":"First Color"
-        },
-        {
-           "value":"button_second_color",
-           "label":"Second Color"
-        },
-        {
-           "value":"button_third_color",
-           "label":"Third Color"
-        },
-        {
-           "value":"button_forth_color",
-           "label":"Forth Color"
-        },
-        {
-           "value":"button_fifth_color",
-           "label":"Fifth Color"
-        },
-        {
-           "value":"button_background_transparent",
-           "label":"Transparent Color"
-        }
-     ],
-     "default":"button_third_color"
-   },
-   {
-   "type": "color",
-   "id": "border_color_second",
-   "label": "Button border color",
-   "default": "#6F665D"
-   }
+  "type":"select",
+  "id":"color_button_second",
+  "label":"Button color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+        "value":"forth_color",
+        "label":"Forth Color"
+     },
+     {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+     },
+     {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+     }
+  ],
+  "default":"second_color"
+},
+{
+  "type":"select",
+  "id":"button_color_hover_second",
+  "label":"Button moseover color",
+  "options":[
+     {
+        "value":"button_first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"button_second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"button_third_color",
+        "label":"Third Color"
+     },
+     {
+        "value":"button_forth_color",
+        "label":"Forth Color"
+     },
+     {
+        "value":"button_fifth_color",
+        "label":"Fifth Color"
+     },
+     {
+        "value":"button_background_transparent",
+        "label":"Transparent Color"
+     }
+  ],
+  "default":"button_third_color"
+},
+{
+"type": "color",
+"id": "border_color_second",
+"label": "Button border color",
+"default": "#6F665D"
+}
 ],
 "presets": [
 {
-"name": "2 Image Banner",
+"name": "Two Images Banner",
 "category": "Image"
 }
 ]

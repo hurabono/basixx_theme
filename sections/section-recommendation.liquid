@@ -1,6 +1,6 @@
 {%- if section.settings.show_product_recommendations -%}
 <div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
-      <div class="2xl:w-[1440px] mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+      <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
             <div class="mx-[2rem]">
                   {% if section.settings.headline %}
                   <h1 class="{{section.settings.title_align}} my-[2rem] text-2xl lg:text-3xl font-bold text-center" style="color:{{section.settings.color_title}};">
@@ -9,14 +9,14 @@
                   {% endif %}
             </div>
       
-            <div class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit: 4">
+            <div class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
                   {%- if recommendations.performed and recommendations.products_count > 0 -%}
                         <div class="flex flex-col md:flex-row justify-center items-center">
                               {%- for product in recommendations.products -%}
                               <div class="product m-4">
                               <a href="{{ product.url }}">
                                     <img
-                                    class="product__img rounded-lg shadow-md"
+                                    class="product__img "
                                     src="{{ product.featured_image | image_url: width: 500, height: 500 }}"
                                     alt="{{ product.featured_image.alt }}"
                                     />

@@ -4,9 +4,9 @@
   }
 </style>
 
-<section class=" {{section.settings.color_schema}} text-gray-600 body-font relative" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
-      <div class="max-w-[1440px] m-auto px-5 m-auto lg:flex sm:flex-nowrap flex-wrap">
-        <div class="flex lg:w-1/2 bg-gray-300 rounded-lg overflow-hidden mr-0 lg:mr-10 p-10 items-end justify-start relative">
+<section class=" {{section.settings.color_schema}} text-gray-600 body-font relative" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" >
+      <div class="max-w-[1320px] m-auto px-4 md:px-8 lg:flex sm:flex-nowrap flex-wrap" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="500" {% endif %}>
+        <div class="flex lg:w-1/2 bg-gray-300 overflow-hidden mr-0 lg:mr-10 p-10 items-end justify-start relative">
           {% if section.settings.contact_image %}
               <img sizes="
               (min-width: 1280px) 1500px,
@@ -23,9 +23,13 @@
             " src="{{ section.settings.contact_image | img_url: '1500x' }}" alt="{{ section.settings.contact_image.alt }}" loading="lazy"
                 class="w-full h-full object-cover object-center absolute inset-0">
               {%else%}
+              <div  class="w-full h-full object-cover object-center absolute inset-0">
+                 {{section.settings.contact_map}}
+              </div>
+             
           {% endif %}
 
-          <div class="relative flex flex-wrap py-6 rounded shadow-md" style="background: {{section.settings.point_color}};">
+          <div class="relative flex flex-wrap py-6 shadow-md" style="background: {{section.settings.point_color}};">
             <div class="lg:w-1/2 px-6">
               <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs" style="color:{{section.settings.title_color}};">{{ section.settings.address }}</h2>
               <p class="mt-1" style="color: {{section.settings.base_color}};">{{ section.settings.address_text }}</p>
@@ -196,6 +200,12 @@
       ],
       "default":"forth_color"
      },
+      {
+                  "type": "checkbox",
+                  "id": "animation_setting",
+                  "default": false,
+                  "label": "Animation turn on"
+    },
      {
       "type": "range",
       "id": "padding_top",
@@ -225,6 +235,11 @@
         "type": "image_picker",
         "id": "contact_image",
         "label": "Contact Image"
+      },
+      {
+        "type": "html",
+        "id": "contact_map",
+        "label": "Contact Map"
       },
       {
         "type":"text",

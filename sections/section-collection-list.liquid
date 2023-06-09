@@ -9,8 +9,8 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 {{section.settings.column_design}} gap-4 md:gap-6">
           <!-- product - start -->
           {% for collection in collections %}
-          <div class="overflow-hidden rounded-lg">
-            <a href="{{ collection.url }}" class="group h-96 xl:h-[25rem] flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4">
+          <div class="overflow-hidden rounded-md">
+            <a href="{{ collection.url }}" class="group h-96 xl:h-[25rem] flex items-end bg-gray-100 overflow-hidden shadow-lg relative p-4 rounded-md">
               <img
               sizes="
                 (min-width: 768px) 450px,
@@ -23,9 +23,10 @@
               src="{{ collection.image | img_url: '400x' }}"
               alt="{{ collection.image.alt | escape }}"
               loading="lazy"
-              class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 {% if section.settings.overlay_set == true %} bg-gray-700 mix-blend-multiply {%endif%}"
+              class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-md
+                      {% if section.settings.overlay_set == true %} bg-gray-700 mix-blend-multiply rounded-md {%endif%}"
             >  
-              <div class="w-full flex flex-col {{section.settings.textbox_position}} {{section.settings.color_textbox}} {{section.settings.text_align}} rounded-lg relative p-4">
+              <div class="w-full flex flex-col {{section.settings.textbox_position}} {{section.settings.color_textbox}} {{section.settings.text_align}} relative p-4 rounded-md">
                 {% if section.settings.show_shopname %}
                     <span class="text-gray-500 text-xs" style="color: {{section.settings.point_color}};">{{shop.name}}</span>
                 {% endif %}

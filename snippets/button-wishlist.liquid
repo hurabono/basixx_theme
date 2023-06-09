@@ -1,0 +1,19 @@
+<style>
+      .icon {
+        fill: transparent;
+        stroke: {{settings.wl_icon_color}};
+        transition: fill 0.3s ease;
+      }
+      .active .icon{
+        fill: {{settings.point_color}};
+        stroke: {{settings.point_color}};
+      }
+
+    </style>
+
+
+{%- if product.handle != blank -%}
+  <button type="button" aria-label="Add to wishlist" class="w-5 h-5" button-wishlist data-product-handle="{{ product.handle }}">
+    {%- render 'icon-heart' -%}
+  </button>
+{%- endif -%}

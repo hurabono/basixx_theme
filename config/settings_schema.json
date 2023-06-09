@@ -1,11 +1,22 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Mono Fragrance",
-    "theme_version": "2.0.0",
+    "theme_name": "Navy Home Agency",
+    "theme_version": "3.0.0",
     "theme_author": "Stephanie",
     "theme_documentation_url": "https:\/\/THEME_DOCUMENTATION_URL.com",
     "theme_support_url": "https:\/\/THEME_SUPPORT_URL.com"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Favicon icon size should be 32 x 32 px"
+      }
+    ]
   },
   {
     "name": "Theme Colors",
@@ -55,6 +66,50 @@
         "id": "point_color",
         "label": "point Color",
         "default": "#926D5A"
+      },
+      {
+        "type": "header",
+        "content": "Metafild symbols",
+        "info": "Must requird Metafilds "
+      },
+      {
+        "type": "color",
+        "id": "metafield_bg_color",
+        "label": "Metafild background",
+        "default": "#926D5A"
+      },
+      {
+        "type": "color",
+        "id": "metafield_text_color",
+        "label": "Metafield font",
+        "default": "#fff"
+      }
+    ]
+  },
+  {
+    "name": "Badge Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Badge colors"
+      },
+      {
+        "type": "color",
+        "id": "product_badge_color",
+        "label": "Badge Background color",
+        "default": "#6F665D"
+      },
+      {
+        "type": "color",
+        "id": "badge_font",
+        "label": "Badge font color",
+        "default": "#DACCC1"
+      },
+      {
+        "type": "color",
+        "id": "badge_border",
+        "label": "Badge border",
+        "default": "#BAA098"
       }
     ]
   },
@@ -79,7 +134,7 @@
     ]
   },
   {
-    "name": "Photo menu settings",
+    "name": "Photo Menu",
     "settings": [
       {
         "type": "text",
@@ -193,7 +248,7 @@
     ]
   },
   {
-    "name": "Mega menu settings",
+    "name": "Megamenu",
     "settings": [
       {
         "type": "text",
@@ -204,6 +259,26 @@
         "type": "header",
         "content": "Photo Settings",
         "info": "Setting Collection photos"
+      },
+      {
+        "type": "range",
+        "id": "titleFont_size",
+        "label": "Title menu font size",
+        "default": 18,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "submenu_font_size",
+        "label": "sub menu button size",
+        "default": 12,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
       },
       {
         "type": "image_picker",
@@ -514,6 +589,214 @@
     ]
   },
   {
+    "name": "Collection Megamenu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "photo_collection",
+        "label": "Button link"
+      },
+      {
+        "type": "image_picker",
+        "id": "collection_photo_first",
+        "label": "Collection photo"
+      },
+      {
+        "type": "text",
+        "id": "collection_title_first",
+        "label": "Photo title",
+        "default": "Collection title"
+      },
+      {
+        "type": "text",
+        "id": "collection_button_first",
+        "label": "Button title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "collection_link_first",
+        "label": "Collection Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "collection_photo_second",
+        "label": "Collection photo"
+      },
+      {
+        "type": "text",
+        "id": "collection_title_second",
+        "label": "Photo title",
+        "default": "Collection title"
+      },
+      {
+        "type": "text",
+        "id": "collection_button_second",
+        "label": "Button title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "collection_link_second",
+        "label": "Collection Link"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_title_1",
+        "label": "Collection title",
+        "default": "Collection title"
+      },
+      {
+        "type": "url",
+        "id": "photo_collection_link_1",
+        "label": "Collection Link"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_1",
+        "label": "Menu Title 1",
+        "default": "Menu title 1"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_1",
+        "label": "Menu Link 1"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_2",
+        "label": "Menu Title 2",
+        "default": "Menu title 2"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_2",
+        "label": "Menu Link 2"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_3",
+        "label": "Menu Title 3",
+        "default": "Menu title 3"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_3",
+        "label": "Menu Link 3"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_4",
+        "label": "Menu Title 4",
+        "default": "Menu title 4"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_4",
+        "label": "Menu Link 4"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_5",
+        "label": "Menu Title 5",
+        "default": "Menu title 5"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_5",
+        "label": "Menu Link 5"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_6",
+        "label": "Menu Title 6",
+        "default": "Menu title 6"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_6",
+        "label": "Menu Link 6"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_title_2",
+        "label": "Collection title",
+        "default": "Collection title"
+      },
+      {
+        "type": "url",
+        "id": "photo_collection_link_2",
+        "label": "Collection Link"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_7",
+        "label": "Menu Title 7",
+        "default": "Menu title 7"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_7",
+        "label": "Menu Link 7"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_8",
+        "label": "Menu Title 8",
+        "default": "Menu title 8"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_8",
+        "label": "Menu Link 8"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_9",
+        "label": "Menu Title 9",
+        "default": "Menu title 9"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_9",
+        "label": "Menu Link 9"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_10",
+        "label": "Menu Title 10",
+        "default": "Menu title 10"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_10",
+        "label": "Menu Link 10"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_11",
+        "label": "Menu Title 11",
+        "default": "Menu title 11"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_11",
+        "label": "Menu Link 11"
+      },
+      {
+        "type": "text",
+        "id": "photo_collection_menu_12",
+        "label": "Menu Title 12",
+        "default": "Menu title 12"
+      },
+      {
+        "type": "url",
+        "id": "collection_menu_link_12",
+        "label": "Menu Link 12"
+      }
+    ]
+  },
+  {
     "name": "Customer Page color settings",
     "settings": [
       {
@@ -538,6 +821,18 @@
         "type": "color",
         "id": "customer_point_color",
         "label": "point Color",
+        "default": "#BAA098"
+      },
+      {
+        "type": "color",
+        "id": "customer_symbol_bg_color",
+        "label": "Symbol background",
+        "default": "#AE7E66"
+      },
+      {
+        "type": "color",
+        "id": "customer_symbol_text_color",
+        "label": "Symbol point Color",
         "default": "#BAA098"
       },
       {
@@ -642,6 +937,201 @@
         "id": "hero_header",
         "label": "Hero Banner Font",
         "default": "work_sans_n4"
+      }
+    ]
+  },
+  {
+    "name": "Metafield Icon Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slide show icon box settings",
+        "info": "Please copy and paste icon svg code and define title text"
+      },
+      {
+        "type": "header",
+        "content": "Custom Box1",
+        "info": " icon for 'custom.symbol_first' "
+      },
+      {
+        "type": "html",
+        "id": "iconbox1",
+        "label": "Icon Settings"
+      },
+      {
+        "type": "header",
+        "content": "Custom Box2",
+        "info": " icon for 'custom.symbol_second' "
+      },
+      {
+        "type": "html",
+        "id": "iconbox2",
+        "label": "Icon Settings"
+      },
+      {
+        "type": "header",
+        "content": "Custom Box3",
+        "info": " icon for 'custom.symbol_third' "
+      },
+      {
+        "type": "html",
+        "id": "iconbox3",
+        "label": "Icon Settings"
+      },
+      {
+        "type": "header",
+        "content": "Metafield icon colors"
+      },
+      {
+        "type": "color",
+        "id": "icon_bg_color",
+        "label": "Icon background",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "icon_font_color",
+        "label": "Icon font color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "icon_border_color",
+        "label": "icon border color",
+        "default": "#4b4b4b"
+      }
+    ]
+  },
+  {
+    "name": "Quickview Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "qv_quantity_setting",
+        "default": true,
+        "label": "Quickview turn on"
+      },
+      {
+        "type": "checkbox",
+        "id": "qv_price_setting",
+        "default": true,
+        "label": "Price turn on"
+      },
+      {
+        "type": "checkbox",
+        "id": "qv_symbol_setting",
+        "default": true,
+        "label": "Metafild Symbol turn on",
+        "info": "You must set shopify Metafilds to turn on symbols."
+      },
+      {
+        "type": "header",
+        "content": "Quickview Color settings"
+      },
+      {
+        "type": "color",
+        "id": "qv_title_color",
+        "label": "Quickview title color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_text_color",
+        "label": "Quickview text color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_border_color",
+        "label": "Quickview border color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "header",
+        "content": "Quickview symbols"
+      },
+      {
+        "type": "color",
+        "id": "qv_icon_color",
+        "label": "Quickview Icon color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_symbol_border_color",
+        "label": "Quickview border color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_symbol_bg_color",
+        "label": "Symbols background color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Quickview Button Color"
+      },
+      {
+        "type": "color",
+        "id": "qv_button_color",
+        "label": "Quickview button color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_button_font_color",
+        "label": "Quickview button border color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "qv_mouseover_color",
+        "label": "Quickview button mouseover color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_mouseover_border_color",
+        "label": "Quickview button mouseover border",
+        "default": "#fff"
+      }
+    ]
+  },
+  {
+    "name": "Wishlist Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Wishlist Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "wishlist_settings",
+        "default": true,
+        "label": "Wishlist turn on"
+      },
+      {
+        "type": "header",
+        "content": "Wishlist Colors"
+      },
+      {
+        "type": "color",
+        "id": "wl_icon_color",
+        "label": "wishlist Icon color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "wl_border_color",
+        "label": "Wishlist border color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "wl_bg_color",
+        "label": "Icon Bakcground color",
+        "default": "#fff"
       }
     ]
   }

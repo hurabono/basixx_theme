@@ -1,0 +1,451 @@
+<style>
+       .calendly-inline-widget{
+            height:850px;
+       }
+      @media(max-width: 767px){
+            .calendly-inline-widget{
+            height: 550px;
+            }
+      }
+</style>
+
+
+<div class="{{section.settings.color_schema}}" 
+      style="{% if section.settings.background_image %} background-image:url('{{ section.settings.background_image.src | img_url: 'master' }}'); background-size: cover; background-position: center; {% endif %}">
+      
+      <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8"
+      style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
+
+            <div class="md:mx-[1rem] mb-[1.5rem] flex flex-col {{section.settings.text_align}}">
+            <div>
+            {% if section.settings.sub_title_ != blank %}
+                <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{section.settings.sub_title_}}
+                </span>
+              {% endif %}
+              {% if section.settings.headline != blank %}
+                <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                  {{ section.settings.headline }}
+                </h1>
+              {% endif %}
+                <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{ section.settings.text }}
+                 </div>  
+            </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+                  {%- for block in section.blocks -%}
+                  {% case block.type %}
+                        {% when 'profile' %}
+                        {%- comment -%} profile box {%- endcomment -%}
+                        <div class="profile_box h-[700px] overflow-hidden flex justify-center items-center p-8"
+                              style="background-color:{{block.settings.card_colors}};">
+                              <div class="text_box">
+
+                                    {% if block.settings.profile_image != blank %}
+                                          <img
+                                          sizes="
+                                          (min-width: 1280px) 1500px,
+                                          (min-width: 1024px) 1250px,
+                                          (min-width: 768px) 1000px,
+                                          (min-width: 640px) 720px,
+                                          600px
+                                          " srcset="
+                                          {{ block.settings.profile_image | img_url: '600x' }} 600w,
+                                          {{ block.settings.profile_image | img_url: '720x' }} 720w,
+                                          {{ block.settings.profile_image | img_url: '1000x' }} 1000w,
+                                          {{ block.settings.profile_image | img_url: '1250x' }} 1250w,
+                                          {{ block.settings.profile_image | img_url: '1500x' }} 1500w
+                                          "
+                                          src="{{ block.settings.profile_image | img_url: '500x' }}"
+                                          alt="{{ block.settings.profile_image.alt }}"
+                                          loading="lazy"
+                                          class="w-[150px] h-[150px] mx-auto object-cover object-center rounded-full"
+                                          >
+                                          {% else %}
+
+                                          {{ 'image' | placeholder_svg_tag: 'w-[150px] h-[150px] mx-auto bg-white rounded-full' }}
+                                    {% endif %}
+
+
+                                    <span class="text-xs text-gray-300 text-center w-full block pt-6" style="color:{{block.settings.description_color}};">{{block.settings.sub_title}}</span>
+                                    <h2 class="text-2xl font-bold text-gray-700 text-center w-full block py-2" style="color: {{block.settings.title_color}};">{{block.settings.profile_name}}</h2>
+                                    <div class="profile_description text-center text-gray-700 py-8" style="color:{{block.settings.description_color}};">
+                                          {{block.settings.description}}
+                                    </div>
+                                    <div class="tag_box flex flex-wrap justify-center items-center my-5">
+                                          <span class="text-xs rounded-full py-2 px-4 m-1" style="background-color: {{block.settings.tag_color}}; color:{{block.settings.tag_font_color}};"> {{block.settings.featured_tag1}} </span>
+                                          <span class="text-xs rounded-full py-2 px-4 m-1" style="background-color: {{block.settings.tag_color}}; color:{{block.settings.tag_font_color}};"> {{block.settings.featured_tag2}} </span>
+                                          <span class="text-xs rounded-full py-2 px-4 m-1" style="background-color: {{block.settings.tag_color}}; color:{{block.settings.tag_font_color}};"> {{block.settings.featured_tag3}} </span>
+                                          <span class="text-xs rounded-full py-2 px-4 m-1" style="background-color: {{block.settings.tag_color}}; color:{{block.settings.tag_font_color}};">{{block.settings.featured_tag4}}</span>
+                                          <span class="text-xs rounded-full py-2 px-4 m-1" style="background-color: {{block.settings.tag_color}}; color:{{block.settings.tag_font_color}};"> {{block.settings.featured_tag5}} </span>
+                                    </div>
+
+                                    <span class="flex sm:ml-auto mt-10 justify-center" style="color:{{block.settings.icon_color}}">
+                                    {% if
+                                          block.settings.social_instagram_visible or
+                                          block.settings.social_twitter_visible or
+                                          block.settings.social_facebook_visible or
+                                          block.settings.social_youtube_visible
+                                    %}
+                                          <div>
+                                    
+                                          {% render 'layout-social',
+                                          social_instagram_visible: block.settings.social_instagram_visible
+                                          social_instagram_link: block.settings.social_instagram_link
+                                          social_twitter_visible: block.settings.social_twitter_visible
+                                          social_twitter_link: block.settings.social_twitter_link
+                                          social_facebook_visible: block.settings.social_facebook_visible
+                                          social_facebook_link: block.settings.social_facebook_link
+                                          social_youtube_visible: block.settings.social_youtube_visible
+                                          social_youtube_link: block.settings.social_youtube_link
+                                          %}
+                                          </div>
+                                    {% endif %}
+                                    </span>
+                              </div>
+                        </div>
+                              
+                        {% when 'calendar' %}
+                        {%- comment -%} Calenar Code {%- endcomment -%}
+                        <div class="appointment_box bg-white h-[700px] overflow-hidden" style="border: 5px solid {{block.settings.calendar_border_color}};">
+                              {{block.settings.calendar_embed}}
+                        </div>
+                  {% endcase %}  
+                  {%- endfor -%}
+            </div>
+      </div>
+</div>
+
+{% schema %}
+      {
+      "name": "Appoinment Calendar",
+      "settings": [
+      {
+      "type":"select",
+      "id":"color_schema",
+      "label":"Background color",
+      "options":[
+            {
+            "value":"first_color",
+            "label":"First Color"
+            },
+            {
+            "value":"second_color",
+            "label":"Second Color"
+            },
+            {
+            "value":"third_color",
+            "label":"Third Color"
+            },
+            {
+            "value":"forth_color",
+            "label":"Forth Color"
+            },
+            {
+            "value":"fifth_color",
+            "label":"Fifth Color"
+            },
+            {
+            "value":"background_transparent",
+            "label":"Transparent Color"
+            }
+      ],
+      "default":"background_transparent"
+      },
+      {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "background Image"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+      },
+      {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+      },
+      {
+      "type": "checkbox",
+      "id": "animation_setting",
+      "default": false,
+      "label": "Animation turn on"
+      },
+      {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text align",
+      "options": [
+            {
+                "value": "font_left",
+                "label": "Left"
+            },
+            {
+                "value": "font_right",
+                "label": "Right"
+            },
+            {
+                "value": "font_center",
+                "label": "Center"
+            }
+      ],
+      "default": "font_center"
+      },
+      {
+        "type":"text",
+        "id":"sub_title_",
+        "label":"subtitle",
+        "default":"Real Estate Agency"
+      },
+      {
+        "type":"text",
+        "id":"headline",
+        "label":"Title",
+        "default":"Meeting John Doe Today"
+      },
+      {
+        "type":"richtext",
+        "id":"text",
+        "label":"Description"
+      },
+      {
+      "type": "header",
+      "content": "Text Settings",
+      "info": "Content Text subtitle, profile and description settings"
+      },
+      {
+      "type": "color",
+      "id": "color_title",
+      "label": "Title Color",
+      "default": "#4b4b4b"
+      },
+      {
+      "type": "color",
+      "id": "color_text_title",
+      "label": "Text Colors",
+      "default": "#4b4b4b"
+      }
+    ],
+  "blocks":[
+      {
+      "type":"profile",
+      "name":"Team Profile",
+      "limit":1,
+      "settings": [
+      {
+      "type": "header",
+      "content": "Text Settings",
+      "info": "Content Text subtitle, profile and description settings"
+      },
+      {
+      "type": "image_picker",
+      "id": "profile_image",
+      "label": "Profile Image"
+      },
+      {
+        "type":"text",
+        "id":"sub_title",
+        "label":"subtitle",
+        "default":"Real Estate Agency"
+      },
+      {
+        "type":"text",
+        "id":"profile_name",
+        "label":"Profile name",
+        "default":"John Doe"
+      },
+      {
+        "type":"richtext",
+        "id":"description",
+        "label":"profile description"
+      },
+      {
+      "type": "header",
+      "content": "Featured Tags",
+      "info": "Set 5 Featured Tags"
+      },
+      {
+        "type":"text",
+        "id":"featured_tag1",
+        "label":"Tag 1",
+        "default":"This is the Tag"
+      },
+      {
+        "type":"text",
+        "id":"featured_tag2",
+        "label":"Tag 2",
+        "default":"This is the Tag"
+      },
+      {
+        "type":"text",
+        "id":"featured_tag3",
+        "label":"Tag 3",
+        "default":"This is the Tag"
+      },
+      {
+        "type":"text",
+        "id":"featured_tag4",
+        "label":"Tag 4",
+        "default":"This is the Tag"
+      },
+      {
+        "type":"text",
+        "id":"featured_tag5",
+        "label":"Tag 5",
+        "default":"This is the Tag"
+      },
+      {
+      "type": "header",
+      "content": "Color settings",
+      "info": "Setting card border colors, profile headline, description and icon Font colors"
+      },
+      {
+      "type": "color",
+      "id": "card_colors",
+      "label": "Profile Card Color",
+      "default": "#ccc"
+      },
+      {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#D2AFAE"
+      },
+      {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#D2AFAE"
+      },
+      {
+      "type": "color",
+      "id": "tag_color",
+      "label": "Tag Color",
+      "default": "#D2AFAE"
+      },
+      {
+      "type": "color",
+      "id": "tag_font_color",
+      "label": "Tag Font Color",
+      "default": "#D2AFAE"
+      },
+      {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#D2AFAE"
+      },
+      {
+      "type": "header",
+      "content": "Social Media Icon",
+      "info": "Social media links and icons"
+      },
+      {
+            "type": "header",
+            "content": "Instagram"
+      },
+      {
+            "type": "checkbox",
+            "id": "social_instagram_visible",
+            "label": "t:sections.footer.settings.show-icon"
+      },
+      {
+            "type": "url",
+            "id": "social_instagram_link",
+            "label": "t:common.link"
+      },
+      {
+            "type": "header",
+            "content": "Twitter"
+      },
+      {
+            "type": "checkbox",
+            "id": "social_twitter_visible",
+            "label": "t:sections.footer.settings.show-icon"
+      },
+      {
+            "type": "url",
+            "id": "social_twitter_link",
+            "label": "t:common.link"
+      },
+      {
+            "type": "header",
+            "content": "Facebook"
+      },
+      {
+            "type": "checkbox",
+            "id": "social_facebook_visible",
+            "label": "t:sections.footer.settings.show-icon"
+      },
+      {
+            "type": "url",
+            "id": "social_facebook_link",
+            "label": "t:common.link"
+      },
+      {
+            "type": "header",
+            "content": "Youtube"
+      },
+      {
+            "type": "checkbox",
+            "id": "social_youtube_visible",
+            "label": "t:sections.footer.settings.show-icon"
+      },
+      {
+            "type": "url",
+            "id": "social_youtube_link",
+            "label": "t:common.link"
+      }  
+      ]
+    },
+    {
+      "type":"calendar",
+      "name":"Calendar",
+      "limit":1,
+      "settings": [
+        {
+      "type": "html",
+      "id": "calendar_embed",
+      "label": "Google Calendar embed",
+      "info": "Please embed your html code for calendars"
+      },
+      {
+      "type": "color",
+      "id": "calendar_border_color",
+      "label": "Calendar line Color",
+      "default": "#D2AFAE"
+      }
+      ]
+    }
+  ],
+    "presets": [
+      {
+    "name": "Calendar",
+    "category": "Calendar",
+    "blocks": [
+          {
+            "type": "profile"
+          },
+          {
+            "type": "calendar"
+          }
+        ]
+    }
+    ]
+      }
+{% endschema %}

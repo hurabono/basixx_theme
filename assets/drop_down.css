@@ -9,7 +9,7 @@
 }
 
 .form__label{
-      padding: 12px 24px;
+      padding: 12px 15px;
       cursor: pointer;
       overflow: hidden;
       display: block;
@@ -17,21 +17,20 @@
 }
 
 
-.option{
+.option_values{
       padding: 12px 24px;
       cursor: pointer;
 }
 
-.option label{
-      width: 100%;
-      display: inline-block;
-      cursor: pointer;
-}
 
 .option:hover{
       /* background: #414b57; */
 }
 
-.option .radio{
+
+
+.option input[type="radio"]{
       display: none;
 }
+
+

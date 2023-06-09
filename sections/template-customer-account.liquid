@@ -1,4 +1,4 @@
-<div class="container xl:w-[1200px] mx-auto" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+<div class="container xl:w-[1320px] mx-auto overflow-hidden px-4 md:px-8" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
   <h1 class="text-2xl md:text-3xl font-bold text-center mb-4 customer_title_color tracking-wider">
     {{ 'customer.account.title' | t }}
   </h1>
@@ -105,7 +105,7 @@
       <div class="border relative customer_border_color customer_box_color tracking-wider">
         {% unless customer.default_address == blank %}
           <div class=" p-4">
-            <span class="absolute top-0 right-0 customer_text_color customer_button_color text-sm tracking-widest uppercase rounded-full px-3 py-1 -mt-4 mr-4">
+            <span class="absolute top-0 right-0 customer_symbol_text_color customer_symbol_bg_color text-sm tracking-widest uppercase rounded-full px-3 py-1 -mt-4 mr-4">
               {{ 'common.default' | t }}
             </span>
 

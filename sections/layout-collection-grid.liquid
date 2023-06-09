@@ -1,84 +1,120 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
-<div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
-  <div class="hidden lg:max-w-[1440px] m-auto sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8  text-center px-4" {% if section.settings.animation_setting == true %} data-aos="fade-up"data-aos-duration="3000"data-aos-duration="1500"data-aos-duration="3000"{% endif %}>
-    {% for block in section.blocks %}
-      {% if block.settings.collection.image != blank %}
-        <div data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
-          <a href="{{ block.settings.collection.url }}">
-            <img sizes="
-                                    (min-width: 768px) 450px,
-                                    400px
-                                  " srcset="
-                                    {{ block.settings.collection.image | img_url: '275x' }} 275w,
-                                    {{ block.settings.collection.image | img_url: '450x' }} 450w
-                                  " src="{{ block.settings.collection.image | img_url: '400x' }}" alt="{{ block.settings.collection.image.alt | escape }}" loading="lazy" class="xl:w-80 xl:h-80 m-auto object-cover object-center {% if section.settings.image_round == true %} rounded-t-full {% endif %}">
-          </a>
+<!-- collaction grid -->
+<div id="bg-image" class="{{section.settings.color_schema}}" 
+      style="{% if section.settings.image %} background-image:url('{{ section.settings.image.src | img_url: 'master' }}'); background-size: cover; background-position: center; {% endif %} padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+      
+      {%- comment -%} headline {%- endcomment -%}
+      <div class="xl:max-w-[1320px] mx-auto md:px-[2rem] mb-[1.5rem] flex flex-col {{section.settings.title_text_align}}">
+          <div class="Left_titlebox">
+              {% if section.settings.subtitle != blank %}
+                <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{section.settings.subtitle}}
+                </span>
+              {% endif %}
+              {% if section.settings.headline != blank %}
+                <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                  {{ section.settings.headline }}
+                </h1>
+              {% endif %}
+                <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{ section.settings.text }}
+                 </div>  
+            </div>
+      </div>
+      
+      <div class="hidden xl:max-w-[1320px] mx-auto sm:grid  md:grid-cols-2 lg:grid-cols-3 {{section.settings.column_design}} gap-4 md:gap-6 px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="300" {% endif %}>
+      
+      {% for block in section.blocks %}
+          <!-- product - start -->
+      <div class="{% if section.settings.image_round == true %} rounded-t-full {%endif%} overflow-hidden">
+        {% if block.settings.collection.image != blank %}
+            <a href="{{ block.settings.collection.url }}" class="group h-[25rem] flex justify-center items-end bg-gray-100 overflow-hidden relative p-4">
+              <img
+             sizes="
+                      (min-width: 1280px) 1500px,
+                      (min-width: 1024px) 1250px,
+                      (min-width: 768px) 1000px,
+                      (min-width: 640px) 720px,
+                      600px
+                    " srcset="
+                      {{ block.settings.collection.image | img_url: '600x' }} 600w,
+                      {{ block.settings.collection.image | img_url: '720x' }} 720w,
+                      {{ block.settings.collection.image | img_url: '1000x' }} 1000w,
+                      {{ block.settings.collection.image | img_url: '1250x' }} 1250w,
+                      {{ block.settings.collection.image | img_url: '1500x' }} 1500w
+                    " src="{{ block.settings.collection.image | img_url: '1500x' }}" alt="{{ block.settings.collection.image.alt }}" loading="lazy"
+              class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-sm"
+            > 
 
-          <div class="my-4">
-            <a href="{{ block.settings.collection.url }}" class="text-xl tracking-widest" style="color:{{section.settings.color_collection_title}};">
-              {{ block.settings.collection.title | escape }}
+            <!-- overlay - start -->
+            {% if block.settings.overlay_set == true %}
+            <div class="bg-gray-300 mix-blend-multiply absolute inset-0 rounded-sm"></div>
+            {% endif %}
+            <!-- overlay - end -->
+
+              <div class="flex flex-col {{section.settings.textbox_position}} {{section.settings.text_align}} relative p-4
+              " style="width:100%; justify-content:center;">
+                <span class="px-2 py-3 font-bold {{section.settings.color_textbox}} {% if section.settings.rounded_nametag == true %} rounded_tag {% endif %}" style="font-size:{{section.settings.font_size}}rem; color:{{block.settings.color_collection_title}};">{{ block.settings.collection.title | escape}}</span>
+              </div>
             </a>
+        <!-- product - end -->
+        {% else %}
+                 {{ 'collection-1' | placeholder_svg_tag: 'w-full h-full bg-white object-cover object-center' }}
+        {% endif %}
+      </div>
+      {% endfor %}
+      </div>
+
+
+
+      <!-- mobile slide mode-->
+        <div class="sm:hidden">
+          <div class="collectionSwiper collection_mySwiper overflow-hidden sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8  text-center py-10 mx-4">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                {% if block.settings.collection.image != blank %}
+                  <div class="swiper-slide" data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
+                    <a href="{{ block.settings.collection.url }}" class=" rounded-sm h-[27rem] flex justify-center items-end bg-gray-100 overflow-hidden relative p-4">
+                    <img
+                      sizes="
+                      (min-width: 1280px) 1500px,
+                      (min-width: 1024px) 1250px,
+                      (min-width: 768px) 1000px,
+                      (min-width: 640px) 720px,
+                      600px
+                    " srcset="
+                      {{ block.settings.collection.image | img_url: '600x' }} 600w,
+                      {{ block.settings.collection.image | img_url: '720x' }} 720w,
+                      {{ block.settings.collection.image | img_url: '1000x' }} 1000w,
+                      {{ block.settings.collection.image | img_url: '1250x' }} 1250w,
+                      {{ block.settings.collection.image | img_url: '1500x' }} 1500w
+                    " src="{{ block.settings.collection.image | img_url: '1500x' }}" alt="{{ block.settings.collection.image.alt }}" loading="lazy"
+                  
+                    class="w-full h-full object-cover object-center absolute inset-0"
+                    
+                  >  
+                    <div class="w-full flex flex-col {{section.settings.color_textbox}} {{section.settings.textbox_position}} {{section.settings.text_align}} relative p-4
+                    {% if section.settings.rounded_nametag == true %} rounded_tag {% endif %}">
+                      <span class="font-bold" style="font-size:{{section.settings.font_size}}rem; color:{{block.settings.color_collection_title}};">{{ block.settings.collection.title | escape}}</span>
+                    </div>
+                  </a>
+                    
+                  </div>
+                {% else %}
+
+                  <div class="swiper-slide" data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
+                    {{ 'product-1' | placeholder_svg_tag: 'border bject-cover object-center rounded-t-full bg-white' }}
+                  </div>
+
+                {% endif %}
+              {% endfor %}
+            </div>
+            
+            <div class="collection_swiper-pagination-list" style="margin-top:1rem;"></div>
           </div>
         </div>
-      {% else %}
-
-        <div>
-          {{ 'product-1' | placeholder_svg_tag: 'border bject-cover object-center rounded-t-full bg-white' }}
-        </div>
-
-      {% endif %}
-    {% endfor %}
-  </div>
-
-  <div class="sm:hidden">
-    <div class="collectionSwiper collection_mySwiper overflow-hidden sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8  text-center py-10 mx-4">
-      <div class="swiper-wrapper">
-        {% for block in section.blocks %}
-          {% if block.settings.collection.image != blank %}
-            <div class="swiper-slide" data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
-              <a href="{{ block.settings.collection.url }}">
-                <img sizes="
-                                      (min-width: 768px) 450px,
-                                      400px
-                                    " srcset="
-                                      {{ block.settings.collection.image | img_url: '275x' }} 275w,
-                                      {{ block.settings.collection.image | img_url: '450x' }} 450w
-                                    " src="{{ block.settings.collection.image | img_url: '400x' }}" alt="{{ block.settings.collection.image.alt | escape }}" loading="lazy" class="xl:w-80 xl:h-80 m-auto object-cover object-center {% if section.settings.image_round == true %} rounded-t-full {% endif %}">
-              </a>
-
-              <div class="my-4">
-                <a href="{{ block.settings.collection.url }}" class="text-xl tracking-widest" style="color:{{section.settings.color_collection_title}};">
-                  {{ block.settings.collection.title | escape }}
-                </a>
-              </div>
-            </div>
-          {% else %}
-
-            <div class="swiper-slide" data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
-              {{ 'product-1' | placeholder_svg_tag: 'border bject-cover object-center rounded-t-full bg-white' }}
-            </div>
-
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="flex justify-between my-4">
-        <div class="collection-swiper-button-prev">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow_color w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
-          </svg>
-        </div>
-        <div class="collection-swiper-button-next">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow_color w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
-          </svg>
-        </div>
-      </div>
-      <div class="collection_swiper-pagination-list" style="bottom:22px;"></div>
-    </div>
-  </div>
 </div>
+
 
 
 {% schema %}
@@ -86,6 +122,63 @@
     "name": "Featured Collection List",
     "class": "shopify-section-vue",
     "settings": [
+      {
+      "type": "header",
+      "content": "Section Title Settings",
+      "info": "Setting section title and description"
+      },
+      {
+        "type":"text",
+        "id":"subtitle",
+        "label":"subtitle",
+        "default":"Real Estate Agency"
+     },
+      {
+        "type":"text",
+        "id":"headline",
+        "label":"t:common.headline",
+        "default":"Our store"
+     },
+     {
+      "type":"richtext",
+      "id":"text",
+      "label":"t:common.headline"
+    },
+    {
+            "type": "select",
+            "id": "title_text_align",
+            "label": "Text align",
+            "options": [
+              {
+                "value": "font_left",
+                "label": "Left"
+              }, {
+                "value": "font_right",
+                "label": "Right"
+              }, {
+                "value": "font_center",
+                "label": "Center"
+              }
+            ],
+            "default": "font_center"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Section title color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "color_text_title",
+        "label": "Section Description color",
+        "default": "#4b4b4b"
+      },
+      {
+      "type": "header",
+      "content": "General Settings",
+      "info": "Settings animation, background color and column design"
+      },
       {
         "type": "select",
         "id": "color_schema",
@@ -117,6 +210,21 @@
         "default": "second_color"
       },
       {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+      },
+      {
+        "type": "range",
+        "id": "font_size",
+        "label": "Prodcut Font size",
+        "default":1,
+        "min": 0.1,
+        "max": 3,
+        "step": 0.1,
+        "unit": "rem"
+      },
+      {
       "type": "range",
       "id": "padding_top",
       "label": "Padding Top controll",
@@ -136,6 +244,79 @@
       "step": 1,
       "unit": "rem"
     },
+    {
+      "type":"select",
+      "id":"text_align",
+      "label":"Title align",
+      "options":[
+         {
+            "value":"font_left",
+            "label":"Left"
+         },
+         {
+            "value":"font_right",
+            "label":"Right"
+         },
+         {
+            "value":"font_center",
+            "label":"Center"
+         }
+      ],
+      "default":"font_center",
+      "info":"Please turn off rounded nametag to set text align"
+    },
+     {
+  "type":"select",
+  "id":"column_design",
+  "label":"Column selector",
+  "options":[
+     {
+        "value":"two_column",
+        "label":"Two column"
+     },
+     {
+        "value":"three_column",
+        "label":"Three column"
+     },
+     {
+        "value":"four_column",
+        "label":"Four column"
+     }
+  ],
+  "default":"four_column"
+ },
+    {
+  "type":"select",
+  "id":"color_textbox",
+  "label":"Textbox color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"forth_color"
+ },
       {
         "type": "checkbox",
         "id": "animation_setting",
@@ -146,14 +327,35 @@
         "id": "image_round",
         "default": false,
         "label": "Image Round Top"
-      }, {
-        "type": "color",
-        "id": "color_collection_title",
-        "label": "Section title color",
-        "default": "#FCF5EF"
+      },
+      {
+        "type": "checkbox",
+        "id": "rounded_nametag",
+        "default": true,
+        "label": "Rounded nameTag"
+      },
+      {
+        "type":"select",
+        "id":"textbox_position",
+        "label":"Text box position",
+        "options":[
+          {
+              "value":"collection_top",
+              "label":"Top"
+          },
+          {
+              "value":"collection_center",
+              "label":"Center"
+          },
+          {
+              "value":"collection_bottom",
+              "label":"Bottom"
+          }
+        ],
+        "default":"collection_bottom"
       }
     ],
-    "max_blocks": 4,
+    "max_blocks": 16,
     "blocks": [
       {
         "type": "featured_collection",
@@ -163,7 +365,19 @@
             "type": "collection",
             "id": "collection",
             "label": "featured collection"
-          }
+          },
+          {
+          "type": "checkbox",
+          "id": "overlay_set",
+          "default": true,
+          "label": "Overlay cover"
+        },
+        {
+        "type": "color",
+        "id": "color_collection_title",
+        "label": "Section title color",
+        "default": "#4b4b4b"
+      }
         ]
       }
     ],

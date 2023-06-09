@@ -7,13 +7,38 @@
     .megamenu_dropdown::-webkit-scrollbar-thumb{
           background: {{section.settings.nav_font_point}};
     }
+
+  .submenu_title_button{
+    color: {{ section.settings.nav_title_submenu }};
+    font-weight:bold;
+    transition:0.5s;
+  }
+  .submenu_title_button:hover{
+    color: {{ section.settings.nav_title_submenu_mouseover }};
+  }
+
+  .submenu_text_button{
+    color: {{ section.settings.nav_text_submenu }};
+    transition:0.5s;
+  }
+  .submenu_text_button:hover{
+    color: {{ section.settings.nav_text_submenu_mouseover }};
+  }
+
+  #navbar_mobile{
+    transition:.5s;
+    bottom: 0;
+    max-width: 100%;
+  }
 </style>
 
+
+
 <div class="{{section.settings.color_schema}}">
-  <div class="container p-2 overflow-hidden" style="z-index: 999;">
-    <div class="flex justify-between {{section.settings.color_schema}}">
+  <div id="navbar_mobile" class="container p-2 overflow-hidden fixed" style="z-index: 999;">
+    <div class="flex justify-between {{section.settings.color_schema}} p-[0.3rem]">
       {% assign link_class = 'flex flex-col justify-center items-center text-xs text-gray-600 font-medium p-2' %}
-      {% assign icon_class = 'w-auto h-6 text-gray mb-2' %}
+      {% assign icon_class = 'w-auto h-4 text-gray mb-2' %}
   
       <a
         href="{{ routes.search_url }}"
@@ -66,7 +91,7 @@
         x-transition:leave="transition ease-out duration-300"
         x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-0 translate-x-3"      
-        x-show="open" x-cloak class=" {{section.settings.color_schema}} w-full max-w-screen-md h-full md:hidden border-l fixed top-0 right-0 z-50 overflow-hidden m-0">
+        x-show="open" x-cloak class="overflow-y-scroll {{section.settings.color_schema}} w-full max-w-screen-md h-full md:hidden border-l fixed top-0 right-0 z-50 overflow-hidden m-0">
           <div class="p-4" >
             <button
               x-on:click="open = false"
@@ -169,7 +194,7 @@
                               >
                           {% endif %}
                           </div>
-                        <a href="{{settings.first_image_link}}" class="block py-4 cursor-pointer mega_submenu_color tracking-widest">{{settings.first_image_title}}</a>
+                        <a href="{{settings.first_image_link}}" class="block py-4 cursor-pointer submenu_text_button tracking-widest">{{settings.first_image_title}}</a>
                       </div>
 
                       <div class="image_wrapper">
@@ -193,7 +218,7 @@
                               >
                           {% endif %}
                           </div>
-                          <a href="{{settings.second_image_link}}" class="block py-4 cursor-pointer mega_submenu_color tracking-widest">{{settings.second_image_title}}</a>
+                          <a href="{{settings.second_image_link}}" class="block py-4 cursor-pointer submenu_text_button tracking-widest">{{settings.second_image_title}}</a>
                       </div>
 
                       <div class="image_wrapper">
@@ -217,48 +242,48 @@
                               >
                           {% endif %}
                           </div>
-                          <a href="{{settings.third_image_link}}" class="block py-4 cursor-pointer mega_submenu_color tracking-widest">{{settings.third_image_title}}</a>
+                          <a href="{{settings.third_image_link}}" class="block py-4 cursor-pointer submenu_text_button tracking-widest">{{settings.third_image_title}}</a>
                       </div>
 
                       <ul class="flex flex-col tracking-widest">
-                        <a href="{{settings.First_header_link}}" class="mega_header_color py-2 cursor-pointer text-base">
+                        <a href="{{settings.First_header_link}}" class="submenu_title_button py-2 cursor-pointer text-base">
                           {{settings.First_header_title}}
                         </a>
                           <div class="py-2 ml-2 flex flex-col text-sm">
-                            <a href="{{settings.menu_link_1}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_1}}</a>
-                            <a href="{{settings.menu_link_2}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_2}}</a>
-                            <a href="{{settings.menu_link_3}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_3}}</a>
-                            <a href="{{settings.menu_link_4}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_4}}</a>
-                            <a href="{{settings.menu_link_5}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_5}}</a>
-                            <a href="{{settings.menu_link_6}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_6}}</a>
+                            <a href="{{settings.menu_link_1}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_1}}</a>
+                            <a href="{{settings.menu_link_2}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_2}}</a>
+                            <a href="{{settings.menu_link_3}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_3}}</a>
+                            <a href="{{settings.menu_link_4}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_4}}</a>
+                            <a href="{{settings.menu_link_5}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_5}}</a>
+                            <a href="{{settings.menu_link_6}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_6}}</a>
                           </div>
                       </ul>
 
                       <ul class="flex flex-col tracking-widest">
-                        <a href="{{settings.Second_header_link}}" class="mega_header_color py-2 cursor-pointer text-base">
+                        <a href="{{settings.Second_header_link}}" class="submenu_title_button py-2 cursor-pointer text-base">
                           {{settings.Second_header_title}}
                         </a>
                           <div class="py-2 ml-2 flex flex-col text-sm">
-                            <a href="{{settings.menu_link_7}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_7}}</a>
-                            <a href="{{settings.menu_link_8}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_8}}</a>
-                            <a href="{{settings.menu_link_9}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_9}}</a>
-                            <a href="{{settings.menu_link_10}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_10}}</a>
-                            <a href="{{settings.menu_link_11}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_11}}</a>
-                            <a href="{{settings.menu_link_12}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_12}}</a>
+                            <a href="{{settings.menu_link_7}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_7}}</a>
+                            <a href="{{settings.menu_link_8}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_8}}</a>
+                            <a href="{{settings.menu_link_9}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_9}}</a>
+                            <a href="{{settings.menu_link_10}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_10}}</a>
+                            <a href="{{settings.menu_link_11}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_11}}</a>
+                            <a href="{{settings.menu_link_12}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_12}}</a>
                           </div>
                       </ul>
 
                       <ul class="flex flex-col tracking-widest">
-                        <a href="{{settings.Third_header_link}}" class="mega_header_color py-2 cursor-pointer text-base">
+                        <a href="{{settings.Third_header_link}}" class="submenu_title_button py-2 cursor-pointer text-base">
                           {{settings.Third_header_title}}
                         </a>
                           <div class="py-2 ml-2 flex flex-col text-sm">
-                            <a href="{{settings.menu_link_13}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_13}}</a>
-                            <a href="{{settings.menu_link_14}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_14}}</a>
-                            <a href="{{settings.menu_link_15}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_15}}</a>
-                            <a href="{{settings.menu_link_16}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_16}}</a>
-                            <a href="{{settings.menu_link_17}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_17}}</a>
-                            <a href="{{settings.menu_link_18}}" class="py-2 cursor-pointer mega_submenu_color">{{settings.menu_title_18}}</a>
+                            <a href="{{settings.menu_link_13}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_13}}</a>
+                            <a href="{{settings.menu_link_14}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_14}}</a>
+                            <a href="{{settings.menu_link_15}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_15}}</a>
+                            <a href="{{settings.menu_link_16}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_16}}</a>
+                            <a href="{{settings.menu_link_17}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_17}}</a>
+                            <a href="{{settings.menu_link_18}}" class="py-2 cursor-pointer submenu_text_button">{{settings.menu_title_18}}</a>
                           </div>
                       </ul>
                     </div>
@@ -307,8 +332,8 @@
                           {% endif %}
                           </div>
                           <div class="ml-2">
-                            <span class="block pt-3 text-lg tracking-widest"> {{settings.first_collection_title}} </span>
-                            <a href="{{settings.first_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.first_photo_menu_title}}</a>
+                            <span class="submenu_title_button block pt-3 text-lg tracking-widest"> {{settings.first_collection_title}} </span>
+                            <a href="{{settings.first_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer submenu_text_button tracking-widest">{{settings.first_photo_menu_title}}</a>
                           </div>
                       </div>
 
@@ -334,8 +359,8 @@
                           {% endif %}
                           </div>
                           <div class="ml-2">
-                            <span class="block pt-3 text-lg tracking-widest"> {{settings.Second_collection_title}} </span>
-                            <a href="{{settings.second_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.second_photo_menu_title}}</a>
+                            <span class="submenu_title_button block pt-3 text-lg tracking-widest"> {{settings.Second_collection_title}} </span>
+                            <a href="{{settings.second_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer submenu_text_button tracking-widest">{{settings.second_photo_menu_title}}</a>
                           </div>
                          </div>
 
@@ -361,8 +386,8 @@
                           {% endif %}
                           </div>
                           <div class="ml-2">
-                            <span class="block pt-3 text-lg tracking-widest"> {{settings.third_collection_title}} </span>
-                            <a href="{{settings.third_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.third_photo_menu_title}}</a>
+                            <span class="submenu_title_button block pt-3 text-lg tracking-widest"> {{settings.third_collection_title}} </span>
+                            <a href="{{settings.third_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer submenu_text_button tracking-widest">{{settings.third_photo_menu_title}}</a>
                           </div>
                         </div>
 
@@ -388,8 +413,8 @@
                           {% endif %}
                           </div>
                           <div class="ml-2">
-                            <span class="block pt-3 text-lg tracking-widest"> {{settings.forth_collection_title}} </span>
-                            <a href="{{settings.forth_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.forth_photo_menu_title}}</a>
+                            <span class="submenu_title_button block pt-3 text-lg tracking-widest"> {{settings.forth_collection_title}} </span>
+                            <a href="{{settings.forth_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer submenu_text_button tracking-widest">{{settings.forth_photo_menu_title}}</a>
                           </div>
                       </div>
 
@@ -411,6 +436,21 @@
     </div>
   </div>
 </div>
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar_mobile").style.bottom = "0";
+  } else {
+    document.getElementById("navbar_mobile").style.bottom = "-150px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
 
 {% schema %}
 {
@@ -452,7 +492,7 @@
    {
     "type":"select",
     "id":"sub_color",
-    "label":"Submenu color",
+    "label":"Dropdown color",
     "options":[
       {
           "value":"first_color",
@@ -484,6 +524,10 @@
       "label": "Heading Navigation Menu"
   },
   {
+        "type": "header",
+        "content": "Navigation Menus"
+  },
+  {
     "type": "color",
     "id": "nav_font_color",
     "label": "Navigation font color",
@@ -500,7 +544,36 @@
     "id": "badge_color",
     "label": "Navigation Badge Color",
     "default": "#BAA098"
+  },
+  {
+        "type": "header",
+        "content": "Navigation submenu"
+  },
+  {
+    "type": "color",
+    "id": "nav_title_submenu",
+    "label": "Submenu title",
+    "default": "#fff"
+  },
+  {
+    "type": "color",
+    "id": "nav_text_submenu",
+    "label": "Submenu text",
+    "default": "#BAA098"
+  },
+  {
+    "type": "color",
+    "id": "nav_title_submenu_mouseover",
+    "label": "Title mouseover",
+    "default": "#ccc"
+  },
+  {
+    "type": "color",
+    "id": "nav_text_submenu_mouseover",
+    "label": "Text mouseover",
+    "default": "#ccc"
   }
+
   ]
 }
 {% endschema %}

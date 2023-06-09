@@ -1,23 +1,32 @@
 <div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
-  <section class="container 2xl:w-[1440px] mx-auto body-font" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000" {% endif %}>
+  <section class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="500" {% endif %}>
 
     <div class="mx-auto">
-      <div class="px-6 {{section.settings.title_align}}">
-        {% if section.settings.headline %}
-        <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
-          {{ section.settings.headline }}
-        </h1>
-        <div class="subfont_size mb-6 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
-          {{ section.settings.text }}
-        </div>
-        {% endif %}
+
+      {%- comment -%} headline {%- endcomment -%}
+      <div class="md:mx-[1rem] mb-[1.5rem] flex flex-col {{section.settings.text_align}}">
+          <div class="Left_titlebox">
+            {% if section.settings.subtitle != blank %}
+                <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{section.settings.subtitle}}
+                </span>
+              {% endif %}
+              {% if section.settings.headline != blank %}
+                <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                  {{ section.settings.headline }}
+                </h1>
+              {% endif %}
+                <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                  {{ section.settings.text }}
+                 </div>  
+            </div>
       </div>
     
-      <div class="hidden md:grid {{ section.settings.grid_style }}">
+      <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 {{section.settings.grid_style}} gap-4">
         {% for block in section.blocks %}
-        <div class="md:grid w-full md:p-3 mb-6 sm:mb-6 relative lg:flex-col mt-4">
+        <div class="lg:flex lg:items-center w-full mb-6 sm:mb-6 relative lg:flex-col">
               {% if section.settings.image_onboarding == true %}
-              <div class="lg:rounded-sm h-[25rem] 2xl:h-[25rem] overflow-hidden w-full" {{ block.shopify_attributes }}>
+              <div class="block w-full lg:rounded-sm overflow-hidden justify-center {% if block.settings.image == blank %}bg-white{% endif %}" {{ block.shopify_attributes }}>
                   {% if block.settings.image != blank %}
                   <img
                     sizes="
@@ -36,36 +45,43 @@
                     src="{{ block.settings.image | img_url: '500x' }}"
                     alt="{{ block.settings.image.alt }}"
                     loading="lazy"
-                    class="w-full h-full object-cover object-center {% if block.settings.image_round == true %} rounded-t-full {% endif %}"
+                    class="w-full object-cover object-center"
                   >
                   {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'w-full h-full bg-white' }}
+                  {{ 'image' | placeholder_svg_tag: 'w-full h-full bg-white object-cover object-center' }}
                 {% endif %}
               </div>
               {% endif %} 
-              <div class="block p-[1rem] {{block.settings.color_box_schema}} {{block.settings.textbox_title_align}} w-full overflow-hidden" style="height:16rem;">
-                <h2 class="text-xl font-medium title-font mt-5 tracking-wider mx-3" style="color:{{block.settings.grid_header_color_title}};">{{block.settings.headline}}</h2>
-                <div class="text-sm leading-relaxed my-4 leading-8 tracking-wider mx-3" style="color:{{block.settings.grid_color_title}};">{{block.settings.grid-text}}</div>
+              <div class="w-full {{block.settings.color_box_schema}} block {{block.settings.textbox_title_align}} p-6 ">
+               {% if block.settings.block_subtitle != blank %}
+                <span class="block text-xs mt-4 leading-8 tracking-wider" style="color:{{block.settings.grid_color_title}};">
+                  {{block.settings.block_subtitle}}
+                </span>
+              {% endif %}
+                <h2 class="text-xl font-medium title-font tracking-widest" style="color:{{block.settings.grid_header_color_title}};">{{block.settings.headline}}</h2>
+                <div class="text-sm leading-relaxed mt-2 leading-8 tracking-wider py-4" style="color:{{block.settings.grid_color_title}};">{{block.settings.grid-text}}</div>
                 {%- if block.settings.button-text != blank -%}
-                    <div class="py-6 inline-block">
-                      <a href="{{block.settings.button-url}}"
-                        class="{% if section.settings.button_round_off == true %} button_round {% endif %} {{section.settings.button_size}} {{block.settings.color_button}} {{block.settings.button_color_hover}} mx-3 text-sm md:text-base text-center outline-none transition duration-100" style="border:1px solid {{block.settings.border_color}}; color:{{block.settings.border_color}};">
-                        {{block.settings.button-text}}
-                      </a>
-                    </div>     
-                {% endif %}
+                       <div class="py-4 inline-block">
+                        <a href="{{ block.settings.button-url }}"
+                              class="tracking-widest mx-2 {{block.settings.color_button}} {{block.settings.button_color_hover}} text-center outline-none transition duration-100 {{block.settings.button_size}} {% if block.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{block.settings.border_color}}; color:{{block.settings.border_color}};">
+                              {{block.settings.button-text }}</a>
+                        </div>
+               {% endif %}
               </div>
           </div>
         {% endfor %}
       </div>
-      
+
+
+
+      {%- comment -%} mobile slide show {%- endcomment -%}
       <div class="md:hidden">
          <div class="collectionSwiper column_mySwiper overflow-hidden">
             <div class="swiper-wrapper">
                {% for block in section.blocks %}
-               <div class="swiper-slide lg:flex lg:justify-center lg:items-center w-full md:p-3 mb-6 sm:mb-6 relative lg:flex-col">
+               <div class="swiper-slide lg:flex lg:justify-center lg:items-center w-full {{section.settings.grid_style}} md:p-3 mb-6 sm:mb-6 relative lg:flex-col">
                     {% if section.settings.image_onboarding == true %}
-                    <div class="lg:rounded-sm h-[25rem] 2xl:h-[25rem] overflow-hidden w-full" {{ block.shopify_attributes }}>
+                    <div class="h-[21rem] justify-center items-center lg:rounded-sm overflow-hidden " {{ block.shopify_attributes }}>
                         {% if block.settings.image != blank %}
                         <img
                           sizes="
@@ -84,30 +100,29 @@
                           src="{{ block.settings.image | img_url: '500x' }}"
                           alt="{{ block.settings.image.alt }}"
                           loading="lazy"
-                          class="w-full h-full object-cover object-center {% if block.settings.image_round == true %} rounded-t-full {% endif %}"
+                          class="w-full h-full object-cover object-center"
                         >
                         {% else %}
                         {{ 'image' | placeholder_svg_tag: 'w-full h-full bg-white' }}
                       {% endif %}
                     </div>
                     {% endif %} 
-                    <div class="block p-[1rem] text-center {{block.settings.color_box_schema}} {{block.settings.textbox_title_align}} ">
-                      <h2 class="text-xl font-medium title-font mt-5 tracking-wider mx-6" style="color:{{block.settings.grid_header_color_title}};">{{block.settings.headline}}</h2>
-                      <div class="text-sm leading-relaxed mt-2 leading-8 tracking-wider mx-6" style="color:{{block.settings.grid_color_title}};">{{block.settings.grid-text}}</div>
-                      {%- if block.settings.button-text != blank -%}
-                          <div class="py-10 inline-block">
-                            <a href="{{block.settings.button-url}}"
-                              class="{% if section.settings.button_round_off == true %} button_round {% endif %} {{section.settings.button_size}} {{block.settings.color_button}} {{block.settings.button_color_hover}} mx-3 text-sm md:text-base text-center outline-none transition duration-100" style="border:1px solid {{block.settings.border_color}}; color:{{block.settings.border_color}};">
-                              {{block.settings.button-text}}
-                            </a>
-                          </div>     
-                      {% endif %}
-                    </div>
+                    <div class="{{block.settings.color_box_schema}} block text-center {{block.settings.textbox_title_align}} p-8 ">
+                     <h2 class="text-xl font-medium title-font tracking-widest mb-6 mx-2" style="color:{{block.settings.grid_header_color_title}};">{{block.settings.headline}}</h2>
+                     <div class="text-sm leading-relaxed mt-2 leading-8 tracking-wider mx-2" style="color:{{block.settings.grid_color_title}};">{{block.settings.grid-text}}</div>
+                        {%- if block.settings.button-text != blank -%}
+                           <div class="py-8 inline-block">
+                           <a href="{{ block.settings.button-url }}"
+                                 class="tracking-widest mx-2 {{block.settings.color_button}} {{block.settings.button_color_hover}} text-center outline-none transition duration-100 {{block.settings.button_size}} {% if block.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{block.settings.border_color}}; color:{{block.settings.border_color}};">
+                                 {{block.settings.button-text }}</a>
+                           </div>
+                        {% endif %}
+                     </div>
                 </div>
               {% endfor %}
             </div>
 
-            <div class="flex justify-between relative bottom-[160px] px-3 z-50 ">
+            <div class="flex justify-between relative bottom-[165px] z-0 ">
                <div class="column_prev_button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 arrow_color">
                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                </svg>
@@ -128,7 +143,7 @@
 
 {% schema %}
 {
-  "name":"3 column",
+  "name":"Column",
   "class":"shopify-section-vue",
   "settings":[
   {
@@ -183,6 +198,12 @@
       "step": 1,
       "unit": "rem"
    },
+   {
+        "type":"text",
+        "id":"subtitle",
+        "label":"subtitle",
+        "default":"Real Estate Agency"
+     },
      {
         "type":"text",
         "id":"headline",
@@ -194,6 +215,24 @@
       "id":"text",
       "label":"t:common.headline"
     },
+    {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text align",
+            "options": [
+              {
+                "value": "font_left",
+                "label": "Left"
+              }, {
+                "value": "font_right",
+                "label": "Right"
+              }, {
+                "value": "font_center",
+                "label": "Center"
+              }
+            ],
+            "default": "font_center"
+          },
     {
       "type": "checkbox",
       "id": "image_onboarding",
@@ -207,81 +246,30 @@
       "label": "Animation turn on"
    },
    {
-      "type": "header",
-      "content": "Button settings",
-      "info": "Setting button size."
-   },
-   {
-      "type":"select",
-      "id":"button_size",
-      "label":"Button size",
-      "options":[
-         {
-            "value":"button_small",
-            "label":"Small"
-         },
-         {
-            "value":"button_medium",
-            "label":"Medium"
-         },
-         {
-            "value":"button_large",
-            "label":"Large"
-         },
-         {
-          "value":"button_xlarge",
-          "label":"Extra large"
-        }
-      ],
-      "default":"button_medium"
-     },
-     {
-      "type": "checkbox",
-      "id": "button_round_off",
-      "default": false,
-      "label": "Button round"
-    },   
-   {
-      "type": "header",
-      "content": "Title settings",
-      "info": "Setting grid type and title settings"
-   },
-    {
       "type":"select",
       "id":"grid_style",
       "label":"Grid Style",
       "options":[
          {
-            "value":"two_column",
-            "label":"Grid Style 1"
+            "value":"grid_style1",
+            "label":"2 Column Grid"
          },
          {
-            "value":"three_column",
-            "label":"Grid Style 2"
+            "value":"grid_style2",
+            "label":"3 Column Grid"
+         },
+         {
+            "value":"grid_style3",
+            "label":"4 Column Grid"
          }
       ],
-      "default":"three_column"
+      "default":"grid_style1"
      },
-     {
-      "type":"select",
-      "id":"title_align",
-      "label":"Title align",
-      "options":[
-            {
-            "value":"font_left",
-            "label":"Left"
-            },
-            {
-            "value":"font_right",
-            "label":"Right"
-            },
-            {
-            "value":"font_center",
-            "label":"Center"
-            }
-      ],
-      "default":"font_center"
-      },
+   {
+      "type": "header",
+      "content": "Title settings",
+      "info": "Setting grid type and title settings"
+   },
       {
         "type": "color",
         "id": "color_title",
@@ -297,9 +285,9 @@
   ],
   "blocks":[
      {
-        "type":"image",
+        "type":"column",
         "name":"t:common.image",
-        "limit":6,
+        "limit":4,
         "settings":[
         {
          "type": "header",
@@ -311,18 +299,18 @@
               "id":"image",
               "label":"t:common.image"
            },
-           {
-            "type": "checkbox",
-            "id": "image_round",
-            "default": false,
-            "label": "Image Round Top"
-          },
           {
             "type": "header",
             "content": "Text Box settings",
             "info": "setting block text contents"
           },
-           {
+          {
+               "type":"text",
+               "id":"block_subtitle",
+               "label":"subtitle",
+               "default":"Real Estate Agency"
+            },
+            {
               "type":"text",
               "id":"headline",
               "label":"t:common.headline",
@@ -403,79 +391,109 @@
             "info": "setting buttons color and mouseover"
           },
            {
-            "type": "url",
-            "id": "button-url",
-            "label": "t:common.button.url"
+            "type":"select",
+            "id":"button_size",
+            "label":"Button size",
+            "options":[
+               {
+                  "value":"button_small",
+                  "label":"Small"
+               },
+               {
+                  "value":"button_medium",
+                  "label":"Medium"
+               },
+               {
+                  "value":"button_large",
+                  "label":"Large"
+               },
+               {
+               "value":"button_xlarge",
+               "label":"Extra large"
+            }
+            ],
+            "default":"button_medium"
+         },
+         {
+            "type": "checkbox",
+            "id": "button_round_off",
+            "default": false,
+            "label": "Button round"
+         },
+         {
+         "type": "url",
+         "id": "button-url",
+         "label": "t:common.button.url"
+         },
+         {
+         "type": "text",
+         "id": "button-text",
+         "label": "t:common.button.text",
+         "default": "Button"
+         },
+         {
+            "type":"select",
+            "id":"color_button",
+            "label":"Button color",
+            "options":[
+               {
+                  "value":"first_color",
+                  "label":"First Color"
+               },
+               {
+                  "value":"second_color",
+                  "label":"Second Color"
+               },
+               {
+                  "value":"third_color",
+                  "label":"Third Color"
+               },
+               {
+                  "value":"forth_color",
+                  "label":"Forth Color"
+               },
+               {
+                  "value":"fifth_color",
+                  "label":"Fifth Color"
+               },
+               {
+                  "value":"background_transparent",
+                  "label":"Transparent Color"
+               }
+            ],
+            "default":"second_color"
             },
             {
-            "type": "text",
-            "id": "button-text",
-            "label": "t:common.button.text",
-            "default": "Button"
-            },
-            {
-              "type":"select",
-              "id":"color_button",
-              "label":"Button color",
-              "options":[
-                 {
-                    "value":"first_color",
-                    "label":"First Color"
-                 },
-                 {
-                    "value":"second_color",
-                    "label":"Second Color"
-                 },
-                 {
-                    "value":"third_color",
-                    "label":"Third Color"
-                 },
-                 {
-                    "value":"forth_color",
-                    "label":"Forth Color"
-                 },
-                 {
-                    "value":"fifth_color",
-                    "label":"Fifth Color"
-                 },
-                 {
-                    "value":"background_transparent",
-                    "label":"Transparent Color"
-                 }
-              ],
-              "default":"second_color"
-            },
-            {
-              "type":"select",
-              "id":"button_color_hover",
-              "label":"Button moseover color",
-              "options":[
-                 {
-                    "value":"button_first_color",
-                    "label":"First Color"
-                 },
-                 {
-                    "value":"button_second_color",
-                    "label":"Second Color"
-                 },
-                 {
-                    "value":"button_third_color",
-                    "label":"Third Color"
-                 },
-                 {
-                    "value":"button_forth_color",
-                    "label":"Forth Color"
-                 },
-                 {
-                    "value":"button_fifth_color",
-                    "label":"Fifth Color"
-                 },
-                 {
-                    "value":"button_background_transparent",
-                    "label":"Transparent Color"
-                 }
-              ],
-              "default":"button_third_color"
+            "type":"select",
+            "id":"button_color_hover",
+            "label":"Button moseover color",
+            "options":[
+               {
+                  "value":"button_first_color",
+                  "label":"First Color"
+               },
+               {
+                  "value":"button_second_color",
+                  "label":"Second Color"
+               },
+               {
+                  "value":"button_third_color",
+                  "label":"Third Color"
+               },
+               {
+                  "value":"button_forth_color",
+                  "label":"Forth Color"
+               },
+               {
+                  "value":"button_fifth_color",
+                  "label":"Fifth Color"
+               },
+               {
+                  "value":"button_background_transparent",
+                  "label":"Transparent Color"
+               }
+            ],
+            "default":"button_third_color"
             },
             {
             "type": "color",
@@ -488,17 +506,17 @@
   ],
   "presets":[
      {
-        "name":"3 column image",
-        "category":"Images",
+        "name":"Column",
+        "category":"column",
         "blocks":[
            {
-              "type":"image"
+              "type":"column"
            },
            {
-              "type":"image"
+              "type":"column"
            },
            {
-              "type":"image"
+              "type":"column"
            }
         ]
      }

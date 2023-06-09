@@ -1,31 +1,298 @@
+{{ 'drop_down.css' | asset_url | stylesheet_tag }}
 
+
+<style>
+#mySidenav::-webkit-scrollbar{
+      width: 8px;
+     
+}
+
+#mySidenav::-webkit-scrollbar-thumb{
+      background: {{section.settings.active_button_color}};
+}
+
+input[type="range"]::-webkit-slider-thumb{
+      height: 17px;
+      width: 17px;
+      pointer-events: auto;
+      border-radius: 50%;
+      -webkit-appearance: none;
+      background: {{section.settings.active_button_color}};
+}
+
+input[type="range"]::-moz-range-thumb{
+      height: 17px;
+      width: 17px;
+      border: none;
+      pointer-events: auto;
+      border-radius: 50%;
+      -moz-appearance: none;
+      background: {{section.settings.active_button_color}};
+}
+
+input[type="checkbox"]:checked{
+      background:{{section.settings.active_button_color}};
+      border: 1px solid {{section.settings.active_button_color}};
+}
+
+
+.tab_active{
+  background-color: {{section.settings.active_button_color }};
+  color:{{section.settings.active_border_color | color_desaturate: 50 }};
+}
+</style>
 
   {% paginate collection.products by 16 %}
   {% if collection and collection.products %}
     {% assign amount = collection.all_products_count %}
-    {% render 'layout-sort-bar', amount: amount, filter_box_color:section.settings.filter_box_color filter_font_color:section.settings.filter_font_color %}
 
-<div class="{{section.settings.color_schema}}">
-  <div  id="main-filter" class="max-w-[1440px] m-auto m-auto flex overflow-hidden px-4 py-16" {% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
-    <div id="main-toggle">
-      {% render 'layout-select-filter', point_color: section.settings.point_color filter_box_color:section.settings.filter_box_color filter_font_color: section.settings.filter_font_color%}
+<div class="product_card {{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+
+
+    <div x-data="{ open: false }" >
+      {%- comment -%} sort bar {%- endcomment -%}
+      <div class="{{section.settings.filter_box_color}}" style="color: {{section.settings.filter_font_color}};">
+      <div class="max-w-[1320px] m-auto flex justify-between h-16 m-auto items-center px-6">
+
+        <div class="hidden sm:flex items-center">
+          {{ amount }} {% if amount > 1 %}{{ 'common.products' | t }}{% else %}{{ 'common.product' | t }}{% endif %}
+        </div>
+        {% unless template == 'search' %}
+          <div class="flex items-center">
+            <div class="flex mr-[1rem] items-center cursor-pointer tab_active px-4 py-2"  @click="open = ! open">
+              <div class="h-full flex items-center tracking-wider uppercase mr-4 text-sm" >
+                filter
+              </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </div>
+
+            <div class="flex mr-[1rem] items-center cursor-pointer">
+                <div class="tab_active px-4 py-2 h-full hidden sm:flex items-center tracking-wider uppercase text-sm">
+              {{ 'common.sort' | t }}
+              </div>
+              <div class="h-full pr-1">
+                {% render 'layout-select-sort', active_border_color:section.settings.active_button_color %}
+              </div>
+            </div>
+          </div>
+        {% endunless %}
+      </div>
+      </div>
+
+      {%- comment -%} Filter Box {%- endcomment -%}
+    <div id="main-toggle" class="max-w-[1320px] m-auto overflow-hidden px-6" 
+              x-cloak 
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 translate-y-3"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-out duration-300"
+              x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 translate-y-3" 
+              class="text-gray-500 my-4" 
+              x-show="open">
+      <div id="mySidenav" class="my-4 h-full" style="color: {{section.settings.filter_font_color}}; background:{{section.settings.filter_selector}};">
+      
+      <div class="py-4 mx-7 items-center">
+            <form action="{{ collection.url }}?sort_by={{ collection.sort_by }}" method="get" class="flex flex-col flex-wrap lg:flex-row lg:justify-between">
+                  {%- for filter in collection.filters -%}
+                        <div class="filter-group my-2" x-data="{ open : false }">
+                              <div class="filter-group-summary inline cursor-pointer" x-on:click="open = ! open">
+                                    <div class="py-2 px-4 w-full lg:min-w-[280px]" style="background:{{ section.settings.filter_background }}; border: 1px solid {{section.settings.filter_title_bg}};">
+                                          <span class="flex justify-between tracking-widest text-sm">{{ filter.label }}
+                                          {%- if filter.active_values.size > 0 -%}
+                                          ({{ filter.active_values.size }})
+                                          {%- endif -%}
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                                          </svg>
+                                          </span>
+                                    </div>
+                              </div>
+                              
+                              <div class="filter-group-display w-full px-2 md:px-0 mb-4" 
+                              x-transition:enter="transition ease-out duration-300"
+                              x-transition:enter-start="opacity-0 translate-y-3"
+                              x-transition:enter-end="opacity-100 translate-y-0"
+                              x-transition:leave="transition ease-out duration-300"
+                              x-transition:leave-start="opacity-100 translate-y-0"
+                              x-transition:leave-end="opacity-0 translate-y-3"
+                              x-cloak  x-show="open"  x-on:click.away="open = false">
+                                    
+                                    
+                                    {%- case filter.type -%}
+                                          {%- when 'boolean' or 'list' -%}
+                                                <div class="py-2 filter-group-display__header mt-[1rem] tab_active">
+                                                      <span class="px-2 tracking-wider filter-group-display__header-selected">{{ filter.active_values.size }} selected</span>
+                                                            
+                                                      {%- if filter.active_values.size > 0 -%}
+                                                      <a href="{{ filter.url_to_remove }}" class="filter-group-display__header-reset tracking-wider"> / Reset</a>
+                                                      {%- endif -%}
+                                                </div>
+                                                
+                                                <ul class="py-4 filter-group-display__list">
+                                                      {%- for filter_value in filter.values -%}
+                                                      <li class="filter-group-display__list-item tracking-wider py-2"> 
+                                                      <input
+                                                            class="form-check-input appearance-none p-0 h-4 w-4 rounded-sm bg-white focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                                            type="checkbox"
+                                                            name="{{ filter_value.param_name }}"
+                                                            value="{{ filter_value.value }}"
+                                                            id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                                                            {% if filter_value.active -%}checked{%- endif %}
+                                                            {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                                                      >
+                                                      <label class="cursor-pointer" for="Filter-{{ filter.param_name }}-{{ forloop.index }}">{{ filter_value.label }}</label>
+                                                      </li>
+                                                      {%- endfor -%}
+                                                </ul>
+                                    
+                                                <div class="filter-group-display__submit">
+                                                      <input class="tracking-wider px-4 py-0 cursor-pointer tab_active" type="submit" value="Apply" style="height: 2rem; border: none;">
+                                                </div>
+            
+            
+                                          {%- when 'price_range' -%}
+                                                <div class="filter-group-display__price-range mb-8">
+                                                
+                                                      <div class="price-input justify-center">
+                                                            <div class="field">
+                                                                  <label class="block text-center" for="Filter-{{ filter.min_value.param_name }}" style="font-size: 0.8rem;">Min</label>
+                                                                  <div class="flex items-center">
+                                                                  <span class="m-2">{{ cart.currency.symbol }}</span>
+                                                                  <input 
+                                                                  type="number"
+                                                                  
+                                                                  id="Filter-{{ filter.min_value.param_name }}" 
+                                                                  class="input-min" 
+                                                                  {% if filter.min_value.value -%}
+                                                                  value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                                  {%- endif %}
+                                                                  placeholder="0"
+                                                                  min="0"
+                                                                  max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                                  style="width: 91px;">
+                                                                  </div>
+                                                            </div>
+                                                            <div class="separator"> - </div>
+                                                            <div class="field">
+                                                                  <label class="block text-center" for="Filter-{{ filter.max_value.param_name }}" style="font-size: 0.8rem;">Max</label>
+                                                                  <div class="flex items-center">
+                                                                  <span class="m-2">{{ cart.currency.symbol }}</span>
+                                                                  <input
+                                                                  
+                                                                  id="Filter-{{ filter.max_value.param_name }}"
+                                                                  {% if filter.max_value.value -%}
+                                                                  value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                                                                  {%- endif %}
+                                                                  type="number" 
+                                                                  class="input-max" 
+                                                                  placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                                  min="0"
+                                                                  max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                                  style="width: 91px;">
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+                                                      <div class="price-slider">
+                                                            <div class="progress"></div>
+                                                      </div>
+
+                                                      <div class="range-input">
+                                                            <input id="Filter-{{ filter.min_value.param_name }}" name="{{ filter.min_value.param_name }}"  
+                                                            type="range" 
+                                                            class="range-min" 
+                                                            step="1" 
+                                                            min="0" 
+                                                            max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" 
+                                                            {% if filter.min_value.value -%}
+                                                            value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                            {% else %}
+                                                            value="0"
+                                                            {%- endif %}
+                                                            >
+                                                                  
+                                                            <input  id="Filter-{{ filter.max_value.param_name }}" 
+                                                            name="{{ filter.max_value.param_name }}" 
+                                                            type="range" 
+                                                            class="range-max" 
+                                                            step="1" 
+                                                            min="0" 
+                                                            max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" 
+                                                            {% if filter.max_value.value -%}
+                                                            value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                                                            {% else %}
+                                                            value="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                            {%- endif %}
+                                                            >
+                                                      </div>
+                                                      <p class="text-xs mt-4">Use Slider or enter min and max price</p>
+                                                
+                                                </div>
+                                    
+                                                <div class="filter-group-display__submit">
+                                                      <input class="tracking-wider px-4 py-0 cursor-pointer tab_active" type="submit" value="Apply" style="height: 2rem; border: none;">
+                                                </div>
+                                    {%- endcase -%}
+                              </div>
+                        </div>
+                  {%- endfor -%}
+            </form>
+           
+                  <div class="active-filters relative block py-4">
+                    <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}" class="active-filters__clear tracking-wider inline-block px-4 py-4 cursor-pointer p-[0.5rem] tab_active">Clear all</a>
+                  
+                    {%- for filter in collection.filters -%}
+                      {%- if filter.type == "price_range" -%}
+                        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                          <div class="my-4">
+                              <a class="mx-2 active-filters__remove-filter block tracking-wider" href="{{ filter.url_to_remove }}">
+                                    {%- assign min_value = filter.min_value.value | default: 0 -%}
+                                    {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                                    {{ min_value | money }} - {{ max_value | money }} X
+                              </a>
+                          </div>
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- for filter_value in filter.active_values -%}
+                          <div class="my-4">
+                              <a class="active-filters__remove-filter block tracking-wider" href="{{ filter_value.url_to_remove }}">
+                                    {{ filter.label }}: {{ filter_value.label }} X
+                              </a>
+                          </div>
+                        {%- endfor -%}
+                      {%- endif- %}
+                    {%- endfor -%}
+                  </div>
+
+      </div>
+
+</div>
+    </div>
     </div>
 
 
+  <div  id="main-filter" class="max-w-[1320px] m-auto overflow-hidden px-6 pt-8 pb-16" {% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
   <div class="w-full grid sm:grid-cols-2 md:grid-cols-2 {{section.settings.column_design}} gap-x-6 gap-y-5 lg:gap-y-12" style="grid-template-rows:fit-content(100%)">
     {% for product in collection.products %}
       {% render 'layout-product', product: product,
       show_vendor:section.settings.show_vendor 
       show_rating: section.settings.show_rating 
-      product_box_color:section.settings.product_box_color
-      box_shadow: section.settings.box_shadow
-      box_border: section.settings.box_border
-      show_line: section.settings.show_line
-      product_point_color: section.settings.product_point_color
-      product_title_align: section.settings.product_title_align
       product_title_color: section.settings.product_title_color
       point_color:section.settings.point_color
-       mouseover_image:section.settings.mouseover_image
+      product_point_color:section.settings.product_point_color
+      mouseover_image:section.settings.mouseover_image
+      show_symbol:section.settings.show_symbol
+      base_color:section.settings.base_color
+      quickview_title_color:section.settings.quickview_title_color
+      qv_button_color_hover:section.settings.qv_button_color_hover
+      qv_color_button:section.settings.qv_color_button
+      active_border_color:section.settings.active_border_color
+      qv_mouseover_color:section.settings.qv_mouseover_color
+      iconbox1:settings.iconbox1
+      iconbox2:settings.iconbox2
+      iconbox3:settings.iconbox3
       %}
     {% endfor %}
   </div>
@@ -40,7 +307,61 @@
 </div>
 
 
+    
 
+
+<script>
+  
+      const rangeInput = document.querySelectorAll(".range-input input"),
+      priceInput = document.querySelectorAll(".price-input input"),
+      progress = document.querySelector(".price-slider .progress");
+
+      let priceGap = 5;
+
+      rangeInput.forEach( input =>{
+            input.addEventListener("input", e =>{
+                  let minVal = parseInt(rangeInput[0].value),
+                  maxVal = parseInt(rangeInput[1].value);
+
+                  if(maxVal - minVal < priceGap ){
+                        if(e.target.className==="range-min"){
+                              rangeInput[0].value = maxVal - priceGap;
+                        }else{
+                              rangeInput[1].value = minVal + priceGap;
+                        }
+                        
+                  }else{
+                        priceInput[0].value = minVal;
+                        priceInput[1].value = maxVal;
+                        progress.style.left= (minVal / rangeInput[0].max)* 100 + "%";
+                        progress.style.right= 10 - (maxVal / rangeInput[1].max)* 100 + "%";
+                  }
+
+                 
+            });
+      });
+
+      priceInput.forEach( input =>{
+            input.addEventListener("input", e =>{
+                  let minVal = parseInt(priceInput[0].value),
+                  maxVal = parseInt(priceInput[1].value);
+
+                  if(maxVal - minVal >= priceGap ){
+                        if(e.target.className === "input-min"){
+                              rangeInput[0].value = minVal;
+                              progress.style.left= (minVal / rangeInput[0].max)* 100 + "%";
+                        }else{
+                              rangeInput[1].value = maxVal;
+                              progress.style.right= 100 - (maxVal / rangeInput[1].max)* 100 + "%";
+                        }
+                        
+                  }
+
+                  
+            });
+      });
+
+</script>
 
 {% schema %}
 {
@@ -84,6 +405,26 @@
   "default":"fifth_color"
  },
  {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":4,
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":4,
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+ {
   "type":"select",
   "id":"column_design",
   "label":"Column selector",
@@ -107,21 +448,16 @@
 },
 {
   "type": "checkbox",
+  "id": "show_symbol",
+  "default": true,
+  "label": "show metafield symbol",
+  "info" : "You must set metafield"
+},
+{
+  "type": "checkbox",
   "id": "show_rating",
   "default": true,
   "label": "show rating"
-},
-{
-  "type": "checkbox",
-  "id": "box_shadow",
-  "default": true,
-  "label": "Box Shadow"
-},
-{
-  "type": "checkbox",
-  "id": "show_line",
-  "default": false,
-  "label": "Show the box line"
 },
 {
   "type": "checkbox",
@@ -129,7 +465,7 @@
   "default": false,
   "label": "Animation turn on"
   },
-  {
+    {
     "type": "checkbox",
     "id": "mouseover_image",
     "default": true,
@@ -143,7 +479,7 @@
 {
   "type":"select",
   "id":"filter_box_color",
-  "label":"Filter box color",
+  "label":"Sort box color",
   "options":[
      {
         "value":"first_color",
@@ -170,95 +506,169 @@
       "label":"Transparent Color"
     }
   ],
+  "info":"Product sortbox color",
   "default":"forth_color"
  },
+{
+  "type": "color",
+  "id": "filter_selector",
+  "label": "Filter Box color",
+  "info":" dorp down filterbox color",
+  "default": "#1878B9"
+},
+ {
+  "type": "color",
+  "id": "filter_background",
+  "label": "Filter Tag Color",
+  "info": "Filter Tag colors in the filter box",
+  "default": "#Fff"
+},
+{
+  "type": "color",
+  "id": "filter_title_bg",
+  "label": "Filter Title border color",
+  "info":" dorp down filterbox border color",
+  "default": "#fafafa"
+},
  {
   "type": "color",
   "id": "filter_font_color",
   "label": "Filter Font color",
+  "info":" dorp down filterbox font color",
   "default": "#1878B9"
+},
+{
+  "type": "color",
+  "id": "active_button_color",
+  "label": "Secondary Color",
+   "info":" Promotion badge, dropdown filter buttons, filter buttons, and sale badges",
+  "default": "#6F665D"
+},
+{
+  "type": "color",
+  "id": "active_border_color",
+  "label": "Secondary Font Color",
+  "info":" Secondary box font colors",
+  "default": "#fff"
 },
 {
   "type": "header",
   "content": "Product settings",
   "info": "Setting product grid color and tite align"
 },
-{
-  "type":"select",
-  "id":"product_box_color",
-  "label":"Product box color",
-  "options":[
-     {
-        "value":"first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"third_color",
-        "label":"Third Color"
-     },
-     {
-      "value":"forth_color",
-      "label":"Forth Color"
-    },
-    {
-      "value":"fifth_color",
-      "label":"Fifth Color"
-    },
-    {
-      "value":"background_transparent",
-      "label":"Transparent Color"
-    }
-  ],
-  "default":"forth_color"
- },
- {
-  "type":"select",
-  "id":"product_title_align",
-  "label":"product title align",
-  "options":[
-     {
-        "value":"font_left",
-        "label":"Left"
-     },
-     {
-        "value":"font_right",
-        "label":"Right"
-     },
-     {
-        "value":"font_center",
-        "label":"Center"
-     }
-  ],
-  "default":"font_center"
- },
  {
   "type": "color",
   "id": "product_title_color",
   "label": "Product title color",
+  "info": "Product Title, Price, and metafild symbol font colors",
   "default": "#4b4b4b"
 },
  {
   "type": "color",
   "id": "point_color",
-  "label": "Product Sub color",
+  "label": "Symbol border color",
+  "info": "Three metafild symbol border colors",
   "default": "#F9E7D3"
 },
 {
-  "type": "color",
-  "id": "box_border",
-  "label": "Box border color",
-  "default": "#1878B9"
+    "type": "color",
+    "id":"product_point_color",
+    "label": "Product point color",
+    "info": "Discount Price Tag Colors",
+    "default": "#C33131"
 },
- {
-  "type": "color",
-  "id":"product_point_color",
-  "label": "Product point color",
-  "default": "#C33131"
-}
+{
+                  "type": "header",
+                  "content": "Quickview Settings"
+                  },
+                  {
+                  "type":"select",
+                  "id":"qv_color_button",
+                  "label":"Quickview button color",
+                  "options":[
+                  {
+                        "value":"first_color",
+                        "label":"First Color"
+                  },
+                  {
+                        "value":"second_color",
+                        "label":"Second Color"
+                  },
+                  {
+                        "value":"third_color",
+                        "label":"Third Color"
+                  },
+                  {
+                        "value":"forth_color",
+                        "label":"Forth Color"
+                  },
+                  {
+                        "value":"fifth_color",
+                        "label":"Fifth Color"
+                  },
+                  {
+                        "value":"background_transparent",
+                        "label":"Transparent Color"
+                  }
+                  ],
+                  "default":"second_color"
+                  },
+                  {
+                  "type":"select",
+                  "id":"qv_button_color_hover",
+                  "label":"Quickview button moseover color",
+                  "options":[
+                  {
+                        "value":"button_first_color",
+                        "label":"First Color"
+                  },
+                  {
+                        "value":"button_second_color",
+                        "label":"Second Color"
+                  },
+                  {
+                        "value":"button_third_color",
+                        "label":"Third Color"
+                  },
+                  {
+                        "value":"button_forth_color",
+                        "label":"Forth Color"
+                  },
+                  {
+                        "value":"button_fifth_color",
+                        "label":"Fifth Color"
+                  },
+                  {
+                        "value":"button_background_transparent",
+                        "label":"Transparent Color"
+                  }
+                  ],
+                  "default":"button_third_color"
+                  },
+                  {
+                  "type": "color",
+                  "id": "qv_border_color",
+                  "label": "Button border color",
+                  "default": "#6F665D"
+                  },
+                  {
+                        "type": "color",
+                        "id": "base_color",
+                        "label": "Quickview text color",
+                        "default": "#926D5A"
+                  },
+                  {
+                        "type": "color",
+                        "id": "quickview_title_color",
+                        "label": "Quick view Title Color",
+                        "default": "#926D5A"
+                  },
+                  {
+                  "type": "color",
+                  "id": "qv_mouseover_color",
+                  "label": "Button mouseover color",
+                  "default": "#6F665D"
+                  }
 ]
 }
 {% endschema %}

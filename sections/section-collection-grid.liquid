@@ -1,0 +1,497 @@
+
+<div class="{{section.settings.color_schema}}">
+      <section class="xl:max-w-[1320px] px-4 md:px-8 mx-auto"
+            style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" 
+            {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
+                  {%- comment -%} headline {%- endcomment -%}
+                  <div class="md:mx-[1rem] flex flex-col">
+                        <div class="Left_titlebox">
+                              {% if section.settings.headline != blank %}
+                              <h1 class="{{section.settings.title_align}} mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                              {{ section.settings.headline }}
+                              </h1>
+                              {% endif %}
+                              <div class="subfont_size {{section.settings.title_align}} my-8 leading-8 tracking-wider" style="color:{{section.settings.color_sub_title}};">
+                              {{ section.settings.text }}
+                              </div>  
+                        </div>
+                  </div>
+
+                  {%- comment -%} Contents {%- endcomment -%}
+                  <div class="flex flex-col-reverse {{section.settings.img_array}} gap-8 ">
+                  <div class="w-full lg:w-1/2 collection-grid grid grid-cols-2 md:grid-cols-2 gap-4"> 
+                        {% assign collection = collections[section.settings.collection_featured] %}
+  
+                        {% unless collection == blank %}
+                        {% for product in collection.products limit:4 %}
+                        {% render 'layout-product-photo-collection', product: product, 
+                              show_rating: section.settings.show_rating
+                              mouseover_image:section.settings.mouseover_image
+                              product_font_size:section.settings.product_font_size
+                              product_title_color: section.settings.product_title_color
+                              product_point_color: section.settings.product_point_color
+                              point_color: section.settings.point_color
+                              show_symbol:section.settings.show_symbol
+                              iconbox1:settings.iconbox1
+                              iconbox2:settings.iconbox2
+                              iconbox3:settings.iconbox3
+                        %}
+                        {% endfor %}
+                        {% else %}
+                        {% for i in (1..4) %}
+                        <div>
+                              {% capture placeholder %}product-{{ i }}{% endcapture %} 
+                              {{ placeholder | placeholder_svg_tag: 'w-full h-full border bg-white' }}
+                        </div>
+                        {% endfor %}
+                        {% endunless %}
+                  </div>
+                  <div class="w-full lg:w-1/2 h-full photo-grid flex flex-col justify-between mt-[2.3rem]">
+                  <div class="collection-photo">
+                        {% if section.settings.image != blank %}
+                              <img 
+                               srcset="{%- if section.settings.image.width >= 550 -%}{{ section.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                                    {%- if section.settings.image.width >= 720 -%}{{ section.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+                                    {%- if section.settings.image.width >= 990 -%}{{ section.settings.image | image_url: width: 990 }} 990w,{%- endif -%}
+                                    {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                    {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                    {%- if section.settings.image.width >= 2200 -%}{{ section.settings.image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                                    {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                                    {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
+                              src="{{ section.settings.image | image_url: width: 1500 }}"
+                              sizes="(min-width: {{ settings.page_width }}px) {% if section.blocks.size == 1 %}calc({{ settings.page_width }}px - 100px){% else %}{{ settings.page_width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if section.blocks.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                              alt="{{ section.settings.image.alt | escape }}"
+                              loading="lazy"
+                              width="{{ section.settings.image.width }}"
+                              height="{{ section.settings.image.height }}"
+                              class="w-full h-full md:h-[40rem] lg:h-[50rem] object-cover object-center overflow-hidden rounded-sm">
+                        {%- else -%}
+                        <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://dummyimage.com/1000x1124">
+                        {% endif %}
+                  </div>
+                  <div class="photo-textbox flex justify-between items-center py-2 mt-3">
+                        <p class="py-2 text-lg tracking-wider {{section.settings.font_style}} " style="color:{{section.settings.collection_color}};">{{section.settings.collection_title}}</p>
+                        {%- if section.settings.button-text != blank -%}
+                              <a href="{{ section.settings.button-url }}"
+                              class="{{section.settings.color_button}} {{section.settings.button_text_hover}} {{section.settings.button_color_hover}} tracking-widest text-center outline-none transition duration-100 {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+                              {{section.settings.button-text }}</a>
+                        {% endif %}
+                        
+                  </div> 
+                    <p class="py-2 text-sm tracking-wider" style="color:{{ section.settings.desc_font_color }}"> {{ section.settings.collection_description }} </p>
+                  </div>
+                  
+            </div>
+      
+      </section>
+</div>
+
+{%- schema -%}
+{
+"name": "Photo Collection",
+"class": "shopify-section-vue",
+"settings": [
+{
+  "type": "header",
+  "content": "General settings"
+},
+{
+        "type": "select",
+        "id": "color_schema",
+        "label": "Background color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "background_transparent"
+},
+{
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": false,
+        "label": "Animation turn on"
+},
+{
+    "type": "checkbox",
+    "id": "show_symbol",
+    "default": true,
+    "label": "Metafield symbol"
+  },
+{
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": true,
+      "label": "show rating"
+},
+  {
+    "type": "checkbox",
+    "id": "mouseover_image",
+    "default": true,
+    "label": "Show mouseover Image"
+},
+{
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top control",
+        "default": 4,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+},
+{
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom control",
+        "default": 4,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+},
+  {
+    "type":"select",
+    "id":"img_array",
+    "label":"Image location",
+    "options":[
+       {
+          "value":"left_img",
+          "label":"Left"
+       },
+       {
+          "value":"right_img",
+          "label":"Right"
+       }
+    ],
+    "default":"left_img"
+},
+{
+      "type": "header",
+      "content": "Title settings",
+      "info": "Section Title and color settings"
+},
+  {
+      "type":"select",
+      "id":"title_align",
+      "label":"Title align",
+      "options":[
+                {
+                "value":"font_left",
+                "label":"Left"
+                },
+                {
+                "value":"font_right",
+                "label":"Right"
+                },
+                {
+                "value":"font_center",
+                "label":"Center"
+                }
+              ],
+    "default":"font_center"
+},
+{
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.headline",
+      "default": "Headline"
+},
+{
+      "type": "color",
+      "id": "color_title",
+      "label": "Section title color",
+      "default": "#4b4b4b"
+},
+{
+      "type": "richtext",
+      "id": "text",
+      "label": "t:common.text"
+},
+{
+      "type": "color",
+      "id": "color_sub_title",
+      "label": "Section Description color",
+      "default": "#4b4b4b"
+},
+{
+      "type": "header",
+      "content": "Collection settings",
+      "info": "Collection product settings"
+},
+{
+      "type": "collection",
+      "id": "collection_featured",
+      "label": "t:common.collection"
+},
+{
+      "type": "range",
+      "id": "product_font_size",
+      "label": "Prodcut Font size",
+      "default":1,
+      "min": 0.1,
+      "max": 3,
+      "step": 0.1,
+      "unit": "rem"
+},
+{
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product title color",
+      "default": "#4b4b4b"
+},
+{
+      "type": "color",
+      "id":"product_point_color",
+      "label": "Product point color",
+      "default": "#C33131"
+},
+
+{
+      "type": "header",
+      "content": "Image settings"
+},
+{
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+},
+{
+            "type":"select",
+            "id":"font_style",
+            "label":"Font Style",
+            "options":[
+              {
+                  "value":"font_light",
+                  "label":"Font light"
+              },
+              {
+                  "value":"font_normal",
+                  "label":"Font normal"
+              },
+              {
+                  "value":"font_bold",
+                  "label":"Font bold"
+              },
+              {
+                  "value":"font_italic",
+                  "label":"Font italic"
+              },
+              {
+                  "value":"font_italic_light",
+                  "label":"Font italic light"
+              },
+              {
+                  "value":"font_italic_bold",
+                  "label":"Font italic bold"
+              }
+            ],
+            "default":"font_normal"
+},
+{
+      "type": "text",
+      "id": "collection_title",
+      "label": "Collection Title",
+      "default": "Popular Collection"
+},
+  {
+      "type": "text",
+      "id": "collection_description",
+      "label": "Collection Description",
+      "default": "Lorem ipsum dolor sit amet. Aut inventore temporibus At delectus quaerat ea mollitia illo ut dolor quam eos distinctio tempore est quia sint?"
+},
+{
+      "type": "color",
+      "id": "collection_color",
+      "label": "Title color",
+      "default": "#4b4b4b"
+},
+{
+      "type": "color",
+      "id": "desc_font_color",
+      "label": "Description color",
+      "default": "#4b4b4b"
+},
+{
+      "type": "header",
+      "content": "Button settings"
+},
+{
+   "type":"select",
+   "id":"button_size",
+   "label":"Button size",
+   "options":[
+      {
+         "value":"button_small",
+         "label":"Small"
+      },
+      {
+         "value":"button_medium",
+         "label":"Medium"
+      },
+      {
+         "value":"button_large",
+         "label":"Large"
+      },
+      {
+       "value":"button_xlarge",
+       "label":"Extra large"
+     }
+   ],
+   "default":"button_medium"
+  },
+  {
+   "type": "checkbox",
+   "id": "button_round_off",
+   "default": false,
+   "label": "Button round"
+ },
+{
+"type": "url",
+"id": "button-url",
+"label": "t:common.button.url"
+},
+{
+"type": "text",
+"id": "button-text",
+"label": "t:common.button.text",
+"default": "Button"
+},
+{
+"type": "header",
+"content": "Button color"
+},
+{
+  "type":"select",
+  "id":"color_button",
+  "label":"Button color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+        "value":"forth_color",
+        "label":"Forth Color"
+     },
+     {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+     },
+     {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+     }
+  ],
+  "default":"second_color"
+},
+{
+"type": "color",
+"id": "border_color",
+"label": "Button border color",
+"default": "#6F665D"
+},
+{
+"type": "header",
+"content": "Button mouse over"
+},
+{
+  "type":"select",
+  "id":"button_color_hover",
+  "label":"Button moseover color",
+  "options":[
+     {
+        "value":"button_first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"button_second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"button_third_color",
+        "label":"Third Color"
+     },
+     {
+        "value":"button_forth_color",
+        "label":"Forth Color"
+     },
+     {
+        "value":"button_fifth_color",
+        "label":"Fifth Color"
+     },
+     {
+        "value":"button_background_transparent",
+        "label":"Transparent Color"
+     }
+  ],
+  "default":"button_third_color"
+},
+{
+      "type":"select",
+      "id":"button_text_hover",
+      "label":"Button moseover color",
+      "options":[
+            {
+                  "value":"button_first_mouseover_color",
+                  "label":"First Color"
+            },
+            {
+                  "value":"button_second_mouseover_color",
+                  "label":"Second Color"
+            },
+            {
+                  "value":"button_third_mouseover_color",
+                  "label":"Third Color"
+            },
+            {
+                  "value":"button_forth_mouseover_color",
+                  "label":"Forth Color"
+            },
+            {
+                  "value":"button_fifth_mouseover_color",
+                  "label":"Fifth Color"
+            },
+            {
+                  "value":"button_point_mouseover_color",
+                  "label":"Point Color"
+            }
+      ],
+      "default":"button_point_mouseover_color"
+}
+],
+"presets": [
+      {
+      "name": "Photo Collection",
+      "category": "Collection"
+      }
+]
+}
+{%- endschema -%}

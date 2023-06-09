@@ -1,0 +1,463 @@
+<div class="{{section.settings.color_schema}}"
+{% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}
+style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" >
+
+    <div class="xl:max-w-[1320px] px-4 md:px-8 mx-auto">
+      <div class=" grid grid-col md:grid-cols-2 gap-16 {{section.settings.text_align}} w-full">
+            {% for block in section.blocks %}
+                  {%- case block.type -%}
+                        {%- when 'left_block' -%}
+                        <div class="left_block">
+                        {%- comment -%} Text Area {%- endcomment -%}
+                        <h1 class="font-bold mb-4 md:mb-3 pb-3" style=" {% if block.settings.title_border == true%} border-bottom:1px solid #ccc; {% endif %} color:{{block.settings.first_header_color}}; font-size:{{block.settings.first_header_font_size}}rem !important;">
+                        {{block.settings.first_headline}}
+                        </h1>
+                        
+                        <div class="leading-relaxed py-8" style="color:{{block.settings.first_desc_color}}; font-size: {{block.settings.first_desc_font_size}}rem;">
+                        {{block.settings.first_text}}
+                        </div>
+
+                        {%- comment -%} Image Area {%- endcomment -%}
+                        <div class="w-full overflow-hidden">
+                        {% if block.settings.first_image_picker != blank %}
+                              <img 
+                                    srcset="{%- if block.settings.first_image_picker.width >= 550 -%}{{ block.settings.first_image_picker | image_url: width: 550 }} 550w,{%- endif -%}
+                                    {%- if block.settings.first_image_picker.width >= 720 -%}{{ block.settings.first_image_picker | image_url: width: 720 }} 720w,{%- endif -%}
+                                    {%- if block.settings.first_image_picker.width >= 990 -%}{{ block.settings.first_image_picker | image_url: width: 990 }} 990w,{%- endif -%}
+                                    {%- if block.settings.first_image_picker.width >= 1100 -%}{{ block.settings.first_image_picker | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                    {%- if block.settings.first_image_picker.width >= 1500 -%}{{ block.settings.first_image_picker | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                    {%- if block.settings.first_image_picker.width >= 2200 -%}{{ block.settings.first_image_picker | image_url: width: 2200 }} 2200w,{%- endif -%}
+                                    {%- if block.settings.first_image_picker.width >= 3000 -%}{{ block.settings.first_image_picker | image_url: width: 3000 }} 3000w,{%- endif -%}
+                                    {{ block.settings.first_image_picker | image_url }} {{ block.settings.first_image_picker.width }}w"
+                                    src="{{ block.settings.first_image_picker | image_url: width: 1500 }}"
+                                    sizes="(min-width: {{ block.page_width }}px) {% if section.blocks.size == 1 %}calc({{ block.page_width }}px - 100px){% else %}{{ block.page_width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if section.blocks.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                                    alt="{{ block.settings.first_image_picker.alt | escape }}"
+                                    loading="lazy"
+                                    width="{{ block.settings.first_image_picker.width }}"
+                                    height="{{ block.settings.first_image_picker.height }}"
+                                    class="w-full object-cover object-center overflow-hidden">
+                              {%- else -%}
+                                    <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://dummyimage.com/1000x1124">
+                              {% endif %}
+                        </div>
+                        </div>
+
+                        {%- when 'right_block' -%}
+                        <div class="right_block">
+                        {%- comment -%} Image Area {%- endcomment -%}
+                        <div class="w-full overflow-hidden">
+                        {% if block.settings.second_image_picker != blank %}
+                              <img 
+                                    srcset="{%- if block.settings.second_image_picker.width >= 550 -%}{{ block.settings.second_image_picker | image_url: width: 550 }} 550w,{%- endif -%}
+                                    {%- if block.settings.second_image_picker.width >= 720 -%}{{ block.settings.second_image_picker | image_url: width: 720 }} 720w,{%- endif -%}
+                                    {%- if block.settings.second_image_picker.width >= 990 -%}{{ block.settings.second_image_picker | image_url: width: 990 }} 990w,{%- endif -%}
+                                    {%- if block.settings.second_image_picker.width >= 1100 -%}{{ block.settings.second_image_picker | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                    {%- if block.settings.second_image_picker.width >= 1500 -%}{{ block.settings.second_image_picker | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                    {%- if block.settings.second_image_picker.width >= 2200 -%}{{ block.settings.second_image_picker | image_url: width: 2200 }} 2200w,{%- endif -%}
+                                    {%- if block.settings.second_image_picker.width >= 3000 -%}{{ block.settings.second_image_picker | image_url: width: 3000 }} 3000w,{%- endif -%}
+                                    {{ block.settings.second_image_picker | image_url }} {{ block.settings.second_image_picker.width }}w"
+                                    src="{{ block.settings.image | image_url: width: 1500 }}"
+                                    sizes="(min-width: {{ settings.page_width }}px) {% if block.blocks.size == 1 %}calc({{ block.page_width }}px - 100px){% else %}{{ block.page_width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if section.blocks.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                                    alt="{{ block.settings.second_image_picker.alt | escape }}"
+                                    loading="lazy"
+                                    width="{{ block.settings.second_image_picker.width }}"
+                                    height="{{ block.settings.second_image_picker.height }}"
+                                    class="w-full object-cover object-center overflow-hidden">
+                              {%- else -%}
+                                    <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://dummyimage.com/1000x1124">
+                        {% endif %}
+                        </div>
+                        {%- comment -%} Text Area {%- endcomment -%}
+                        <h1 class="font-bold my-4 md:my-3 pb-3" style="{% if block.settings.title_border2 == true%} border-bottom:1px solid #ccc; {% endif %} color:{{block.settings.second_header_color}}; font-size:{{block.settings.second_font_size}}rem !important;">
+                        {{block.settings.second_headline}}
+                        </h1>
+                        <div class="leading-relaxed" style="color:{{block.settings.second_desc_color}}; font-size: {{block.settings.second_desc_font_size}}rem;">
+                        {{block.settings.second_text}}
+                        </div>
+                        {%- comment -%} Button Area {%- endcomment -%}
+                        {%- if block.settings.button-text != blank -%}
+                              <div class="py-8 inline-block">
+                                    <a href="{{ block.settings.button-url }}"
+                                    class="{{block.settings.color_button}} {{block.settings.button_text_hover}} {{block.settings.button_color_hover}} tracking-widest text-center outline-none transition duration-100 {{block.settings.button_size}} {% if block.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{block.settings.border_color}}; color:{{block.settings.border_color}};">
+                                    {{block.settings.button-text }}</a>
+                              </div>
+                        {% endif %}
+                        </div>
+                  {%- endcase -%}
+            {% endfor %}
+      </div>
+    </div>
+</div>
+
+
+{%- schema -%}
+  {
+  "name": "Photo Banner",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+  "type": "header",
+  "content": "General settings"
+},
+{
+        "type": "select",
+        "id": "color_schema",
+        "label": "Background color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "background_transparent"
+      },
+      {
+            "type": "checkbox",
+            "id": "animation_setting",
+            "default": false,
+            "label": "Animation turn on"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top control",
+        "default": 4,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      },
+      {
+            "type": "range",
+            "id": "padding_bottom",
+            "label": "Padding Bottom control",
+            "default": 4,
+            "min": 0,
+            "max": 20,
+            "step": 1,
+            "unit": "rem"
+      },
+      {
+      "type":"select",
+      "id":"text_align",
+      "label":"Text align",
+      "options":[
+      {
+            "value":"font_left",
+            "label":"Left"
+      },
+      {
+            "value":"font_right",
+            "label":"Right"
+      },
+      {
+            "value":"font_center",
+            "label":"Center"
+      }
+      ],
+      "default":"font_left"
+      }
+  ],
+  "blocks": [
+      {
+            "type": "left_block",
+            "name": "Image Block",
+            "limit": 1,
+            "settings": [
+                  {
+                        "type": "image_picker",
+                        "id": "first_image_picker",
+                        "label": "Image"
+                  },
+                  {
+                        "type": "checkbox",
+                        "id": "title_border",
+                        "default": true,
+                        "label": "Border Bottom"
+                  },
+                  {
+                        "type": "range",
+                        "id": "first_header_font_size",
+                        "label": "title Font size",
+                        "default":2.3,
+                        "min": 0.1,
+                        "max": 4,
+                        "step": 0.1,
+                        "unit": "rem"
+                  },
+                  {
+                        "type": "text",
+                        "id": "first_headline",
+                        "label": "t:common.headline",
+                        "default": "Headline"
+                  },
+                  {
+                        "type": "color",
+                        "id": "first_header_color",
+                        "label": "Section title color",
+                        "default": "#4b4b4b"
+                  },
+                  {
+                        "type": "range",
+                        "id": "first_desc_font_size",
+                        "label": "Description Font size",
+                        "default":0.9,
+                        "min": 0.1,
+                        "max": 4,
+                        "step": 0.1,
+                        "unit": "rem"
+                  },
+                  {
+                        "type": "richtext",
+                        "id": "first_text",
+                        "label": "t:common.text"
+                  },
+                  {
+                        "type": "color",
+                        "id": "first_desc_color",
+                        "label": "Section Description color",
+                        "default": "#4b4b4b"
+                  }
+
+            ]
+      },
+      {
+            "type": "right_block",
+            "name": "Image Block with button",
+            "limit": 1,
+            "settings": [
+                  {
+                        "type": "image_picker",
+                        "id": "second_image_picker",
+                        "label": "Image"
+                  },
+                  {
+                        "type": "checkbox",
+                        "id": "title_border2",
+                        "default": false,
+                        "label": "Border Bottom"
+                  },
+                  {
+                        "type": "range",
+                        "id": "second_font_size",
+                        "label": "title Font size",
+                        "default":2.3,
+                        "min": 0.1,
+                        "max": 4,
+                        "step": 0.1,
+                        "unit": "rem"
+                  },
+                  {
+                        "type": "text",
+                        "id": "second_headline",
+                        "label": "t:common.headline",
+                        "default": "Headline"
+                  },
+                  {
+                        "type": "color",
+                        "id": "second_header_color",
+                        "label": "Section title color",
+                        "default": "#4b4b4b"
+                  },
+                  {
+                        "type": "range",
+                        "id": "second_desc_font_size",
+                        "label": "Description Font size",
+                        "default":0.9,
+                        "min": 0.1,
+                        "max": 4,
+                        "step": 0.1,
+                        "unit": "rem"
+                  },
+                  {
+                        "type": "richtext",
+                        "id": "second_text",
+                        "label": "t:common.text"
+                  },
+                  {
+                        "type": "color",
+                        "id": "second_desc_color",
+                        "label": "Section Description color",
+                        "default": "#4b4b4b"
+                  },
+                  {
+                  "type":"select",
+                  "id":"button_size",
+                  "label":"Button size",
+                  "options":[
+                  {
+                  "value":"button_small",
+                  "label":"Small"
+                  },
+                  {
+                  "value":"button_medium",
+                  "label":"Medium"
+                  },
+                  {
+                  "value":"button_large",
+                  "label":"Large"
+                  },
+                  {
+                  "value":"button_xlarge",
+                  "label":"Extra large"
+            }
+            ],
+                  "default":"button_medium"
+            },
+            {
+            "type": "checkbox",
+            "id": "button_round_off",
+            "default": false,
+            "label": "Button round"
+            },
+            {
+            "type": "url",
+            "id": "button-url",
+            "label": "t:common.button.url"
+            },
+            {
+            "type": "text",
+            "id": "button-text",
+            "label": "t:common.button.text",
+            "default": "Button"
+            },
+            {
+            "type":"select",
+            "id":"color_button",
+            "label":"Button color",
+            "options":[
+            {
+                  "value":"first_color",
+                  "label":"First Color"
+            },
+            {
+                  "value":"second_color",
+                  "label":"Second Color"
+            },
+            {
+                  "value":"third_color",
+                  "label":"Third Color"
+            },
+            {
+                  "value":"forth_color",
+                  "label":"Forth Color"
+            },
+            {
+                  "value":"fifth_color",
+                  "label":"Fifth Color"
+            },
+            {
+                  "value":"background_transparent",
+                  "label":"Transparent Color"
+            }
+            ],
+            "default":"second_color"
+            },
+            {
+            "type": "color",
+            "id": "border_color",
+            "label": "Button border color",
+            "default": "#6F665D"
+            },
+            {
+            "type":"select",
+            "id":"button_color_hover",
+            "label":"Button moseover color",
+            "options":[
+            {
+                  "value":"button_first_color",
+                  "label":"First Color"
+            },
+            {
+                  "value":"button_second_color",
+                  "label":"Second Color"
+            },
+            {
+                  "value":"button_third_color",
+                  "label":"Third Color"
+            },
+            {
+                  "value":"button_forth_color",
+                  "label":"Forth Color"
+            },
+            {
+                  "value":"button_fifth_color",
+                  "label":"Fifth Color"
+            },
+            {
+                  "value":"button_background_transparent",
+                  "label":"Transparent Color"
+            }
+            ],
+            "default":"button_third_color"
+            },
+            {
+            "type":"select",
+            "id":"button_text_hover",
+            "label":"Button moseover color",
+            "options":[
+              {
+                  "value":"button_first_mouseover_color",
+                  "label":"First Color"
+              },
+              {
+                  "value":"button_second_mouseover_color",
+                  "label":"Second Color"
+              },
+              {
+                  "value":"button_third_mouseover_color",
+                  "label":"Third Color"
+              },
+              {
+                  "value":"button_forth_mouseover_color",
+                  "label":"Forth Color"
+              },
+              {
+                  "value":"button_fifth_mouseover_color",
+                  "label":"Fifth Color"
+              },
+              {
+                  "value":"button_point_mouseover_color",
+                  "label":"Point Color"
+              }
+            ],
+            "default":"button_point_mouseover_color"
+          }
+
+            ]
+      }
+  ],
+  "presets": [
+    {
+    "name": "Photo Banner",
+    "category": "Banner",
+    "blocks": [
+          {
+            "type": "left_block"
+          },
+          {
+            "type": "right_block"
+          }
+        ]
+    }
+  ]
+  }
+  {%- endschema -%}

@@ -1,23 +1,5 @@
 <style>
-.options-container::-webkit-scrollbar{
-      width: 8px;
-      background: {{section.settings.point_color | color_modify: 'alpha', 0.7 }};
-}
 
-.options-container::-webkit-scrollbar-thumb{
-      background: {{section.settings.point_color}};
-}
-
-</style>
-
-
-
-{% assign selected_variant = product.selected_or_first_available_variant %}
-{% assign featured_image = selected_variant.featured_image | default: product.featured_image %}
-{{ 'component-rating.css' | asset_url | stylesheet_tag }}
-{{ 'drop_down.css' | asset_url | stylesheet_tag }}
-
-<style>
 .shopify-payment-button__more-options {
   visibility: visible !important;
   text-decoration: underline;
@@ -32,20 +14,138 @@
 .button-shopify-buy-it-now .shopify-payment-button__button:hover{
   background:{{section.settings.base_color}};
 }
+
+.options-container::-webkit-scrollbar{
+      width: 8px;
+      background: {{section.settings.point_color | color_modify: 'alpha', 0.7 }};
+}
+
+.options-container::-webkit-scrollbar-thumb{
+      background: {{section.settings.point_color}};
+}
+
+.product_box .gallery-filter .filter-item{
+	color: {{section.settings.tab_color}};
+	font-size: 18px;
+	text-transform: uppercase;
+	display: inline-block;
+	margin:0 10px;
+	cursor: pointer;
+	border-bottom: 2px solid transparent;
+	line-height: 1.2;
+	transition: all 0.3s ease;
+}
+.product_box .gallery-filter .filter-item.active{
+	color: {{section.settings.tab_active}};
+	border-color :{{section.settings.tab_active}};
+}
+
+.customBox p{
+  font-size: .875rem !important;
+}
+
+.radio_title{
+  background-color: {{section.settings.primary_color}};
+  color:{{section.settings.primary_font_color}};
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 2px solid {{section.settings.primary_button_border}};
+}
+input[type="radio"]{
+  display: none;
+}
+
+input[type="radio"]:checked+.radio_title{
+  background-color: {{section.settings.active_button_color}};
+  color:{{section.settings.active_font_color}};
+  border: 2px solid {{section.settings.primary_button_border}};
+}
+
+.tab_buttons{
+      background-color: {{section.settings.color_button}};
+      color:{{section.settings.border_color}}; 
+      border: 1px solid {{section.settings.border_color}};
+}
+.tab_buttons:hover{
+      background-color: {{section.settings.button_color_hover}};
+      color:{{section.settings.active_font_color}}; 
+}
+.tab_active{
+  background-color: {{section.settings.active_button_color }};
+  color:{{section.settings.active_font_color | color_desaturate: 50 }};
+}
+
+.product_padding_mobile{
+    padding-top:{{ section.settings.mobile_padding_top}}rem;
+    padding-bottom:{{section.settings.mobile_padding_bottom}}rem;
+  }
+  
+@media(min-width: 767px){
+  .w3-image-sticky{
+    position: -webkit-sticky; 
+    position: sticky; 
+    top: 0;
+    padding-top: 0.5em;
+  }
+
+  .product--medias{
+    height: fit-content;
+  }
+.product_paddings{
+    padding-top:{{ section.settings.padding_top}}rem;
+    padding-bottom:{{section.settings.padding_bottom}}rem;
+}
+
+}
+
 </style>
 
-<div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
-  <div class="max-w-6xl mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
-    <div class="p-[1rem] grid grid-cols-1 lg:grid-cols-2 gap-10">
-      <div class="product--medias">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        </div>
+
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = selected_variant.featured_image | default: product.featured_image %}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'drop_down.css' | asset_url | stylesheet_tag }}
+
+<div class="product_paddings product_padding_mobile {{section.settings.color_schema}}">
+  <div class="max-w-[1320px] m-auto px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+    
+    <div class="breadcrumb">
+      {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+      {%- assign t = template | split: '.' | first -%}
+
+      <nav class="breadcrumbs inline-block p-4" role="navigation" aria-label="breadcrumbs">
+        <ol class="breadcrumbs__list flex items-center text-xs md:text-sm font-bold" style="color: {{section.settings.base_color}};">
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+
+          </p>
+          <li class="breadcrumbs__item mx-2">
+            <a class="breadcrumbs__link" href="/">Home</a>
+          </li>|
+              {%- if collection.url -%}
+                <li class="breadcrumbs__item mx-2">
+                  {{ collection.title | link_to: collection.url }}
+                </li>|
+              {%- endif -%}
+              <li class="breadcrumbs__item mx-2">
+                <a class="breadcrumbs__link cursor-pointer"  aria-current="page">{{ product.title }}</a>
+              </li>
+        </ol>
+      </nav>
+      {%- endunless -%}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="product--medias {% if section.settings.sticky_product == true %} w3-image-sticky {% endif %} ">
           <div class="block overflow-hidden">
             <div class="productSwiper">
                   <div class="swiper-wrapper">
                         {% for media in product.media %}
                               <div class="swiper-slide">
-                                    <div class="h-100 p-2">
+                                    <div class="h-100 p-2 rounded-sm">
                                           {%render 'product-media', media: media%}
                                     </div>
                               </div>
@@ -53,7 +153,7 @@
                   </div>
             </div>
           </div>
-  
+
           <div>
             <div thumbsSlider="" class="productSwiper2 overflow-hidden">
                   <div class="swiper-wrapper">
@@ -68,8 +168,11 @@
                   <div class="swiper-pagination_product m-auto" style="width: fit-content;"></div>
             </div>
           </div>
+
       </div>
-      {% form 'product', product, id: 'product-form', novalidate: 'novalidate' %}
+
+      <div class="product-information pt-4">
+        {% form 'product', product, id: 'product-form'%}
             {% for block in section.blocks %}
               {% case block.type %}
                 {% when 'vendor' %}
@@ -79,11 +182,11 @@
                   
                 {% when 'title' %}
                   {% if product.title %}
-                  <h1 class="text-2xl lg:text-3xl font-bold md:mb-4" style="color:{{section.settings.title_color}};">
+                  <h1 class="text-2xl lg:text-3xl font-bold mb-4" style="color:{{section.settings.title_color}};">
                     {{ product.title }}
                   </h1>
                   {% endif %}
-  
+
                 {% when 'price' %}
                     {% if selected_variant.available %}
                     <div class="my-3" id="price-{{section.id}}">
@@ -93,7 +196,7 @@
                             >
                                   {{selected_variant.compare_at_price | money}}
                             </span>
-                            <span class="text-2xl font-bold ml-2" style="color:{{section.settings.point_color}};">
+                            <span class="text-2xl font-bold" style="color:{{section.settings.point_color}};">
                                   {{selected_variant.price | money}}
                             </span>
   
@@ -107,6 +210,7 @@
                       {{ 'common.sold_out' | t }}
                     </div>
                   {% endif %}
+                  
                 {% when 'quantity' %}
                   <div class="flex items-end gap-4 mb-6">
                   {% if selected_variant.available %}
@@ -126,19 +230,137 @@
                     </div>
                   {% endif %}
                   </div>
+
+                {% when 'date_set' %}
+                <div class="flex my-4">
+                  <p class="line-item-property__field w-full md:w-1/2">
+                <label class="block" for="timeSet" style="font-size:0.8rem; color:{{section.settings.base_color}};"> {{ block.settings.dateset_title }} </label>
+                <input class="w-full border-none focus:outline-none" required id="timeSet" type="date" name="properties[Avilable Date]" class="w-full appearance-none focus:outline-none" 
+                style="background:transparent; border-bottom: 1px solid {{section.settings.point_color}}; height:2rem; color:{{section.settings.point_color}};">
+                </p>
+                </div>
+
+                {% when 'time_set' %}
+                <div class="my-4" style="color:{{section.settings.base_color}};">
+                    <p class="line-item-property__field w-full md:w-1/2">
+                      <label class="block" for="available_time" style="font-size:0.8rem; color:{{section.settings.base_color}};">{{ block.settings.timeset_title  }}</label>
+                      <input class="w-full border-none focus:outline-none" style="background:transparent; border-bottom: 1px solid {{section.settings.point_color}}; height:2rem;" type="time" id="available_time" name="properties[Available Time]" min="09:00" max="18:00" required>
+                      </p>
+                </div>
+
+                {% when 'custom_note' %}
+                <div class="flex py-4">
+                <p class="line-item-property__field w-full">
+                <label for="custom-message" style="font-size:0.8rem; color:{{section.settings.base_color}};">Custom message</label>
+                <textarea id="custom-message" name="properties[Custom message]" class="w-full appearance-none focus:outline-none bg-transparent border-none" style="color:{{section.settings.point_color}}; border-bottom:1px solid {{section.settings.point_color}};"></textarea>
+                </p>
+                </div>
+
+                {% when 'space' %}
+                <div class="py-4"></div>
+
+                {% when 'stock' %}
+                <div class="inventoryWrapper py-2" id="variantStock-{{section.id}}" style="color: {{section.settings.base_color}};">
+
+                  {% if selected_variant.inventory_quantity > 0 and selected_variant.inventory_management == 'shopify' %}
+                    
+                    <div class="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      Availability:
+                      <p class="mx-2 text-sm">
+                        {% if product.available %} Available Now {% else %} Unavailable {% endif %}
+                      </p>
+                    </div>
+
+                  {%- else -%}
+
+                    <div class="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      Availability: Unavailable Now
+                    </div>
+
+                  {% endif %}
+
+                  <script>
+                    {% for variant in product.variants %}
+                      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+                    {% endfor %}
+                  </script>
+                </div>
+
+                {% when 'product_type' %}
+                <div class="productType py-2" style="color: {{section.settings.base_color}};">
+                  <div class="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      Type:
+                      <p class="mx-2 text-sm">
+                      {{ product.type }}
+                      </p>
+                    </div>
+                </div>
+
+                {% when 'custom_textbox' %}
+                <div class="customBox py-2" style="color: {{section.settings.base_color}};">
+                  <div class="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      {{block.settings.custom_title}}:
+                      <p class="mx-2 custom_font">
+                      {{block.settings.custom_desc}}
+                      </p>
+                    </div>
+                </div>
+                
+                {% when 'custom_radio' %}
+                <div class="customBox-{{block.id}} py-2" style="color: {{section.settings.base_color}};">
+                  <p class="line-item-property__field">
+                  <label style="font-size:0.8rem;">{{block.settings.audio_title}}</label><br>
+
+                  <div class="custom_riadio flex pt-4">
+                    {% if block.settings.first_option != blank %}
+                      <div class="select_box mr-2">
+                        <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.first_option}}" id="option-{{block.settings.first_option}}-{{block.id}}" checked>
+                        <label class="radio_title cursor-pointer text-xs" for="option-{{block.settings.first_option}}-{{block.id}}">{{block.settings.first_option}}</label>
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.second_option != blank %}
+                      <div class="select_box mr-2">
+                        <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.second_option}}" id="option-{{block.settings.second_option}}-{{block.id}}">
+                        <label class="radio_title cursor-pointer" for="option-{{block.settings.second_option}}-{{block.id}}"> {{block.settings.second_option}} </label>
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.third_option != blank %}
+                      <div class="select_box mr-2">
+                        <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.third_option}}" id="option-{{block.settings.third_option}}-{{block.id}}"> 
+                        <label class="radio_title cursor-pointer" for="option-{{block.settings.third_option}}-{{block.id}}"> {{block.settings.third_option}} </label>
+                      </div>
+                    {% endif %}
+                  </div>
+                  
+                  </p>
+                </div>
+                
                 {% when 'selected_variant' %}
                 <input type="hidden" name="id" value="{{selected_variant.id}}">
                          <!-- product variant -->
-                         
-  
                          <div class="my-3">
                                {% unless product.has_only_default_variant %}
                                <variant-selector data-url="{{product.url}}" data-section="{{section.id}}">
+                                
                                 {%- for option in product.options_with_values -%}
-                                {% assign link_handle = option.name | replace: '-', '_' %}
-  
-                                      <fieldset class="product-form__input" x-data="{ {{ link_handle }}: false, option: '' }">
-                                            <legend class="form__label selected tracking-wider" x-on:click="{{ link_handle }} = ! {{ link_handle }}" style="color:{{section.settings.base_color}}; border-bottom: 1px solid {{section.settings.point_color}};">{{ option.name }} / <span x-text="option"></span> </legend>
+                                {% assign link_handle = section.id | replace: '-', '_' %}
+                                    
+                                      <fieldset class="product-form__input" x-data="{ {{ link_handle }}: false, option: '{{option.selected_value}}' }">
+                                            <legend class="form__label selected tracking-wider appearance-none focus:outline-none" x-on:click="{{ link_handle }} = ! {{ link_handle }}" style="color:{{section.settings.base_color}}; border-bottom: 1px solid {{section.settings.point_color}};">{{ option.name }} / <span x-text="option"></span> </legend>
                                             
                                             <div class="options-container {{section.settings.dropdown_color}}">
                                               {%- for value in option.values -%}
@@ -150,20 +372,20 @@
                                             x-transition:leave-start="opacity-100 translate-y-0"
                                             x-transition:leave-end="opacity-0 translate-y-3"
                                             x-show="{{ link_handle }}"  x-on:click.away="{{ link_handle }} = false"
-                                            class="option {{section.settings.hover_schema}}" style="color: {{section.settings.point_color}};">
-                                              <input
+                                            class="option appearance-none focus:outline-none {{section.settings.hover_schema}}" style="color: {{section.settings.point_color}};">
+                                            <input
                                             x-model="option"
                                             class="radio"
                                             type="radio"
                                             id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                             name="{{ option.name }}"
                                             value="{{ value | escape }}"
-                                            
                                             {% if option.selected_value == value %}
                                                   checked
                                             {% endif %}
                                             >
-                                            <label class="w-full block" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                            
+                                            <label class="option_values w-full block appearance-none focus:outline-none" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                                             {{ value }}
                                             </label>
                                             </div>
@@ -177,27 +399,31 @@
                                </variant-selector>
                                {% endunless %}                             
                          </div>
-                  
-                {% when 'checkout_buttons' %}
-                  
+                        
+                  {% when 'social' %}
+                  <div class="flex">
+                  <div class="w-full lg:w-1/2 flex flex-col md:flex-row text-xs justify-center items-center py-2 bg-white mb-4 px-2 mr-4">
+                  {%- render 'button-wishlist', product: product -%}
+                   <p class="pt-3 md:py-0 px-4 text-center">ADD MY WISH LIST</p>
+                  </div>
+                  <!-- social sharing -->
+                  <div class="w-full lg:w-1/2 flex flex-col md:flex-row text-xs justify-center items-center py-2 bg-white mb-4 px-2">
+                    {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, icon_color:section.settings.point_color %} 
+                    <p class="pt-3 md:py-0 px-4 text-center">SOCIAL SHAREING</p>
+                  </div>
+                  </div>
+
+                  {% when 'checkout_buttons' %}
                     {% if selected_variant.available %}
                     <div>
                       <button type="submit" name="add" class="{{section.settings.color_button}} {{section.settings.button_color_hover}} w-full h-12" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
                         {{ 'action.add_to_cart' | t }}
                       </button>
                     </div>
-                        <div class="button-shopify-buy-it-now my-4">
+                    <div class="button-shopify-buy-it-now my-4">
                           {{ form | payment_button }}
-                        </div>
+                    </div>
                     {% endif %}
-  
-                
-                
-                {% when 'social' %}
-                  <!-- social sharing -->
-                  <div class="py-4">
-                    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, icon_color:section.settings.point_color %} 
-                  </div>
 
                 {% when 'rating' %}
                 {% liquid
@@ -243,14 +469,10 @@
               {% endcase %}  
             {% endfor %}
       </div>
-        {% if product.description %}
-            <h1 class="pt-8 px-6 text-2xl {{section.settings.text_align}} " style="color: {{section.settings.title_color}};">About product</h1>
-            <div class="py-6 px-6 leading-8 tracking-wider {{section.settings.text_align}}" style="color: {{section.settings.base_color}};">
-                {{ product.description }}
-            </div>
-        {% endif %}
+        
     </div>
     {% endform %}
+      </div>
   </div>  
 </div>
 
@@ -272,6 +494,7 @@
               this.updateURL();
               this.updateFormID();
               this.updatePrice();
+              this.updateStock();
              }
         }
   
@@ -324,6 +547,19 @@
                     if(oldPrice && newPrice) oldPrice.innerHTML = newPrice.innerHTML;
               });
         }
+
+        updateStock(){
+              fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+              .then((response)=>response.text())
+              .then((responseText)=>{
+                    const id = `variantStock-${this.dataset.section}`;
+                    const html = new DOMParser().parseFromString(responseText, 'text/html');
+                    const oldStock = document.getElementById(id);
+                    const newStock = html.getElementById(id);
+  
+                    if(oldStock && newStock) oldStock.innerHTML = newStock.innerHTML;
+              });
+        }
   }
   
   customElements.define("variant-selector", VariantSelector);
@@ -334,7 +570,7 @@
 {% schema %}
 {
   "name":"Product",
-  "max_blocks": 9,
+  "max_blocks": 25,
   "settings":[
   {
     "type": "header",
@@ -393,6 +629,31 @@
       "step": 1,
       "unit": "rem"
     },
+     {
+    "type": "header",
+    "content": "Mobile Padding",
+    "info": "setting mobile padding view"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Padding Top controll",
+      "default":3,
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":3,
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "rem"
+    },
     {
       "type": "checkbox",
       "id": "animation_setting",
@@ -400,24 +661,120 @@
       "label": "Animation turn on"
     },
     {
+      "type": "checkbox",
+      "id": "sticky_product",
+      "default": true,
+      "label": "Sticky Box"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Product Title color",
+      "default": "#6F665D"
+    },
+    {
+      "type": "color",
+      "id": "base_color",
+      "label": "Main text color",
+      "default": "#926D5A"
+    },
+    {
+      "type": "header",
+      "content": "Selection Dropdown color"
+    },
+    {
       "type":"select",
-      "id":"text_align",
-      "label":"Description text align",
+      "id":"dropdown_color",
+      "label":"Dropdown color",
       "options":[
          {
-            "value":"font_left",
-            "label":"Left"
+            "value":"first_color",
+            "label":"First Color"
          },
          {
-            "value":"font_right",
-            "label":"Right"
+            "value":"second_color",
+            "label":"Second Color"
          },
          {
-            "value":"font_center",
-            "label":"Center"
+            "value":"third_color",
+            "label":"Third Color"
+         },
+         {
+          "value":"forth_color",
+          "label":"Forth Color"
+        },
+        {
+          "value":"fifth_color",
+          "label":"Fifth Color"
+        },
+        {
+          "value":"background_transparent",
+          "label":"Transparent Color"
+        }
+      ],
+      "default":"forth_color"
+     },
+     {
+      "type":"select",
+      "id":"hover_schema",
+      "label":"Dropbox mouse over",
+      "options":[
+         {
+            "value":"nav_color_first",
+            "label":"First Color"
+         },
+         {
+            "value":"nav_color_second",
+            "label":"Second Color"
+         },
+         {
+            "value":"nav_color_third",
+            "label":"Third Color"
+         },
+         {
+          "value":"nav_color_forth",
+          "label":"Forth Color"
+          },
+          {
+            "value":"nav_color_fifth",
+            "label":"Fifth Color"
          }
       ],
-      "default":"font_center"
+      "default":"nav_color_third"
+   },
+   {
+      "type": "header",
+      "content": "Option Button Color"
+    },
+    {
+    "type": "color",
+    "id": "primary_color",
+    "label": "Primary option button",
+    "default": "#6F665D"
+    },
+        {
+    "type": "color",
+    "id": "primary_font_color",
+    "label": "Option font color",
+    "default": "#fff"
+    },
+    {
+    "type": "color",
+    "id": "primary_button_border",
+    "label": "Primary button border",
+    "default": "transparent"
+    },
+    {
+    "type": "color",
+    "id": "active_button_color",
+    "label": "Active option button",
+    "default": "transparent"
+    },
+     {
+    "type": "color",
+    "id": "active_font_color",
+    "label": "Active option font",
+    "default": "#6F665D"
     },
     {
       "type": "header",
@@ -496,86 +853,101 @@
   },
     {
       "type": "color",
-      "id": "title_color",
-      "label": "Product Title color",
-      "default": "#6F665D"
-    },
-    {
-      "type": "color",
-      "id": "base_color",
-      "label": "Main text Text color",
-      "default": "#926D5A"
-    },
-    {
-      "type": "color",
       "id": "point_color",
       "label": "Point color",
       "default": "#6F665D"
     },
     {
       "type": "header",
-      "content": "Selection Dropdown color"
+      "content": "Description Box Setting",
+      "info": "Description Tab Box settings"
+    },
+    {
+        "type":"select",
+        "id":"description_textbox_color",
+        "label":"Description Box color",
+        "options":[
+           {
+              "value":"first_color",
+              "label":"First Color"
+           },
+           {
+              "value":"second_color",
+              "label":"Second Color"
+           },
+           {
+              "value":"third_color",
+              "label":"Third Color"
+           },
+           {
+            "value":"forth_color",
+            "label":"Forth Color"
+          },
+          {
+            "value":"fifth_color",
+            "label":"Fifth Color"
+          },
+          {
+            "value":"background_transparent",
+            "label":"Transparent Color"
+          }
+        ],
+        "default":"forth_color"
+        },
+
+        {
+      "type":"select",
+      "id":"button_align",
+      "label":"Tap Button position",
+      "options":[
+         {
+            "value":"font_left",
+            "label":"Left"
+         },
+         {
+            "value":"font_right",
+            "label":"Right"
+         },
+         {
+            "value":"font_center",
+            "label":"Center"
+         }
+      ],
+      "default":"font_left"
     },
     {
       "type":"select",
-      "id":"dropdown_color",
-      "label":"Dropdown color",
+      "id":"text_align",
+      "label":"Description text align",
       "options":[
          {
-            "value":"first_color",
-            "label":"First Color"
+            "value":"font_left",
+            "label":"Left"
          },
          {
-            "value":"second_color",
-            "label":"Second Color"
+            "value":"font_right",
+            "label":"Right"
          },
          {
-            "value":"third_color",
-            "label":"Third Color"
-         },
-         {
-          "value":"forth_color",
-          "label":"Forth Color"
-        },
-        {
-          "value":"fifth_color",
-          "label":"Fifth Color"
-        },
-        {
-          "value":"background_transparent",
-          "label":"Transparent Color"
-        }
-      ],
-      "default":"forth_color"
-     },
-     {
-      "type":"select",
-      "id":"hover_schema",
-      "label":"Dropbox mouse over",
-      "options":[
-         {
-            "value":"nav_color_first",
-            "label":"First Color"
-         },
-         {
-            "value":"nav_color_second",
-            "label":"Second Color"
-         },
-         {
-            "value":"nav_color_third",
-            "label":"Third Color"
-         },
-         {
-          "value":"nav_color_forth",
-          "label":"Forth Color"
-          },
-          {
-            "value":"nav_color_fifth",
-            "label":"Fifth Color"
+            "value":"font_center",
+            "label":"Center"
          }
       ],
-      "default":"nav_color_third"
-   }
+      "default":"font_center"
+    },
+    {
+      "type": "color",
+      "id": "tab_color",
+      "label": "Tab Button Color",
+      "default": "#926D5A"
+    },
+    {
+      "type": "color",
+      "id": "tab_active",
+      "label": "Tab active color",
+      "default": "#926D5A"
+    }
+    
   ],
   "blocks":[
     {
@@ -607,6 +979,102 @@
       "type":"social",
       "name":"Social Shareing",
       "limit":1
+    },
+    {
+      "type":"time_set",
+      "name":"Time Settings",
+      "limit":1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "timeset_title",
+          "label": "Available Time",
+          "default": "Choose a time for your meeting"
+        }
+      ]
+    },
+    {
+      "type":"date_set",
+      "name":"Date Settings",
+      "limit":1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "dateset_title",
+          "label": "Available date",
+          "default": "Available date"
+        }
+      ]
+    },
+    {
+      "type":"stock",
+      "name":"Stock",
+      "limit":1
+    },
+    {
+      "type":"custom_note",
+      "name":"Custom Note",
+      "limit":1
+    },
+    {
+      "type":"product_type",
+      "name":"Product Type",
+      "limit":1
+    },
+    {
+      "type":"space",
+      "name":"Empty space",
+      "limit":5
+    },
+    {
+      "type":"custom_textbox",
+      "name":"Custom Textbox",
+      "limit":5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Box title",
+          "default": "Custom"
+        },
+        {
+          "type": "richtext",
+          "id": "custom_desc",
+          "label": "Custom Box text area",
+          "default": "<p>Metafild custombox area</p>"
+        }
+      ]
+    },
+    {
+      "type":"custom_radio",
+      "name":"Custom radio button",
+      "limit":5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "audio_title",
+          "label": "Custom Box title",
+          "default": "Custom radio button"
+        },
+        {
+          "type": "text",
+          "id": "first_option",
+          "label": "option 1",
+          "default": "option 1"
+        },
+        {
+          "type": "text",
+          "id": "second_option",
+          "label": "option 2",
+          "default": "option 2"
+        },
+        {
+          "type": "text",
+          "id": "third_option",
+          "label": "option 3",
+          "default": "option 3"
+        }
+      ]
     },
     {
       "type":"checkout_buttons",

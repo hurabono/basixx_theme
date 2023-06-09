@@ -1,10 +1,14 @@
-{% assign image = section.settings.image %}
 
-<div
-  class="{{section.settings.color_schema}} {{section.settings.banner_top_size}} {{section.settings.banner_bottom_size}} min-h-96 flex items-center flex-1 flex-shrink-0 overflow-hidden relative">
+{% assign image = section.settings.image %}
   
-  <!-- image - start -->
-  {% if image %}
+<div
+  class="max-w-[1320px] m-auto items-center overflow-hidden px-6"
+  style="margin-top: {{section.settings.margin_top}}rem; margin-bottom:{{section.settings.margin_bottom}}rem;"
+  >
+  {% if section.settings.show_image == true%}
+  <div class=" h-[300px]">
+      <!-- image - start -->
+  {% if section.settings.image %}
   <img sizes="
   (min-width: 1280px) 1500px,
   (min-width: 1024px) 1250px,
@@ -18,22 +22,25 @@
   {{ image | img_url: '1250x' }} 1250w,
   {{ image | img_url: '1500x' }} 1500w
 " src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
-    class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {%endif%}">
+    class="w-full h-full object-cover object-center {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {%endif%}">
   {%else%}
+  <div class="max-w-[1320px] h-[300px] m-auto items-center overflow-hidden px-6 bg-gray-100 rounded-md">
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full object-center object-cover rounded-md overflow-hidden' }}
+  </div>
   {% endif %}
   <!-- image - end -->
-
+  </div>
+{% endif %}
 
   <!-- text start -->
-  <div class="flex flex-col relative px-8 p-4 w-[1440px] m-auto {{section.settings.text_align}}">
-    <h1 class="w-full py-4 text-4xl font-bold tracking-widest" style="color: {{section.settings.text_color}};"> {{ collection.title}}</h1>
-    <div class="subfont_size py-8 tracking-wider leading-8" style="color: {{section.settings.text_color}};">
+  <div class="max-w-[1320px] m-auto px-4 flex flex-col {{section.settings.text_align}} py-6">
+    <h1 class="w-full py-2 text-4xl font-bold tracking-widest" style="color: {{section.settings.text_color}};"> {{ collection.title}}</h1>
+    <div class="subfont_size py-4 tracking-wider leading-8" style="color: {{section.settings.text_color}};">
       {{ collection.description }}
     </div>
   </div>
   <!-- text end -->
 </div>
-
 
 {% schema %}
 {
@@ -45,90 +52,36 @@
   "info": "Base background color and image settings"
 },
 {
-  "type":"select",
-  "id":"color_schema",
-  "label":"Background color",
-  "options":[
-     {
-        "value":"first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"third_color",
-        "label":"Third Color"
-     },
-     {
-      "value":"forth_color",
-      "label":"Forth Color"
-    },
-    {
-      "value":"fifth_color",
-      "label":"Fifth Color"
-    },
-    {
-      "value":"background_transparent",
-      "label":"Transparent Color"
-    }
-  ],
-  "default":"third_color"
- },
+  "type": "checkbox",
+  "id": "show_image",
+  "default": true,
+  "label": "Show Image"
+},
 {
 "type": "image_picker",
 "id": "image",
-"label": "Collection Banner image"
+"label": "Default product image (optional)"
 },
-{
-  "type":"select",
-  "id":"banner_top_size",
-  "label":"Banner Top size",
-  "options":[
-     {
-        "value":"banner_top_small",
-        "label":"Small"
-     },
-     {
-        "value":"banner_top_medium",
-        "label":"Medium"
-     },
-     {
-        "value":"banner_top_large",
-        "label":"Large"
-     },
-     {
-        "value":"banner_top_xlarge",
-        "label":"xLarge"
-     }
-  ],
-  "default":"banner_top_xlarge"
-},
-{
-  "type":"select",
-  "id":"banner_bottom_size",
-  "label":"Banner Bottom size",
-  "options":[
-     {
-        "value":"banner_bottom_small",
-        "label":"Small"
-     },
-     {
-        "value":"banner_bottom_medium",
-        "label":"Medium"
-     },
-     {
-        "value":"banner_bottom_large",
-        "label":"Large"
-     },
-     {
-        "value":"banner_bottom_xlarge",
-        "label":"xLarge"
-     }
-  ],
-  "default":"banner_bottom_small"
-},
+ {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+   },
+   {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom controll",
+      "default":4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+   },
 {
   "type": "checkbox",
   "id": "overlay_set",

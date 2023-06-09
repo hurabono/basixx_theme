@@ -1,0 +1,219 @@
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
+
+<style>
+
+  
+.badge_design {
+  background-color: {{  settings.product_badge_color }};
+  color:{{settings.badge_font }};
+  border: 1px solid {{ settings.badge_border }}
+}
+
+  .quickview_button{
+  background-color: {{settings.qv_symbol_bg_color}};
+  border: 0.5px solid {{settings.qv_symbol_border_color}};
+  
+}
+
+  .wishlist_button{
+  background-color: {{settings.wl_bg_color}};
+  border: 0.5px solid {{settings.wl_border_color}};
+  
+}
+
+</style>
+
+ <div class="flex flex-col">
+    <div class="flex justify-end">
+      
+  {% if settings.qv_quantity_setting == true %}
+    <div class="quick-view-button icon bg-white rounded-full relative top-[50px] right-[20px] flex justify-end z-10 cursor-pointer p-2 quickview_button">
+    <a class="quick-view" data-handle="{{ product.handle }}" href="javascript:;" >
+    {%- render 'icon-view', product: product -%}
+    </a>
+    </div>
+  {% endif %}
+      
+  {% if settings.wishlist_settings == true %}
+  <div class="relative top-[50px] right-[10px] flex justify-end z-10 bg-white rounded-full p-2 wishlist_button">
+        {%- render 'button-wishlist', product: product -%}
+  </div>
+  {% endif %}
+
+      
+</div>
+
+  <a href="{{ product.url | within: collection }}" class="block group block relative grid-view-item__link {% if product.images.size > 1 %} has-secondary{% endif %} ">
+    <img
+    sizes="
+      (min-width: 768px) 450px,
+      630px
+    "
+    srcset="
+      {{ product.featured_image.src | img_url: '450x' }} 450w,
+      {{ product.featured_image.src | img_url: '630x' }} 630w
+    "
+    width="{{ product.featured_image.width }}"
+    height="{{ product.featured_image.height }}"
+    src="{{ product.featured_image.src | img_url: '630x' }}"
+    alt="{{ product.featured_image.alt | escape }}"
+    loading="lazy"
+    class="w-full h-full object-cover object-center rounded-sm {% if mouseover_image == true %}grid-view-item__image {% endif %}"
+  >
+    {% if mouseover_image == true %}
+    {% if product.images.size > 1 %} 
+      <img class="secondary w-full h-full object-cover object-center"
+        sizes="
+          (min-width: 768px) 450px,
+          630px
+        "
+        srcset="
+          {{ product.images.last | img_url: '450x' }} 450w,
+          {{ product.images.last | img_url: '630x' }} 630w
+        "
+        width="{{ product.images.last.width }}"
+        height="{{ product.images.last.height }}"
+        src="{{ product.images.last | img_url: '630x' }}"
+        alt="{{ product.images.last.alt | escape }}"> 
+     {% endif %}
+    {% endif %}
+    {% if product.price < product.compare_at_price %}
+      <div class="text-sm font-medium tracking-wider uppercase absolute top-[11px] left-[-11px] px-[1rem] py-1 badge_design">
+        {{ 'common.sale' | t }}
+      </div>
+    {% endif %}
+  </a>
+
+  <div class="flex flex-col justify-center pt-4 " style="color: {{product_title_color}};">
+    
+    {%- if show_vendor -%}
+    <a href="{{ product.url | within: collection }}" class="block text-xs">
+      {{ product.vendor }}
+    </a>
+    {% endif %}
+    
+    {%- comment -%} line 1 - Prodcut title and star rating {%- endcomment -%}
+    <div class="flex flex-col md:flex-row justify-between">
+    {% if product.title %}
+      <div>
+        <a href="{{ product.url | within: collection }}" class="text-lg font-bold " style="font-size: {{product_font_size}}rem;">
+        {{ product.title | strip_html | truncate: 20}}
+        </a>
+      </div>
+      
+    {% endif %}
+
+    {%- if show_rating -%}
+    {% liquid
+      assign rating_decimal = 0
+      assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+      if decimal >= 0.3 and decimal <= 0.7
+        assign rating_decimal = 0.5
+      elsif decimal > 0.7
+        assign rating_decimal = 1
+      endif
+    %}
+      <div>
+        {% if product.metafields.reviews.rating_count > 0 %}
+        <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+          <span class="no-rating" >
+           {{ product.metafields.reviews.rating.value.rating | floor }}
+           </span>
+        </div>
+  
+          {%else%}
+          <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+            <span aria-hidden="true" class="no-rating" 
+            style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};
+             --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; 
+             --rating-decimal: {{ rating_decimal }};">
+             0
+             </span>
+          </div>
+        {% endif %}
+      </div>
+    {%endif%}
+    </div>
+    {%- comment -%} line 1 - end {%- endcomment -%}
+
+
+
+    {%- comment -%} line 2 - Metafield option box {%- endcomment -%}
+    {% if show_symbol  == true  %}
+      <div class="relative">
+      
+        <ul class="flex justify-between gap-[0.5rem] py-2 text-xs text-center">
+
+            {%- if product.metafields.custom.symbol_first.value != blank -%}
+            <li class="metafield_icons tracking-wider flex flex-col w-full lg:flex-row justify-evenly items-center rounded-sm py-1"
+                
+            >
+                <span class="symbol_font md:p-0">{{iconbox1}}  </span>
+                <span class="symbol_font md:p-0 text-center"> {{ product.metafields.custom.symbol_first.value}} </span>
+            </li>
+            {%- endif -%}
+
+            {%- if product.metafields.custom.symbol_second.value != blank -%}
+            <li class="metafield_icons tracking-wider flex flex-col w-full lg:flex-row justify-evenly items-center rounded-sm py-1"
+                
+            >
+                <span class="symbol_font p-0"> {{iconbox2}} </span>
+                <span class="symbol_font p-0 text-center">  {{ product.metafields.custom.symbol_second.value }}</span>
+            </li>
+            {%- endif -%}
+
+            {%- if product.metafields.custom.symbol_third.value != blank -%}
+            <li class="metafield_icons tracking-wider flex flex-col w-full lg:flex-row justify-evenly items-center rounded-sm py-1"
+                
+            >
+               <span class="symbol_font p-0"> {{iconbox3}}</span> 
+            <span class="symbol_font p-0 text-center">  {{ product.metafields.custom.symbol_third.value }}  </span>
+            </li>
+            {%- endif -%}
+        </ul>
+    </div>
+    {% endif %}
+    {%- comment -%} line 2 - end {%- endcomment -%}
+
+
+    {%- comment -%} line 3 - Price Tag and Promotion symbol {%- endcomment -%}
+      {% if product.available %}
+      <div class="flex flex-row justify-between md:justify-center lg:justify-between items-baseline lg:items-center gap-2 md:gap-0 py-2">
+        <div class="flex items-center">
+        
+        {% if product.metafields.custom.house_price.value != blank or product.price == 0 %}
+          <span class="text-base lg:text-lg font-bold" {% if product.compare_at_price %} style="color: {{product_title_color}};" {% endif %}>
+          {{ product.metafields.custom.price.value }}
+          </span>
+        {%- else -%}
+            <span class="text-base lg:text-lg font-bold" {% if product.compare_at_price %} style="color: {{product_point_color}};" {% endif %}>
+            {{ product.price | money }}
+          </span>
+
+          {% if product.compare_at_price %}
+            <del class="ml-2 text-sm">
+              {{ product.compare_at_price | money }}
+            </del>
+          {% endif %}
+        {%- endif -%}
+        </div>
+
+      {%- if product.metafields.custom.promotion.value != blank -%}
+          <span class="px-2 py-1 metafield_symbol text-xs mt-2">
+          {{ product.metafields.custom.promotion.value }}
+          </span>
+        {%- endif -%}
+      </div>
+
+
+       {% else %}
+      <div>
+        {{ 'common.sold_out' | t }}
+      </div>
+    {% endif %}
+     {%- comment -%} line 3 - end {%- endcomment -%}
+  </div>
+</div>
+

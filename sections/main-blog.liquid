@@ -5,19 +5,7 @@
   class="{{section.settings.color_schema}} {{section.settings.banner_top_size}} {{section.settings.banner_bottom_size}} min-h-96 flex items-center flex-1 flex-shrink-0 overflow-hidden relative">
   <!-- image - start -->
   {% if image %}
-  <img sizes="
-  (min-width: 1280px) 1500px,
-  (min-width: 1024px) 1250px,
-  (min-width: 768px) 1000px,
-  (min-width: 640px) 720px,
-  600px
-" srcset="
-  {{ image | img_url: '600x' }} 600w,
-  {{ image | img_url: '720x' }} 720w,
-  {{ image | img_url: '1000x' }} 1000w,
-  {{ image | img_url: '1250x' }} 1250w,
-  {{ image | img_url: '1500x' }} 1500w
-" src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
+  <img src="{{section.settings.image | img_url: 'master' }}" alt="{{ image.alt }}" loading="lazy"
     class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {%endif%}">
   {%else%}
   {% endif %}

@@ -15,7 +15,6 @@
   <link rel="preload" href="{{ 'bundle.css' | asset_url }}" as="style">
   <link rel="preload" href="{{ 'bundle.js' | asset_url }}" as="script">
 
-
   <title>{{ page_title | escape }}</title>
 
   {% if page_description %}
@@ -25,7 +24,11 @@
   {% if canonical_url != blank %}
   <link rel="canonical" href="{{ canonical_url }}">
   {% endif %}
-  
+
+
+  {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
 
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
@@ -37,16 +40,38 @@
   <!-- header hook for Shopify plugins -->
   {{ content_for_header }}
   
-      <!-- DEFINITIONS -->
+      <!-- Alpine.js (do not touch it!) -->
       <style>
         [x-cloak] {
             display: none;
         }
     </style>
+  
+<!-- Font Awesome  -->
+<script src="https://kit.fontawesome.com/f7fb8f5dc1.js" crossorigin="anonymous"></script>
+
+<!-- Wishlist jquery javascript -->
+<script src="{{ 'Wishlist.js' | asset_url }}" defer="defer"></script>
+<script> var variantStock = {}; </script>
+  
+<!-- Ajax add to cart -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" rel="preload" as="script"></script>
+
+<!-- Quickview settings -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+{{ '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css' | stylesheet_tag }}
+<link href="{{ 'slick.css' | asset_url }}" rel="stylesheet" >
+{{ 'quickview.css' | asset_url | stylesheet_tag }}
+{{ 'quickview.js' | asset_url | script_tag }}
+
+<script>
+  {% capture content %}{% render 'quickview' %}{% endcapture %}
+  var content = {{ content | json }};
+</script>
 
 </head>
 
-<body class="min-h-screen lg:overflow-hidden">
+<body class="min-h-screen">
   {% if request.page_type == 'captcha' %}
   {% comment %}
   fix: Shopify automatically inserts script tags on captcha pages into the content_for_layout tag
@@ -55,6 +80,11 @@
   {% render 'template-captcha' %}
   {% else %}
   <div id="app" class="min-h-screen flex flex-col font-sans">
+  
+    {% if request.page_type == 'index' %}
+      {% section 'layout-loading' %}
+    {% endif %}
+    
     {% section 'layout-header' %}
 
     <main id="main" role="main"
@@ -62,10 +92,12 @@
       {{ content_for_layout }}
     </main>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     {% render 'ajaxify-cart' %}
     {% section 'layout-footer' %}
+    {% section 'layout-scroll-to-top' %}
     {% section 'layout-mobile-navigation' %}
+    {% section 'layout-mouse-pointer' %}
 
     <!-- <transition name="slide-mobile-menu" x-cloak>
       {% render 'layout-mobile-menu'%}
@@ -78,18 +110,40 @@
   <script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'local.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'count.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'recommendation.js' | asset_url }}" defer="defer"></script>
-  
 
+  
   <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
-  
+  <script src="https://cdn.jsdelivr.net/npm/@cycjimmy/swiper-animation@6/dist/swiper-animation.umd.min.js"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+{%- comment -%} product quickview metafield javascirpt {%- endcomment -%}
+
+{% capture 'productMetafields' %}
+  {
+      {% for product in collections['all'].products %}
+
+          "{{ product.handle }}" : {
+              product_price : "{{ product.metafields.custom.custom_price.value }}",
+              product_symbol_first : "{{ product.metafields.custom.symbol_first.value }}",
+              product_symbol_second : "{{ product.metafields.custom.symbol_second.value }}",
+              product_symbol_third : "{{ product.metafields.custom.symbol_third.value }}",
+          },
+      
+      {% endfor %}
+  }
+{% endcapture %}
+
+<script type = "text/javascript">
+let productMetafields = {{ productMetafields }}
+</script>
+
+
   <script>
-   
-    
     document.addEventListener('shopify:section:select', function(event) {
       AOS.init();
     });
