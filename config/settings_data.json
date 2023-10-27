@@ -228,17 +228,6 @@
           "nav_text_submenu_mouseover": "#cccccc"
         }
       },
-      "section-modal": {
-        "type": "section-modal",
-        "settings": {
-          "color_schema": "fifth_color",
-          "show_modalbox": false,
-          "title_color": "#6f665d",
-          "description_color": "#6f665d",
-          "button_color": "#6f665d",
-          "border_color": "#6f665d"
-        }
-      },
       "layout-scroll-to-top": {
         "type": "layout-scroll-to-top",
         "settings": {
