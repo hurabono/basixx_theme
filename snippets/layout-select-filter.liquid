@@ -33,9 +33,9 @@ input[type="checkbox"]:checked{
 }
 </style>
 
-<div id="mySidenav" class="{{filter_box_color}} sticky w-[0px] h-[0px] overflow-hidden" style="color: {{filter_font_color}};">
+<div id="mySidenav" class="{{filter_box_color}} mb-10 my-4 h-[280px] overflow-scroll" style="color: {{filter_font_color}};">
       <div class="absolute right-5 top-0">
-            <a class="closebtn text-2xl cursor-pointer relative top-[11px]" onclick="closeNav()">&times;</a>
+            <a class="closebtn text-2xl cursor-pointer relative top-[11px]">&times;</a>
       </div>
       <div class="py-8 mx-7 items-center">
             <form action="{{ collection.url }}?sort_by={{ collection.sort_by }}" method="get">

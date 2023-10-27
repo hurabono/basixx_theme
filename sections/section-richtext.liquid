@@ -1,7 +1,41 @@
+{% style %}
+  .{{ section.id }}_button_first{
+      color: {{ section.settings.button_color }};
+      border: 1px solid {{ section.settings.border_colors }};
+      background-color: {{ section.settings.button_bg }};
+      transition:0.5s;
+   }
+
+   .{{ section.id }}_button_first:hover{
+         color: {{ section.settings.mo_button_color}};
+         border:1px solid {{ section.settings.mo_border_color }};
+         background-color: {{ section.settings.mo_button_bg }};
+   }
+
+
+   .{{ section.id }}_button_second{
+      color: {{ section.settings.button_color2 }};
+      border: 1px solid {{ section.settings.border_colors2 }};
+      background-color: {{ section.settings.button_bg2 }};
+      transition:0.5s;
+   }
+
+   .{{ section.id }}_button_second:hover{
+         color: {{ section.settings.mo_button_color2}};
+         border:1px solid {{ section.settings.mo_border_color2 }};
+         background-color: {{ section.settings.mo_button_bg2 }};
+   }
+
+{% endstyle %}
+
+
+
 <section class="{{section.settings.color_schema}}">
 
   <!-- text start -->
-  <div class="mx-auto mx-[3rem]" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+  <div class="xl:max-w-[1320px] px-4 md:px-8 mx-auto"
+            style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" 
+            {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="300" {% endif %}>
     <div {% if section.settings.animation_setting == true %}data-aos="fade-up" data-aos-offset="300"{% endif %} class="mx-[1.5rem] {{section.settings.textbox_align}}">
 
       {% if section.settings.subtitle != blank %}
@@ -15,10 +49,10 @@
       </div>
 
       {% if section.settings.show_line %}
-      <div class="w-2 h-12 mb-8 mx-auto" style="border-right:1px solid {{section.settings.line_border}};"></div>
+      <div class="{{ section.settings.line_position }} mx-auto" style="border-color:{{section.settings.line_border}};"></div>
     {% endif %}
 
-      <div class="{{section.settings.title_align}} mt-10 mb-4 leading-8 tracking-wider" style="color:{{section.settings.color_desciption}}; font-size:{{section.settings.banner_font_size}}px;">
+      <div class="{{section.settings.title_align}} mt-10 mb-4 leading-8 tracking-wider font-light" style="color:{{section.settings.color_desciption}}; font-size:{{section.settings.banner_font_size}}px;">
         {{ section.settings.text }}
       </div>
 
@@ -27,7 +61,7 @@
          <div class="py-3 inline-block mx-3">
               <div class="py-2 inline-block">
                   <a href="{{ section.settings.button-url }}"
-                    class="tracking-widest mx-2 {{section.settings.color_button}} {{section.settings.button_color_hover}} text-center outline-none transition duration-100 {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+                    class="{{ section.id }}_button_first tracking-widest mx-2 text-center {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
                     {{section.settings.button-text }}</a>
               </div>
          </div>     
@@ -37,7 +71,7 @@
             <div class="py-3 inline-block mx-3">
                 <div class="py-2 inline-block">
                     <a href="{{ section.settings.button-url_second }}"
-                      class="tracking-widest mx-2 {{section.settings.color_button_second}} {{section.settings.button_color_hover_second}} text-center outline-none transition duration-100 {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{section.settings.border_color_second}}; color:{{section.settings.border_color_second}};">
+                      class="{{ section.id }}_button_second tracking-widest mx-2 text-center {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
                       {{section.settings.button-text_second }}</a>
                 </div>
             </div>
@@ -104,10 +138,30 @@
         "label": "Show division line"
       },
       {
+        "type": "select",
+        "id": "line_position",
+        "label": "division position",
+        "options": [
+          {
+            "value": "line_left",
+            "label": "Line left"
+          },
+          {
+            "value": "line_right",
+            "label": "Line right"
+          },
+          {
+            "value": "line_center",
+            "label": "Line center"
+          }
+        ],
+        "default": "line_center"
+      },
+      {
       "type": "color",
       "id": "line_border",
       "label": "Division border color",
-      "default": "#6F665D"
+      "default": "#5E5E5E"
       },
       {
         "type": "range",
@@ -166,16 +220,17 @@
         "type": "color",
         "id": "color_title",
         "label": "Header Text color",
-        "default": "#fafafa"
+        "default": "#5E5E5E"
       }, {
         "type": "richtext",
         "id": "text",
-        "label": "Paragraph"
+        "label": "Paragraph",
+        "default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora</p><p>omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
       }, {
         "type": "color",
         "id": "color_desciption",
         "label": "Text color",
-        "default": "#fafafa"
+        "default": "#5E5E5E"
       }, {
         "type": "select",
         "id": "textbox_align",
@@ -234,74 +289,44 @@
 "default": "Button"
 },
 {
-  "type":"select",
-  "id":"color_button",
-  "label":"Button color",
-  "options":[
-     {
-        "value":"first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"third_color",
-        "label":"Third Color"
-     },
-     {
-        "value":"forth_color",
-        "label":"Forth Color"
-     },
-     {
-        "value":"fifth_color",
-        "label":"Fifth Color"
-     },
-     {
-        "value":"background_transparent",
-        "label":"Transparent Color"
-     }
-  ],
-  "default":"second_color"
-},
-{
-  "type":"select",
-  "id":"button_color_hover",
-  "label":"Button moseover color",
-  "options":[
-     {
-        "value":"button_first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"button_second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"button_third_color",
-        "label":"Third Color"
-     },
-     {
-        "value":"button_forth_color",
-        "label":"Forth Color"
-     },
-     {
-        "value":"button_fifth_color",
-        "label":"Fifth Color"
-     },
-     {
-        "value":"button_background_transparent",
-        "label":"Transparent Color"
-     }
-  ],
-  "default":"button_third_color"
+  "type": "header",
+  "content": "Button color"
 },
 {
 "type": "color",
-"id": "border_color",
-"label": "Button border color",
-"default": "#6F665D"
+"id": "button_bg",
+"label": "Button background color",
+"default": "transparent"
+},
+{
+"type": "color",
+"id": "button_color",
+"label": "button font color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "border_colors",
+"label": "border color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "mo_button_bg",
+"label": "Mouseover background",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "mo_button_color",
+"label": "Mouseover font color",
+"default": "#fff"
+},
+{
+"type": "color",
+"id": "mo_border_color",
+"label": "Mouseover border color",
+"default": "transparent"
 },
 {
    "type": "header",
@@ -319,74 +344,44 @@
 "default": "Button"
 },
 {
-  "type":"select",
-  "id":"color_button_second",
-  "label":"Button color",
-  "options":[
-     {
-        "value":"first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"third_color",
-        "label":"Third Color"
-     },
-     {
-        "value":"forth_color",
-        "label":"Forth Color"
-     },
-     {
-        "value":"fifth_color",
-        "label":"Fifth Color"
-     },
-     {
-        "value":"background_transparent",
-        "label":"Transparent Color"
-     }
-  ],
-  "default":"second_color"
-},
-{
-  "type":"select",
-  "id":"button_color_hover_second",
-  "label":"Button moseover color",
-  "options":[
-     {
-        "value":"button_first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"button_second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"button_third_color",
-        "label":"Third Color"
-     },
-     {
-        "value":"button_forth_color",
-        "label":"Forth Color"
-     },
-     {
-        "value":"button_fifth_color",
-        "label":"Fifth Color"
-     },
-     {
-        "value":"button_background_transparent",
-        "label":"Transparent Color"
-     }
-  ],
-  "default":"button_third_color"
+  "type": "header",
+  "content": "Button color"
 },
 {
 "type": "color",
-"id": "border_color_second",
-"label": "Button border color",
-"default": "#6F665D"
+"id": "button_bg2",
+"label": "Button background color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "button_color2",
+"label": "button font color",
+"default": "#fff"
+},
+{
+"type": "color",
+"id": "border_colors2",
+"label": "border color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "mo_button_bg2",
+"label": "Mouseover background",
+"default": "transparent"
+},
+{
+"type": "color",
+"id": "mo_button_color2",
+"label": "Mouseover font color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "mo_border_color2",
+"label": "Mouseover border color",
+"default": "#808080"
 }
     ],
     "presets": [

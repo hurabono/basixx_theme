@@ -23,7 +23,7 @@
       <div class="flex flex-wrap">
         {% for block in section.blocks %}
         <div class="p-2 sm:w-1/2 w-full">
-          <div class="{{section.settings.textbox_color}} rounded flex p-4 h-full items-center">
+          <div class="{{section.settings.textbox_color}} {{ section.settings.textbox_align }} rounded flex p-4 h-full items-center">
             {%- if section.settings.show_icon == true -%}
               {% if block.settings.icon_box != blank %}
                   <span class="mr-4"> 
@@ -116,7 +116,7 @@
         "type":"text",
         "id":"subtitle",
         "label":"subtitle",
-        "default":"Real Estate Agency"
+        "default":"subtitle"
      },
      {
         "type":"text",
@@ -127,12 +127,33 @@
      {
       "type":"richtext",
       "id":"text",
-      "label":"t:common.headline"
+      "label":"t:common.headline",
+      "default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora</p><p>omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
     },
     {
       "type": "select",
       "id": "text_align",
-      "label": "Text align",
+      "label": "Title Text align",
+      "options": [
+            {
+                "value": "font_left",
+                "label": "Left"
+            },
+            {
+                "value": "font_right",
+                "label": "Right"
+            },
+            {
+                "value": "font_center",
+                "label": "Center"
+            }
+      ],
+      "default": "font_center"
+      },
+      {
+      "type": "select",
+      "id": "textbox_align",
+      "label": "Textbox align",
       "options": [
             {
                 "value": "font_left",
@@ -196,7 +217,7 @@
                   "label":"Transparent Color"
                 }
               ],
-              "default":"third_color"
+              "default":"forth_color"
       },
       {
         "type": "color",
@@ -208,7 +229,7 @@
         "type": "color",
         "id": "color_text_title",
         "label": "Section Description color",
-        "default": "#4b4b4b"
+        "default": "#808080"
       },
       {
         "type": "color",
@@ -221,7 +242,7 @@
   "blocks":[
     {
       "type":"column",
-        "name":"t:common.image",
+        "name":"column",
         "limit":6,
         "settings":[
           {

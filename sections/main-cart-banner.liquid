@@ -1,7 +1,8 @@
 {% assign image = section.settings.image %}
-{% assign contact_image = section.settings.image_contact%}
 <div
-  class="{{section.settings.color_schema}} {{section.settings.banner_top_size}} {{section.settings.banner_bottom_size}} min-h-96 flex items-center flex-1 flex-shrink-0 overflow-hidden relative">
+  class="{{section.settings.color_schema}} flex items-center flex-1 flex-shrink-0 overflow-hidden relative"
+  style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+  >
   
   <!-- image - start -->
   {% if image %}
@@ -18,6 +19,8 @@
   {{ image | img_url: '1250x' }} 1250w,
   {{ image | img_url: '1500x' }} 1500w
 " src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
+    width="{{ image.width }}"
+    height="{{ image.height }}"
     class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {%endif%}">
   {%else%}
   {% endif %}
@@ -83,52 +86,24 @@
 "label": "Banner Image"
 },
 {
-  "type":"select",
-  "id":"banner_top_size",
-  "label":"Banner Top size",
-  "options":[
-     {
-        "value":"banner_top_small",
-        "label":"Small"
-     },
-     {
-        "value":"banner_top_medium",
-        "label":"Medium"
-     },
-     {
-        "value":"banner_top_large",
-        "label":"Large"
-     },
-     {
-        "value":"banner_top_xlarge",
-        "label":"xLarge"
-     }
-  ],
-  "default":"banner_top_xlarge"
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":11,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
 },
 {
-  "type":"select",
-  "id":"banner_bottom_size",
-  "label":"Banner Bottom size",
-  "options":[
-     {
-        "value":"banner_bottom_small",
-        "label":"Small"
-     },
-     {
-        "value":"banner_bottom_medium",
-        "label":"Medium"
-     },
-     {
-        "value":"banner_bottom_large",
-        "label":"Large"
-     },
-     {
-        "value":"banner_bottom_xlarge",
-        "label":"xLarge"
-     }
-  ],
-  "default":"banner_bottom_small"
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":3,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
 },
 {
    "type": "checkbox",

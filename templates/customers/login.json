@@ -1,15 +1,52 @@
 {
   "sections": {
+    "87784d95-2801-487a-8fa7-c0e0916b927e": {
+      "type": "section-hero",
+      "settings": {
+        "color_schema": "forth_color",
+        "image": "shopify:\/\/shop_images\/15_7251a6d6-f064-4289-b82f-b09d75169525.png",
+        "padding_top": 8,
+        "padding_bottom": 1,
+        "overlay_set": true,
+        "image_fixed": true,
+        "show_line": false,
+        "line_position": "line_center",
+        "line_border": "#5e5e5e",
+        "banner_title_font_size": 45,
+        "banner_font_size": 12,
+        "animation_setting": false,
+        "subtitle": "Customer Page",
+        "headline": "Login your account",
+        "font_style": "font_normal",
+        "color_title": "#fafafa",
+        "text": "<p>Join us in the pursuit of radiant skin and experience a skincare journey like no other.<\/p>",
+        "color_desciption": "#fafafa",
+        "textbox_align": "font_center",
+        "textbox_color": "background_transparent",
+        "button_align": "font_center",
+        "button_size": "button_medium",
+        "button_round_off": false,
+        "button-url": "",
+        "button-text": "",
+        "button_bg": "rgba(0,0,0,0)",
+        "button_color": "#ffffff",
+        "border_colors": "#ffffff",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#ffffff",
+        "mo_border_color": "rgba(0,0,0,0)"
+      }
+    },
     "template": {
       "type": "template-customer-login",
       "settings": {
-        "animation_setting": true,
-        "padding_top": 5,
-        "padding_bottom": 6
+        "animation_setting": false,
+        "padding_top": 4,
+        "padding_bottom": 2
       }
     }
   },
   "order": [
+    "87784d95-2801-487a-8fa7-c0e0916b927e",
     "template"
   ]
 }

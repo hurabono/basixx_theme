@@ -1,118 +1,252 @@
-<style>
+{% style %}
 
-.shopify-payment-button__more-options {
-  visibility: visible !important;
-  text-decoration: underline;
-  background-color: none;
-  color: {{section.settings.point_color}};
-}
+  .shopify-payment-button__more-options {
+    visibility: visible !important;
+    text-decoration: underline;
+    background-color: none;
+    color: {{ section.settings.base_color}};
+  }
 
-.button-shopify-buy-it-now .shopify-payment-button__button {
-  background:{{section.settings.point_color}};
-}
+  .options-container::-webkit-scrollbar{
+        width: 8px;
+        background: {{section.settings.point_color | color_modify: 'alpha', 0.7 }};
+  }
 
-.button-shopify-buy-it-now .shopify-payment-button__button:hover{
-  background:{{section.settings.base_color}};
-}
+  .options-container::-webkit-scrollbar-thumb{
+        background: {{section.settings.point_color}};
+  }
 
-.options-container::-webkit-scrollbar{
-      width: 8px;
-      background: {{section.settings.point_color | color_modify: 'alpha', 0.7 }};
-}
+  .product_box .gallery-filter .filter-item{
+    color: {{section.settings.tab_color}};
+    font-size: 18px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin:0 10px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+  }
 
-.options-container::-webkit-scrollbar-thumb{
-      background: {{section.settings.point_color}};
-}
+  .product_box .gallery-filter .filter-item.active{
+    color: {{section.settings.tab_active}};
+    border-color :{{section.settings.tab_active}};
+  }
 
-.product_box .gallery-filter .filter-item{
-	color: {{section.settings.tab_color}};
-	font-size: 18px;
-	text-transform: uppercase;
-	display: inline-block;
-	margin:0 10px;
-	cursor: pointer;
-	border-bottom: 2px solid transparent;
-	line-height: 1.2;
-	transition: all 0.3s ease;
-}
-.product_box .gallery-filter .filter-item.active{
-	color: {{section.settings.tab_active}};
-	border-color :{{section.settings.tab_active}};
-}
+  .customBox p{
+    font-size: .875rem !important;
+  }
 
-.customBox p{
-  font-size: .875rem !important;
-}
+  {% for block in section.blocks %}
+      .radio_title_{{ block.id }}{
+        background-color: {{ block.settings.primary_color }};
+        color:{{ block.settings.primary_font_color }};
+        padding: 0.4rem 1rem;
+        border-radius: 9999px;
+        border: 2px solid {{ block.settings.primary_button_border }};
+      }
 
-.radio_title{
-  background-color: {{section.settings.primary_color}};
-  color:{{section.settings.primary_font_color}};
-  padding: 0.4rem 1rem;
-  border-radius: 9999px;
-  border: 2px solid {{section.settings.primary_button_border}};
-}
-input[type="radio"]{
-  display: none;
-}
+      input[type="radio"]:checked+.radio_title_{{ block.id }}{
+        background-color: {{ block.settings.active_button_color }};
+        color:{{ block.settings.active_font_color }};
+        border: 2px solid {{ block.settings.active_button_border }};
+      }
 
-input[type="radio"]:checked+.radio_title{
-  background-color: {{section.settings.active_button_color}};
-  color:{{section.settings.active_font_color}};
-  border: 2px solid {{section.settings.primary_button_border}};
-}
+      /* variant dropdown style */
+      .variant_color_{{ block.id }}{
+          background:{{ block.settings.dropdown_bg  }};
+          color: {{ block.settings.dropdown_font }};
+          transition:0.5s;
+      }
 
-.tab_buttons{
-      background-color: {{section.settings.color_button}};
-      color:{{section.settings.border_color}}; 
-      border: 1px solid {{section.settings.border_color}};
-}
-.tab_buttons:hover{
-      background-color: {{section.settings.button_color_hover}};
-      color:{{section.settings.active_font_color}}; 
-}
-.tab_active{
-  background-color: {{section.settings.active_button_color }};
-  color:{{section.settings.active_font_color | color_desaturate: 50 }};
-}
+      .variant_color_{{ block.id }}:hover {
+          background:{{ block.settings.dropdown_mo_bg  }};
+          color: {{ block.settings.dropdown_mo_font }};
+      }
 
-.product_padding_mobile{
-    padding-top:{{ section.settings.mobile_padding_top}}rem;
-    padding-bottom:{{section.settings.mobile_padding_bottom}}rem;
+      /* variant radio style */
+      .radio_container{
+          display:inline-block;
+          margin-right:10px;
+      }
+
+      .radio_style_{{ block.id }} {
+        background: {{ block.settings.radio_selector_bg }};
+        color: {{ block.settings.radio_selector_font }};
+        border: 1px solid {{ block.settings.radio_selector_border }};
+        padding: 0.5rem 1rem;
+        margin-top:1rem;
+        cursor:pointer;
+        transition:0.5s;
+      }
+
+      .radio_style_{{ block.id }}:hover{
+        background-color:{{ block.settings.dropdown_mo_bg  }};
+        color: {{ block.settings.dropdown_mo_font }};
+      }
+    
+      input[type="radio"]:checked+.radio_style_{{ block.id }}{
+        background: {{ block.settings.radio_active_bg }};
+        border: 1px solid {{ block.settings.radio_active_border }};
+        color:{{ block.settings.radio_active_font }};
+      }
+
+      /* Buy it now button */
+      .button-shopify-buy-it-now .shopify-payment-button__button {
+        color:{{ block.settings.secondary_button_color }};
+        border:1px solid {{ block.settings.secondary_button_border }};
+        background:{{block.settings.secondary_button_bg}};
+        transition:0.5s;
+      }
+
+      .button-shopify-buy-it-now .shopify-payment-button__button:hover{
+        color:{{ block.settings.secondary_over_font }};
+        border:1px solid {{ block.settings.secondary_mo_border }};
+        background:{{block.settings.secondary_mo_bg}};
+      }
+
+      /* product buttons */
+      .main_product_button{
+          color: {{ block.settings.button_color }};
+          border: 1px solid {{ block.settings.border_colors }};
+          background-color: {{ block.settings.button_bg }};
+          transition:0.5s;
+      }
+
+      .main_product_button:hover{
+            color: {{ block.settings.mo_button_color}};
+            border:1px solid {{ block.settings.mo_border_color }};
+            background-color: {{ block.settings.mo_button_bg }};
+      }
+
+    
+    /* star rating style */
+
+    .no-rating-product::before{
+      content: '★★★★★';
+      background-color: {{ block.settings.rating_color}};
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+
+    /* quantity style */
+
+    .qty_border{
+      border-radius:99px;
+    }
+
+    .qty_background_{{ block.id }} {
+      background:{{ block.settings.qty_bg_color }};
+    }
+
+    .qty_style_{{ block.id }}{
+      background:{{ block.settings.qty_bg_color }};
+      border: 1px solid {{ block.settings.qty_border_color }};
+      color: {{ block.settings.qty_font_color }};
+    }
+
+    .qty_icon_{{ block.id }}{
+      color:{{ block.settings.qty_icon_color }};
+    }
+
+    .social_{{ block.id }} {
+      color:{{ block.settings.social_color }};
+      background: {{ block.settings.social_bg }};
+      border: 1px solid {{ block.settings.social_border }};
+    }
+
+    .line_style_{{ block.id }} {
+      border-color: {{ block.settings.line_color }};
+    }
+
+    .selector_style_{{ block.id }}{
+      background:{{ block.settings.dropdown_color }};
+    }
+
+    .note_style_{{ block.id }} {
+      background:{{ block.settings.textarea_bg }};
+      border-bottom: 1px solid {{ block.settings.textarea_style }};
+    }
+
+
+    /* store pickup style block */
+
+    #pickup_drawer {
+      background: {{ block.settings.pickup_background }};
+    }
+    #PickupAvailabilityHeading {
+      color: {{ block.settings.pickup_title }};
+    }
+    #pickup_item_list {
+      color: {{ block.settings.pickup_title }};
+    }
+
+    .pickup-availability-variant{
+      color: {{ block.settings.pickup_disc }}
+    }
+
+    .pickup-availability-list{
+      color: {{ block.settings.pickup_disc }}
+    }
+
+    .pickup-availability-list__item{
+      border-bottom: 1px solid {{ block.settings.pickup_point }};
+    }
+ 
+    .pickup-availability-list__item:first-child {
+      border-top: 1px solid {{ block.settings.pickup_point }};
+    }
+
+  {% endfor %}
+
+
+  .option_buttons input[type="radio"]{
+    display: none;
+  }
+
+  .product_padding_mobile{
+      padding-top:{{ section.settings.mobile_padding_top}}rem;
+      padding-bottom:{{section.settings.mobile_padding_bottom}}rem;
   }
   
-@media(min-width: 767px){
-  .w3-image-sticky{
-    position: -webkit-sticky; 
-    position: sticky; 
-    top: 0;
-    padding-top: 0.5em;
+  
+  @media(min-width: 767px){
+
+    .w3-image-sticky{
+      position: -webkit-sticky; 
+      position: sticky; 
+      top: 0;
+      padding-top: 0.5em;
+    }
+
+    .product--medias{
+      height: fit-content;
+    }
+
+    .product_paddings{
+        padding-top:{{ section.settings.padding_top}}rem;
+        padding-bottom:{{section.settings.padding_bottom}}rem;
+    }
+
   }
 
-  .product--medias{
-    height: fit-content;
-  }
-.product_paddings{
-    padding-top:{{ section.settings.padding_top}}rem;
-    padding-bottom:{{section.settings.padding_bottom}}rem;
-}
-
-}
-
-</style>
+{% endstyle %}
 
 
 
 {% assign selected_variant = product.selected_or_first_available_variant %}
-{% assign featured_image = selected_variant.featured_image | default: product.featured_image %}
+
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 {{ 'drop_down.css' | asset_url | stylesheet_tag }}
+{{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
 <div class="product_paddings product_padding_mobile {{section.settings.color_schema}}">
-  <div class="max-w-[1320px] m-auto px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+  <div class="max-w-[1320px] m-auto px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="300"{% endif %}>
     
+    <!-- product breadcrumb -->
     <div class="breadcrumb">
       {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
-      {%- assign t = template | split: '.' | first -%}
 
       <nav class="breadcrumbs inline-block p-4" role="navigation" aria-label="breadcrumbs">
         <ol class="breadcrumbs__list flex items-center text-xs md:text-sm font-bold" style="color: {{section.settings.base_color}};">
@@ -124,11 +258,11 @@ input[type="radio"]:checked+.radio_title{
           </p>
           <li class="breadcrumbs__item mx-2">
             <a class="breadcrumbs__link" href="/">Home</a>
-          </li>|
+          </li> /
               {%- if collection.url -%}
                 <li class="breadcrumbs__item mx-2">
                   {{ collection.title | link_to: collection.url }}
-                </li>|
+                </li> /
               {%- endif -%}
               <li class="breadcrumbs__item mx-2">
                 <a class="breadcrumbs__link cursor-pointer"  aria-current="page">{{ product.title }}</a>
@@ -139,6 +273,8 @@ input[type="radio"]:checked+.radio_title{
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      
+    <!-- product image slider -->
       <div class="product--medias {% if section.settings.sticky_product == true %} w3-image-sticky {% endif %} ">
           <div class="block overflow-hidden">
             <div class="productSwiper">
@@ -170,46 +306,79 @@ input[type="radio"]:checked+.radio_title{
           </div>
 
       </div>
-
+      <!-- start product information blocks -->
+      <!-- product information block list
+            1) product vendor
+            2) product title
+            3) product price
+            4) product quantity
+            5) date settings
+            6) time settings
+            7) custom notes
+            8) empty space
+            9) available stocks
+            10) store pickup
+            11) product type
+            12) product textbox
+            13) product radio button
+            14) product variant drop down
+            15) social sharing
+            16) product checkout button
+            17) rating
+            18) division line
+            19) payment icons -->
+            
       <div class="product-information pt-4">
         {% form 'product', product, id: 'product-form'%}
             {% for block in section.blocks %}
               {% case block.type %}
+                
                 {% when 'vendor' %}
                   {%if product.vendor%}
                   <span itemprop="brand" class="text-sm text-gray-500" style="color:{{section.settings.base_color}};">{{ product.vendor }}</span>
                   {%endif%}
                   
+                  
                 {% when 'title' %}
                   {% if product.title %}
-                  <h1 class="text-2xl lg:text-3xl font-bold mb-4" style="color:{{section.settings.title_color}};">
+                  <h1 class="text-2xl lg:text-3xl font-bold mb-2" style="color:{{block.settings.title_color}};">
                     {{ product.title }}
                   </h1>
-                  {% endif %}
+                {% endif %}
+
 
                 {% when 'price' %}
                     {% if selected_variant.available %}
                     <div class="my-3" id="price-{{section.id}}">
   
                             <span class="text-lg text-gray-500 line-through"
-                                  style="color:{{section.settings.base_color}};"
+                                  style="color:{{ block.settings.price_point}};"
                             >
                                   {{selected_variant.compare_at_price | money}}
                             </span>
-                            <span class="text-2xl font-bold" style="color:{{section.settings.point_color}};">
+                            <span class="text-2xl font-bold" style="color:{{ block.settings.price_color }};">
                                   {{selected_variant.price | money}}
                             </span>
   
                       <!-- price Sale bedge -->
                       {% if selected_variant.price < selected_variant.compare_at_price %}
-                            <span class="px-5 py-1 text-sm font-bold point_color rounded-full text-white mx-4">Sale</span>
+                            <div class="w-3 h-3 rounded-full inline-block ml-2" style="background-color: {{ section.settings.point_color }};"></div>
+                            <span class="text-sm uppercase" style="color:{{ section.settings.base_color }}">Sale</span>
                       {% endif %}
+
+                      {% if product.metafields.custom.promotion.value != blank %}
+                            <div class="w-3 h-3 rounded-full inline-block ml-2" style="background-color: {{ section.settings.point_color }};"></div>
+                            <span class="text-sm uppercase" style="color:{{ section.settings.base_color }}">{{ product.metafields.custom.promotion.value }}</span>
+                      {% endif %}
+                      
                     </div>
                   {% else %}
                     <div class="mb-6">
                       {{ 'common.sold_out' | t }}
                     </div>
                   {% endif %}
+
+
                   
                 {% when 'quantity' %}
                   <div class="flex items-end gap-4 mb-6">
@@ -217,12 +386,12 @@ input[type="radio"]:checked+.radio_title{
                   <div class="product-form__item product-form__item--quantity">
                     <div class="flex flex-col items-start gap-2">
                           <div class="qty">
-                                <div class="qty_control">
+                                <div class="qty_control"> 
                                   <label for="Quantity-{{ section.id }}" style="font-size:0.8rem; color:{{section.settings.base_color}};">Quantity </label>
-                                  <div class="qtycard border px-2 bg-white">
-                                      <span class="btnqty qtyminus icon icon-minus">-</span>
-                                      <input type="text" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly="">
-                                      <span class="btnqty qtyplus icon icon-plus">+</span>
+                                  <div class="qtycard px-2 qty_style_{{ block.id }} {% if block.settings.qty_radius == true %} qty_border {% endif %}">
+                                      <span class="btnqty qtyminus icon icon-minus qty_icon_{{ block.id }}">-</span>
+                                      <input type="text" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" class="qty_background_{{ block.id }} quantity-selector quantity-input" readonly="">
+                                      <span class="btnqty qtyplus icon icon-plus qty_icon_{{ block.id }}">+</span>
                                 </div>
                                 </div>
                           </div> 
@@ -230,6 +399,8 @@ input[type="radio"]:checked+.radio_title{
                     </div>
                   {% endif %}
                   </div>
+
+
 
                 {% when 'date_set' %}
                 <div class="flex my-4">
@@ -240,6 +411,8 @@ input[type="radio"]:checked+.radio_title{
                 </p>
                 </div>
 
+
+
                 {% when 'time_set' %}
                 <div class="my-4" style="color:{{section.settings.base_color}};">
                     <p class="line-item-property__field w-full md:w-1/2">
@@ -248,16 +421,20 @@ input[type="radio"]:checked+.radio_title{
                       </p>
                 </div>
 
+
+
                 {% when 'custom_note' %}
-                <div class="flex py-4">
+                <div class="flex pb-4">
                 <p class="line-item-property__field w-full">
                 <label for="custom-message" style="font-size:0.8rem; color:{{section.settings.base_color}};">Custom message</label>
-                <textarea id="custom-message" name="properties[Custom message]" class="w-full appearance-none focus:outline-none bg-transparent border-none" style="color:{{section.settings.point_color}}; border-bottom:1px solid {{section.settings.point_color}};"></textarea>
+                <textarea id="custom-message" name="properties[Custom message]" class="note_style_{{ block.id }} w-full appearance-none focus:outline-none bg-transparent border-none" style="color:{{ section.settings.point_color }}"></textarea>
                 </p>
                 </div>
 
                 {% when 'space' %}
                 <div class="py-4"></div>
+
+
 
                 {% when 'stock' %}
                 <div class="inventoryWrapper py-2" id="variantStock-{{section.id}}" style="color: {{section.settings.base_color}};">
@@ -268,7 +445,7 @@ input[type="radio"]:checked+.radio_title{
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
-                      Availability:
+                      <p class="text-sm">Availability :</p>
                       <p class="mx-2 text-sm">
                         {% if product.available %} Available Now {% else %} Unavailable {% endif %}
                       </p>
@@ -276,21 +453,51 @@ input[type="radio"]:checked+.radio_title{
 
                   {%- else -%}
 
-                    <div class="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                      </svg>
-                      Availability: Unavailable Now
-                    </div>
+                  <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    <p class="text-sm">Availability :</p>
+                    <p class="mx-2 text-sm">
+                       Unavailable 
+                    </p>
+                  </div>
 
                   {% endif %}
 
+
                   <script>
                     {% for variant in product.variants %}
-                      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+                      variantStock[{{- variant.id -}}] = {{ selected_variant.inventory_quantity }};
                     {% endfor %}
                   </script>
                 </div>
+
+
+                {% when 'store_pickup' %}
+
+                  <div class="inventoryWrapper py-2" id="pickupStock-{{section.id}}" style="color: {{section.settings.base_color}};">
+                    {%- assign pick_up_availabilities = selected_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+
+                    <pickup-availability class="product__pickup-availabilities "
+                    {% if selected_variant.available and pick_up_availabilities.size > 0 %} available {% endif %}
+                    data-base-url="{{ shop.url }}{{ routes.root_url }}"
+                    data-variant-id="{{ selected_variant.id }}"
+                    data-has-only-default-variant="{{ product.has_only_default_variant }}"
+                    >
+                    <template>
+                    <pickup-availability-preview class="pickup-availability-preview">
+                    {% render 'icon-unavailable' %}
+                    <div class="pickup-availability-info">
+                    <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+                    <a class="pickup-availability-button link link--text underlined-link">{{ 'products.product.pickup_availability.refresh' | t }}</a>
+                    </div>
+                    </pickup-availability-preview>
+                    </template>
+                    </pickup-availability>
+                  </div>
+                  
+                 
 
                 {% when 'product_type' %}
                 <div class="productType py-2" style="color: {{section.settings.base_color}};">
@@ -305,19 +512,25 @@ input[type="radio"]:checked+.radio_title{
                     </div>
                 </div>
 
+
+
                 {% when 'custom_textbox' %}
                 <div class="customBox py-2" style="color: {{section.settings.base_color}};">
                   <div class="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2 basis-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
-                      {{block.settings.custom_title}}:
-                      <p class="mx-2 custom_font">
+                      {% if block.settings.custom_title != blank %}
+                      <p class="custom_font" style="font-size: 12px;">{{block.settings.custom_title}} :</p>
+                      {% endif %}
+                      <p class="custom_font{% if block.settings.custom_title != blank %} ml-2{% endif %}">
                       {{block.settings.custom_desc}}
                       </p>
                     </div>
                 </div>
                 
+
+
                 {% when 'custom_radio' %}
                 <div class="customBox-{{block.id}} py-2" style="color: {{section.settings.base_color}};">
                   <p class="line-item-property__field">
@@ -325,90 +538,135 @@ input[type="radio"]:checked+.radio_title{
 
                   <div class="custom_riadio flex pt-4">
                     {% if block.settings.first_option != blank %}
-                      <div class="select_box mr-2">
+                      <div class="option_buttons select_box mr-2">
                         <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.first_option}}" id="option-{{block.settings.first_option}}-{{block.id}}" checked>
-                        <label class="radio_title cursor-pointer text-xs" for="option-{{block.settings.first_option}}-{{block.id}}">{{block.settings.first_option}}</label>
+                        <label class="radio_title_{{ block.id }} cursor-pointer text-xs" for="option-{{block.settings.first_option}}-{{block.id}}">{{block.settings.first_option}}</label>
                       </div>
                     {% endif %}
 
                     {% if block.settings.second_option != blank %}
-                      <div class="select_box mr-2">
+                      <div class="option_buttons select_box mr-2">
                         <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.second_option}}" id="option-{{block.settings.second_option}}-{{block.id}}">
-                        <label class="radio_title cursor-pointer" for="option-{{block.settings.second_option}}-{{block.id}}"> {{block.settings.second_option}} </label>
+                        <label class="radio_title_{{ block.id }} cursor-pointer" for="option-{{block.settings.second_option}}-{{block.id}}"> {{block.settings.second_option}} </label>
                       </div>
                     {% endif %}
 
                     {% if block.settings.third_option != blank %}
-                      <div class="select_box mr-2">
+                      <div class="option_buttons select_box mr-2">
                         <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.third_option}}" id="option-{{block.settings.third_option}}-{{block.id}}"> 
-                        <label class="radio_title cursor-pointer" for="option-{{block.settings.third_option}}-{{block.id}}"> {{block.settings.third_option}} </label>
+                        <label class="radio_title_{{ block.id }} cursor-pointer" for="option-{{block.settings.third_option}}-{{block.id}}"> {{block.settings.third_option}} </label>
                       </div>
                     {% endif %}
                   </div>
                   
                   </p>
                 </div>
+
+
                 
                 {% when 'selected_variant' %}
                 <input type="hidden" name="id" value="{{selected_variant.id}}">
-                         <!-- product variant -->
-                         <div class="my-3">
-                               {% unless product.has_only_default_variant %}
-                               <variant-selector data-url="{{product.url}}" data-section="{{section.id}}">
+                      <!-- product variant dropdown and radio button / 
+                          "radio_selector" makes switching the radio button -->
+
+                      <div class="my-3">
+                            {% unless product.has_only_default_variant %}
+                            <variant-selector data-url="{{product.url}}" data-section="{{section.id}}">
+                            
+                            {%- for option in product.options_with_values -%}
+                            {% assign link_handle = section.id | replace: '-', '_' %}
                                 
-                                {%- for option in product.options_with_values -%}
-                                {% assign link_handle = section.id | replace: '-', '_' %}
-                                    
-                                      <fieldset class="product-form__input" x-data="{ {{ link_handle }}: false, option: '{{option.selected_value}}' }">
-                                            <legend class="form__label selected tracking-wider appearance-none focus:outline-none" x-on:click="{{ link_handle }} = ! {{ link_handle }}" style="color:{{section.settings.base_color}}; border-bottom: 1px solid {{section.settings.point_color}};">{{ option.name }} / <span x-text="option"></span> </legend>
-                                            
-                                            <div class="options-container {{section.settings.dropdown_color}}">
-                                              {%- for value in option.values -%}
-                                            <div x-cloak 
-                                            x-transition:enter="transition ease-out duration-300"
-                                            x-transition:enter-start="opacity-0 translate-y-3"
-                                            x-transition:enter-end="opacity-100 translate-y-0"
-                                            x-transition:leave="transition ease-out duration-300"
-                                            x-transition:leave-start="opacity-100 translate-y-0"
-                                            x-transition:leave-end="opacity-0 translate-y-3"
-                                            x-show="{{ link_handle }}"  x-on:click.away="{{ link_handle }} = false"
-                                            class="option appearance-none focus:outline-none {{section.settings.hover_schema}}" style="color: {{section.settings.point_color}};">
-                                            <input
-                                            x-model="option"
-                                            class="radio"
-                                            type="radio"
-                                            id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                                            name="{{ option.name }}"
-                                            value="{{ value | escape }}"
-                                            {% if option.selected_value == value %}
-                                                  checked
-                                            {% endif %}
-                                            >
-                                            
-                                            <label class="option_values w-full block appearance-none focus:outline-none" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                                            {{ value }}
-                                            </label>
-                                            </div>
-                                            {%- endfor -%}
-                                            </div>
-                                      </fieldset>
+                            <fieldset class="product-form__input" {% if section.settings.radio_selector != true %} x-data="{ {{ link_handle }}: false, option: '{{option.selected_value}}' }" {% endif %}>
+                                      
+                                <legend
+                                    class="
+                                    {% if section.settings.radio_selector != true %} 
+                                    selector_style_{{ block.id }} form__label selected
+                                    {% endif %} 
+                                    tracking-wider appearance-none focus:outline-none"
+                                    {% if section.settings.radio_selector != true %}  
+                                    x-on:click="{{ link_handle }} = ! {{ link_handle }}" 
+                                    {% endif %} 
+                                    style="color:{{section.settings.base_color}}; border-bottom: 1px solid {{block.settings.dropdown_border}}; display:flex; justify-content:space-between; align-items:end;">
+                                  <div 
+                                    class="{% if section.settings.radio_selector == true %} text-xs {% endif %}">{{ option.name }} {% if section.settings.radio_selector != true %}/ <span x-text="option"></span> {% endif %}
+                                  </div>
+                                  
+                                  {% if section.settings.radio_selector != true %}
+                                  <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                  </div>
+                                {% endif %}
+                                </legend>
+                                  
+                                <div 
+                                  class="{% if section.settings.radio_selector == true %}my-4{% endif %}
+                                          {% if section.settings.radio_selector != true %}options-container{% endif %}">
+                                          
+                                  {%- for value in option.values -%}
+                                  <div 
+                                  {% if section.settings.radio_selector != true %}
+                                  x-cloak 
+                                  x-transition:enter="transition ease-out duration-300"
+                                  x-transition:enter-start="opacity-0 translate-y-3"
+                                  x-transition:enter-end="opacity-100 translate-y-0"
+                                  x-transition:leave="transition ease-out duration-300"
+                                  x-transition:leave-start="opacity-100 translate-y-0"
+                                  x-transition:leave-end="opacity-0 translate-y-3"
+                                  x-show="{{ link_handle }}"  x-on:click.away="{{ link_handle }} = false"
+                                  {% endif %}
+                                  class="{% if section.settings.radio_selector == true %}radio_container{% endif %} option appearance-none focus:outline-none {% if section.settings.radio_selector != true %}variant_color_{{ block.id }}{% endif %}">
+                                  
+                                  <input
+                                  {% if section.settings.radio_selector != true %}
+                                  x-model="option"
+                                  {% endif %}
+
+                                  class="radio"
+                                  type="radio"
+                                  id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                  name="{{ option.name }}"
+                                  value="{{ value | escape }}"
+                                  {% if option.selected_value == value %}
+                                        checked
+                                  {% endif %}
+                                  >
+                                  {% if product.variants[forloop.index0].metafields.color.value and option.name == "Color" %}
+                                      &nbsp;
+                                    {% else %}
+                                      <label class="{% if section.settings.radio_selector == true %}radio_style_{{ block.id }}{% endif %} {% if section.settings.radio_selector != true %}option_values w-full block appearance-none focus:outline-none{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                      {{ value }}
+                                      </label>
+                                  {% endif %}
+                                  
+                                  </div>
                                 {%- endfor -%}
-                                <script type="application/json">
-                                {{ product.variants | json }}
-                                </script>
-                               </variant-selector>
-                               {% endunless %}                             
-                         </div>
-                        
+                                </div>
+
+                            </fieldset>
+                            {%- endfor -%}
+
+                            <script type="application/json">
+                            {{ product.variants | json }}
+                            </script>
+                            </variant-selector>
+                            
+                            {% endunless %}                             
+                      </div>
+                  
+
+                         
                   {% when 'social' %}
                   <div class="flex">
-                  <div class="w-full lg:w-1/2 flex flex-col md:flex-row text-xs justify-center items-center py-2 bg-white mb-4 px-2 mr-4">
+                  <div class="social_{{ block.id }} w-full lg:w-1/2 flex flex-col md:flex-row text-xs justify-center items-center py-2 bg-white mb-4 px-2 mr-4">
                   {%- render 'button-wishlist', product: product -%}
                    <p class="pt-3 md:py-0 px-4 text-center">ADD MY WISH LIST</p>
                   </div>
                   <!-- social sharing -->
-                  <div class="w-full lg:w-1/2 flex flex-col md:flex-row text-xs justify-center items-center py-2 bg-white mb-4 px-2">
-                    {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, icon_color:section.settings.point_color %} 
+                  <div class="social_{{ block.id }} w-full lg:w-1/2 flex flex-col md:flex-row text-xs justify-center items-center py-2 bg-white mb-4 px-2">
+                    {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, icon_color:block.settings.social_icon_color %} 
                     <p class="pt-3 md:py-0 px-4 text-center">SOCIAL SHAREING</p>
                   </div>
                   </div>
@@ -416,7 +674,7 @@ input[type="radio"]:checked+.radio_title{
                   {% when 'checkout_buttons' %}
                     {% if selected_variant.available %}
                     <div>
-                      <button type="submit" name="add" class="{{section.settings.color_button}} {{section.settings.button_color_hover}} w-full h-12" style="border:1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+                      <button type="submit" name="add" class="main_product_button w-full h-12">
                         {{ 'action.add_to_cart' | t }}
                       </button>
                     </div>
@@ -425,16 +683,18 @@ input[type="radio"]:checked+.radio_title{
                     </div>
                     {% endif %}
 
+
+
                 {% when 'rating' %}
-                {% liquid
-                  assign rating_decimal = 0
-                  assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                  if decimal >= 0.3 and decimal <= 0.7
-                    assign rating_decimal = 0.5
-                  elsif decimal > 0.7
-                    assign rating_decimal = 1
-                  endif
-                %}
+                  {% liquid
+                    assign rating_decimal = 0
+                    assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                    if decimal >= 0.3 and decimal <= 0.7
+                      assign rating_decimal = 0.5
+                    elsif decimal > 0.7
+                      assign rating_decimal = 1
+                    endif
+                  %}
                   <div class="flex items-center">
                     {% if product.metafields.reviews.rating_count > 0 %}
                     <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
@@ -448,33 +708,100 @@ input[type="radio"]:checked+.radio_title{
                       <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
                     </p>
                     <p class="rating-count caption">
-                      <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                      <span aria-hidden="true" style="color: {{ block.settings.rating_font }};">({{ product.metafields.reviews.rating_count }})</span>
                       <!-- <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} total reviews</span> -->
                     </p>
                       {%else%}
                       <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
-                        <span aria-hidden="true" class="no-rating" 
+                        <span aria-hidden="true" class="no-rating-product" 
                         style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};
                          --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; 
                          --rating-decimal: {{ rating_decimal }};">
                          </span>
                       </div>
                       <p class="rating-count caption">
-                        <span aria-hidden="true">(0)</span>
+                        <span aria-hidden="true" style="color: {{ block.settings.rating_font }};">(0)</span>
                       </p>
                     {% endif %}
                   </div>
+
+
+
+                  {% when 'division_line' %}
+                    <div class="w-full border-b my-2 line_style_{{ block.id }}"></div>
+                  
+
+                  {% when 'payment_icon' %}
+                    <span class="inline-flex flex-wrap sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start mb-6">
+                      {% assign visa_payment = 'visa' %}
+                      {% assign master_payment = 'master' %}
+                      {% assign amex_payment = 'american_express' %}
+                      {% assign paypal_payment = 'paypal' %}
+                      {% assign afterpay_payment = 'afterpay' %}
+                      {% assign jcb_payment = 'jcb' %}
+                      {% assign klarna_payment = 'klarna' %}
+                      {% assign apple_pay_payment = 'apple_pay' %}
+                      
+                      {% for type in visa_payment %}
+                          {%  if type == 'visa' and block.settings.visa_visible == true %}
+                          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
+                          {%  endif %}
+                      {% endfor %}
+                
+                      {% for type in master_payment %}
+                          {%  if type == 'master' and block.settings.mastercard_visible == true %}
+                          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
+                          {%  endif %}
+                      {% endfor %}
+                
+                      {% for type in amex_payment %}
+                          {%  if type == 'american_express' and block.settings.amex_visible == true %}
+                          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
+                          {%  endif %}
+                      {% endfor %}
+                
+                      {% for type in paypal_payment %}
+                          {%  if type == 'paypal' and block.settings.paypal_visible == true %}
+                          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
+                          {%  endif %}
+                      {% endfor %}
+                
+                      {% for type in jcb_payment %}
+                          {%  if type == 'jcb' and block.settings.jcb_visible == true  %}
+                          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
+                          {%  endif %}
+                      {% endfor %}
+                
+                      {% for type in afterpay_payment %}
+                          {%  if type == 'afterpay' and block.settings.afterpay_visible == true %}
+                          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
+                          {%  endif %}
+                      {% endfor %}
+                
+                      {% for type in klarna_payment %}
+                          {%  if type == 'klarna' and block.settings.klarna_visible == true %}
+                          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
+                          {%  endif %}
+                      {% endfor %}
+                
+                      {% for type in apple_pay_payment %}
+                          {%  if type == 'apple_pay' and block.settings.applepay_visible == true %}
+                          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
+                          {%  endif %}
+                      {% endfor %}
+                      
+                    
+                    </span>
                 
                 {% else %}
               {% endcase %}  
             {% endfor %}
+          {% endform %}
       </div>
-        
     </div>
-    {% endform %}
-      </div>
-  </div>  
-</div>
+  </div>                                        
+</div>  
+
 
 
 
@@ -553,11 +880,15 @@ input[type="radio"]:checked+.radio_title{
               .then((response)=>response.text())
               .then((responseText)=>{
                     const id = `variantStock-${this.dataset.section}`;
+                    const pickup_id = `pickupStock-${this.dataset.section}`;
                     const html = new DOMParser().parseFromString(responseText, 'text/html');
                     const oldStock = document.getElementById(id);
                     const newStock = html.getElementById(id);
+                    const oldStock_pickup = document.getElementById(pickup_id);
+                    const newStock_pickup = html.getElementById(pickup_id);
   
                     if(oldStock && newStock) oldStock.innerHTML = newStock.innerHTML;
+                    if(oldStock_pickup && newStock_pickup) oldStock_pickup.innerHTML = newStock_pickup.innerHTML;
               });
         }
   }
@@ -565,7 +896,7 @@ input[type="radio"]:checked+.radio_title{
   customElements.define("variant-selector", VariantSelector);
   </script>
 
-
+  <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
@@ -607,13 +938,13 @@ input[type="radio"]:checked+.radio_title{
         "label":"Transparent Color"
       }
     ],
-    "default":"forth_color"
+    "default":"background_transparent"
     },
     {
       "type": "range",
       "id": "padding_top",
       "label": "Padding Top controll",
-      "default":14,
+      "default":9,
       "min": 1,
       "max": 20,
       "step": 1,
@@ -667,10 +998,10 @@ input[type="radio"]:checked+.radio_title{
       "label": "Sticky Box"
     },
     {
-      "type": "color",
-      "id": "title_color",
-      "label": "Product Title color",
-      "default": "#6F665D"
+      "type": "checkbox",
+      "id": "radio_selector",
+      "default": true,
+      "label": "Radio button selector"
     },
     {
       "type": "color",
@@ -679,275 +1010,12 @@ input[type="radio"]:checked+.radio_title{
       "default": "#926D5A"
     },
     {
-      "type": "header",
-      "content": "Selection Dropdown color"
-    },
-    {
-      "type":"select",
-      "id":"dropdown_color",
-      "label":"Dropdown color",
-      "options":[
-         {
-            "value":"first_color",
-            "label":"First Color"
-         },
-         {
-            "value":"second_color",
-            "label":"Second Color"
-         },
-         {
-            "value":"third_color",
-            "label":"Third Color"
-         },
-         {
-          "value":"forth_color",
-          "label":"Forth Color"
-        },
-        {
-          "value":"fifth_color",
-          "label":"Fifth Color"
-        },
-        {
-          "value":"background_transparent",
-          "label":"Transparent Color"
-        }
-      ],
-      "default":"forth_color"
-     },
-     {
-      "type":"select",
-      "id":"hover_schema",
-      "label":"Dropbox mouse over",
-      "options":[
-         {
-            "value":"nav_color_first",
-            "label":"First Color"
-         },
-         {
-            "value":"nav_color_second",
-            "label":"Second Color"
-         },
-         {
-            "value":"nav_color_third",
-            "label":"Third Color"
-         },
-         {
-          "value":"nav_color_forth",
-          "label":"Forth Color"
-          },
-          {
-            "value":"nav_color_fifth",
-            "label":"Fifth Color"
-         }
-      ],
-      "default":"nav_color_third"
-   },
-   {
-      "type": "header",
-      "content": "Option Button Color"
-    },
-    {
-    "type": "color",
-    "id": "primary_color",
-    "label": "Primary option button",
-    "default": "#6F665D"
-    },
-        {
-    "type": "color",
-    "id": "primary_font_color",
-    "label": "Option font color",
-    "default": "#fff"
-    },
-    {
-    "type": "color",
-    "id": "primary_button_border",
-    "label": "Primary button border",
-    "default": "transparent"
-    },
-    {
-    "type": "color",
-    "id": "active_button_color",
-    "label": "Active option button",
-    "default": "transparent"
-    },
-     {
-    "type": "color",
-    "id": "active_font_color",
-    "label": "Active option font",
-    "default": "#6F665D"
-    },
-    {
-      "type": "header",
-      "content": "Button",
-      "info": "Settings button and text color and mouseover color"
-    },
-    {
-      "type":"select",
-      "id":"color_button",
-      "label":"Button color",
-      "options":[
-         {
-            "value":"first_color",
-            "label":"First Color"
-         },
-         {
-            "value":"second_color",
-            "label":"Second Color"
-         },
-         {
-            "value":"third_color",
-            "label":"Third Color"
-         },
-         {
-            "value":"forth_color",
-            "label":"Forth Color"
-         },
-         {
-            "value":"fifth_color",
-            "label":"Fifth Color"
-         },
-         {
-            "value":"background_transparent",
-            "label":"Transparent Color"
-         }
-      ],
-      "default":"background_transparent"
-   },
-   {
-      "type":"select",
-      "id":"button_color_hover",
-      "label":"Button moseover color",
-      "options":[
-         {
-            "value":"button_first_color",
-            "label":"First Color"
-         },
-         {
-            "value":"button_second_color",
-            "label":"Second Color"
-         },
-         {
-            "value":"button_third_color",
-            "label":"Third Color"
-         },
-         {
-            "value":"button_forth_color",
-            "label":"Forth Color"
-         },
-         {
-            "value":"button_fifth_color",
-            "label":"Fifth Color"
-         },
-         {
-            "value":"button_background_transparent",
-            "label":"Transparent Color"
-         }
-      ],
-      "default":"button_third_color"
-   },
-  {
-    "type": "color",
-    "id": "border_color",
-    "label": "Button border color",
-    "default": "#6F665D"
-  },
-    {
       "type": "color",
       "id": "point_color",
       "label": "Point color",
-      "default": "#6F665D"
-    },
-    {
-      "type": "header",
-      "content": "Description Box Setting",
-      "info": "Description Tab Box settings"
-    },
-    {
-        "type":"select",
-        "id":"description_textbox_color",
-        "label":"Description Box color",
-        "options":[
-           {
-              "value":"first_color",
-              "label":"First Color"
-           },
-           {
-              "value":"second_color",
-              "label":"Second Color"
-           },
-           {
-              "value":"third_color",
-              "label":"Third Color"
-           },
-           {
-            "value":"forth_color",
-            "label":"Forth Color"
-          },
-          {
-            "value":"fifth_color",
-            "label":"Fifth Color"
-          },
-          {
-            "value":"background_transparent",
-            "label":"Transparent Color"
-          }
-        ],
-        "default":"forth_color"
-        },
-
-        {
-      "type":"select",
-      "id":"button_align",
-      "label":"Tap Button position",
-      "options":[
-         {
-            "value":"font_left",
-            "label":"Left"
-         },
-         {
-            "value":"font_right",
-            "label":"Right"
-         },
-         {
-            "value":"font_center",
-            "label":"Center"
-         }
-      ],
-      "default":"font_left"
-    },
-    {
-      "type":"select",
-      "id":"text_align",
-      "label":"Description text align",
-      "options":[
-         {
-            "value":"font_left",
-            "label":"Left"
-         },
-         {
-            "value":"font_right",
-            "label":"Right"
-         },
-         {
-            "value":"font_center",
-            "label":"Center"
-         }
-      ],
-      "default":"font_center"
-    },
-    {
-      "type": "color",
-      "id": "tab_color",
-      "label": "Tab Button Color",
-      "default": "#926D5A"
-    },
-    {
-      "type": "color",
-      "id": "tab_active",
-      "label": "Tab active color",
-      "default": "#926D5A"
+      "default": "#5E5E5E"
     }
-    
+      
   ],
   "blocks":[
     {
@@ -958,27 +1026,206 @@ input[type="radio"]:checked+.radio_title{
     {
       "type":"title",
       "name":"Title",
-      "limit":1
+      "limit":1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Product Title color",
+          "default": "#5E5E5E"
+        }
+      ]
     },
     {
       "type":"price",
       "name":"Price",
-      "limit":1
+      "limit":1,
+      "settings": [
+        {
+        "type": "color",
+        "id": "price_color",
+        "label": "Price color",
+        "default": "#5E5E5E"
+        },
+        {
+        "type": "color",
+        "id": "price_point",
+        "label": "price point color",
+        "default": "#808080"
+        }
+      ]
     },
     {
       "type":"selected_variant",
       "name":"Variants",
-      "limit":1
+      "limit":1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "dropdown_color",
+          "label": "Dropdown color",
+          "default": "#fafafa"
+        },
+        {
+          "type": "header",
+          "content": "Dropdown color",
+          "info":"Change here for dropdown style"
+        },
+        {
+          "type": "color",
+          "id": "dropdown_bg",
+          "label": "Background color",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "dropdown_font",
+          "label": "Font color",
+          "default": "#808080"
+        },
+        {
+          "type": "color",
+          "id": "dropdown_border",
+          "label": "Border color",
+          "default": "#5E5E5E"
+        },
+        {
+          "type": "header",
+          "content": "Mouseover color"
+        },
+        {
+          "type": "color",
+          "id": "dropdown_mo_bg",
+          "label": "Mouseover background",
+          "default": "#5E5E5E"
+        },
+        {
+          "type": "color",
+          "id": "dropdown_mo_font",
+          "label": "Mouseover Font",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Radio button color",
+          "info":"Change here for radio button style"
+        },
+        {
+          "type": "color",
+          "id": "radio_selector_bg",
+          "label": "Background color",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "radio_selector_font",
+          "label": "Font color",
+          "default": "#808080"
+        },
+        {
+          "type": "color",
+          "id": "radio_selector_border",
+          "label": "Border color",
+          "default": "#5E5E5E"
+        },
+        {
+          "type": "header",
+          "content": "Button active color"
+        },
+        {
+          "type": "color",
+          "id": "radio_active_bg",
+          "label": "Background color",
+          "default": "#808080"
+        },
+        {
+          "type": "color",
+          "id": "radio_active_font",
+          "label": "Font color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "radio_active_border",
+          "label": "Border color",
+          "default": "transparent"
+        }
+      ]
+    },
+    {
+        "type": "division_line",
+        "name": "Division Line",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "color",
+            "id": "line_color",
+            "label": "Line color",
+            "default": "#9A9A9A"
+          }
+        ]
     },
     {
       "type":"quantity",
       "name":"Quantity",
-      "limit":1
+      "limit":1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "qty_radius",
+          "default": false,
+          "label": "Rounded Corners"
+        },
+        {
+          "type": "color",
+          "id": "qty_bg_color",
+          "label": "quantity background color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "qty_font_color",
+          "label": "quantity font color",
+          "default": "#5E5E5E" 
+        },
+        {
+          "type": "color",
+          "id": "qty_border_color",
+          "label": "quantity border color",
+          "default": "#9A9A9A"
+        },
+        {
+          "type": "color",
+          "id": "qty_icon_color",
+          "label": "quantity icon color",
+          "default": "#5E5E5E"
+        }
+      ]
     },
     {
       "type":"social",
       "name":"Social Shareing",
-      "limit":1
+      "limit":1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "social_bg",
+          "label": "social background color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "social_icon_color",
+          "label": "social font color",
+          "default": "#808080"
+        },
+        {
+          "type": "color",
+          "id": "social_border",
+          "label": "social border color",
+          "default": "#9A9A9A"
+        }
+      ]
     },
     {
       "type":"time_set",
@@ -1012,9 +1259,58 @@ input[type="radio"]:checked+.radio_title{
       "limit":1
     },
     {
+      "type":"store_pickup",
+      "name":"Store Pick-up",
+      "limit":1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "This is store pickup modeal style"
+        },
+        {
+          "type": "color",
+          "id": "pickup_background",
+          "label": "background color",
+          "default":"#fafafa"
+        },
+        {
+          "type": "color",
+          "id": "pickup_title",
+          "label": "Title color",
+          "default": "#4B4B4B"
+        },
+        {
+          "type": "color",
+          "id": "pickup_disc",
+          "label": "Font color",
+          "default": "#9A9A9A"
+        },
+        {
+          "type": "color",
+          "id": "pickup_point",
+          "label": "Line Point",
+          "default": "#808080"
+        }
+      ]
+    },
+    {
       "type":"custom_note",
       "name":"Custom Note",
-      "limit":1
+      "limit":1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "textarea_bg",
+          "label": "Textarea background",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "textarea_style",
+          "label": "Textarea border",
+          "default": "#9A9A9A"
+        }
+      ]
     },
     {
       "type":"product_type",
@@ -1073,13 +1369,136 @@ input[type="radio"]:checked+.radio_title{
           "id": "third_option",
           "label": "option 3",
           "default": "option 3"
+        },
+        {
+          "type": "header",
+          "content": "Option Button Color"
+        },
+        {
+          "type": "color",
+          "id": "primary_color",
+          "label": "Primary option button",
+          "default": "#808080"
+        },
+        {
+          "type": "color",
+          "id": "primary_font_color",
+          "label": "Option font color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "primary_button_border",
+          "label": "Primary button border",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "active_button_color",
+          "label": "Active option button",
+          "default": "#808080"
+        },
+        {
+          "type": "color",
+          "id": "active_font_color",
+          "label": "Active option font",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "active_button_border",
+          "label": "Active option border",
+          "default": "transparent"
         }
       ]
     },
     {
       "type":"checkout_buttons",
       "name":"Checkout Buttons",
-      "limit":1
+      "limit":1,
+      "settings": [
+        {
+      "type": "header",
+      "content": "Button",
+      "info": "Settings button and text color and mouseover color"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background color",
+      "default": "transparent"
+      },
+      {
+      "type": "color",
+      "id": "button_color",
+      "label": "button font color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "border_colors",
+      "label": "border color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "mo_button_bg",
+      "label": "Mouseover background",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "mo_button_color",
+      "label": "Mouseover font color",
+      "default": "#fff"
+      },
+      {
+      "type": "color",
+      "id": "mo_border_color",
+      "label": "Mouseover border color",
+      "default": "transparent"
+      },
+      {
+      "type": "header",
+      "content": "Buy it now Button"
+      },
+      {
+      "type": "color",
+      "id": "secondary_button_bg",
+      "label": "Button background color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "secondary_button_color",
+      "label": "button font color",
+      "default": "#fff"
+      },
+      {
+      "type": "color",
+      "id": "secondary_button_border",
+      "label": "border color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "secondary_mo_bg",
+      "label": "Mouseover background",
+      "default": "#A9A9A9"
+      },
+      {
+      "type": "color",
+      "id": "secondary_over_font",
+      "label": "Mouseover font color",
+      "default": "#fff"
+      },
+      {
+      "type": "color",
+      "id": "secondary_mo_border",
+      "label": "Mouseover border color",
+      "default": "transparent"
+      }
+      ]
     },
     {
       "type": "rating",
@@ -1089,6 +1508,78 @@ input[type="radio"]:checked+.radio_title{
         {
           "type": "paragraph",
           "content": "Rating is shopify app riquired"
+        },
+        {
+        "type": "color",
+        "id": "rating_color",
+        "label": "Rating color",
+        "default": "#BFBFBF"
+        },
+        {
+        "type": "color",
+        "id": "rating_font",
+        "label": "Rating font",
+        "default": "#808080"
+        }
+      ]
+    },
+    {
+      "type":"payment_icon",
+      "name":"Payment icon",
+      "limit":1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Payment method",
+          "info": "turn on and off payment method"
+        },
+        {
+          "type": "checkbox",
+          "id": "visa_visible",
+          "label": "Visa",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "mastercard_visible",
+          "label": "Mastercard",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "paypal_visible",
+          "label": "Paypal",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "amex_visible",
+          "label": "Amex",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "jcb_visible",
+          "label": "JCB",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "klarna_visible",
+          "label": "Klarna",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "afterpay_visible",
+          "label": "Afterpay",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "applepay_visible",
+          "label": "Apple Pay",
+          "default": true
         }
       ]
     }

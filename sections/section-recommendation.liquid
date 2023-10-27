@@ -1,153 +1,200 @@
-{%- if section.settings.show_product_recommendations -%}
-<div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
-      <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
-            <div class="mx-[2rem]">
-                  {% if section.settings.headline %}
-                  <h1 class="{{section.settings.title_align}} my-[2rem] text-2xl lg:text-3xl font-bold text-center" style="color:{{section.settings.color_title}};">
-                    {{ section.settings.headline }}
-                  </h1>
-                  {% endif %}
-            </div>
-      
-            <div class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
-                  {%- if recommendations.performed and recommendations.products_count > 0 -%}
-                        <div class="flex flex-col md:flex-row justify-center items-center">
-                              {%- for product in recommendations.products -%}
-                              <div class="product m-4">
-                              <a href="{{ product.url }}">
-                                    <img
-                                    class="product__img "
-                                    src="{{ product.featured_image | image_url: width: 500, height: 500 }}"
-                                    alt="{{ product.featured_image.alt }}"
-                                    />
-      
-                              <div class="py-6">
-                                    <p class="product__title" style="color:{{section.settings.base_color}};">{{ product.title }}</p>
-                                    <p class="product__price" style="color:{{section.settings.point_color}};">{{ product.price | money}}</p>
-                              </div>
-                              </a>
-                              </div>
-                              {%- endfor -%}
-                        </div>
-                  {%- endif -%}
-            </div>
-      </div>
-</div>
-{%endif%}
 
-{% schema %}
-  {
-    "name": "Product recommendations",
-    "settings": [
-      {
-            "type":"text",
-            "id":"headline",
-            "label":"t:common.headline",
-            "default":"You may also like"
-      },
-      {
-            "type": "color",
-            "id": "color_title",
-            "label": "Header Text color",
-            "default": "#A76561"
-      },
-      {
-            "type": "checkbox",
-            "id": "show_product_recommendations",
-            "label": "Turn on product recommendations",
-            "default": true
-      },
-      {
-            "type": "checkbox",
-            "id": "animation_setting",
-            "default": false,
-            "label": "Animation turn on"
-      },
-      {
-            "type":"select",
-            "id":"color_schema",
-            "label":"Background color",
-            "options":[
-               {
-                  "value":"first_color",
-                  "label":"First Color"
-               },
-               {
-                  "value":"second_color",
-                  "label":"Second Color"
-               },
-               {
-                  "value":"third_color",
-                  "label":"Third Color"
-               },
-               {
-                "value":"forth_color",
-                "label":"Forth Color"
-              },
-              {
-                "value":"fifth_color",
-                "label":"Fifth Color"
-              },
-              {
-                "value":"background_transparent",
-                "label":"Transparent Color"
-              }
-            ],
-            "default":"fifth_color"
-      },
-      {
-            "type": "range",
-            "id": "padding_top",
-            "label": "Padding Top controll",
-            "default":4,
-            "min": 1,
-            "max": 20,
-            "step": 1,
-            "unit": "rem"
-      },
-      {
-            "type": "range",
-            "id": "padding_bottom",
-            "label": "Padding Bottom controll",
-            "default":4,
-            "min": 1,
-            "max": 20,
-            "step": 1,
-            "unit": "rem"
-      },
-      {
-            "type":"select",
-            "id":"title_align",
-            "label":"Title align",
-            "options":[
-               {
-                  "value":"font_left",
-                  "label":"Left"
-               },
-               {
-                  "value":"font_right",
-                  "label":"Right"
-               },
-               {
-                  "value":"font_center",
-                  "label":"Center"
-               }
-            ],
-           "default":"font_center"
-      },
-      {
-            "type": "color",
-            "id": "base_color",
-            "label": "Product title color",
-            "default": "#C87D89"
-      },
-      {
-            "type": "color",
-            "id": "point_color",
-            "label": "Price color",
-            "default": "#926D5A"
+{% style %}
+
+      .product__title{
+        color:{{ section.settings.base_color}};
       }
-    ]
-  }
-{% endschema %}
-
+    
+      .product__price{
+        color: {{ section.settings.point_color}};
+      }
+      
+    {% endstyle %}
+    
+    {%- if section.settings.show_product_recommendations -%}
+    <div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+          <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+                <div class="mx-[2rem]">
+                      {% if section.settings.headline %}
+                      <h1 class="{{section.settings.title_align}} my-[2rem] text-2xl lg:text-3xl font-bold text-center" style="color:{{section.settings.color_title}};">
+                        {{ section.settings.headline }}
+                      </h1>
+                      {% endif %}
+                </div>
+          
+                <div class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
+                      {%- if recommendations.performed and recommendations.products_count > 0 -%}
+                            <div class="grid grid-cols-2 lg:grid-cols-4">
+                                  {%- for product in recommendations.products -%}
+                                  <div class="product m-4">
+                                  <a href="{{ product.url }}">
+                                        <img
+                                        class="product__img "
+                                        src="{{ product.featured_image | image_url: width: 500, height: 500 }}"
+                                        alt="{{ product.featured_image.alt }}"
+                                        />
+          
+                                  <div class="py-6">
+                                        <p class="product__title">{{ product.title }}</p>
+                                        <p class="product__price">{{ product.price | money}}</p>
+                                  </div>
+                                  </a>
+                                  </div>
+                                  {%- endfor -%}
+                            </div>
+                      {%- endif -%}
+                </div>
+          </div>
+    </div>
+    {%endif%}
+    
+    
+    {% javascript %}
+      const handleIntersection = (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+    
+        observer.unobserve(productRecommendationsSection);
+    
+        const url = productRecommendationsSection.dataset.url;
+    
+        fetch(url)
+          .then(response => response.text())
+          .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('.product-recommendations');
+    
+            if (recommendations && recommendations.innerHTML.trim().length) {
+              productRecommendationsSection.innerHTML = recommendations.innerHTML;
+            }
+          })
+          .catch(e => {
+            console.error(e);
+          });
+      };
+    
+      const productRecommendationsSection = document.querySelector('.product-recommendations');
+      const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
+    
+      observer.observe(productRecommendationsSection);
+    
+      
+    {% endjavascript %}
+    
+    {% schema %}
+      {
+        "name": "Product recommendations",
+        "settings": [
+          {
+                "type":"text",
+                "id":"headline",
+                "label":"t:common.headline",
+                "default":"You may also like"
+          },
+          {
+                "type": "color",
+                "id": "color_title",
+                "label": "Header Text color",
+                "default": "#A76561"
+          },
+          {
+                "type": "checkbox",
+                "id": "show_product_recommendations",
+                "label": "Turn on product recommendations",
+                "default": true
+          },
+          {
+                "type": "checkbox",
+                "id": "animation_setting",
+                "default": false,
+                "label": "Animation turn on"
+          },
+          {
+                "type":"select",
+                "id":"color_schema",
+                "label":"Background color",
+                "options":[
+                   {
+                      "value":"first_color",
+                      "label":"First Color"
+                   },
+                   {
+                      "value":"second_color",
+                      "label":"Second Color"
+                   },
+                   {
+                      "value":"third_color",
+                      "label":"Third Color"
+                   },
+                   {
+                    "value":"forth_color",
+                    "label":"Forth Color"
+                  },
+                  {
+                    "value":"fifth_color",
+                    "label":"Fifth Color"
+                  },
+                  {
+                    "value":"background_transparent",
+                    "label":"Transparent Color"
+                  }
+                ],
+                "default":"fifth_color"
+          },
+          {
+                "type": "range",
+                "id": "padding_top",
+                "label": "Padding Top controll",
+                "default":4,
+                "min": 1,
+                "max": 20,
+                "step": 1,
+                "unit": "rem"
+          },
+          {
+                "type": "range",
+                "id": "padding_bottom",
+                "label": "Padding Bottom controll",
+                "default":4,
+                "min": 1,
+                "max": 20,
+                "step": 1,
+                "unit": "rem"
+          },
+          {
+                "type":"select",
+                "id":"title_align",
+                "label":"Title align",
+                "options":[
+                   {
+                      "value":"font_left",
+                      "label":"Left"
+                   },
+                   {
+                      "value":"font_right",
+                      "label":"Right"
+                   },
+                   {
+                      "value":"font_center",
+                      "label":"Center"
+                   }
+                ],
+               "default":"font_center"
+          },
+          {
+                "type": "color",
+                "id": "base_color",
+                "label": "Product title color",
+                "default": "#C87D89"
+          },
+          {
+                "type": "color",
+                "id": "point_color",
+                "label": "Price color",
+                "default": "#926D5A"
+          }
+        ]
+      }
+    {% endschema %}
+    
+    

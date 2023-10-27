@@ -1,16 +1,22 @@
 <style>
 .tab_buttons{
       background-color: {{section.settings.color_button}};
-      color:{{section.settings.border_color}}; 
-      border: 1px solid {{section.settings.border_color}};
+      color:{{section.settings.button_font_color}}; 
+      border-bottom: 1px solid {{section.settings.button_border_color}};
 }
 .tab_buttons:hover{
       background-color: {{section.settings.button_color_hover}};
-      color:{{section.settings.active_border_color}}; 
+      color:{{section.settings.button_font_hover}};
+      border-bottom: 1px solid {{section.settings.button_border_hover}};
 }
 .tab_active{
   background-color: {{section.settings.active_button_color }};
-  color:{{section.settings.active_border_color | color_desaturate: 50 }};
+  color:{{section.settings.active_font_color }};
+  border-bottom: 1px solid {{section.settings.active_border_color}};
+}
+
+.tab-panel{
+      border: none;
 }
 
 .spr-container{
@@ -191,7 +197,10 @@
                                                 {{ block.settings.image | img_url: '1250x' }} 1250w,
                                                 {{ block.settings.image | img_url: '1500x' }} 1500w
                                                 " src="{{ block.settings.image | img_url: '1500x' }}" alt="{{ block.settings.image.alt }}" loading="lazy"
-                                                class="w-full h-full object-cover object-center rounded-md">
+                                                class="w-full h-full object-cover object-center rounded-md"
+                                                width="{{ block.settings.image.width }}"
+                                                height="{{ block.settings.image.height }}"
+                                                >
                                                 <!-- image - end -->
                                           </div>
                                           {% endif %}
@@ -256,7 +265,7 @@
                                           <p> {{ block.settings.first_title }} </p>
                                           </div>
                                           
-                                          <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                          <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                           style="color: {{block.settings.table_text_color}};">
                                                 {{ block.settings.first_desc }}
                                           </div>
@@ -274,7 +283,7 @@
                                     <p> {{ block.settings.second_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}}; ">
                                           {{ block.settings.second_desc }}
                                     </div>
@@ -293,7 +302,7 @@
                                     <p> {{ block.settings.thrid_title }} </p>
                                     </div>
                                     
-                                    <div class=" mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class=" mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.third_desc }}
                                     </div>
@@ -312,7 +321,7 @@
                                     <p> {{ block.settings.forth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.forth_desc }}
                                     </div>
@@ -332,7 +341,7 @@
                                     <p> {{ block.settings.fifth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.fifth_desc }}
                                     </div>
@@ -352,7 +361,7 @@
                                     <p> {{ block.settings.sixth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.sixth_desc }}
                                     </div>
@@ -373,7 +382,7 @@
                                     <p> {{ block.settings.seventh_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.seventh_desc }}
                                     </div>
@@ -394,7 +403,7 @@
                                     <p> {{ block.settings.eighth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.eighth_desc }}
                                     </div>
@@ -414,7 +423,7 @@
                                     <p> {{ block.settings.ninth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.ninth_desc }}
                                     </div>
@@ -435,7 +444,7 @@
                                     <p> {{ block.settings.tenth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.tenth_desc }}
                                     </div>
@@ -457,7 +466,7 @@
                                     <p> {{ block.settings.eleventh_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.eleventh_desc }}
                                     </div>
@@ -477,7 +486,7 @@
                                     <p> {{ block.settings.twelfth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.twelfth_desc }}
                                     </div>
@@ -497,7 +506,7 @@
                                     <p> {{ block.settings.thirteenth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}}; ">
                                           {{ block.settings.thirteenth_desc }}
                                     </div>
@@ -518,7 +527,7 @@
                                     <p> {{ block.settings.fourteenth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}}; ">
                                           {{ block.settings.fourteenth_desc }}
                                     </div>
@@ -539,7 +548,7 @@
                                     <p> {{ block.settings.fifteenth_title }} </p>
                                     </div>
                                     
-                                    <div class="mobile-border bg-white col-span-4 p-2 px-4" 
+                                    <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
                                     style="color: {{block.settings.table_text_color}}; border-right: 1px solid {{ block.settings.table_border_color}};  border-bottom: 1px solid {{ block.settings.table_border_color}}; ">
                                           {{ block.settings.fifteenth_desc }}
                                     </div>
@@ -578,11 +587,19 @@
                               {% if block.settings.featured_text1 != blank %}
                               <div class="p-2 sm:w-1/2 w-full">
                               <div class="rounded flex p-4 h-full items-center" style="background-color: {{ block.settings.featured_column_color }};">
-                              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" 
-                                    style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                    <path d="M22 4L12 14.01l-3-3"></path>
-                              </svg>
+                              {%- if block.settings.show_icon == true -%}
+                                {% if block.settings.icon_box1 != blank %}
+                                    <span class="mr-4"> 
+                                      {{block.settings.icon_box1}}
+                                    </span>
+                                {% else %}
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" 
+                                        style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                        <path d="M22 4L12 14.01l-3-3"></path>
+                                  </svg>
+                                  {%- endif -%}
+                              {%- endif -%}
                               <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text1 }}
                               </span>
@@ -593,11 +610,20 @@
                               {% if block.settings.featured_text2 != blank %}
                               <div class="p-2 sm:w-1/2 w-full">
                               <div class="rounded flex p-4 h-full items-center" style="background-color: {{ block.settings.featured_column_color }};">
-                              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" 
-                                    style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                    <path d="M22 4L12 14.01l-3-3"></path>
-                              </svg>
+                                {%- if block.settings.show_icon == true -%}
+                                {% if block.settings.icon_box2 != blank %}
+                                    <span class="mr-4"> 
+                                      {{block.settings.icon_box2}}
+                                    </span>
+                                {% else %}
+                                  
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" 
+                                      style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                      <path d="M22 4L12 14.01l-3-3"></path>
+                                </svg>
+                                 {% endif %}
+                                {% endif %}
                               <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text2 }}
                               </span>
@@ -609,11 +635,20 @@
                               {% if block.settings.featured_text3 != blank %}
                               <div class="p-2 sm:w-1/2 w-full">
                               <div class="rounded flex p-4 h-full items-center" style="background-color: {{ block.settings.featured_column_color }};">
+                              {%- if block.settings.show_icon == true -%}
+                              {% if block.settings.icon_box3 != blank %}
+                                    <span class="mr-4"> 
+                                      {{block.settings.icon_box3}}
+                                    </span>
+                                {% else %}
+                                  
                               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                     style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                     <path d="M22 4L12 14.01l-3-3"></path>
                               </svg>
+                              {% endif %}
+                               {% endif %}
                               <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text3 }}
                               </span>
@@ -625,11 +660,20 @@
                               {% if block.settings.featured_text4 != blank %}
                               <div class="p-2 sm:w-1/2 w-full">
                               <div class="rounded flex p-4 h-full items-center" style="background-color: {{ block.settings.featured_column_color }};">
-                              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" 
-                                    style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                    <path d="M22 4L12 14.01l-3-3"></path>
-                              </svg>
+                              {%- if block.settings.show_icon == true -%}
+                                {% if block.settings.icon_box4 != blank %}
+                                      <span class="mr-4"> 
+                                        {{block.settings.icon_box4}}
+                                      </span>
+                                  {% else %}
+                                    
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                      style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                      <path d="M22 4L12 14.01l-3-3"></path>
+                                </svg>
+                                {% endif %}
+                               {% endif %}
                               <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text4 }}
                               </span>
@@ -642,11 +686,22 @@
                               {% if block.settings.featured_text5 != blank %}
                               <div class="p-2 sm:w-1/2 w-full">
                               <div class="rounded flex p-4 h-full items-center" style="background-color: {{ block.settings.featured_column_color }};">
-                              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                    style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                    <path d="M22 4L12 14.01l-3-3"></path>
-                              </svg>
+                               
+                                {%- if block.settings.show_icon == true -%}
+                                {% if block.settings.icon_box5 != blank %}
+                                      <span class="mr-4"> 
+                                        {{block.settings.icon_box5}}
+                                      </span>
+                                  {% else %}
+                                    
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                      style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                      <path d="M22 4L12 14.01l-3-3"></path>
+                                </svg>
+                                {% endif %}
+                               {% endif %}
+                                
                               <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text5 }}
                               </span>
@@ -658,11 +713,20 @@
                               {% if block.settings.featured_text6 != blank %}
                               <div class="p-2 sm:w-1/2 w-full">
                               <div class="rounded flex p-4 h-full items-center" style="background-color: {{ block.settings.featured_column_color }};">
-                              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" 
-                                    style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                    <path d="M22 4L12 14.01l-3-3"></path>
-                              </svg>
+                              {%- if block.settings.show_icon == true -%}
+                                {% if block.settings.icon_box6 != blank %}
+                                      <span class="mr-4"> 
+                                        {{block.settings.icon_box6}}
+                                      </span>
+                                  {% else %}
+                                    
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                      style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                      <path d="M22 4L12 14.01l-3-3"></path>
+                                </svg>
+                                {% endif %}
+                               {% endif %}
                               <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text6 }}
                               </span>
@@ -792,13 +856,13 @@
                         "label":"Transparent Color"
                         }
                   ],
-                  "default":"first_color"
+                  "default":"background_transparent"
                   },
                   {
                   "type": "range",
                   "id": "padding_top",
                   "label": "Padding Top controll",
-                  "default":4,
+                  "default":1,
                   "min": 1,
                   "max": 20,
                   "step": 1,
@@ -808,7 +872,7 @@
                   "type": "range",
                   "id": "padding_bottom",
                   "label": "Padding Bottom controll",
-                  "default":4,
+                  "default":6,
                   "min": 1,
                   "max": 20,
                   "step": 1,
@@ -817,14 +881,12 @@
                   {
                       "type":"text",
                       "id":"subtitle",
-                      "label":"subtitle",
-                      "default":"Real Estate Agency"
+                      "label":"subtitle"
                    },
                    {
                       "type":"text",
                       "id":"headline",
-                      "label":"t:common.headline",
-                      "default":"Our store"
+                      "label":"t:common.headline"
                    },
                    {
                     "type":"richtext",
@@ -860,18 +922,6 @@
                     "id": "color_text_title",
                     "label": "Section Description color",
                     "default": "#4b4b4b"
-                  },
-                  {
-                  "type": "color",
-                  "id": "active_button_color",
-                  "label": "Active Button Color",
-                  "default": "#6F665D"
-                  },
-                  {
-                  "type": "color",
-                  "id": "active_border_color",
-                  "label": "Active border Color",
-                  "default": "#fff"
                   },
                   {
                         "type": "header",
@@ -920,51 +970,7 @@
                         "label":"Extra large"
                   }
                   ],
-                        "default":"button_medium"
-                  },
-                  {
-                        "type":"select",
-                        "id":"button_align",
-                        "label":"Button align",
-                        "options":[
-                              {
-                              "value":"font_left",
-                              "label":"Left"
-                              },
-                              {
-                              "value":"font_right",
-                              "label":"Right"
-                              },
-                              {
-                              "value":"font_center",
-                              "label":"Center"
-                              }
-                        ],
-                        "default":"font_center"
-                  },
-                  {
-                        "type":"select",
-                        "id":"button_size",
-                        "label":"Button size",
-                        "options":[
-                        {
-                        "value":"button_small",
-                        "label":"Small"
-                        },
-                        {
-                        "value":"button_medium",
-                        "label":"Medium"
-                        },
-                        {
-                        "value":"button_large",
-                        "label":"Large"
-                        },
-                        {
-                        "value":"button_xlarge",
-                        "label":"Extra large"
-                  }
-                  ],
-                        "default":"button_medium"
+                        "default":"button_small"
                   },
                   {
                         "type": "checkbox",
@@ -973,22 +979,70 @@
                         "label": "Button round"
                   },
                   {
-                  "type": "color",
-                  "id": "color_button",
-                  "label": "Button color",
-                  "default": "#6F665D"
+                        "type": "header",
+                        "content": "Button color"
                   },
                   {
-                  "type": "color",
-                  "id": "button_color_hover",
-                  "label": "Button Mouseover",
-                  "default": "#6F665D"
+                        "type": "color",
+                        "id": "color_button",
+                        "label": "Button background",
+                        "default": "transparent"
                   },
                   {
-                  "type": "color",
-                  "id": "border_color",
-                  "label": "Button border color",
-                  "default": "#6F665D"
+                        "type": "color",
+                        "id": "button_font_color",
+                        "label": "Button Font",
+                        "default": "#A9A9A9"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_border_color",
+                        "label": "Button border color",
+                        "default": "transparent"
+                  },
+                  {
+                        "type": "header",
+                        "content": "Button Mouseover"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_color_hover",
+                        "label": "Button Background",
+                        "default": "transparent"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_font_hover",
+                        "label": "Button font",
+                        "default": "#5E5E5E"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_border_hover",
+                        "label": "Button border",
+                        "default": "#5E5E5E"
+                  },
+                  {
+                        "type": "header",
+                        "content": "Button Active"
+                  },
+                  {
+                        "type": "color",
+                        "id": "active_button_color",
+                        "label": "Active Button Color",
+                        "default": "transparent"
+                  },
+                  {
+                        "type": "color",
+                        "id": "active_font_color",
+                        "label": "Active font Color",
+                        "default": "#5E5E5E"
+                  },
+                  {
+                        "type": "color",
+                        "id": "active_border_color",
+                        "label": "Active border Color",
+                        "default": "#5E5E5E"
                   }
                   
             ],
@@ -1019,13 +1073,13 @@
                         "type": "color",
                         "id": "headline_text_color",
                         "label": "Title Text Color",
-                        "default": "#6F665D"
+                        "default": "#5E5E5E"
                         },
                         {
                         "type": "color",
                         "id": "text_color",
                         "label": "Description Text Color",
-                        "default": "#6F665D"
+                        "default": "#787D80"
                         }
                   ]
                   },
@@ -1051,13 +1105,13 @@
                   "type": "text",
                   "id": "information_tab_title",
                   "label": "Tab Title",
-                  "default": "Amenities"
+                  "default": "Information"
                   },
                   {
                   "type": "text",
                   "id": "information_title",
                   "label": "Section Title",
-                  "default": "Amenities"
+                  "default": "Information"
                   },
                   {
                   "type": "textarea",
@@ -1072,37 +1126,37 @@
                   "type": "color",
                   "id": "info_title_color",
                   "label": "Title Color",
-                  "default": "#6F665D"
+                  "default": "#5E5E5E"
                   },
                   {
                   "type": "color",
                   "id": "info_text_color",
                   "label": "Table Title Font Color",
-                  "default": "#6F665D"
+                  "default": "#FFFFFF"
                   },
                   {
                   "type": "color",
                   "id": "table_text_color",
                   "label": "Table Text Color",
-                  "default": "#6F665D"
+                  "default": "#787D80"
                   },
                   {
                   "type": "color",
                   "id": "table_column_color",
                   "label": "Table Column Color",
-                  "default": "#6F665D"
+                  "default": "#C0C0C0"
                   },
                   {
                   "type": "color",
                   "id": "table_border_color",
                   "label": "Table border Color",
-                  "default": "#6F665D"
+                  "default": "#ECECEC"
                   },
                   {
                   "type": "color",
                   "id": "table_symbol_color",
                   "label": "Table Symbol Color",
-                  "default": "#6F665D"
+                  "default": "#FFFFFF"
                   },
                   {
                   "type": "header",
@@ -1380,29 +1434,41 @@
                   "type": "color",
                   "id": "featured_title_color",
                   "label": "Title Text Color",
-                  "default": "#6F665D"
+                  "default": "#5E5E5E"
                   },
                   {
                   "type": "color",
                   "id": "featured_text_color",
                   "label": "Description Text Color",
-                  "default": "#6F665D"
+                  "default": "#C0C0C0"
                   },
                   {
                   "type": "color",
                   "id": "featured_symbol_color",
                   "label": "Symbol Color",
-                  "default": "#6F665D"
+                  "default": "#808080"
                   },
                   {
                   "type": "color",
                   "id": "featured_column_color",
                   "label": "Column Color",
-                  "default": "#fafafa"
+                  "default": "#F4F4F4"
+                  },
+                  {
+                    "type":"checkbox",
+                    "id": "show_icon",
+                    "default": true,
+                    "label":"Show icon"
                   },
                   {
                   "type": "header",
                   "content": "Line 1"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box1",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
                   },
                   {
                   "type": "text",
@@ -1415,6 +1481,12 @@
                   "content": "Line 2"
                   },
                   {
+                  "type": "html",
+                  "id": "icon_box2",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
                   "type": "text",
                   "id": "featured_text2",
                   "label": "Title",
@@ -1423,6 +1495,12 @@
                   {
                   "type": "header",
                   "content": "Line 3"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box3",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
                   },
                   {
                   "type": "text",
@@ -1435,6 +1513,12 @@
                   "content": "Line 4"
                   },
                   {
+                  "type": "html",
+                  "id": "icon_box4",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
                   "type": "text",
                   "id": "featured_text4",
                   "label": "Title",
@@ -1445,6 +1529,12 @@
                   "content": "Line 5"
                   },
                   {
+                  "type": "html",
+                  "id": "icon_box5",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
                   "type": "text",
                   "id": "featured_text5",
                   "label": "Title",
@@ -1453,6 +1543,12 @@
                   {
                   "type": "header",
                   "content": "Line 6"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box6",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
                   },
                   {
                   "type": "text",
@@ -1503,13 +1599,13 @@
                   "type": "color",
                   "id": "map_title_font_color",
                   "label": "Map title font color",
-                  "default": "#926D5A"
+                  "default": "#5E5E5E"
                   },
                    {
                   "type": "color",
                   "id": "map_info_font_color",
                   "label": "info text font color",
-                  "default": "#926D5A"
+                  "default": "#C0C0C0"
                   }
                   ]
                   },
@@ -1553,19 +1649,19 @@
                   "type": "color",
                   "id": "custom_title_color",
                   "label": "Title Color",
-                  "default": "#926D5A"
+                  "default": "#5E5E5E"
                   },
                   {
                   "type": "color",
                   "id": "custom_text_color",
                   "label": "Description Color",
-                  "default": "#926D5A"
+                  "default": "#C0C0C0"
                   },
                   {
                   "type": "color",
                   "id": "custom_contents_color",
                   "label": "Contents Text Color",
-                  "default": "#926D5A"
+                  "default": "#808080"
                   }
                   ]
                   }

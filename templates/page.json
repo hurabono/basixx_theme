@@ -3,27 +3,12 @@
     "banner": {
       "type": "main-page-contact",
       "settings": {
-        "color_schema": "third_color",
-        "image": "shopify:\/\/shop_images\/candle_-_warm_and_simple_boho_style_website_3.png",
-        "banner_top_size": "banner_top_medium",
-        "banner_bottom_size": "banner_bottom_small",
-        "overlay_set": false,
-        "text_align": "font_center",
-        "headline": "Main Page HeadLine",
-        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "text_color": "#ffffff"
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>"
       }
     },
     "main": {
       "type": "main-page",
       "settings": {
-        "color_schema": "background_transparent",
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "animation_setting": false,
-        "title_align": "font_center",
-        "header_color": "#926d5a",
-        "text_color": "#baa098"
       }
     }
   },

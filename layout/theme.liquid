@@ -12,8 +12,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-  <link rel="preload" href="{{ 'bundle.css' | asset_url }}" as="style">
-  <link rel="preload" href="{{ 'bundle.js' | asset_url }}" as="script">
+  {{ 'bundle.css' | asset_url | stylesheet_tag: preload: true }}
+  
 
   <title>{{ page_title | escape }}</title>
 
@@ -26,17 +26,31 @@
   {% endif %}
 
 
+  <!-- Store Favicon -->
   {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {%- endif -%}
-
+  <!-- Ajax add to cart / Jquery cdn header -->
+  <script rel="preload" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   
+  <!-- Quickview settings -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" ></script>
+  {{ '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css' | stylesheet_tag }}
+  {{ 'slick.css' | asset_url | stylesheet_tag: preload: true }}
+  {{ 'quickview.css' | asset_url | stylesheet_tag }}
+  <script type="module" src="{{ 'quickview.js' | asset_url }}" defer></script>
+  
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/@cycjimmy/swiper-animation@6/dist/swiper-animation.umd.min.js" async></script>
+  <link href="//unpkg.com/animate.css@4/animate.min.css" rel="stylesheet">
 
-
-  {{ 'bundle.css' | asset_url | stylesheet_tag }}
-  <link id="theme_style" href="{{ 'theme.css' | asset_url }}" rel="stylesheet" >
-  <link id="aos_style" href="{{ 'aos.css' | asset_url }}" rel="stylesheet" >
-
+  {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+  {{ 'aos.css' | asset_url | stylesheet_tag: preload: true }}
+  
   <!-- header hook for Shopify plugins -->
   {{ content_for_header }}
   
@@ -48,21 +62,7 @@
     </style>
   
 <!-- Font Awesome  -->
-<script src="https://kit.fontawesome.com/f7fb8f5dc1.js" crossorigin="anonymous"></script>
-
-<!-- Wishlist jquery javascript -->
-<script src="{{ 'Wishlist.js' | asset_url }}" defer="defer"></script>
-<script> var variantStock = {}; </script>
-  
-<!-- Ajax add to cart -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" rel="preload" as="script"></script>
-
-<!-- Quickview settings -->
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-{{ '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css' | stylesheet_tag }}
-<link href="{{ 'slick.css' | asset_url }}" rel="stylesheet" >
-{{ 'quickview.css' | asset_url | stylesheet_tag }}
-{{ 'quickview.js' | asset_url | script_tag }}
+<script src="https://kit.fontawesome.com/f7fb8f5dc1.js" crossorigin="anonymous" async></script>
 
 <script>
   {% capture content %}{% render 'quickview' %}{% endcapture %}
@@ -81,9 +81,7 @@
   {% else %}
   <div id="app" class="min-h-screen flex flex-col font-sans">
   
-    {% if request.page_type == 'index' %}
-      {% section 'layout-loading' %}
-    {% endif %}
+
     
     {% section 'layout-header' %}
 
@@ -92,33 +90,25 @@
       {{ content_for_layout }}
     </main>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script async type="text/javascript" rel="preload" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     {% render 'ajaxify-cart' %}
     {% section 'layout-footer' %}
     {% section 'layout-scroll-to-top' %}
     {% section 'layout-mobile-navigation' %}
-    {% section 'layout-mouse-pointer' %}
-
-    <!-- <transition name="slide-mobile-menu" x-cloak>
-      {% render 'layout-mobile-menu'%}
-    </transition> -->
   </div>
   {% endif %}
 
   <!-- webpack bundle -->
-  <script src="{{ 'bundle.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'local.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'count.js' | asset_url }}" defer="defer"></script>
+  <script type="module" src="{{ 'bundle.js' | asset_url }}" async="async"></script>
+  <script src="{{ 'swiper.js' | asset_url }}" async></script>
+  <script type="module" src="{{ 'local.js' | asset_url }}" async="async"></script>
+  <script type="module" src="{{ 'count.js' | asset_url }}" async="async"></script>
 
   
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@cycjimmy/swiper-animation@6/dist/swiper-animation.umd.min.js"></script>
-
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+  
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" async></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" async></script>
 
 
 {%- comment -%} product quickview metafield javascirpt {%- endcomment -%}
@@ -132,7 +122,7 @@
               product_symbol_first : "{{ product.metafields.custom.symbol_first.value }}",
               product_symbol_second : "{{ product.metafields.custom.symbol_second.value }}",
               product_symbol_third : "{{ product.metafields.custom.symbol_third.value }}",
-          },
+          }, 
       
       {% endfor %}
   }
@@ -143,7 +133,7 @@ let productMetafields = {{ productMetafields }}
 </script>
 
 
-  <script>
+  <script type = "text/javascript">
     document.addEventListener('shopify:section:select', function(event) {
       AOS.init();
     });

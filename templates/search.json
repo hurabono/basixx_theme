@@ -3,6 +3,24 @@
     "main": {
       "type": "main-search",
       "settings": {
+        "color_schema": "fifth_color",
+        "padding_top": 12,
+        "padding_bottom": 4,
+        "search_title_color": "#4b4b4b",
+        "search_subtitle_color": "#ffffff",
+        "base_color": "#ffffff",
+        "active_button_color": "#6f665d",
+        "active_border_color": "#fff",
+        "color_button": "second_color",
+        "button_color_hover": "button_fifth_color",
+        "button_text_hover": "button_first_mouseover_color",
+        "border_color": "#111e2f",
+        "show_vendor": true,
+        "show_symbol": true,
+        "show_rating": true,
+        "product_title_color": "#4b4b4b",
+        "product_point_color": "#c33131",
+        "point_color": "#5a6988"
       }
     }
   },

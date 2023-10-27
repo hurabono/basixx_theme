@@ -1,4 +1,4 @@
-<style>
+{% style %}
   .megamenu_dropdown::-webkit-scrollbar{
       width: 8px;
      
@@ -30,7 +30,7 @@
     bottom: 0;
     max-width: 100%;
   }
-</style>
+{% endstyle %}
 
 
 
@@ -188,9 +188,9 @@
                                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                 alt="{{ settings.menu_image_first.src.alt | escape }}"
                                 class="w-full h-full object-cover object-center inset-0"
-                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
                                 width="{{ settings.menu_image_firstwidth }}"
                                 height="{{ settings.menu_image_first.height }}"
+                                loading="lazy"
                               >
                           {% endif %}
                           </div>
@@ -212,7 +212,7 @@
                                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                 alt="{{ settings.menu_image_second.src.alt | escape }}"
                                 class="w-full h-full object-cover object-center inset-0"
-                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                loading="lazy"
                                 width="{{ settings.menu_image_second.width }}"
                                 height="{{ settings.menu_image_second.height }}"
                               >
@@ -236,7 +236,7 @@
                                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                 alt="{{ settings.menu_image_third.src.alt | escape }}"
                                 class="w-full h-full object-cover object-center inset-0"
-                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                loading="lazy"
                                 width="{{ settings.menu_image_third.width }}"
                                 height="{{ settings.menu_image_third.height }}"
                               >
@@ -325,7 +325,7 @@
                                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                 alt="{{ settings.photo_menu_first.src.alt | escape }}"
                                 class="w-full h-full object-cover object-center inset-0"
-                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                loading="lazy"
                                 width="{{ settings.photo_menu_first }}"
                                 height="{{ settings.photo_menu_first.height }}"
                               >
@@ -352,7 +352,7 @@
                                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                 alt="{{ settings.photo_menu_second.src.alt | escape }}"
                                 class="w-full h-full object-cover object-center inset-0"
-                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                loading="lazy"
                                 width="{{ settings.photo_menu_second.width }}"
                                 height="{{ settings.photo_menu_second.height }}"
                               >
@@ -379,7 +379,7 @@
                                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                 alt="{{ settings.photo_menu_third.src.alt | escape }}"
                                 class="w-full h-full object-cover object-center inset-0"
-                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                loading="lazy"
                                 width="{{ settings.photo_menu_third.width }}"
                                 height="{{ settings.photo_menu_third.height }}"
                               >
@@ -406,7 +406,7 @@
                                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                 alt="{{ settings.photo_menu_forth.src.alt | escape }}"
                                 class="w-full h-full object-cover object-center inset-0"
-                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                loading="lazy"
                                 width="{{ settings.photo_menu_forth.width }}"
                                 height="{{ settings.photo_menu_forth.height }}"
                               >
@@ -421,6 +421,141 @@
                     </div>
                 </div>
                     </div>
+                  </div>
+              {% elsif link.title == settings.photo_collection %}
+                  <!-- photo + megamenu -->
+                  {% assign link_handle = link.handle | replace: '-', '_' %}
+                  <div x-data="{ {{ link_handle }}: false }">
+                      <button type="button" x-on:click="{{ link_handle }} = ! {{ link_handle }}" class="text-sm tracking-widest flex items-center inline-flex justify-between w-full" style="color: {{section.settings.nav_font_color}};">
+                        {{link.title}}
+                        {% render 'icon-dropdown' %}
+                      </button>
+                      <div  x-cloak 
+                      x-transition:enter="transition ease-out duration-300"
+                      x-transition:enter-start="opacity-0 translate-y-3"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      x-transition:leave="transition ease-out duration-300"
+                      x-transition:leave-start="opacity-100 translate-y-0"
+                      x-transition:leave-end="opacity-0 translate-y-3"
+                       x-show="{{ link_handle }}"  x-on:click.away="{{ link_handle }} = false" class="block w-full">
+                    <!-- code here -->
+                    <div>
+                      <div class="megamenu_dropdown relative {{section.settings.sub_color}} grid grid-cols-1 gap-7 p-8 items-center overflow-y-scroll mt-6 h-[30rem]">
+
+                        <div class="image_wrapper">
+                          <ul class="flex flex-col tracking-widest h-full">
+                          <a href="{{settings.photo_collection_link_1 }}" class="mega_header_color py-2 cursor-pointer text-base font-bold">
+                            {{settings.photo_collection_title_1 }}
+                          </a>
+                            <div class="py-2 flex flex-col">
+                              {% if settings.photo_collection_menu_1 != blank %}
+                              <a href="{{settings.collection_menu_link_1}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_1}}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_2 != blank %}
+                              <a href="{{settings.collection_menu_link_2}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_2}}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_3 != blank %}
+                              <a href="{{settings.collection_menu_link_3}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_3}}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_4 != blank %}
+                              <a href="{{settings.collection_menu_link_4}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_4}}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_5 != blank %}
+                              <a href="{{settings.collection_menu_link_5}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_5 }}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_6 != blank %}
+                              <a href="{{settings.collection_menu_link_6}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_6}}</a>
+                              {% endif %}
+                            </div>
+                        </ul>
+                            
+                        </div>
+
+                        <div class="image_wrapper">
+                            <ul class="flex flex-col tracking-widest h-full">
+                          <a href="{{settings.photo_collection_link_2 }}" class="mega_header_color py-2 cursor-pointer text-base font-bold">
+                            {{settings.photo_collection_title_2 }}
+                          </a>
+                            <div class="py-2 flex flex-col">
+                              {% if settings.photo_collection_menu_7 != blank %}
+                              <a href="{{settings.collection_menu_link_7}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_7}}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_8 != blank %}
+                              <a href="{{settings.collection_menu_link_8}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_8}}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_9 != blank %}
+                              <a href="{{settings.collection_menu_link_9}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_9}}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_10 != blank %}
+                              <a href="{{settings.collection_menu_link_10}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_10}}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_11 != blank %}
+                              <a href="{{settings.collection_menu_link_11}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_11 }}</a>
+                              {% endif %}
+                              {% if settings.photo_collection_menu_12 != blank %}
+                              <a href="{{settings.collection_menu_link_12}}" class="py-2 cursor-pointer mega_submenu_color text-sm">{{settings.photo_collection_menu_12}}</a>
+                              {% endif %}
+                            </div>
+                            </ul>
+                        </div>
+
+                        <div class="image_wrapper">
+                          <div class="w-full h-52 overflow-hidden bg-gray-100">
+                            {% if settings.collection_photo_first %}
+                              <img
+                                  srcset="{%- if settings.collection_photo_first.src.width >= 165 -%}{{ settings.collection_photo_first.src | image_url: width: 165 }} 165w,{%- endif -%}
+                                    {%- if settings.collection_photo_first.src.width >= 360 -%}{{ settings.collection_photo_first.src | image_url: width: 360 }} 360w,{%- endif -%}
+                                    {%- if settings.collection_photo_first.src.width >= 533 -%}{{ settings.collection_photo_first.src | image_url: width: 533 }} 533w,{%- endif -%}
+                                    {%- if settings.collection_photo_first.src.width >= 720 -%}{{ settings.collection_photo_first.src | image_url: width: 720 }} 720w,{%- endif -%}
+                                    {%- if settings.collection_photo_first.src.width >= 1000 -%}{{ settings.collection_photo_first.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                                    {%- if settings.collection_photo_first.src.width >= 1500 -%}{{ settings.collection_photo_first.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                    {{ settings.collection_photo_first.src | image_url }} {{ settings.collection_photo_first.src.width }}w"
+                                  src="{{ settings.collection_photo_first.src | image_url: width: 533 }}"
+                                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                  alt="{{ settings.collection_photo_first.src.alt | escape }}"
+                                  class="w-full h-full object-cover object-center inset-0"
+                                  loading="lazy"
+                                  width="{{ settings.collection_photo_first.width }}"
+                                  height="{{ settings.collection_photo_first.height }}"
+                                >
+                            {% endif %}
+                            </div>
+                            <div class="ml-2">
+                              <span class="block pt-3 text-lg tracking-widest font-bold"> {{settings.collection_title_first}} </span>
+                              <a href="{{settings.collection_link_first}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.collection_button_first}}</a>
+                            </div>
+                          </div>
+
+                        <div class="image_wrapper">
+                          <div class="w-full h-52 overflow-hidden bg-gray-100">
+                            {% if settings.collection_photo_second %}
+                              <img
+                                  srcset="{%- if settings.collection_photo_second.src.width >= 165 -%}{{ settings.collection_photo_second.src | image_url: width: 165 }} 165w,{%- endif -%}
+                                    {%- if settings.collection_photo_second.src.width >= 360 -%}{{ settings.collection_photo_second.src | image_url: width: 360 }} 360w,{%- endif -%}
+                                    {%- if settings.collection_photo_second.src.width >= 533 -%}{{ settings.collection_photo_second.src | image_url: width: 533 }} 533w,{%- endif -%}
+                                    {%- if settings.collection_photo_second.src.width >= 720 -%}{{ settings.collection_photo_second.src | image_url: width: 720 }} 720w,{%- endif -%}
+                                    {%- if settings.collection_photo_second.src.width >= 1000 -%}{{ settings.collection_photo_second.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                                    {%- if settings.collection_photo_second.src.width >= 1500 -%}{{ settings.collection_photo_second.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                    {{ settings.collection_photo_second.src | image_url }} {{ settings.collection_photo_second.src.width }}w"
+                                  src="{{ settings.menu_image_third.src | image_url: width: 533 }}"
+                                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                  alt="{{ settings.collection_photo_second.src.alt | escape }}"
+                                  class="w-full h-full object-cover object-center inset-0"
+                                  loading="lazy"
+                                  width="{{ settings.collection_photo_second.width }}"
+                                  height="{{ settings.collection_photo_second.height }}"
+                                >
+                            {% endif %}
+                            </div>
+                            <div class="ml-2">
+                              <span class="block pt-3 text-base tracking-widest font-bold"> {{settings.collection_title_second}} </span>
+                              <a href="{{settings.collection_link_second}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.collection_button_second}}</a>
+                            </div>
+                        </div>
+
+                      </div>
+                  </div>
+                      </div>
                   </div>
               {%else%}
                   <a class="text-sm tracking-widest" href="{{ link.url }}" style="color: {{section.settings.nav_font_color}};">{{link.title}}</a>

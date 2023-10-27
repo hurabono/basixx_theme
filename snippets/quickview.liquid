@@ -1,7 +1,7 @@
 
 <script src="{{ 'count.js' | asset_url }}" defer="defer"></script>
 
-<div class="qv-product-image w-full lg:w-1/2">
+<div class="qv-product-image w-full">
   <div class="qv-product-images" style="opacity: 0"></div>
   <div class="qv-product-thumnail" style="opacity: 0"></div>
 </div>
@@ -10,41 +10,30 @@
   <div class="holder">
     <div class="my-6 md:my-0">
       <h4 class="qv-product-vendor"></h4>
-      <h3 class="qv-product-title text-2xl font-bold"></h3>
+      <h3 class="qv-product-title text-2xl font-bold uppercase"></h3>
 
       {% if settings.qv_price_setting == true %}
       <div class="my-2">
         <h5 class="qv-product-price font-bold text-lg"></h5>
         <h5 class="qv-product-original-price text-sm"></h5>
-      </div>
+
+          {%- comment -%} Metafield Symbol {%- endcomment -%}
+          
+          <div class="rounded-full ml-2 qv-product-symbol qv-box1" style="width: 10px; height:10px; display:inline-block;"></div>
+          <h5 class="qv-product-symbol-first-metafield ml-1 text-xs inline"></h5>
+
+          <div class="rounded-full ml-2 qv-product-symbol qv-box2" style="width: 10px; height:10px; display:inline-block;"></div>
+          <h5 class="qv-product-symbol-second-metafield ml-1 text-xs inline"></h5>
+
+          <div class="rounded-full ml-2 qv-product-symbol qv-box3" style="width: 10px; height:10px; display:inline-block;"></div>
+          <h5 class="qv-product-symbol-third-metafield ml-1 text-xs inline"></h5>
+
+          
+      </div> 
       {% endif %}
 
       {%- comment -%} Metafield Custom Price for reservation {%- endcomment -%}
       <h5 class="qv-product-price-metafield font-bold text-lg my-2" style="color:{{ settings.qv_text_color }};"></h5>
-
-      
-      {%- comment -%} Metafield Symbol {%- endcomment -%}
-      {%- if settings.qv_symbol_setting == true -%}
-      <div class="metafield_symbols flex flex-col md:flex-row my-2">
-        
-        <div class="my-2 md:mr-2 qv-product-symbol qv-box1">
-          {{ settings.iconbox1 }}
-           <h5 class="qv-product-symbol-first-metafield ml-1"></h5>
-        </div>
-
-        <div class="my-2 md:mr-2 qv-product-symbol qv-box2">
-          {{ settings.iconbox2 }}
-        <h5 class="qv-product-symbol-second-metafield ml-1"></h5>
-        </div>
-
-        <div class="my-2 md:mr-2 qv-product-symbol qv-box3">
-          {{ settings.iconbox3 }}
-         <h5 class="qv-product-symbol-third-metafield ml-1"></h5>
-        </div>
-
-      </div>
-      {%- endif -%}
-
     </div>
 
     <div class="qv-add-to-cart">
@@ -55,10 +44,10 @@
             <div class="flex flex-col items-start gap-2">
                           <div class="qty">
                                 <div class="qty_control">
-                                  <label for="Quantity-{{ section.id }}" style="font-size:0.8rem; color:{{section.settings.base_color}};">Quantity </label>
+                                  <label for="Quantity-{{ section.id }}" style="font-size:12px;">Quantity </label>
                                   <div class="qtycard border px-2 bg-white">
                                       <span class="btnqty qtyminus icon icon-minus">-</span>
-                                      <input type="text" class="qv-quantity quantity-selector quantity-input" value="1" min="1" readonly="">
+                                      <input type="text" class="qv-quantity quantity-selector quantity-input" value="1" min="1" readonly="" style="height:2.5rem;">
                                       <span class="btnqty qtyplus icon icon-plus">+</span>
                                 </div>
                                 </div>
@@ -69,10 +58,71 @@
       {% endif %}
 
       <div class="qv-product-options my-6"></div>
+      <div class="qv-product-description text-xs"></div>
       <input type="submit" class="qv-add-button" value="Add to Cart">
+      <span class="inline-flex sm:ml-auto mt-3 justify-center sm:justify-start flex-wrap">
+        {% assign visa_payment = 'visa' %}
+        {% assign master_payment = 'master' %}
+        {% assign amex_payment = 'american_express' %}
+        {% assign paypal_payment = 'paypal' %}
+        {% assign afterpay_payment = 'afterpay' %}
+        {% assign jcb_payment = 'jcb' %}
+        {% assign klarna_payment = 'klarna' %}
+        {% assign apple_pay_payment = 'apple_pay' %}
+        
+        {% for type in visa_payment %}
+            {%  if type == 'visa' and settings.visa_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in master_payment %}
+            {%  if type == 'master' and settings.mastercard_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in amex_payment %}
+            {%  if type == 'american_express' and settings.amex_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in paypal_payment %}
+            {%  if type == 'paypal' and settings.paypal_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in jcb_payment %}
+            {%  if type == 'jcb' and settings.jcb_visible == true  %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in afterpay_payment %}
+            {%  if type == 'afterpay' and settings.afterpay_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in klarna_payment %}
+            {%  if type == 'klarna' and settings.klarna_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in apple_pay_payment %}
+            {%  if type == 'apple_pay' and settings.applepay_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+        
+      
+      </span>
+
       <div class="qv-add-to-cart-response"></div>
     </div>
-    <div class="qv-product-description truncate"></div>
   </div>
   <a class="view-product" href=""><span>Product Details</span></a>
 </div>

@@ -1,4 +1,4 @@
-// regular banner swiper - design mode
+// regular banner  - design mode
 document.addEventListener('shopify:block:select', function(event) {
   const blockSelectedIsSlide = event.target.classList.contains('swiper-slide');
   if (!blockSelectedIsSlide) return;
@@ -229,10 +229,10 @@ document.addEventListener('shopify:section:select', function(event) {
 // collection swiper
 const myCustomSlider = document.querySelectorAll('.swiper-container');
 const myPagination = document.querySelectorAll('.swiper-pagination_collection');
-const productPrev = document.querySelectorAll('.swiper-product-prev');
-const productNext = document.querySelectorAll('.swiper-product-next');
+let productPrev = document.querySelectorAll('.swiper-product-prev');
+let productNext = document.querySelectorAll('.swiper-product-next');
 
-for( i=0; i< myCustomSlider.length; i++ ) {
+for( i=0; i < myCustomSlider.length; i++ ) {
   
   myCustomSlider[i].classList.add('swiper-container-' + i);
   myPagination[i].classList.add('swiper-pagination_collection-' + i);

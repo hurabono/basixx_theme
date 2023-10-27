@@ -2,7 +2,10 @@
 {% assign image = section.settings.image %}
 
 <div
-  class="{{section.settings.color_schema}} {{section.settings.banner_top_size}} {{section.settings.banner_bottom_size}} min-h-96 flex items-center flex-1 flex-shrink-0 overflow-hidden relative">
+  class="{{section.settings.color_schema}} flex items-center flex-1 flex-shrink-0 overflow-hidden relative"
+  style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+  >
+  
   <!-- image - start -->
   {% if image %}
   <img src="{{section.settings.image | img_url: 'master' }}" alt="{{ image.alt }}" loading="lazy"
@@ -13,8 +16,8 @@
 
 
   <!-- text start -->
-  <div class="flex flex-col relative px-8 p-4 w-[1440px] m-auto {{section.settings.text_align}}">
-    <h1 class="w-full py-4 text-4xl font-bold tracking-widest" style="color: {{section.settings.text_color}};"> {{ blog.title}}</h1>
+  <div class="xl:max-w-[1320px] px-4 md:px-8 mx-auto {{section.settings.text_align}}">
+    <h1 class="w-full py-4 text-4xl font-bold tracking-widest" style="color: {{section.settings.page_title_color}};"> {{ blog.title}}</h1>
     <div class="subfont_size py-8 tracking-wider leading-8" style="color: {{section.settings.text_color}};">
       {{ section.settings.description }}
     </div>
@@ -62,7 +65,7 @@
        "label":"Transparent Color"
      }
    ],
-   "default":"third_color"
+   "default":"background_transparent"
   },
 {
 "type": "image_picker",
@@ -70,52 +73,24 @@
 "label": "Default product image (optional)"
 },
 {
-  "type":"select",
-  "id":"banner_top_size",
-  "label":"Banner Top size",
-  "options":[
-     {
-        "value":"banner_top_small",
-        "label":"Small"
-     },
-     {
-        "value":"banner_top_medium",
-        "label":"Medium"
-     },
-     {
-        "value":"banner_top_large",
-        "label":"Large"
-     },
-     {
-        "value":"banner_top_xlarge",
-        "label":"xLarge"
-     }
-  ],
-  "default":"banner_top_large"
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":11,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
 },
 {
-  "type":"select",
-  "id":"banner_bottom_size",
-  "label":"Banner Bottom size",
-  "options":[
-     {
-        "value":"banner_bottom_small",
-        "label":"Small"
-     },
-     {
-        "value":"banner_bottom_medium",
-        "label":"Medium"
-     },
-     {
-        "value":"banner_bottom_large",
-        "label":"Large"
-     },
-     {
-        "value":"banner_bottom_xlarge",
-        "label":"xLarge"
-     }
-  ],
-  "default":"banner_bottom_small"
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":3,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
 },
 {
   "type": "checkbox",
@@ -155,9 +130,15 @@
 },
 {
   "type": "color",
+  "id": "page_title_color",
+  "label": "Title color",
+  "default": "#808080"
+},
+{
+  "type": "color",
   "id": "text_color",
   "label": "Text box color",
-  "default": "#fff"
+  "default": "#9A9A9A"
 }
 ]
 }

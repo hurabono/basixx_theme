@@ -1,599 +1,224 @@
 {
   "sections": {
-    "section-slideshow": {
-      "type": "section-slideshow",
-      "blocks": {
-        "slideshow-1": {
-          "type": "slideshow",
-          "settings": {
-            "text_align": "font_right",
-            "overlay_set": false,
-            "image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE_4.png",
-            "headline": "Candle Decoration",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "button-url": "\/",
-            "button-text": "Button",
-            "color_schema": "background_transparent",
-            "color_title": "#ffffff",
-            "color_text": "#ffffff",
-            "button_size": "button_medium",
-            "button_round_off": false,
-            "color_button": "background_transparent",
-            "button_color_hover": "button_second_color",
-            "border_color": "#ffffff",
-            "textbox_position": "textbox_left",
-            "textbox_location": "location_center"
-          }
-        },
-        "slideshow-2": {
-          "type": "slideshow",
-          "settings": {
-            "text_align": "font_center",
-            "overlay_set": true,
-            "image": "shopify:\/\/shop_images\/Desktop_-_3.png",
-            "headline": "Gift Bundle",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "button-url": "\/",
-            "button-text": "Button",
-            "color_schema": "background_transparent",
-            "color_title": "#ffffff",
-            "color_text": "#ffffff",
-            "button_size": "button_medium",
-            "button_round_off": false,
-            "color_button": "background_transparent",
-            "button_color_hover": "button_fifth_color",
-            "border_color": "#ffffff",
-            "textbox_position": "textbox_center",
-            "textbox_location": "location_top"
-          }
-        },
-        "slideshow-3": {
-          "type": "slideshow",
-          "settings": {
-            "text_align": "font_right",
-            "overlay_set": false,
-            "image": "shopify:\/\/shop_images\/candle_-_warm_and_simple_boho_style_website_2_53392fdc-eed6-4f5d-a931-dd2f3bfcf7a5.png",
-            "headline": "Popular Collection",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "button-url": "\/",
-            "button-text": "Button",
-            "color_schema": "background_transparent",
-            "color_title": "#4b4b4b",
-            "color_text": "#6f665d",
-            "button_size": "button_medium",
-            "button_round_off": false,
-            "color_button": "fifth_color",
-            "button_color_hover": "button_fifth_color",
-            "border_color": "#6f665d",
-            "textbox_position": "textbox_left",
-            "textbox_location": "location_center"
-          }
-        }
-      },
-      "block_order": [
-        "slideshow-1",
-        "slideshow-2",
-        "slideshow-3"
-      ],
-      "settings": {
-        "slider_font_size": 56,
-        "slider_sub_size": 16,
-        "animation_setting": true
-      }
-    },
-    "16647815176b5c5c93": {
-      "type": "layout-collection-grid",
-      "blocks": {
-        "1664781517b49060d7-0": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "for-gift"
-          }
-        },
-        "1664781517b49060d7-1": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "frontpage"
-          }
-        },
-        "1664781517b49060d7-2": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "summer-discount"
-          }
-        },
-        "1664781517b49060d7-3": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "vegan-candle"
-          }
-        }
-      },
-      "block_order": [
-        "1664781517b49060d7-0",
-        "1664781517b49060d7-1",
-        "1664781517b49060d7-2",
-        "1664781517b49060d7-3"
-      ],
-      "settings": {
-        "color_schema": "forth_color",
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "animation_setting": true,
-        "image_round": true,
-        "color_collection_title": "#99756a"
-      }
-    },
-    "section-collection_slideshow-left": {
-      "type": "section-collection_slideshow",
-      "settings": {
-        "color_schema": "fifth_color",
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "img_array": "left_img",
-        "animation_setting": true,
-        "headline": "Featured Product",
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "title_align": "font_center",
-        "color_title": "#4b4b4b",
-        "color_sub_title": "#4b4b4b",
-        "collection_featured": "frontpage",
-        "product_title": "font_left",
-        "vendor_set": true,
-        "product_title_color": "#4b4b4b",
-        "product_point_color": "#c33131",
-        "product_badge_color": "#e8d5d4",
-        "image": "shopify:\/\/shop_images\/5_9e481e9c-3ce1-4672-bf43-2fd521de3109.png",
-        "overlay_set": false,
-        "banner_title_font_size": 26,
-        "banner_font_size": 14,
-        "photo_title_align": "font_left",
-        "photo_headline": "Life Style",
-        "photo_text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p>",
-        "photo_title_color": "#6f665d",
-        "photo_text_color": "#6f665d",
-        "button_size": "button_small",
-        "button_round_off": false,
-        "button-url": "",
-        "button-text": "view more",
-        "color_button": "background_transparent",
-        "button_color_hover": "button_third_color",
-        "border_color": "#6f665d"
-      }
-    },
-    "section-collection_slideshow-right": {
-      "type": "section-collection_slideshow",
-      "settings": {
-        "color_schema": "third_color",
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "img_array": "right_img",
-        "animation_setting": true,
-        "headline": "",
-        "text": "",
-        "title_align": "font_center",
-        "color_title": "#ffffff",
-        "color_sub_title": "#4b4b4b",
-        "collection_featured": "for-gift",
-        "product_title": "font_left",
-        "vendor_set": true,
-        "product_title_color": "#ffffff",
-        "product_point_color": "#6f665d",
-        "product_badge_color": "#926d5a",
-        "image": "shopify:\/\/shop_images\/4_f7a950c5-9d14-42d5-8576-04ea886e996f.png",
-        "overlay_set": false,
-        "banner_title_font_size": 26,
-        "banner_font_size": 14,
-        "photo_title_align": "font_left",
-        "photo_headline": "Season Gift",
-        "photo_text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p>",
-        "photo_title_color": "#ffffff",
-        "photo_text_color": "#ffffff",
-        "button_size": "button_small",
-        "button_round_off": false,
-        "button-url": "",
-        "button-text": "view more",
-        "color_button": "background_transparent",
-        "button_color_hover": "button_forth_color",
-        "border_color": "#ffffff"
-      }
-    },
-    "16647617247ed76e23": {
-      "type": "section-richtext",
-      "settings": {
-        "color_schema": "forth_color",
-        "button_round_off": false,
-        "animation_setting": true,
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "banner_title_font_size": 45,
-        "banner_font_size": 15,
-        "headline": "Gift Recommendation",
-        "color_title": "#b75959",
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "color_desciption": "#af7f7f",
-        "textbox_align": "font_center",
-        "button_size_first": "button_medium",
-        "button-text": "view detail",
-        "button-url": "",
-        "color_button": "background_transparent",
-        "button_color_hover": "button_background_transparent",
-        "border_color": "#b75959",
-        "button_size_second": "button_medium",
-        "button-text_second": "",
-        "button-url_second": "",
-        "color_button_second": "second_color",
-        "button_color_hover_second": "button_third_color",
-        "border_color_second": "#b75959"
-      }
-    },
-    "section-image-row": {
-      "type": "section-image-row",
-      "blocks": {
-        "image-1": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/1_89beb336-665e-46d5-94dc-91e4d4dad8ab.png",
-            "overlay_set": false,
-            "textbox_color": "background_transparent",
-            "banner_title_font_size": 24,
-            "banner_font_size": 14,
-            "headline": "FAVORITE",
-            "grid-text": "Favorite candle collection",
-            "text_align": "font_center",
-            "button-url": "shopify:\/\/collections\/frontpage",
-            "button-text": "view more",
-            "color_button": "background_transparent",
-            "button_color_hover": "button_background_transparent",
-            "border_color": "#4b4b4b",
-            "color_text_box_title": "#6f665d",
-            "color_text_area": "#4b4b4b"
-          }
-        },
-        "image-2": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/2_16e72a4b-8523-4251-b3c7-39962d877f62.png",
-            "overlay_set": false,
-            "textbox_color": "background_transparent",
-            "banner_title_font_size": 24,
-            "banner_font_size": 14,
-            "headline": "ABOUT US",
-            "grid-text": "Discover about our business and story",
-            "text_align": "font_center",
-            "button-url": "shopify:\/\/pages\/about-us",
-            "button-text": "view more",
-            "color_button": "background_transparent",
-            "button_color_hover": "button_background_transparent",
-            "border_color": "#6f665d",
-            "color_text_box_title": "#6f665d",
-            "color_text_area": "#6f665d"
-          }
-        },
-        "image-3": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/3_ba1f543b-21c3-4af4-b5f9-9ad105974920.png",
-            "overlay_set": false,
-            "textbox_color": "background_transparent",
-            "banner_title_font_size": 24,
-            "banner_font_size": 14,
-            "headline": "DISCOUNT",
-            "grid-text": "Get 20% discount for first purchase",
-            "text_align": "font_center",
-            "button-url": "shopify:\/\/collections\/summer-discount",
-            "button-text": "view more",
-            "color_button": "background_transparent",
-            "button_color_hover": "button_background_transparent",
-            "border_color": "#6f665d",
-            "color_text_box_title": "#6f665d",
-            "color_text_area": "#6f665d"
-          }
-        }
-      },
-      "block_order": [
-        "image-1",
-        "image-2",
-        "image-3"
-      ],
-      "settings": {
-        "color_schema": "second_color",
-        "grid_style": "width_2grid",
-        "animation_setting": true,
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "button_size": "button_small",
-        "button_round_off": false,
-        "headline": "Our store",
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "title_align": "font_center",
-        "color_title": "#4b4b4b",
-        "color_sub_title": "#4b4b4b"
-      }
-    },
     "section-hero": {
       "type": "section-hero",
       "settings": {
-        "image": "shopify:\/\/shop_images\/HERO_BANNER_IMAGE_86cccc1b-4764-4d02-8729-092fe5f24024.png",
-        "padding_top": 5,
+        "color_schema": "fifth_color",
+        "padding_top": 10,
         "padding_bottom": 5,
         "overlay_set": false,
-        "image_fixed": true,
-        "banner_title_font_size": 50,
-        "banner_font_size": 15,
-        "animation_setting": false,
-        "headline": "We Make Candle!",
-        "color_title": "#6f665d",
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "color_desciption": "#926d5a",
-        "textbox_align": "font_left",
+        "image_fixed": false,
+        "show_line": false,
+        "line_position": "line_center",
+        "line_border": "#5e5e5e",
+        "banner_title_font_size": 38,
+        "banner_font_size": 14,
+        "animation_setting": true,
+        "subtitle": "About your skin",
+        "headline": "HOLIDAY COLLECTION",
+        "font_style": "font_bold",
+        "color_title": "#5c5353",
+        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "color_desciption": "#5c5353",
+        "textbox_align": "font_right",
         "textbox_color": "background_transparent",
-        "button_size": "button_large",
+        "button_align": "font_right",
+        "button_size": "button_medium",
         "button_round_off": false,
         "button-url": "\/",
-        "button-text": "",
-        "color_button": "second_color",
-        "button_color_hover": "button_third_color",
-        "border_color": "#6f665d"
+        "button-text": "view more",
+        "button_bg": "#ffffff",
+        "button_color": "#808080",
+        "border_colors": "#808080",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#ffffff",
+        "mo_border_color": "rgba(0,0,0,0)"
       }
     },
-    "section-collection": {
-      "type": "section-collection",
+    "268d17c7-0535-47ce-b4d7-6e913e10b305": {
+      "type": "section-product-slideshow",
       "settings": {
-        "color_schema": "first_color",
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "column_design": "three_column",
+        "color_schema": "forth_color",
+        "padding_top": 5,
+        "padding_bottom": 1,
+        "show_symbol": true,
         "animation_setting": true,
+        "show_rating": true,
         "mouseover_image": true,
-        "headline": "Vegan Friends",
-        "color_title": "#ffffff",
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <\/p><p>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "color_text_title": "#fafafa",
+        "button_background": "rgba(0,0,0,0)",
+        "arrow_icons": "#4b4b4b",
+        "arrow_border": "#4b4b4b",
+        "button_bg_mouseover": "#ffffff",
+        "arrow_icons_mouseover": "#4b4b4b",
+        "arrow_border_mouseover": "#4b4b4b",
         "title_align": "font_center",
+        "headline": "NEW LISTING",
+        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+        "color_title": "#4b4b4b",
+        "color_sub_title": "#808080",
+        "collection_featured": "",
+        "product_font_size": 1,
+        "vendor_set": false,
+        "product_title_color": "#ffffff",
+        "product_point_color": "#5e5e5e",
+        "product_badge_color": "#5e5e5e",
+        "button_align": "font_center",
         "button_size": "button_medium",
         "button_round_off": false,
-        "button-url": "shopify:\/\/collections\/all",
-        "button-text": "view more",
-        "color_button": "background_transparent",
-        "button_color_hover": "button_third_color",
-        "border_color": "#ffffff",
-        "collection_featured": "vegan-candle",
+        "button-url": "",
+        "button-text": "",
+        "button_bg": "rgba(0,0,0,0)",
+        "button_color": "#808080",
+        "border_colors": "#808080",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#ffffff",
+        "mo_border_color": "rgba(0,0,0,0)"
+      }
+    },
+    "917defc6-ee95-42de-a0aa-766c15d9e38a": {
+      "type": "section-product-slideshow",
+      "settings": {
+        "color_schema": "fifth_color",
+        "padding_top": 1,
+        "padding_bottom": 2,
+        "show_symbol": true,
+        "animation_setting": true,
+        "show_rating": true,
+        "mouseover_image": true,
+        "button_background": "rgba(0,0,0,0)",
+        "arrow_icons": "#4b4b4b",
+        "arrow_border": "#4b4b4b",
+        "button_bg_mouseover": "#4b4b4b",
+        "arrow_icons_mouseover": "#ffffff",
+        "arrow_border_mouseover": "#4b4b4b",
+        "title_align": "font_center",
+        "headline": "",
+        "text": "",
+        "color_title": "#4b4b4b",
+        "color_sub_title": "#4b4b4b",
+        "collection_featured": "",
         "product_font_size": 1,
-        "collection_products_limit": "6",
-        "show_vendor": true,
-        "show_line": false,
-        "box_border": "#1878b9",
-        "product_box_color": "forth_color",
-        "product_title_align": "font_center",
+        "vendor_set": false,
         "product_title_color": "#4b4b4b",
         "product_point_color": "#c33131",
-        "point_color": "#f9e7d3"
-      }
-    },
-    "section-2column-banner": {
-      "type": "section-2column_banner",
-      "settings": {
-        "image_left": "shopify:\/\/shop_images\/6.png",
-        "image_right": "shopify:\/\/shop_images\/7.png",
-        "textbox_align": "font_center",
-        "textbox_position": "text_box_center",
-        "animation_setting": true,
-        "textbox_color_schema": "fifth_color",
-        "headline": "What do you want?",
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "textbox_header_color": "#6f665d",
-        "textbox_desc_color": "#baa098",
+        "product_badge_color": "#e8d5d4",
+        "button_align": "font_center",
         "button_size": "button_medium",
         "button_round_off": false,
-        "button-text": "All Collection",
-        "button-url": "shopify:\/\/collections",
-        "color_button": "second_color",
-        "button_color_hover": "button_forth_color",
-        "border_color": "#6f665d",
-        "button-text_second": "Featured Gift",
-        "button-url_second": "shopify:\/\/collections\/for-gift",
-        "color_button_second": "second_color",
-        "button_color_hover_second": "button_forth_color",
-        "border_color_second": "#6f665d"
+        "button-url": "",
+        "button-text": "",
+        "button_bg": "rgba(0,0,0,0)",
+        "button_color": "#808080",
+        "border_colors": "#808080",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#ffffff",
+        "mo_border_color": "rgba(0,0,0,0)"
       }
     },
-    "891e7e12-c067-4f10-a790-e1f35e3d8802": {
-      "type": "section-quotes",
+    "ed93932e-a4d0-4df2-a66d-0115ca457019": {
+      "type": "section-faq",
       "blocks": {
-        "template--15857608491199__891e7e12-c067-4f10-a790-e1f35e3d8802-1664926676a19eb2af-0": {
-          "type": "quote",
+        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-0": {
+          "type": "dropbox",
           "settings": {
-            "image": "shopify:\/\/shop_images\/woman-poses-in-dark-room.jpg",
-            "star_rating_box": "⭐⭐⭐⭐⭐",
-            "quote-text": "Add customer reviews and testimonials to showcase your store’s happy customers.",
-            "quote-author": "Author's name",
-            "textbox_color": "third_color",
-            "text_color": "#ffffff",
-            "subtext_color": "#e8d5d4",
-            "icon_color": "#e8d5d4"
+            "faq_title": "How can I track my order?",
+            "faq_text": "Once your order ships, you'll receive a tracking number via email. You can use this number to track the status of your package.",
+            "dropdown_title": "#4b4b4b",
+            "dropdown_text": "#808080"
           }
         },
-        "template--15857608491199__891e7e12-c067-4f10-a790-e1f35e3d8802-1664926676a19eb2af-1": {
-          "type": "quote",
+        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-1": {
+          "type": "dropbox",
           "settings": {
-            "image": "shopify:\/\/shop_images\/model-with-leather-jacket-over-shoulders.jpg",
-            "star_rating_box": "⭐⭐⭐⭐⭐",
-            "quote-text": "Add customer reviews and testimonials to showcase your store’s happy customers.",
-            "quote-author": "Author's name",
-            "textbox_color": "fifth_color",
-            "text_color": "#6f665d",
-            "subtext_color": "#6f665d",
-            "icon_color": "#6f665d"
+            "faq_title": "Are your products cruelty-free?",
+            "faq_text": "Absolutely. We are proud to offer a range of cruelty-free skincare products that haven't been tested on animals.",
+            "dropdown_title": "#4b4b4b",
+            "dropdown_text": "#808080"
           }
         },
-        "template--15857608491199__891e7e12-c067-4f10-a790-e1f35e3d8802-1664926676a19eb2af-2": {
-          "type": "quote",
+        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-2": {
+          "type": "dropbox",
           "settings": {
-            "image": "shopify:\/\/shop_images\/woman-in-park-afternoon.jpeg",
-            "star_rating_box": "⭐⭐⭐⭐⭐",
-            "quote-text": "Add customer reviews and testimonials to showcase your store’s happy customers.",
-            "quote-author": "Author's name",
-            "textbox_color": "third_color",
-            "text_color": "#ffffff",
-            "subtext_color": "#e8d5d4",
-            "icon_color": "#e8d5d4"
+            "faq_title": "Can I find information about product ingredients?",
+            "faq_text": "Yes, we provide detailed ingredient lists for each product on its respective product page. If you have specific concerns, reach out to our team for more information.",
+            "dropdown_title": "#4b4b4b",
+            "dropdown_text": "#808080"
+          }
+        },
+        "098bc0d9-fd38-494a-ab1c-1d0156462690": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "Are your products suitable for sensitive skin?",
+            "faq_text": "Many of our products are formulated to be gentle on all skin types, including sensitive skin. However, we recommend checking the product descriptions and conducting a patch test if you have concerns.",
+            "dropdown_title": "#5e5e5e",
+            "dropdown_text": "#808080"
           }
         }
       },
       "block_order": [
-        "template--15857608491199__891e7e12-c067-4f10-a790-e1f35e3d8802-1664926676a19eb2af-0",
-        "template--15857608491199__891e7e12-c067-4f10-a790-e1f35e3d8802-1664926676a19eb2af-1",
-        "template--15857608491199__891e7e12-c067-4f10-a790-e1f35e3d8802-1664926676a19eb2af-2"
+        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-0",
+        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-1",
+        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-2",
+        "098bc0d9-fd38-494a-ab1c-1d0156462690"
       ],
       "settings": {
-        "color_schema": "forth_color",
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "animation_setting": true,
-        "title_align": "font_center",
-        "headline": "What others say about us",
-        "title_color": "#743939",
-        "image_onboarding": true,
-        "quotation_show": true
-      }
-    },
-    "section-three-column-grid": {
-      "type": "section-3column",
-      "blocks": {
-        "column-1": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/glass-iced-coffee-a-notebook-and-lit-candle-on-a-bed-sheet.jpg",
-            "image_round": false,
-            "headline": "No Artificial",
-            "grid-text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
-            "textbox_title_align": "font_center",
-            "color_box_schema": "fifth_color",
-            "grid_header_color_title": "#4b4b4b",
-            "grid_color_title": "#4b4b4b",
-            "button-url": "\/",
-            "button-text": "Button",
-            "color_button": "second_color",
-            "button_color_hover": "button_third_color",
-            "border_color": "#6f665d"
-          }
-        },
-        "column-2": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Desktop_-_2.png",
-            "image_round": false,
-            "headline": "Eco Friendly",
-            "grid-text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
-            "textbox_title_align": "font_center",
-            "color_box_schema": "fifth_color",
-            "grid_header_color_title": "#4b4b4b",
-            "grid_color_title": "#4b4b4b",
-            "button-url": "\/",
-            "button-text": "Button",
-            "color_button": "second_color",
-            "button_color_hover": "button_third_color",
-            "border_color": "#6f665d"
-          }
-        },
-        "column-3": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/two-mauve-candles-on-a-table.jpg",
-            "image_round": false,
-            "headline": "Make with love",
-            "grid-text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
-            "textbox_title_align": "font_center",
-            "color_box_schema": "fifth_color",
-            "grid_header_color_title": "#4b4b4b",
-            "grid_color_title": "#4b4b4b",
-            "button-url": "\/",
-            "button-text": "Button",
-            "color_button": "second_color",
-            "button_color_hover": "button_third_color",
-            "border_color": "#6f665d"
-          }
-        }
-      },
-      "block_order": [
-        "column-1",
-        "column-2",
-        "column-3"
-      ],
-      "settings": {
-        "color_schema": "second_color",
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "headline": "Why Our Candle?",
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "image_onboarding": true,
-        "animation_setting": true,
-        "button_size": "button_medium",
-        "button_round_off": false,
-        "grid_style": "three_column",
-        "title_align": "font_center",
-        "color_title": "#4b4b4b",
-        "color_text_title": "#4b4b4b"
-      }
-    },
-    "section-featured-product": {
-      "type": "section-featured-product",
-      "settings": {
-        "featured_product": "amazing-candle",
-        "show_quantity_selector": true,
-        "show_vendor": true,
-        "show_share_buttons": true,
-        "animation_setting": true,
         "color_schema": "fifth_color",
         "padding_top": 4,
-        "padding_bottom": 4,
-        "title_color": "#6f665d",
-        "base_color": "#926d5a",
-        "point_color": "#4b4b4b",
-        "dropdown_color": "forth_color",
-        "hover_schema": "nav_color_third",
-        "color_button": "second_color",
-        "button_color_hover": "button_third_color",
-        "border_color": "#6f665d"
+        "padding_bottom": 2,
+        "animation_setting": true,
+        "title_image": true,
+        "title_position": "title_left",
+        "textbox_color": "background_transparent",
+        "title_align": "font_left",
+        "headline": "Frequently asked questions",
+        "text": "<p>Welcome to our FAQ section, where we address common inquiries to provide you with quick and accurate answers. If you have a question that isn't covered here, feel free to contact us using the information provided at the end of this page.<\/p>",
+        "color_title": "#4b4b4b",
+        "color_sub_title": "#808080",
+        "point_color": "#5e5e5e",
+        "button_align": "font_left",
+        "button_size": "button_small",
+        "button_round_off": false,
+        "button-url": "shopify:\/\/pages\/contact",
+        "button-text": "Contact us",
+        "button_bg": "rgba(0,0,0,0)",
+        "button_color": "#808080",
+        "border_colors": "#808080",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#ffffff",
+        "mo_border_color": "rgba(0,0,0,0)"
       }
     },
-    "section-newsletter": {
+    "1c78a00f-3bff-4bb0-99a2-5be95791cb62": {
       "type": "section-newsletter",
       "settings": {
-        "color_schema": "forth_color",
+        "color_schema": "background_transparent",
         "padding_top": 4,
         "padding_bottom": 4,
-        "image": "shopify:\/\/shop_images\/18.png",
         "image_hide": false,
         "animation_setting": true,
         "img_array": "left_img",
-        "headline": "Don't Miss our News!",
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
-        "header_color": "#7b4747",
-        "description_color": "#a76a6a",
+        "headline": "Our newsletter",
+        "text": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.<\/p>",
+        "header_color": "#5e5e5e",
+        "description_color": "#808080",
         "title_align": "font_left",
         "button_round_off": false,
-        "color_button": "second_color",
-        "button_color_hover": "button_third_color",
-        "border_color": "#6f665d",
-        "point_color": "#6f665d"
+        "button_bg": "rgba(0,0,0,0)",
+        "button_color": "#808080",
+        "border_colors": "#808080",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#ffffff",
+        "mo_border_color": "rgba(0,0,0,0)",
+        "input_bg_color": "rgba(0,0,0,0)",
+        "point_color": "#808080"
       }
     }
   },
   "order": [
-    "section-slideshow",
-    "16647815176b5c5c93",
-    "section-collection_slideshow-left",
-    "section-collection_slideshow-right",
-    "16647617247ed76e23",
-    "section-image-row",
     "section-hero",
-    "section-collection",
-    "section-2column-banner",
-    "891e7e12-c067-4f10-a790-e1f35e3d8802",
-    "section-three-column-grid",
-    "section-featured-product",
-    "section-newsletter"
+    "268d17c7-0535-47ce-b4d7-6e913e10b305",
+    "917defc6-ee95-42de-a0aa-766c15d9e38a",
+    "ed93932e-a4d0-4df2-a66d-0115ca457019",
+    "1c78a00f-3bff-4bb0-99a2-5be95791cb62"
   ]
 }

@@ -1,16 +1,16 @@
 <!-- collaction grid -->
-<div class="{{section.settings.color_schema}}">
-  <div style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+<div class="{{ section.settings.color_schema }}">
+  <div style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
     <div class="py-6 sm:py-8 lg:py-12">
       <div class="max-w-screen-2xl px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
 
         {% if collections %}
-        {% paginate collections by 16 %}
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 {{section.settings.column_design}} gap-4 md:gap-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 {{ section.settings.column_design }} gap-4 md:gap-6">
           <!-- product - start -->
+          {% paginate collections by 16 %}
           {% for collection in collections %}
-          <div class="overflow-hidden rounded-md">
-            <a href="{{ collection.url }}" class="group h-96 xl:h-[25rem] flex items-end bg-gray-100 overflow-hidden shadow-lg relative p-4 rounded-md">
+          <div class="overflow-hidden rounded-sm">
+            <a href="{{ collection.url }}" class="group h-96 xl:h-[25rem] flex items-end bg-gray-100 overflow-hidden shadow-lg relative p-4 rounded-sm">
               <img
               sizes="
                 (min-width: 768px) 450px,
@@ -23,20 +23,23 @@
               src="{{ collection.image | img_url: '400x' }}"
               alt="{{ collection.image.alt | escape }}"
               loading="lazy"
-              class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-md
-                      {% if section.settings.overlay_set == true %} bg-gray-700 mix-blend-multiply rounded-md {%endif%}"
+              class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-sm
+                      {% if section.settings.overlay_set == true %} bg-gray-700 mix-blend-multiply rounded-sm {% endif %}"
+              width="{{ collection.image.width }}"
+              height="{{ collection.image.height }}"
             >  
-              <div class="w-full flex flex-col {{section.settings.textbox_position}} {{section.settings.color_textbox}} {{section.settings.text_align}} relative p-4 rounded-md">
+              <div class="w-full flex flex-col {{section.settings.textbox_position}} {{section.settings.color_textbox}} {{section.settings.text_align}} relative p-4 rounded-sm">
                 {% if section.settings.show_shopname %}
-                    <span class="text-gray-500 text-xs" style="color: {{section.settings.point_color}};">{{shop.name}}</span>
+                    <span class="text-gray-500 text-xs" style="color: {{section.settings.point_color}};"> {{ shop.name }} </span>
                 {% endif %}
-                <span class="font-bold" style="color: {{section.settings.text_color}}; font-size: {{section.settings.collection_title_size}}px;">{{ collection.title | escape }}</span>
+                <span class="font-bold" style="color: {{ section.settings.text_color }}; font-size: {{section.settings.collection_title_size}}px;"> {{ collection.title | escape }} </span>
               </div>
             </a>
           </div>
           {% endfor %}
           {% render 'layout-pagination', paginate: paginate %}
           {% endpaginate %}
+          </div>
           <!-- product - end -->
           {% else %}
           <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
@@ -52,7 +55,7 @@
       </div>
     </div>
 </div>
-</div>
+
 
 {% schema %}
 {
@@ -93,7 +96,7 @@
       "label":"Transparent Color"
     }
   ],
-  "default":"fifth_color"
+  "default":"background_transparent"
  },
  {
    "type": "range",

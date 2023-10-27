@@ -1,19 +1,19 @@
 
 
-{{ settings.header_font_new | font_face }}
-{{ settings.base_font_new | font_face }}
-{{ settings.slideshow_header | font_face }}
-{{ settings.hero_header | font_face }}
-{{ settings.richtext_font | font_face }}
-{{ settings.subfont_size | font_face }}
+{{ settings.header_font_new | font_face:font_display: 'swap' }}
+{{ settings.base_font_new | font_face:font_display: 'swap' }}
+{{ settings.slideshow_header | font_face:font_display: 'swap' }}
+{{ settings.hero_header | font_face:font_display: 'swap' }}
+{{ settings.richtext_font | font_face:font_display: 'swap' }}
+{{ settings.subfont_size | font_face:font_display: 'swap' }}
 
 {%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
 {%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
 {%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
 
-{{ base_font_bold | font_face }}
-{{ base_font_italic | font_face }}
-{{ base_font_bold_italic | font_face }}
+{{ base_font_bold | font_face:font_display: 'swap' }}
+{{ base_font_italic | font_face:font_display: 'swap' }}
+{{ base_font_bold_italic | font_face:font_display: 'swap' }}
 
 
 /* FONT STYLES */
@@ -228,6 +228,52 @@ body{
 }
 
 
+/* HERO BANNER LINE DESIGN SCHEMA */
+
+.line_left{
+      width:85%;
+      border-left:1px solid white;
+      height:3rem;
+      margin-bottom:2rem;
+}
+
+.line_right{
+      width:85%;
+      border-right:1px solid white;
+      height:3rem;
+      margin-bottom:2rem;
+}
+
+.line_center {
+      width:0.5rem;
+      border-left:1px solid white;
+      height:3rem;
+      margin-bottom:2rem;
+}
+
+
+/* IMAGE FRAME STYLE */
+
+.image-frame{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      
+}
+
+.slider-image-frame{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+      
+}
+
 
 /* BUTTON HOUVER STYLES */
 
@@ -408,9 +454,30 @@ body{
 
 
 .nav_color{
-      background: {{ settings.nav_color | color_modify: 'alpha', {{settings.opacity_color}} }};
-      transition: 0.5s;
+      background: {{ settings.nav_color }};
+      color: {{ settings.nav_font}};
+      border-bottom: 1px solid {{ settings.nav_border}};
 }
+
+
+.nav_color.nav_scroll{
+    background: {{ settings.scroll_color }};
+    color:{{ settings.scroll_font}};
+    transition: 0.3s;
+}
+
+.nav_color_page{
+  background: {{ settings.navPage_color }};
+  color: {{ settings.navPage_font}};
+  border-bottom: 1px solid {{ settings.navPage_border}};
+}
+
+.nav_color_page.nav_scroll {
+    background: {{ settings.scroll_color }};
+    color:{{ settings.scroll_font}};
+    transition: 0.3s;
+}
+
 
 .image_overlay{
       mix-blend-mode:multiply;
@@ -486,7 +553,7 @@ body{
 
 /* quantity style */
 
-.qty_control label{display: block;margin-bottom: 12px;letter-spacing: 2.8px;color: #747a7b;}
+.qty_control label{display: block; margin-bottom: 12px; letter-spacing: 2.8px; color: {{ settings.qv_title_color }};} 
 .qty_control .btnqty{display: inline-block;cursor: pointer;user-select: none;font-size: 25px;padding: 5px;line-height: 5px;}
 .qty_control .btnqty.qtyminus{margin-right: 8px;}
 .qty_control .btnqty.qtyplus{margin-left: 8px;}
@@ -527,10 +594,11 @@ input[type="number"]::-webkit-inner-spin-button{
 
 .price-slider{
       position: relative;
-      width: 100%;
+      width: 95%;
       height: 5px;
       border-radius: 5px;
       background: #ddd;
+      margin: 0 auto;
 }
 
 .price-slider .progress{
@@ -563,7 +631,7 @@ input[type="number"]::-webkit-inner-spin-button{
       bottom: 0;
 }
 .collection_center{
-      bottom: 6rem;
+      bottom: 9rem;
 }
 
 
@@ -666,7 +734,9 @@ input[type="number"]::-webkit-inner-spin-button{
 }
 
 
-
+.post-line {
+      border-left:0.7px solid #e5e7eb;
+}
 
 
  /* Filtered TabBox */
@@ -824,6 +894,10 @@ img{
           background-color:transparent;
     }
 
+    .separator{
+      top:0;
+}
+
             
 }
 
@@ -852,16 +926,22 @@ img{
       }
 
     .gallery-h{
-  height:200px;
-}
+            height:200px;
+      }
 
-  .modal {
-    top:0;
-  }
+      .modal {
+            top:0;
+      }
 
-  .gallery-modal{
-    width:90%;
-  }
+      .gallery-modal{
+            width:90%;
+      }
+
+      
+      .post-line {
+            border:none;
+      }
+
 
 }
 
@@ -969,8 +1049,7 @@ img{
             justify-content: center;
             text-align: center;
             align-items:center;
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+
       }
 
 
@@ -979,8 +1058,7 @@ img{
             align-items: center;
             text-align: right;
             padding-right: 16rem;
-            padding-top: 5rem;
-            padding-bottom: 5rem;  
+
       }
 
       .textbox_left{
@@ -988,8 +1066,7 @@ img{
             align-items: center;
             text-align: left;
             padding-left: 16rem;
-            padding-top: 5rem;
-            padding-bottom: 5rem;  
+
       }
 
       .location_center{

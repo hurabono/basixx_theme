@@ -3,6 +3,11 @@
     "main": {
       "type": "main-article",
       "blocks": {
+        "image": {
+          "type": "featured_image",
+          "settings": {
+          }
+        },
         "title": {
           "type": "article_title",
           "settings": {
@@ -18,8 +23,8 @@
           "settings": {
           }
         },
-        "image": {
-          "type": "featured_image",
+        "ff89f86f-a2ca-497d-9744-1e286ddbd261": {
+          "type": "article_line",
           "settings": {
           }
         },
@@ -34,9 +39,29 @@
         "title",
         "author",
         "publised_date",
+        "ff89f86f-a2ca-497d-9744-1e286ddbd261",
         "content"
       ],
       "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 0,
+        "padding_bottom": 4,
+        "thumnail_color": "second_color",
+        "enable_author": true,
+        "enable_published_date": true,
+        "overlay": true,
+        "animation_setting": false,
+        "text_align": "font_center",
+        "content_text_align": "font_left",
+        "title_color": "#111e2f",
+        "line_border": "#787d80",
+        "point_color": "#111e2f",
+        "content_color": "#787d80",
+        "border_color": "#4b5264",
+        "comment_bg": "background_transparent",
+        "color_button": "background_transparent",
+        "button_color_hover": "button_fifth_color",
+        "button_border_color": "#5a6988"
       }
     }
   },

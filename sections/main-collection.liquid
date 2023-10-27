@@ -1,41 +1,54 @@
-
 {% assign image = section.settings.image %}
   
 <div
   class="max-w-[1320px] m-auto items-center overflow-hidden px-6"
-  style="margin-top: {{section.settings.margin_top}}rem; margin-bottom:{{section.settings.margin_bottom}}rem;"
-  >
+  style="margin-top: {{ section.settings.margin_top }}rem; margin-bottom:{{ section.settings.margin_bottom }}rem;" >
+  
   {% if section.settings.show_image == true%}
+
   <div class=" h-[300px]">
-      <!-- image - start -->
+  <!-- image - start -->
   {% if section.settings.image %}
-  <img sizes="
-  (min-width: 1280px) 1500px,
-  (min-width: 1024px) 1250px,
-  (min-width: 768px) 1000px,
-  (min-width: 640px) 720px,
-  600px
-" srcset="
-  {{ image | img_url: '600x' }} 600w,
-  {{ image | img_url: '720x' }} 720w,
-  {{ image | img_url: '1000x' }} 1000w,
-  {{ image | img_url: '1250x' }} 1250w,
-  {{ image | img_url: '1500x' }} 1500w
-" src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
-    class="w-full h-full object-cover object-center {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {%endif%}">
-  {%else%}
+
+  <img 
+      sizes="
+      (min-width: 1280px) 1500px,
+      (min-width: 1024px) 1250px,
+      (min-width: 768px) 1000px,
+      (min-width: 640px) 720px " 
+      
+      srcset="
+      {{ image | img_url: '600x' }} 600w,
+      {{ image | img_url: '720x' }} 720w,
+      {{ image | img_url: '1000x' }} 1000w,
+      {{ image | img_url: '1250x' }} 1250w,
+      {{ image | img_url: '1500x' }} 1500w " 
+      
+      src="{{ image | img_url: '1500x' }}" 
+      alt="{{ image.alt }}" loading="lazy"
+      class="w-full h-full object-cover object-center 
+      {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {% endif %}"
+      width="{{ image.width }}"
+      height="{{ image.height }}"
+  >
+    
+  {% else %}
+
   <div class="max-w-[1320px] h-[300px] m-auto items-center overflow-hidden px-6 bg-gray-100 rounded-md">
     {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full object-center object-cover rounded-md overflow-hidden' }}
   </div>
+  
   {% endif %}
+
   <!-- image - end -->
   </div>
+
 {% endif %}
 
   <!-- text start -->
   <div class="max-w-[1320px] m-auto px-4 flex flex-col {{section.settings.text_align}} py-6">
-    <h1 class="w-full py-2 text-4xl font-bold tracking-widest" style="color: {{section.settings.text_color}};"> {{ collection.title}}</h1>
-    <div class="subfont_size py-4 tracking-wider leading-8" style="color: {{section.settings.text_color}};">
+    <h1 class="w-full py-2 text-4xl font-bold tracking-widest" style="color: {{section.settings.collection_title_color}};"> {{ collection.title}}</h1>
+    <div class="subfont_size py-4 tracking-wider leading-8" style="color: {{section.settings.collection_text_color}};">
       {{ collection.description }}
     </div>
   </div>
@@ -76,8 +89,8 @@
       "type": "range",
       "id": "margin_bottom",
       "label": "Margin Bottom controll",
-      "default":4,
-      "min": 1,
+      "default":0,
+      "min": 0,
       "max": 20,
       "step": 1,
       "unit": "rem"
@@ -115,9 +128,15 @@
 },
 {
   "type": "color",
-  "id": "text_color",
+  "id": "collection_title_color",
   "label": "Text box color",
-  "default": "#fff"
+  "default": "#808080"
+},
+{
+  "type": "color",
+  "id": "collection_text_color",
+  "label": "Text box color",
+  "default": "#A9A9A9"
 }
 ]
 }

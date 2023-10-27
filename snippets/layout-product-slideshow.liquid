@@ -58,7 +58,8 @@
         width="{{ product.images.last.width }}"
         height="{{ product.images.last.height }}"
         src="{{ product.images.last | img_url: '630x' }}"
-        alt="{{ product.images.last.alt | escape }}"> 
+        alt="{{ product.images.last.alt | escape }}"
+        > 
      {% endif %}
     {% endif %}
     {% if product.price < product.compare_at_price %}

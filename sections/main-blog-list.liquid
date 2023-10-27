@@ -3,16 +3,16 @@
   {% paginate blog.articles by 6 %}
   <div class="xl:max-w-[1320px] px-4 md:px-8 mx-auto px-2 md:px-5 mx-auto"
     style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
-    {% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
+    {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
 
 
     <div class="block md:flex gap-4">
     {% comment %} main blog post {% endcomment %}
-    <div class="w-full grid md:grid-cols-2 gap-4">
+    <div class="w-full grid md:grid-cols-2 gap-4 {% if section.settings.post_off == true %} {{ section.settings.column_design }} {% endif %}">
       {% for article in blog.articles %}
 
-        <div class="flex flex-col justify-center p-3 {{section.settings.textbox_color}} rounded-sm blog-postbox" 
-              style="{% if section.settings.show_border %} border:3px solid {{section.settings.point_color}};{% endif %}">
+        <div class="flex flex-col p-3 {{section.settings.textbox_color}} rounded-sm blog-postbox" 
+              style="{% if section.settings.show_border %} border:1px solid {{section.settings.point_color}};{% endif %}">
           
           
           <div class="flex justify-between items-center">
@@ -39,8 +39,8 @@
                 {{ article | img_url: '1250x' }} 1250w,
                 {{ article | img_url: '1500x' }} 1500w
               " 
-              width="{{ article.width }}"
-              height="{{ article.height }}"
+                width="{{ article.width }}"
+                height="{{ article.height }}"
                 src="{{ article | img_url: '1500x' }}" alt="{{ article.image.alt }}" loading="lazy"
                 class="w-full h-full object-cover object-center inset-0">
   
@@ -58,7 +58,7 @@
               {% if article.excerpt.size > 0 %}
                       {{ article.excerpt }}
                     {% else %}
-                      {{ article.content | strip_html | truncate: 100 }}
+                      {{ article.content | strip_html | truncate: 180 }}
               {% endif %}
             </p>
             {% else %}
@@ -94,7 +94,7 @@
     </div>
     
     {% comment %} Featured blog post {% endcomment %}
-    <div class="w-full flex flex-col justify-start border-l {% if section.settings.post_off == true %}hidden{% endif %}">
+    <div class="w-full flex flex-col justify-start post-line py-4 md:py-0 gap-4 {% if section.settings.post_off == true %}hidden{% endif %}">
       {%- assign featured_blog = blogs[section.settings.blog] -%}
 
       {% comment %} Page title  {% endcomment %}
@@ -112,7 +112,7 @@
       {% for article in featured_blog.articles limit:2 %}
   
         <div class="blog-textbox {{section.settings.textbox_color}} rounded-sm p-3" 
-            style="{% if section.settings.show_border %} border:3px solid {{section.settings.point_color}};{% endif %}">
+            style="{% if section.settings.show_border %} border:1px solid {{section.settings.point_color}};{% endif %}">
         
             <div class="flex justify-between items-center">
               <span class="text-xs font-medium tracking-widest rounded" 
@@ -138,7 +138,9 @@
               {{ article | img_url: '1250x' }} 1250w,
               {{ article | img_url: '1500x' }} 1500w
             " src="{{ article | img_url: '1500x' }}" alt="{{ article.image.alt }}" loading="lazy"
-                class="w-full h-full object-cover object-center inset-0">
+              class="w-full h-full object-cover object-center inset-0"
+              width="{{ article.width }}"
+              height="{{ article.height }}">
   
           
           </div>
@@ -238,13 +240,13 @@
   "type": "color",
   "id": "post_title_color",
   "label": "Featured post title",
-  "default": "#6F665D"
+  "default": "#5E5E5E"
 },
  {
   "type": "color",
   "id": "post_description_color",
   "label": "Featured post description",
-  "default": "#6F665D"
+  "default": "#808080"
 },
 {
   "type": "header",
@@ -255,6 +257,7 @@
   "type":"select",
   "id":"column_design",
   "label":"Column selector",
+  "info": "Selector is available after turning off featured design",
   "options":[
      {
         "value":"two_column",
@@ -370,31 +373,31 @@
       "label":"Transparent Color"
     }
   ],
-  "default":"forth_color"
+  "default":"background_transparent"
  },
  {
   "type": "color",
   "id": "title_color",
   "label": "Title color",
-  "default": "#6F665D"
+  "default": "#5E5E5E"
 },
  {
   "type": "color",
   "id": "text_color",
   "label": "Text color",
-  "default": "#926D5A"
+  "default": "#A9A9A9"
 },
 {
   "type": "color",
   "id": "symbol_color",
   "label": "Symbol color",
-  "default": "#926D5A"
+  "default": "#5E5E5E"
 },
 {
   "type": "color",
   "id": "point_color",
   "label": "Point color",
-  "default": "#DACCC1"
+  "default": "#D3D3D3"
 }
 ]
 }

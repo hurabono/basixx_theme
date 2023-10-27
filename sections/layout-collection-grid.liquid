@@ -22,7 +22,7 @@
             </div>
       </div>
       
-      <div class="hidden xl:max-w-[1320px] mx-auto sm:grid  md:grid-cols-2 lg:grid-cols-3 {{section.settings.column_design}} gap-4 md:gap-6 px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="300" {% endif %}>
+      <div class="hidden xl:max-w-[1320px] mx-auto sm:grid  md:grid-cols-2 lg:grid-cols-3 {{section.settings.column_design}} gap-4 md:gap-6 px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up"{% endif %}>
       
       {% for block in section.blocks %}
           <!-- product - start -->
@@ -30,20 +30,23 @@
         {% if block.settings.collection.image != blank %}
             <a href="{{ block.settings.collection.url }}" class="group h-[25rem] flex justify-center items-end bg-gray-100 overflow-hidden relative p-4">
               <img
-             sizes="
-                      (min-width: 1280px) 1500px,
-                      (min-width: 1024px) 1250px,
-                      (min-width: 768px) 1000px,
-                      (min-width: 640px) 720px,
-                      600px
-                    " srcset="
-                      {{ block.settings.collection.image | img_url: '600x' }} 600w,
-                      {{ block.settings.collection.image | img_url: '720x' }} 720w,
-                      {{ block.settings.collection.image | img_url: '1000x' }} 1000w,
-                      {{ block.settings.collection.image | img_url: '1250x' }} 1250w,
-                      {{ block.settings.collection.image | img_url: '1500x' }} 1500w
-                    " src="{{ block.settings.collection.image | img_url: '1500x' }}" alt="{{ block.settings.collection.image.alt }}" loading="lazy"
-              class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-sm"
+                     srcset="
+                    {%- if block.settings.collection.image.width >= 550 -%}{{ block.settings.collection.image | image_url: width: 550 }} 550w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 720 -%}{{ block.settings.collection.image | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 990 -%}{{ block.settings.collection.image | image_url: width: 990 }} 990w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 1100 -%}{{ block.settings.collection.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 1500 -%}{{ block.settings.collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 2200 -%}{{ block.settings.collection.image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 3000 -%}{{ block.settings.collection.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                    {{ block.settings.collection.image | image_url }} {{ block.settings.collection.image.width }}w"
+                    src="{{ block.settings.collection.image | image_url: width: 1500 }}"
+                    sizes="(min-width: {{ block.settings.collection.image.width }}px) {% if  block.settings.collection.image.size == 1 %}calc({{ block.settings.collection.image.width }}px - 100px){% else %}{{ block.settings.collection.image.width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if  block.settings.collection.image.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                    alt="{{ sblock.settings.collection.image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ block.settings.collection.image.width }}"
+                    height="{{ block.settings.collection.image.height }}"
+                    class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-sm"
+
             > 
 
             <!-- overlay - start -->
@@ -76,20 +79,21 @@
                   <div class="swiper-slide" data-section-id="{{ section.id }}" {{ block.shopify_attributes }}>
                     <a href="{{ block.settings.collection.url }}" class=" rounded-sm h-[27rem] flex justify-center items-end bg-gray-100 overflow-hidden relative p-4">
                     <img
-                      sizes="
-                      (min-width: 1280px) 1500px,
-                      (min-width: 1024px) 1250px,
-                      (min-width: 768px) 1000px,
-                      (min-width: 640px) 720px,
-                      600px
-                    " srcset="
-                      {{ block.settings.collection.image | img_url: '600x' }} 600w,
-                      {{ block.settings.collection.image | img_url: '720x' }} 720w,
-                      {{ block.settings.collection.image | img_url: '1000x' }} 1000w,
-                      {{ block.settings.collection.image | img_url: '1250x' }} 1250w,
-                      {{ block.settings.collection.image | img_url: '1500x' }} 1500w
-                    " src="{{ block.settings.collection.image | img_url: '1500x' }}" alt="{{ block.settings.collection.image.alt }}" loading="lazy"
-                  
+                    srcset="
+                    {%- if block.settings.collection.image.width >= 550 -%}{{ block.settings.collection.image | image_url: width: 550 }} 550w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 720 -%}{{ block.settings.collection.image | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 990 -%}{{ block.settings.collection.image | image_url: width: 990 }} 990w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 1100 -%}{{ block.settings.collection.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 1500 -%}{{ block.settings.collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 2200 -%}{{ block.settings.collection.image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                    {%- if block.settings.collection.image.width >= 3000 -%}{{ block.settings.collection.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                    {{ block.settings.collection.image | image_url }} {{ block.settings.collection.image.width }}w"
+                    src="{{ block.settings.collection.image | image_url: width: 1500 }}"
+                    sizes="(min-width: {{ block.settings.collection.image.width }}px) {% if  block.settings.collection.image.size == 1 %}calc({{ block.settings.collection.image.width }}px - 100px){% else %}{{ block.settings.collection.image.width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if  block.settings.collection.image.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                    alt="{{ sblock.settings.collection.image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ block.settings.collection.image.width }}"
+                    height="{{ block.settings.collection.image.height }}"
                     class="w-full h-full object-cover object-center absolute inset-0"
                     
                   >  
@@ -131,7 +135,7 @@
         "type":"text",
         "id":"subtitle",
         "label":"subtitle",
-        "default":"Real Estate Agency"
+        "default":"Subtitle"
      },
       {
         "type":"text",
@@ -142,7 +146,8 @@
      {
       "type":"richtext",
       "id":"text",
-      "label":"t:common.headline"
+      "label":"t:common.headline",
+      "default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic </p><p>tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
     },
     {
             "type": "select",
@@ -207,7 +212,7 @@
             "label": "Transparent Color"
           }
         ],
-        "default": "second_color"
+        "default": "fifth_color"
       },
       {
         "type": "image_picker",
