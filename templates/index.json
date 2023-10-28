@@ -1,6 +1,6 @@
 {
   "sections": {
-    "section-hero": {
+    "hero-banner": {
       "type": "section-hero",
       "settings": {
         "color_schema": "fifth_color",
@@ -14,8 +14,8 @@
         "banner_title_font_size": 38,
         "banner_font_size": 14,
         "animation_setting": true,
-        "subtitle": "About your skin",
-        "headline": "HOLIDAY COLLECTION",
+        "subtitle": "THEMEBLING",
+        "headline": "THANKS FOR USING BASIXX THEME",
         "font_style": "font_bold",
         "color_title": "#5c5353",
         "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
@@ -35,7 +35,11 @@
         "mo_border_color": "rgba(0,0,0,0)"
       }
     },
-    "268d17c7-0535-47ce-b4d7-6e913e10b305": {
+    "rich-text":{
+      "type":"section-richtext",
+      "settings":{}
+    },
+    "section-product-slideshow1":{
       "type": "section-product-slideshow",
       "settings": {
         "color_schema": "forth_color",
@@ -75,7 +79,7 @@
         "mo_border_color": "rgba(0,0,0,0)"
       }
     },
-    "917defc6-ee95-42de-a0aa-766c15d9e38a": {
+    "section-product-slideshow2":{
       "type": "section-product-slideshow",
       "settings": {
         "color_schema": "fifth_color",
@@ -115,82 +119,9 @@
         "mo_border_color": "rgba(0,0,0,0)"
       }
     },
-    "ed93932e-a4d0-4df2-a66d-0115ca457019": {
-      "type": "section-faq",
-      "blocks": {
-        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-0": {
-          "type": "dropbox",
-          "settings": {
-            "faq_title": "How can I track my order?",
-            "faq_text": "Once your order ships, you'll receive a tracking number via email. You can use this number to track the status of your package.",
-            "dropdown_title": "#4b4b4b",
-            "dropdown_text": "#808080"
-          }
-        },
-        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-1": {
-          "type": "dropbox",
-          "settings": {
-            "faq_title": "Are your products cruelty-free?",
-            "faq_text": "Absolutely. We are proud to offer a range of cruelty-free skincare products that haven't been tested on animals.",
-            "dropdown_title": "#4b4b4b",
-            "dropdown_text": "#808080"
-          }
-        },
-        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-2": {
-          "type": "dropbox",
-          "settings": {
-            "faq_title": "Can I find information about product ingredients?",
-            "faq_text": "Yes, we provide detailed ingredient lists for each product on its respective product page. If you have specific concerns, reach out to our team for more information.",
-            "dropdown_title": "#4b4b4b",
-            "dropdown_text": "#808080"
-          }
-        },
-        "098bc0d9-fd38-494a-ab1c-1d0156462690": {
-          "type": "dropbox",
-          "settings": {
-            "faq_title": "Are your products suitable for sensitive skin?",
-            "faq_text": "Many of our products are formulated to be gentle on all skin types, including sensitive skin. However, we recommend checking the product descriptions and conducting a patch test if you have concerns.",
-            "dropdown_title": "#5e5e5e",
-            "dropdown_text": "#808080"
-          }
-        }
-      },
-      "block_order": [
-        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-0",
-        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-1",
-        "template--17408106692911__ed93932e-a4d0-4df2-a66d-0115ca457019-1678472225770687ae-2",
-        "098bc0d9-fd38-494a-ab1c-1d0156462690"
-      ],
-      "settings": {
-        "color_schema": "fifth_color",
-        "padding_top": 4,
-        "padding_bottom": 2,
-        "animation_setting": true,
-        "title_image": true,
-        "title_position": "title_left",
-        "textbox_color": "background_transparent",
-        "title_align": "font_left",
-        "headline": "Frequently asked questions",
-        "text": "<p>Welcome to our FAQ section, where we address common inquiries to provide you with quick and accurate answers. If you have a question that isn't covered here, feel free to contact us using the information provided at the end of this page.<\/p>",
-        "color_title": "#4b4b4b",
-        "color_sub_title": "#808080",
-        "point_color": "#5e5e5e",
-        "button_align": "font_left",
-        "button_size": "button_small",
-        "button_round_off": false,
-        "button-url": "shopify:\/\/pages\/contact",
-        "button-text": "Contact us",
-        "button_bg": "rgba(0,0,0,0)",
-        "button_color": "#808080",
-        "border_colors": "#808080",
-        "mo_button_bg": "#808080",
-        "mo_button_color": "#ffffff",
-        "mo_border_color": "rgba(0,0,0,0)"
-      }
-    },
-    "1c78a00f-3bff-4bb0-99a2-5be95791cb62": {
+    "section-newsletter":{
       "type": "section-newsletter",
-      "settings": {
+        "settings": {
         "color_schema": "background_transparent",
         "padding_top": 4,
         "padding_bottom": 4,
@@ -215,10 +146,10 @@
     }
   },
   "order": [
-    "section-hero",
-    "268d17c7-0535-47ce-b4d7-6e913e10b305",
-    "917defc6-ee95-42de-a0aa-766c15d9e38a",
-    "ed93932e-a4d0-4df2-a66d-0115ca457019",
-    "1c78a00f-3bff-4bb0-99a2-5be95791cb62"
+    "hero-banner",
+    "rich-text",
+    "section-product-slideshow1",
+    "section-product-slideshow2",
+    "section-newsletter"
   ]
 }
