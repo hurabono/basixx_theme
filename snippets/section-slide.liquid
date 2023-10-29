@@ -1,0 +1,122 @@
+<style>
+      
+@media(max-width: 767px){
+      .txtbox_mobile{
+            border: none !important;
+            min-height: 400px;
+            width: 100vw;
+            justify-content:center;
+      }
+
+      .hidden_arrow{
+            display: none;
+      }
+
+    .moblie-image{
+      height:500px;
+    }
+
+}
+</style>
+
+
+
+      <div
+            class="{% if animation_setting == true %} cardcontainer {% endif %} default_mobile {{textbox_position}} flex flex-col md:flex-1 flex-shrink-0 bg-gray-100 relative overflow-hidden h-full"
+            style="padding-top:{{padding_top}}rem; padding-bottom:{{padding_bottom}}rem;"
+      >
+            <!-- image - start -->
+            {% if image %}
+            <img 
+                srcset="{%- if image.width >= 550 -%}{{ image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                        {%- if image.width >= 720 -%}{{ image | image_url: width: 720 }} 720w,{%- endif -%}
+                        {%- if image.width >= 990 -%}{{ image | image_url: width: 990 }} 990w,{%- endif -%}
+                        {%- if image.width >= 1100 -%}{{ image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                        {%- if image.width >= 1500 -%}{{ image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                        {%- if image.width >= 2200 -%}{{ image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                        {%- if image.width >= 3000 -%}{{ image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                        {{ image | image_url }} {{ image.width }}w"
+                  src="{{ image | image_url: width: 3000 }}"
+                  sizes="(min-width: {{ image.width }}px) {% if image.size == 1 %}calc({{ image.width }}px - 100px){% else %}{{ image.width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if image.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+                  alt="{{ image.alt | escape }}"
+                  loading="eager"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                  class="swiper-lazy w-full min-h-[400px] md:h-full object-cover relative md:absolute md:inset-0 moblie-image"
+              >
+            {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'swiper-lazy min-h-[400px] md:h-full object-cover object-center relative md:absolute' }}
+            {% endif %}
+            <!-- image - end -->
+
+            <!-- overlay - start -->
+            {% if overlay_set == true %}
+                  <div class="hidden md:bg-gray-300 md:mix-blend-multiply absolute inset-0"></div>
+            {% endif %}
+            
+            <!-- overlay - end -->
+
+            <!-- text start -->
+            <div class="default_mobile {{textbox_position}}" {% if animation_setting == true %} data-swiper-animation="animate__fadeInUp" {% endif %}>
+                  
+                  <div {{ block.shopify_attributes }} class="txtbox_mobile flex flex-col relative {{text_align}} {{color_schema}} {{ mobile_color }} {{textbox_location}} p-6 w-[22rem] md:w-[29rem]"
+                        style="border: 2px solid {{textbox_border}};"
+                  >
+                        <div class="hidden_arrow relative w-full top-[-6rem] flex justify-end ml-0 md:ml-[1.5rem]">
+                              
+                               <div class=" arrow-border swiper-slideshow-prev p-3 mr-2 {{ section.id }}_featured_slider_arrow_color">
+                                    &#10229;
+                              </div>
+                              <div class=" arrow-border swiper-slideshow-next p-3 {{ section.id }}_featured_slider_arrow_color">
+                                    &#10230;
+                              </div> 
+                              
+
+                        </div>
+                        <div class="relative top-[-2rem] flex justify-center" style="color:{{color_text}};">
+                              {{ subicon }}
+                        </div>
+                        <div class="relative top-[-2rem] slideshow_header font-bold py-2 tracking-widest" style="color:{{color_title}}; font-size:{{slider_font_size}}px;">
+                              {{ headline }}
+                        </div>
+                        <p class="relative top-[-3rem] my-4 md:mb-8 tracking-wider leading-8 mx-2 " style="color:{{color_text}}; font-size:{{slider_sub_size}}px;">
+                              {{ text }}
+                        </p>
+                        
+                        <div class="relative top-[-3.5rem]">
+                              <ul class="flex justify-between">
+                                    {% if boxtext1 != blank %}
+                                    <li class="text-xs md:text-sm tracking-wider w-1/3 md:w-full m-1 flex flex-col md:flex-row justify-evenly items-center py-2"
+                                    style="border: 1px solid {{ iconbox_border }};">
+                                          {{iconbox1}} <span class="p-2 md:p-0" style="color: {{ iconbox_color }};">{{boxtext1}}</span>
+                                    </li>
+                                    {% endif %}
+
+                                    {% if boxtext2 != blank %}
+                                    <li class="text-xs md:text-sm tracking-wider w-1/3 md:w-full m-1 flex flex-col md:flex-row px-2 justify-evenly items-center py-2"
+                                    style="border: 1px solid {{ iconbox_border }};">
+                                          {{iconbox2}} <span class="p-2 md:p-0" style="color: {{ iconbox_color }};"> {{boxtext2}}</span>
+                                    </li>
+                                    {% endif %}
+                                    
+                                    {% if boxtext3 != blank %}
+                                    <li class="text-xs md:text-sm tracking-wider w-1/3 md:w-full m-1 flex flex-col md:flex-row px-2 justify-evenly items-center py-2"
+                                    style="border: 1px solid {{ iconbox_border }};">
+                                          {{iconbox3}}  <span class="p-2 md:p-0" style="color: {{ iconbox_color }};"> {{boxtext3}} </span>
+                                    </li>
+                                    {% endif %}
+                              </ul>
+                        </div>
+
+                         <div class="py-2 inline-block">
+                        <a href="{{ button-url }}"
+                              id="block_{{ block_id }}"
+                              class="relative top-[-1.5rem] mx-2 tracking-widest text-center pb-2 text-base
+                              {% if button_round_off == true %} button_round {% endif %}" >
+                              {{button-text }}</a>
+                        </div>
+                  </div>
+            </div>
+            <!-- text end -->
+      </div>
+

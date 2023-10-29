@@ -1,0 +1,74 @@
+:root, ::before {
+  color: #121212;
+  --color-icon: #222;
+  --color-foreground:#ccc;
+  --primary: #222;
+  --primary-rgb: 18, 18, 18;
+  --second-rgb: 0, 0, 0;
+  --color-888: #888;
+  --color-888-rgb: 136, 136, 136;
+  --color-1f1: #1f1f1f;
+  --color-white-button: #fff;
+  --color-b8b: #b8b8b8;
+  --color-f21: #F23D3F;
+  --pre-bg-rgb: 31, 31, 31;
+  --scrollbar-hover: #4a4a4a;
+  --scrollbar-active: #383838;
+  --fade-rgb: 34, 34, 34;
+}
+
+.rating {
+  display: block;
+  margin: 0;
+}
+
+.rating-star {
+  --letter-spacing: 0.8;
+  --font-size: 1;
+  --percent: calc(
+    (
+        var(--rating) / var(--rating-max) + var(--rating-decimal) *
+          var(--font-size) /
+          (var(--rating-max) * (var(--letter-spacing) + var(--font-size)))
+      ) * 100%
+  );
+  /* letter-spacing: calc(var(--letter-spacing) * 1rem);
+  font-size: calc(var(--font-size) * 1rem); */
+  line-height: 1;
+  display: inline-block;
+  font-family: Times;
+  margin: 0;
+}
+
+.rating-star::before {
+  content: '★★★★★';
+  background: linear-gradient(90deg, rgba(var(--second-rgb), 1)var(--percent), rgba(var(--primary-rgb), 0.15) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.no-rating::before{
+  content: '★';
+  background-color: {{ settings.point_color }};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rating-text {
+  display: none;
+}
+
+.rating-count {
+  display: inline-block;
+  margin: 0;
+}
+
+@media (forced-colors: active) {
+  .rating {
+    display: none;
+  }
+
+  .rating-text {
+    display: block;
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-cart-banner",
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 11,
+        "padding_bottom": 3,
+        "overlay_set": false,
+        "text_align": "font_center",
+        "description": "<p>Here, we've tailored every detail to create an experience that is as unique as your skin.<\/p>",
+        "text_color": "#808080"
+      }
+    },
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "animation_setting": false,
+        "show_quantity": true,
+        "show_totalPrice": true,
+        "show_price": true,
+        "price_total_show": true,
+        "box_color": "fifth_color",
+        "main_color": "#5e5e5e",
+        "item_font_color": "#808080",
+        "item_price_color": "#808080",
+        "border_color": "rgba(0,0,0,0)",
+        "c_button_bg": "rgba(0,0,0,0)",
+        "c_button_color": "#808080",
+        "c_border_colors": "#808080",
+        "c_mo_button_bg": "#808080",
+        "c_mo_button_color": "#ffffff",
+        "c_mo_border_color": "rgba(0,0,0,0)",
+        "cart_bg_color": "rgba(0,0,0,0)",
+        "cart_border_color": "#a9a9a9",
+        "primary_button_bg": "rgba(0,0,0,0)",
+        "primary_button_color": "#808080",
+        "primary_border_colors": "#808080",
+        "primary_mo_button_bg": "#808080",
+        "primary_mo_button_color": "#ffffff",
+        "primary_mo_border_color": "rgba(0,0,0,0)",
+        "secondary_button_bg": "rgba(0,0,0,0)",
+        "secondary_button_color": "#808080",
+        "secondary_border_colors": "#808080",
+        "secondary_mo_button_bg": "#808080",
+        "secondary_mo_button_color": "#ffffff",
+        "secondary_mo_border_color": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

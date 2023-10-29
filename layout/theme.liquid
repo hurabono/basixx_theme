@@ -1,0 +1,146 @@
+<!doctype html>
+<style>
+  html{
+    padding-bottom: 0 !important;
+  }
+</style>
+<html lang="{{ request.locale.iso_code }}" class="overflow-y-scroll">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  {{ 'bundle.css' | asset_url | stylesheet_tag: preload: true }}
+  
+
+  <title>{{ page_title | escape }}</title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% if canonical_url != blank %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% endif %}
+
+
+  <!-- Store Favicon -->
+  {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+  <!-- Ajax add to cart / Jquery cdn header -->
+  <script rel="preload" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   
+  <!-- Quickview settings -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" ></script>
+  {{ '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css' | stylesheet_tag }}
+  {{ 'slick.css' | asset_url | stylesheet_tag: preload: true }}
+  {{ 'quickview.css' | asset_url | stylesheet_tag }}
+  <script type="module" src="{{ 'quickview.js' | asset_url }}" defer></script>
+  
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/@cycjimmy/swiper-animation@6/dist/swiper-animation.umd.min.js" async></script>
+  <link href="//unpkg.com/animate.css@4/animate.min.css" rel="stylesheet">
+
+  {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+  {{ 'aos.css' | asset_url | stylesheet_tag: preload: true }}
+  
+  <!-- header hook for Shopify plugins -->
+  {{ content_for_header }}
+  
+      <!-- Alpine.js (do not touch it!) -->
+      <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
+  
+<!-- Font Awesome  -->
+<script src="https://kit.fontawesome.com/f7fb8f5dc1.js" crossorigin="anonymous" async></script>
+
+<script>
+  {% capture content %}{% render 'quickview' %}{% endcapture %}
+  var content = {{ content | json }};
+</script>
+
+</head>
+
+<body class="min-h-screen">
+  {% if request.page_type == 'captcha' %}
+  {% comment %}
+  fix: Shopify automatically inserts script tags on captcha pages into the content_for_layout tag
+  but vue removes any script tags on mount, so don't initialize the vue instance on captcha pages
+  {% endcomment %}
+  {% render 'template-captcha' %}
+  {% else %}
+  <div id="app" class="min-h-screen flex flex-col font-sans">
+  
+
+    
+    {% section 'layout-header' %}
+
+    <main id="main" role="main"
+      class="flex-1 bg-color {% if request.page_type == 'index' %}{% else %}{% endif %}">
+      {{ content_for_layout }}
+    </main>
+
+    <script async type="text/javascript" rel="preload" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    {% render 'ajaxify-cart' %}
+    {% section 'layout-footer' %}
+    {% section 'layout-scroll-to-top' %}
+    {% section 'layout-mobile-navigation' %}
+  </div>
+  {% endif %}
+
+  <!-- webpack bundle -->
+  <script type="module" src="{{ 'bundle.js' | asset_url }}" async="async"></script>
+  <script src="{{ 'swiper.js' | asset_url }}" async></script>
+  <script type="module" src="{{ 'local.js' | asset_url }}" async="async"></script>
+  <script type="module" src="{{ 'count.js' | asset_url }}" async="async"></script>
+
+  
+  
+  
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" async></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" async></script>
+
+
+{%- comment -%} product quickview metafield javascirpt {%- endcomment -%}
+
+{% capture 'productMetafields' %}
+  {
+      {% for product in collections['all'].products %}
+
+          "{{ product.handle }}" : {
+              product_price : "{{ product.metafields.custom.custom_price.value }}",
+              product_symbol_first : "{{ product.metafields.custom.symbol_first.value }}",
+              product_symbol_second : "{{ product.metafields.custom.symbol_second.value }}",
+              product_symbol_third : "{{ product.metafields.custom.symbol_third.value }}",
+          }, 
+      
+      {% endfor %}
+  }
+{% endcapture %}
+
+<script type = "text/javascript">
+let productMetafields = {{ productMetafields }}
+</script>
+
+
+  <script type = "text/javascript">
+    document.addEventListener('shopify:section:select', function(event) {
+      AOS.init();
+    });
+    AOS.init();
+  </script>
+</body>
+
+
+
+</html>

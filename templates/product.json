@@ -1,0 +1,428 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_color": "#5e5e5e"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "rating_color": "#bfbfbf",
+            "rating_font": "#808080"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_color": "#5e5e5e",
+            "price_point": "#808080"
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {
+            "qty_radius": true,
+            "qty_bg_color": "rgba(0,0,0,0)",
+            "qty_font_color": "#5e5e5e",
+            "qty_border_color": "#9a9a9a",
+            "qty_icon_color": "#5e5e5e"
+          }
+        },
+        "419f2cdc-3110-488e-8063-96cb49bcc359": {
+          "type": "stock",
+          "settings": {
+          }
+        },
+        "dc131d9f-eabd-4d3f-91b3-bc71b3b52b74": {
+          "type": "custom_textbox",
+          "settings": {
+            "custom_title": "",
+            "custom_desc": "<p>{{ product.metafields.custom.product_info | metafield_tag }}<\/p>"
+          }
+        },
+        "dcc1b0e6-8edc-4a05-81f4-9b3ebfaadd93": {
+          "type": "custom_textbox",
+          "settings": {
+            "custom_title": "Suitable for",
+            "custom_desc": "<p>{{ product.metafields.custom.symbol_first.value }}<\/p>"
+          }
+        },
+        "664c4024-3ca2-4df1-b2aa-ab0b4ee1b410": {
+          "type": "custom_textbox",
+          "settings": {
+            "custom_title": "Suited to",
+            "custom_desc": "<p>{{ product.metafields.custom.symbol_second.value }}<\/p>"
+          }
+        },
+        "5b5cfa0d-c775-48c4-90ad-3a551c7e1083": {
+          "type": "division_line",
+          "settings": {
+            "line_color": "#9a9a9a"
+          }
+        },
+        "selected_variant": {
+          "type": "selected_variant",
+          "settings": {
+            "dropdown_color": "#fafafa",
+            "dropdown_bg": "rgba(0,0,0,0)",
+            "dropdown_font": "#808080",
+            "dropdown_border": "rgba(0,0,0,0)",
+            "dropdown_mo_bg": "#5e5e5e",
+            "dropdown_mo_font": "#ffffff",
+            "radio_selector_bg": "rgba(0,0,0,0)",
+            "radio_selector_font": "#808080",
+            "radio_selector_border": "#5e5e5e",
+            "radio_active_bg": "#808080",
+            "radio_active_font": "#ffffff",
+            "radio_active_border": "rgba(0,0,0,0)"
+          }
+        },
+        "d67646ab-025c-4408-8790-fa2d1c2e9791": {
+          "type": "custom_textbox",
+          "settings": {
+            "custom_title": "",
+            "custom_desc": "<p>Please check shipping polish. 2-3 business days required.<\/p>"
+          }
+        },
+        "9298048d-7d30-490d-b069-b4b9725182ff": {
+          "type": "store_pickup",
+          "settings": {
+            "pickup_background": "#fafafa",
+            "pickup_title": "#4b4b4b",
+            "pickup_disc": "#9a9a9a",
+            "pickup_point": "#808080"
+          }
+        },
+        "social": {
+          "type": "social",
+          "settings": {
+            "social_bg": "#ffffff",
+            "social_icon_color": "#808080",
+            "social_border": "#9a9a9a"
+          }
+        },
+        "d3893169-32ee-4834-9f41-5815d7e377c3": {
+          "type": "payment_icon",
+          "settings": {
+            "visa_visible": true,
+            "mastercard_visible": true,
+            "paypal_visible": true,
+            "amex_visible": true,
+            "jcb_visible": true,
+            "klarna_visible": true,
+            "afterpay_visible": true,
+            "applepay_visible": true
+          }
+        },
+        "checkout_buttons": {
+          "type": "checkout_buttons",
+          "settings": {
+            "button_bg": "rgba(0,0,0,0)",
+            "button_color": "#808080",
+            "border_colors": "#808080",
+            "mo_button_bg": "#808080",
+            "mo_button_color": "#ffffff",
+            "mo_border_color": "rgba(0,0,0,0)",
+            "secondary_button_bg": "#808080",
+            "secondary_button_color": "#ffffff",
+            "secondary_button_border": "#808080",
+            "secondary_mo_bg": "#a9a9a9",
+            "secondary_over_font": "#ffffff",
+            "secondary_mo_border": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "rating",
+        "price",
+        "quantity",
+        "419f2cdc-3110-488e-8063-96cb49bcc359",
+        "dc131d9f-eabd-4d3f-91b3-bc71b3b52b74",
+        "dcc1b0e6-8edc-4a05-81f4-9b3ebfaadd93",
+        "664c4024-3ca2-4df1-b2aa-ab0b4ee1b410",
+        "5b5cfa0d-c775-48c4-90ad-3a551c7e1083",
+        "selected_variant",
+        "d67646ab-025c-4408-8790-fa2d1c2e9791",
+        "9298048d-7d30-490d-b069-b4b9725182ff",
+        "social",
+        "d3893169-32ee-4834-9f41-5815d7e377c3",
+        "checkout_buttons"
+      ],
+      "settings": {
+        "color_schema": "fifth_color",
+        "padding_top": 9,
+        "padding_bottom": 5,
+        "mobile_padding_top": 4,
+        "mobile_padding_bottom": 3,
+        "animation_setting": false,
+        "sticky_product": true,
+        "radio_selector": true,
+        "base_color": "#787d80",
+        "point_color": "#5e5e5e"
+      }
+    },
+    "ff2372af-f660-465e-adb1-80bedbc0112a": {
+      "type": "product-description",
+      "blocks": {
+        "template--17100984156470__ff2372af-f660-465e-adb1-80bedbc0112a-16697818970dafa740-0": {
+          "type": "about_product",
+          "settings": {
+            "headline_tab_title": "About product",
+            "headline_title": "About product :",
+            "headline_text_color": "#5e5e5e",
+            "text_color": "#787d80"
+          }
+        },
+        "1d691fd4-257d-4d0c-9d90-8785f3da42ad": {
+          "type": "featured_list",
+          "settings": {
+            "featured_tab_title": "Benefits",
+            "featured_title": "Benefits:",
+            "featured_description": "",
+            "featured_title_color": "#5e5e5e",
+            "featured_text_color": "#808080",
+            "featured_symbol_color": "#808080",
+            "featured_column_color": "#f4f4f4",
+            "show_icon": true,
+            "icon_box1": "🌟",
+            "featured_text1": "Promotes a radiant and glowing complexion.",
+            "icon_box2": "🌀",
+            "featured_text2": "Diminishes the appearance of fine lines and wrinkles.",
+            "icon_box3": "🌈",
+            "featured_text3": "Evens out skin tone and reduces hyperpigmentation.",
+            "icon_box4": "💧",
+            "featured_text4": "Provides deep hydration without clogging pores.",
+            "icon_box5": "🌱",
+            "featured_text5": "Supports skin's natural collagen production for improved elasticity.",
+            "icon_box6": "🌼",
+            "featured_text6": "No exclusions here – our serum caters to all skin types."
+          }
+        },
+        "23b419e8-dbde-48cb-a52d-63e587088154": {
+          "type": "tables",
+          "settings": {
+            "information_tab_title": "Key Ingredients",
+            "information_title": "Key Ingredients:",
+            "information_desc": "",
+            "info_title_color": "#5e5e5e",
+            "info_text_color": "#808080",
+            "table_text_color": "#a9a9a9",
+            "table_column_color": "rgba(0,0,0,0)",
+            "table_border_color": "#ffffff",
+            "table_symbol_color": "#808080",
+            "first_title": "Vitamin C",
+            "first_desc": "A potent antioxidant that brightens the skin, reduces hyperpigmentation, and stimulates collagen production for improved elasticity.",
+            "second_title": "Hyaluronic Acid",
+            "second_desc": "Provides intense hydration by attracting and retaining moisture, plumping up the skin and minimizing the appearance of fine lines.",
+            "thrid_title": "Niacinamide",
+            "third_desc": "Helps regulate oil production, smooths skin texture, and reduces the appearance of pores for a smoother complexion.",
+            "forth_title": "Peptide Complex",
+            "forth_desc": "A blend of peptides that supports skin's natural renewal process, promoting firmness and reducing the visibility of wrinkles.",
+            "fifth_title": "Botanical Extracts",
+            "fifth_desc": "Soothes and calms the skin, reducing redness and inflammation while providing additional antioxidant benefits.",
+            "sixth_title": "",
+            "sixth_desc": "",
+            "seventh_title": "",
+            "seventh_desc": "",
+            "eighth_title": "",
+            "eighth_desc": "",
+            "ninth_title": "",
+            "ninth_desc": "",
+            "tenth_title": "",
+            "tenth_desc": "",
+            "eleventh_title": "",
+            "eleventh_desc": "",
+            "twelfth_title": "",
+            "twelfth_desc": "",
+            "thirteenth_title": "",
+            "thirteenth_desc": "",
+            "fourteenth_title": "",
+            "fourteenth_desc": "",
+            "fifteenth_title": "",
+            "fifteenth_desc": ""
+          }
+        },
+        "template--17100984156470__ff2372af-f660-465e-adb1-80bedbc0112a-16697818970dafa740-1": {
+          "type": "product_review",
+          "settings": {
+            "review_tab": "Review"
+          }
+        }
+      },
+      "block_order": [
+        "template--17100984156470__ff2372af-f660-465e-adb1-80bedbc0112a-16697818970dafa740-0",
+        "1d691fd4-257d-4d0c-9d90-8785f3da42ad",
+        "23b419e8-dbde-48cb-a52d-63e587088154",
+        "template--17100984156470__ff2372af-f660-465e-adb1-80bedbc0112a-16697818970dafa740-1"
+      ],
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 3,
+        "padding_bottom": 6,
+        "subtitle": "",
+        "headline": "",
+        "text": "",
+        "text_align": "font_center",
+        "color_title": "#4b4b4b",
+        "color_text_title": "#4b4b4b",
+        "collection_button_align": "font_center",
+        "collection_button_size": "button_small",
+        "button_round_off": false,
+        "color_button": "rgba(0,0,0,0)",
+        "button_font_color": "#a9a9a9",
+        "button_border_color": "rgba(0,0,0,0)",
+        "button_color_hover": "rgba(0,0,0,0)",
+        "button_font_hover": "#5e5e5e",
+        "button_border_hover": "#5e5e5e",
+        "active_button_color": "rgba(0,0,0,0)",
+        "active_font_color": "#5e5e5e",
+        "active_border_color": "#5e5e5e"
+      }
+    },
+    "187100e1-8c89-4a88-8950-98fe58379e52": {
+      "type": "section-logo-cloud",
+      "blocks": {
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_cb1d5275-b989-463e-98cd-9fb56f0f9a54.png"
+          }
+        },
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_eb1871d3-a9bb-4ae1-8942-f6038fdcccc4.png"
+          }
+        },
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4_9a37e1c9-e794-4cb2-9ed7-770d24e48255.png"
+          }
+        },
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3.png"
+          }
+        },
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_c35ea147-576e-4ada-87ed-158219887416.png"
+          }
+        }
+      },
+      "block_order": [
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-0",
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-1",
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-2",
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-3",
+        "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-4"
+      ],
+      "settings": {
+        "color_schema": "background_transparent",
+        "animation_setting": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "Dropdown": {
+      "type": "section-faq",
+      "blocks": {
+        "dropdown-1": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "What is the real estate deposit?",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#5e5e5e",
+            "dropdown_text": "#787d80"
+          }
+        },
+        "dropdown-2": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "What should I do after deciding to buy a house?",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#5e5e5e",
+            "dropdown_text": "#787d80"
+          }
+        },
+        "dropdown-3": {
+          "type": "dropbox",
+          "settings": {
+            "faq_title": "How can I choose my suitable place?",
+            "faq_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+            "dropdown_title": "#5e5e5e",
+            "dropdown_text": "#787d80"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown-1",
+        "dropdown-2",
+        "dropdown-3"
+      ],
+      "settings": {
+        "color_schema": "fifth_color",
+        "padding_top": 6,
+        "padding_bottom": 2,
+        "animation_setting": false,
+        "title_image": true,
+        "title_position": "title_left",
+        "textbox_color": "fifth_color",
+        "title_align": "font_center",
+        "headline": "FAQ list about properties",
+        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/><\/p>",
+        "color_title": "#808080",
+        "color_sub_title": "#787d80",
+        "point_color": "#5e5e5e",
+        "button_align": "font_right",
+        "button_size": "button_medium",
+        "button_round_off": false,
+        "button-url": "",
+        "button-text": "",
+        "button_bg": "rgba(0,0,0,0)",
+        "button_color": "#808080",
+        "border_colors": "#808080",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#ffffff",
+        "mo_border_color": "rgba(0,0,0,0)"
+      }
+    },
+    "Recommendation": {
+      "type": "section-recommendation",
+      "settings": {
+        "headline": "You may also like",
+        "color_title": "#808080",
+        "show_product_recommendations": true,
+        "animation_setting": false,
+        "color_schema": "background_transparent",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "title_align": "font_center",
+        "base_color": "#5e5e5e",
+        "point_color": "#a9a9a9"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ff2372af-f660-465e-adb1-80bedbc0112a",
+    "187100e1-8c89-4a88-8950-98fe58379e52",
+    "Dropdown",
+    "Recommendation"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "collection-banner": {
+      "type": "main-list-collections",
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 9,
+        "padding_bottom": 1,
+        "overlay_set": true,
+        "text_align": "font_center",
+        "headline": "ALL COLLECTIONS",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p><p><\/p><p><a href=\"\/pages\/our-service\" title=\"our service\"><strong>contact us<\/strong><\/a><\/p>",
+        "title_color": "#5e5e5e",
+        "text_color": "#a9a9a9"
+      }
+    },
+    "collection-lists": {
+      "type": "section-collection-list",
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 1,
+        "padding_bottom": 1,
+        "color_textbox": "fifth_color",
+        "overlay_set": true,
+        "animation_setting": false,
+        "column_design": "three_column",
+        "show_shopname": true,
+        "text_align": "font_center",
+        "collection_title_size": 23,
+        "textbox_position": "collection_bottom",
+        "text_color": "#5e5e5e",
+        "point_color": "#a9a9a9"
+      }
+    }
+  },
+  "order": [
+    "collection-banner",
+    "collection-lists"
+  ]
+}

@@ -1,0 +1,472 @@
+{% style %}
+
+      .collection_button{
+        color: {{section.settings.buttonfont_color}};
+        background:{{section.settings.button_color}};
+        border: 1px solid {{section.settings.border_color}};
+        transition:0.5s;
+     }
+    
+     .collection_button:hover {
+          color: {{section.settings.mo_buttonfont_color}};
+          background:{{section.settings.mo_button_bg}};
+          border: 1px solid {{section.settings.mo_border_color}};
+      }
+    
+    {% endstyle %}
+    
+    
+    <div class="{{section.settings.color_schema}}">
+          <section class="xl:max-w-[1320px] px-4 md:px-8 mx-auto"
+                style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" 
+                {% if section.settings.animation_setting == true %} data-aos="fade-up"{% endif %}>
+                <div>
+                      {% if section.settings.headline != blank%}
+                      <div class="mx-[1.5rem]">
+                            {% if section.settings.headline %}
+                            <h1 class="{{section.settings.title_align}} mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                              {{ section.settings.headline }}
+                            </h1>
+                            <div class="subfont_size {{section.settings.title_align}} my-8 leading-8 tracking-wider" style="color:{{section.settings.color_sub_title}};">
+                              {{ section.settings.text }}
+                            </div>
+                            {% endif %}
+                          </div>
+                      {% endif %}
+          
+                      <div class="lg:flex {{section.settings.img_array}} flex-col items-start">
+                            <div class="relative lg:w-1/3 text-gray-900 font-medium title-font text-2xl mb-2 md:m-3">
+     
+                                              <div class="w-full lg:h-auto overflow-hidden">
+                                                    <div class="{{section.settings.photo_title_align}} block my-[1rem] lg:my-[2rem]">
+                                                          <h2 class="block py-3 font-bold tracking-widest leading-9" 
+                                                          style=" color:{{section.settings.photo_title_color}}; font-size:{{section.settings.banner_title_font_size}}px;">
+                                                          {{ section.settings.photo_headline }}
+                                                          </h2>
+    
+                                                          <span class="block text-sm leading-6 tracking-wider pt-4" 
+                                                          style=" color:{{section.settings.photo_text_color}}; font-size:{{section.settings.banner_font_size}}px;">
+                                                          {{ section.settings.photo_text }}
+                                                          </span> 
+                                                                
+                                                          {%- if section.settings.button-text != blank -%}
+                                                          <div class="py-6 inline-block">
+                                                                <a href="{{section.settings.button-url}}"
+                                                                class="collection_button text-sm md:text-base text-center outline-none transition duration-100 tracking-widest {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" 
+                                                                >
+                                                                {{section.settings.button-text}}
+                                                                </a>
+                                                          </div>
+                                                          {% endif %}
+                                                    </div>   
+                                              </div>
+                                              
+    
+                            </div>
+          
+                            <div class="w-full lg:w-2/3 md:h-full pl-0 md:p-3 overflow-hidden">
+                                  <div class="swiper-container-collcetion">
+                                        <div class="swiper-wrapper">                      
+                                                          {% assign collection = collections[section.settings.collection_featured] %}
+                                                          {% unless collection == blank %}
+                                                          {% for product in collection.products limit: section.settings.collection_products_limit %}
+                                                          <div class="swiper-slide">
+                                                          {% render 'layout-product-slideshow', 
+                                                                      product: product
+                                                                      product_title: section.settings.product_title
+                                                                      product_title_color: section.settings.product_title_color
+                                                                      product_point_color: section.settings.product_point_color
+                                                                      vendor_set: section.settings.vendor_set
+                                                                      show_rating: section.settings.show_rating
+                                                                      product_font_size: section.settings.product_font_size
+                                                                      show_symbol:section.settings.show_symbol
+                                                                      iconbox1: settings.iconbox1
+                                                                      iconbox2: settings.iconbox2
+                                                                      iconbox3: settings.iconbox3
+                                                                       %}
+                                                          </div>
+                                                          {% endfor %}
+                                                          {% else %}
+                                                          {% for i in (1..6) %}
+                                                          <div class="swiper-slide" style="background-color: white;">
+                                                                {% capture placeholder %}product-{{ i }}{% endcapture %}
+                                                                {{ placeholder | placeholder_svg_tag: 'border w-full lg:h-[23rem] xl:h-[25rem] 2xl:h-[30rem]' }}
+                                                          </div>
+                                                          {% endfor %}
+                                                          {% endunless %}
+                                              </div>
+                                        </div>
+                                        <div class="swiper-pagination-collection flex justify-center mt-[2rem]"></div>
+                                  </div>
+                            </div>
+                      
+                </div>
+          </section>
+    </div>
+    
+    {% schema %}
+    {
+          "name": "Collection SlideShow",
+          "class": "shopify-section-vue",
+          "settings": [
+          {
+                "type": "header",
+                "content": "General settings"
+          },
+    
+          {
+                "type":"select",
+                "id":"color_schema",
+                "label":"Background color",
+                "options":[
+                   {
+                      "value":"first_color",
+                      "label":"First Color"
+                   },
+                   {
+                      "value":"second_color",
+                      "label":"Second Color"
+                   },
+                   {
+                      "value":"third_color",
+                      "label":"Third Color"
+                   },
+                   {
+                    "value":"forth_color",
+                    "label":"Forth Color"
+                  },
+                  {
+                    "value":"fifth_color",
+                    "label":"Fifth Color"
+                  },
+                  {
+                    "value":"background_transparent",
+                    "label":"Transparent Color"
+                  }
+                ],
+                "default":"fifth_color"
+                },
+                {
+                "type": "range",
+                "id": "padding_top",
+                "label": "Padding Top controll",
+                "default":4,
+                "min": 1,
+                "max": 20,
+                "step": 1,
+                "unit": "rem"
+                },
+                {
+                "type": "range",
+                "id": "padding_bottom",
+                "label": "Padding Bottom controll",
+                "default":4,
+                "min": 1,
+                "max": 20,
+                "step": 1,
+                "unit": "rem"
+                },
+                {
+                      "type":"select",
+                      "id":"img_array",
+                      "label":"Image location",
+                      "options":[
+                         {
+                            "value":"left_img",
+                            "label":"Left"
+                         },
+                         {
+                            "value":"right_img",
+                            "label":"Right"
+                         }
+                      ],
+                      "default":"left_img"
+                },
+                {
+                      "type": "checkbox",
+                      "id": "show_symbol",
+                      "default": true,
+                      "label": "show metafield symbol",
+                      "info" : "You must set metafield"
+                },
+                {
+                      "type": "checkbox",
+                      "id": "animation_setting",
+                      "default": false,
+                      "label": "Animation turn on"
+                },
+    
+                {
+                "type": "header",
+                "content": "Title settings",
+                "info": "Section Title and color settings"
+                },
+                {
+                "type": "text",
+                "id": "headline",
+                "label": "t:common.headline"
+                },
+                {
+                "type": "richtext",
+                "id": "text",
+                "label": "t:common.text"
+                },
+                {
+                "type":"select",
+                "id":"title_align",
+                "label":"Title align",
+                "options":[
+                      {
+                      "value":"font_left",
+                      "label":"Left"
+                      },
+                      {
+                      "value":"font_right",
+                      "label":"Right"
+                      },
+                      {
+                      "value":"font_center",
+                      "label":"Center"
+                      }
+                ],
+                "default":"font_center"
+                },
+                {
+                      "type": "color",
+                      "id": "color_title",
+                      "label": "Section title color",
+                      "default": "#808080"
+                },
+                {
+                      "type": "color",
+                      "id": "color_sub_title",
+                      "label": "Section Description color",
+                      "default": "#A9A9A9"
+                },
+                {
+                      "type": "header",
+                      "content": "Collection settings",
+                      "info": "setting collection and color text and price"
+                },
+                {
+                      "type": "collection",
+                      "id": "collection_featured",
+                      "label": "t:common.collection"
+                },
+                {
+                      "type": "range",
+                      "id": "product_font_size",
+                      "label": "Prodcut Font size",
+                      "default":1,
+                      "min": 0.1,
+                      "max": 3,
+                      "step": 0.1,
+                      "unit": "rem"
+                },
+                {
+                      "type":"select",
+                      "id":"product_title",
+                      "label":"Product title align",
+                      "options":[
+                         {
+                            "value":"font_left",
+                            "label":"Left"
+                         },
+                         {
+                            "value":"font_right",
+                            "label":"Right"
+                         },
+                         {
+                            "value":"font_center",
+                            "label":"Center"
+                         }
+                      ],
+                      "default":"font_left"
+                },
+                {
+                      "type": "checkbox",
+                      "id": "vendor_set",
+                      "default": false,
+                      "label": "Show vendor"
+                },
+                {
+                      "type": "color",
+                      "id": "product_title_color",
+                      "label": "Product title color",
+                      "default": "#808080"
+                },
+                {
+                      "type": "color",
+                      "id":"product_point_color",
+                      "label": "Product point color",
+                      "default": "#C33131",
+                      "info":"For discount price color"
+                },
+                {
+                      "type": "header",
+                      "content": "Slide Photo settings",
+                      "info": "Photo and text content settings"
+                },
+                {
+                      "type": "range",
+                      "id": "banner_title_font_size",
+                      "label": "Title font size",
+                      "default": 29,
+                      "min": 20,
+                      "max": 60,
+                      "step": 1,
+                      "unit": "px"
+                },
+                      {
+                      "type": "range",
+                      "id": "banner_font_size",
+                      "label": "Banner font size",
+                      "default": 14,
+                      "min": 12,
+                      "max": 30,
+                      "step": 1,
+                      "unit": "px"
+                },
+                {
+                      "type":"select",
+                      "id":"photo_title_align",
+                      "label":"Photo Text align",
+                      "options":[
+                            {
+                            "value":"font_left",
+                            "label":"Left"
+                            },
+                            {
+                            "value":"font_right",
+                            "label":"Right"
+                            },
+                            {
+                            "value":"font_center",
+                            "label":"Center"
+                            }
+                      ],
+                      "default":"font_left"
+                },
+                {
+                      "type": "text",
+                      "id": "photo_headline",
+                      "label": "Textbox Headline",
+                      "default": "Collection Title"
+                },
+                {
+                      "type": "richtext",
+                      "id": "photo_text",
+                      "label": "Textbox description",
+                      "default":"<p>Lorem ipsum dolor sit amet. Cum deleniti adipisci et voluptatem magni ab officia mollitia et beatae nesciunt ut quod necessitatibus.</p>"
+                },
+                {
+                      "type": "color",
+                      "id": "photo_title_color",
+                      "label": "Textbox title Color",
+                      "default": "#808080"
+                },
+                {
+                      "type": "color",
+                      "id": "photo_text_color",
+                      "label": "Textbox Description color",
+                      "default": "#A9A9A9"
+                },
+                {
+                      "type": "header",
+                      "content": "Button settings",
+                      "info": "Button color and mouse over color settings"
+                },
+                {
+                      "type":"select",
+                      "id":"button_size",
+                      "label":"Button size",
+                      "options":[
+                         {
+                            "value":"button_small",
+                            "label":"Small"
+                         },
+                         {
+                            "value":"button_medium",
+                            "label":"Medium"
+                         },
+                         {
+                            "value":"button_large",
+                            "label":"Large"
+                         },
+                         {
+                          "value":"button_xlarge",
+                          "label":"Extra large"
+                        }
+                      ],
+                      "default":"button_small"
+                     },
+                     {
+                      "type": "checkbox",
+                      "id": "button_round_off",
+                      "default": false,
+                      "label": "Button round"
+                    },               
+                {
+                      "type": "url",
+                      "id": "button-url",
+                      "label": "t:common.button.url"
+                      },
+                      {
+                      "type": "text",
+                      "id": "button-text",
+                      "label": "t:common.button.text",
+                      "default": "view more"
+                },
+                {
+                      "type": "header",
+                      "content": "button color"
+                },
+                {
+                    "type": "color",
+                    "id": "button_color",
+                    "label": "Button background",
+                    "default": "transparent"
+                },
+                {
+                    "type": "color",
+                    "id": "buttonfont_color",
+                    "label": "Button font color",
+                    "default": "#808080"
+                },
+                {
+                    "type": "color",
+                    "id": "border_color",
+                    "label": "Button border color",
+                    "default": "#808080"
+                },
+                {
+                      "type": "header",
+                      "content": "button Mouse over"
+                },
+                {
+                    "type": "color",
+                    "id": "mo_button_bg",
+                    "label": "Button background color",
+                    "default": "#808080"
+                },
+                {
+                    "type": "color",
+                    "id": "mo_buttonfont_color",
+                    "label": "Button font color",
+                    "default": "#fff"
+                },
+                {
+                    "type": "color",
+                    "id": "mo_border_color",
+                    "label": "Button border color",
+                    "default": "#808080"
+                }
+                ],
+                "presets": [
+                {
+                "name": "Collection SlideShow",
+                "category": "Image"
+                }
+          ]
+    }
+    {% endschema %}

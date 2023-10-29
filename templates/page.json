@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-page-contact",
+      "settings": {
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

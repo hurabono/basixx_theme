@@ -1,0 +1,469 @@
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+
+
+{% style %}
+.product_slideshow_arrow_color{
+width: 60px;
+height: 60px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 22px;
+color: {{ section.settings.arrow_icons }};
+background: {{ section.settings.button_background }};
+border: 1px solid {{ section.settings.arrow_border }};
+transition: 0.5s;
+border-radius:999px;
+}
+
+
+.product_slideshow_arrow_color:hover{
+color:{{section.settings.arrow_icons_mouseover}};
+background:{{section.settings.button_bg_mouseover}};
+border: 1px solid {{section.settings.arrow_border_mouseover}};
+}
+
+.{{ section.id }}_button_pslider{
+      color: {{ section.settings.button_color }};
+      border: 1px solid {{ section.settings.border_colors }};
+      background-color: {{ section.settings.button_bg }};
+      transition:0.5s;
+   }
+
+   .{{ section.id }}_button_pslider:hover{
+         color: {{ section.settings.mo_button_color}};
+         border:1px solid {{ section.settings.mo_border_color }};
+         background-color: {{ section.settings.mo_button_bg }};
+   }
+
+{% endstyle %}
+
+<div class="{{section.settings.color_schema}}">
+      <section class="xl:max-w-[1320px] px-4 md:px-8 mx-auto"
+            style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" 
+            {% if section.settings.animation_setting == true %} data-aos="fade-up"{% endif %}>
+            <div>
+                  {%- comment -%} headline {%- endcomment -%}
+                  <div class="md:mx-[1rem] flex flex-col md:flex-row justify-between">
+                        <div class="w-full Left_titlebox">
+                              {% if section.settings.headline != blank %}
+                              <h1 class="{{section.settings.title_align}} mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                              {{ section.settings.headline }}
+                              </h1>
+                              {% endif %}
+                              <div class="subfont_size {{section.settings.title_align}} my-8 leading-8 tracking-wider" style="color:{{section.settings.color_sub_title}};">
+                              {{ section.settings.text }}
+                              </div>  
+                        </div>
+                  </div>
+
+                  {%- comment -%} Product Slideshow {%- endcomment -%}
+                  <div class="lg:flex {{section.settings.img_array}} flex-col">
+
+                        <div class="w-full pl-0 md:p-3 overflow-hidden">
+                              <div class="swiper-container">
+                                    <div class="swiper-wrapper">                      
+                                          {% assign collection = collections[section.settings.collection_featured] %}
+                                          {% unless collection == blank %}
+                                                {% for product in collection.products limit: section.settings.collection_products_limit %}
+                                                      <div class="swiper-slide" >
+                                                      {% render 'layout-product-slideshow', 
+                                                            product: product
+                                                            product_title: section.settings.product_title
+                                                            product_title_color: section.settings.product_title_color
+                                                            product_point_color: section.settings.product_point_color
+                                                            product_badge_color: section.settings.product_badge_color
+                                                            mouseover_image:section.settings.mouseover_image
+                                                            show_symbol:section.settings.show_symbol
+                                                            vendor_set: section.settings.vendor_set
+                                                            show_rating: section.settings.show_rating
+                                                            product_font_size: section.settings.product_font_size
+                                                            iconbox1: settings.iconbox1
+                                                            iconbox2: settings.iconbox2
+                                                            iconbox3: settings.iconbox3
+                                                            %}
+                                                      </div>
+
+                                                {% endfor %}
+                                                      {% else %}
+                                                {% for i in (1..6) %}
+                                                      <div class="swiper-slide" style="background-color: white;">
+                                                            {% capture placeholder %}product-{{ i }}{% endcapture %}
+                                                            {{ placeholder | placeholder_svg_tag: 'border w-full lg:h-[23rem] xl:h-[25rem] 2xl:h-[30rem]' }}
+                                                      </div>
+                                                {% endfor %}
+                                          {% endunless %}
+                                    </div>
+                                    
+                              </div>
+                          
+                              <div class="swiper-pagination_collection mt-[2rem]" style="display:flex; justify-content:center; align-items:center;"></div>
+                              <div class="flex justify-between mt-[-1rem]">
+                                <div class="swiper-product-prev product_slideshow_arrow_color p-3">
+                                    &#10229;
+                                </div>
+                              
+                                <div class="swiper-product-next product_slideshow_arrow_color p-3">
+                                    &#10230;
+                                </div>
+                              </div>
+                              
+                        </div>
+
+                  </div>
+                  <div class="w-full pt-8 flex Right_titlebox {{ section.settings.button_align }}">
+                    {%- if section.settings.button-text != blank -%}
+                       <div class="py-2 inline-block">
+                        <a href="{{ section.settings.button-url }}"
+                              class="{{ section.id }}_button_pslider tracking-widest mx-2 text-sm text-center {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
+                              {{section.settings.button-text }}</a>
+                        </div>
+                      {% endif %}
+                  </div>
+            </div>
+      </section>
+</div>
+
+
+
+
+{% schema %}
+{
+      "name": "Product Slideshow",
+      "class": "shopify-section-vue",
+      "settings": [
+      {
+            "type": "header",
+            "content": "General settings"
+      },
+
+      {
+            "type":"select",
+            "id":"color_schema",
+            "label":"Background color",
+            "options":[
+               {
+                  "value":"first_color",
+                  "label":"First Color"
+               },
+               {
+                  "value":"second_color",
+                  "label":"Second Color"
+               },
+               {
+                  "value":"third_color",
+                  "label":"Third Color"
+               },
+               {
+                "value":"forth_color",
+                "label":"Forth Color"
+              },
+              {
+                "value":"fifth_color",
+                "label":"Fifth Color"
+              },
+              {
+                "value":"background_transparent",
+                "label":"Transparent Color"
+              }
+            ],
+            "default":"fifth_color"
+            },
+            {
+            "type": "range",
+            "id": "padding_top",
+            "label": "Padding Top controll",
+            "default":4,
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "unit": "rem"
+            },
+            {
+            "type": "range",
+            "id": "padding_bottom",
+            "label": "Padding Bottom controll",
+            "default":4,
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "unit": "rem"
+            },
+            {
+            "type": "checkbox",
+            "id": "show_symbol",
+            "default": true,
+            "label": "show metafield symbol",
+            "info" : "You must set metafield"
+            },
+            {
+            "type": "checkbox",
+            "id": "animation_setting",
+            "default": false,
+            "label": "Animation turn on"
+            },
+            {
+            "type": "checkbox",
+            "id": "show_rating",
+            "default": true,
+            "label": "show rating"
+            },
+            {
+              "type": "checkbox",
+              "id": "mouseover_image",
+              "default": true,
+              "label": "Show mouseover Image"
+            },
+            {
+            "type": "header",
+            "content": "Arrow Buttons",
+            "info": "Slide Show Arrow Button Settings"
+            },
+            {
+            "type": "color",
+            "id": "button_background",
+            "label": "Button background",
+            "default": "transparent"
+            },
+            {
+                  "type": "color",
+                  "id": "arrow_icons",
+                  "label": "Arrow Icon color",
+                  "default": "#808080"
+            },
+            {
+                  "type": "color",
+                  "id": "arrow_border",
+                  "label": "Arrow box line",
+                  "default": "#808080"
+            },
+            {
+            "type": "header",
+            "content": "Arrow mouseover"
+            },
+            {
+                  "type": "color",
+                  "id": "button_bg_mouseover",
+                  "label": "Button background",
+                  "default": "#808080"
+            },
+            {
+                  "type": "color",
+                  "id": "arrow_icons_mouseover",
+                  "label": "Arrow Icon color",
+                  "default": "#fff"
+            },
+            {
+                  "type": "color",
+                  "id": "arrow_border_mouseover",
+                  "label": "Arrow box line",
+                  "default": "transparent"
+            },
+            {
+            "type": "header",
+            "content": "Title settings",
+            "info": "Section Title and color settings"
+            },
+           {
+            "type":"select",
+            "id":"title_align",
+            "label":"Title align",
+            "options":[
+                {
+                "value":"font_left",
+                "label":"Left"
+                },
+                {
+                "value":"font_right",
+                "label":"Right"
+                },
+                {
+                "value":"font_center",
+                "label":"Center"
+                }
+              ],
+              "default":"font_center"
+          },
+            {
+            "type": "text",
+            "id": "headline",
+            "label": "t:common.headline",
+            "default": "Headline"
+            },
+            {
+            "type": "richtext",
+            "id": "text",
+            "label": "t:common.text",
+            "default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora</p><p> omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
+            },
+            {
+                  "type": "color",
+                  "id": "color_title",
+                  "label": "Section title color",
+                  "default": "#4b4b4b"
+            },
+            {
+                  "type": "color",
+                  "id": "color_sub_title",
+                  "label": "Section Description color",
+                  "default": "#4b4b4b"
+            },
+            {
+                  "type": "header",
+                  "content": "Collection settings",
+                  "info": "setting collection and color text and price"
+            },
+            {
+                  "type": "collection",
+                  "id": "collection_featured",
+                  "label": "t:common.collection"
+            },
+            {
+                  "type": "range",
+                  "id": "product_font_size",
+                  "label": "Prodcut Font size",
+                  "default":1,
+                  "min": 0.1,
+                  "max": 3,
+                  "step": 0.1,
+                  "unit": "rem"
+            },
+            {
+                  "type": "checkbox",
+                  "id": "vendor_set",
+                  "default": false,
+                  "label": "Show vendor"
+            },
+            {
+                  "type": "color",
+                  "id": "product_title_color",
+                  "label": "Product title color",
+                  "default": "#4b4b4b"
+            },
+            {
+                  "type": "color",
+                  "id":"product_point_color",
+                  "label": "Product point color",
+                  "default": "#C33131"
+            },
+            {
+                  "type": "color",
+                  "id":"product_badge_color",
+                  "label": "Product badge color",
+                  "default": "#E8D5D4"
+            },
+            {
+                  "type": "header",
+                  "content": "Button settings",
+                  "info": "Button color and mouse over color settings"
+            },
+            {
+              "type":"select",
+              "id":"button_align",
+              "label":"Button align",
+              "options":[
+                    {
+                    "value":"font_left",
+                    "label":"Left"
+                    },
+                    {
+                    "value":"font_right",
+                    "label":"Right"
+                    },
+                    {
+                    "value":"font_center",
+                    "label":"Center"
+                    }
+              ],
+              "default":"font_center"
+          },
+           {
+            "type":"select",
+            "id":"button_size",
+            "label":"Button size",
+            "options":[
+            {
+            "value":"button_small",
+            "label":"Small"
+            },
+            {
+            "value":"button_medium",
+            "label":"Medium"
+            },
+            {
+            "value":"button_large",
+            "label":"Large"
+            },
+            {
+            "value":"button_xlarge",
+            "label":"Extra large"
+      }
+      ],
+            "default":"button_medium"
+      },
+      {
+      "type": "checkbox",
+      "id": "button_round_off",
+      "default": false,
+      "label": "Button round"
+      },
+      {
+      "type": "url",
+      "id": "button-url",
+      "label": "t:common.button.url"
+      },
+      {
+      "type": "text",
+      "id": "button-text",
+      "label": "t:common.button.text",
+      "default": "Button"
+      },
+      {
+        "type": "header",
+        "content": "Button color"
+      },
+      {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background color",
+      "default": "transparent"
+      },
+      {
+      "type": "color",
+      "id": "button_color",
+      "label": "button font color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "border_colors",
+      "label": "border color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "mo_button_bg",
+      "label": "Mouseover background",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "mo_button_color",
+      "label": "Mouseover font color",
+      "default": "#fff"
+      },
+      {
+      "type": "color",
+      "id": "mo_border_color",
+      "label": "Mouseover border color",
+      "default": "transparent"
+      }
+      ],
+            "presets": [
+            {
+            "name": "Product SlideShow",
+            "category": "Image"
+            }
+      ]
+}
+{% endschema %}

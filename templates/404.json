@@ -1,0 +1,15 @@
+{
+  "layout": "password",
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/modern-city-architecture.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

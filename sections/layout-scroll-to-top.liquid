@@ -1,0 +1,105 @@
+<style>
+      @media(max-width: 767px){
+            #btnScrollToTop{
+                  display: none !important;
+            }   
+      }
+
+      #btnScrollToTop{
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: {{ section.settings.scroll_background }};
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            border: 3px solid {{ section.settings.scroll_border }};
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+            color: {{ section.settings.icon_color }};
+            z-index:9999;
+      }
+      #btnScrollToTop:hover{
+            background-color: {{ section.settings.background_mouseover }};
+            border: 3px solid {{ section.settings.border_mouseover }};
+            color: {{ section.settings.icon_color_mouseover }};
+      }
+      
+</style>
+
+<button id="btnScrollToTop">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+            class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+      </svg>
+</button>
+
+
+<script>
+      const btnScrollToTop = document.querySelector("#btnScrollToTop");
+      btnScrollToTop.addEventListener("click", function(){
+            window.scrollTo({
+                  top:0,
+                  left:0,
+                  behavior:"smooth"
+            });
+      });
+</script>
+
+{% schema %}
+      {
+      "name": "Scroll to top",
+      "class": "shopify-section-vue",
+      "settings": [
+            {
+            "type": "header",
+            "content": "Button color"
+            },
+            {
+                  "type": "color",
+                  "id": "icon_color",
+                  "label": "Icon color",
+                  "default": "#BAA098"
+            },
+            {
+                  "type": "color",
+                  "id": "scroll_background",
+                  "label": "Background",
+                  "default": "#BAA098"
+            },
+            {
+                  "type": "color",
+                  "id": "scroll_border",
+                  "label": "Border line",
+                  "default": "#BAA098"
+            },
+            {
+            "type": "header",
+            "content": "Button mouseover"
+            },
+            {
+                  "type": "color",
+                  "id": "icon_color_mouseover",
+                  "label": "Icon color",
+                  "default": "#BAA098"
+            },
+            {
+                  "type": "color",
+                  "id": "background_mouseover",
+                  "label": "Background color",
+                  "default": "#BAA098"
+            },
+            {
+                  "type": "color",
+                  "id": "border_mouseover",
+                  "label": "Border color",
+                  "default": "#BAA098"
+            }
+      ]
+      }
+{% endschema %}

@@ -1,0 +1,685 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Navy Home Agency",
+    "theme_version": "3.0.0",
+    "theme_author": "Stephanie",
+    "theme_documentation_url": "https:\/\/THEME_DOCUMENTATION_URL.com",
+    "theme_support_url": "https:\/\/THEME_SUPPORT_URL.com"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Favicon icon size should be 32 x 32 px"
+      }
+    ]
+  },
+  {
+    "name": "Theme Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Main Colors Setting"
+      },
+      {
+        "type": "color",
+        "id": "first_color",
+        "label": "First Color",
+        "default": "#6F665D"
+      },
+      {
+        "type": "color",
+        "id": "second_color",
+        "label": "Second Color",
+        "default": "#DACCC1"
+      },
+      {
+        "type": "color",
+        "id": "third_color",
+        "label": "Third Color",
+        "default": "#BAA098"
+      },
+      {
+        "type": "color",
+        "id": "forth_color",
+        "label": "Forth Color",
+        "default": "#E8D5D4"
+      },
+      {
+        "type": "color",
+        "id": "fifth_color",
+        "label": "Fifth Color",
+        "default": "#E9E9E9"
+      },
+      {
+        "type": "color",
+        "id": "page_background_color",
+        "label": "Background Color",
+        "default": "#FAFAFA"
+      },
+      {
+        "type": "color",
+        "id": "point_color",
+        "label": "point Color",
+        "default": "#926D5A"
+      },
+      {
+        "type": "header",
+        "content": "Metafild symbols",
+        "info": "Must requird Metafilds "
+      },
+      {
+        "type": "color",
+        "id": "metafield_bg_color",
+        "label": "Metafild background",
+        "default": "#926D5A"
+      },
+      {
+        "type": "color",
+        "id": "metafield_text_color",
+        "label": "Metafield font",
+        "default": "#fff"
+      }
+    ]
+  },
+  {
+    "name": "Badge Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Badge colors"
+      },
+      {
+        "type": "color",
+        "id": "product_badge_color",
+        "label": "Badge Background color",
+        "default": "#6F665D"
+      },
+      {
+        "type": "color",
+        "id": "badge_font",
+        "label": "Badge font color",
+        "default": "#DACCC1"
+      },
+      {
+        "type": "color",
+        "id": "badge_border",
+        "label": "Badge border",
+        "default": "#BAA098"
+      }
+    ]
+  },
+  {
+    "name": "Navigation color",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Navigation Index page"
+      },
+      {
+        "type": "color",
+        "id": "nav_color",
+        "label": "navigation Color",
+        "default": "#926D5A"
+      },
+      {
+        "type": "color",
+        "id": "nav_font",
+        "label": "navigation font",
+        "default": "#fafafa"
+      },
+      {
+        "type": "color",
+        "id": "nav_border",
+        "label": "Border color",
+        "default": "#fafafa"
+      },
+      {
+        "type": "header",
+        "content": "Nagivation page"
+      },
+      {
+        "type": "color",
+        "id": "navPage_color",
+        "label": "navigation Color",
+        "default": "#926D5A"
+      },
+      {
+        "type": "color",
+        "id": "navPage_border",
+        "label": "Page border color",
+        "default": "#808080"
+      },
+      {
+        "type": "header",
+        "content": "Nagivation Scroll"
+      },
+      {
+        "type": "color",
+        "id": "scroll_color",
+        "label": "Scroll down Color",
+        "default": "#fafafa"
+      },
+      {
+        "type": "color",
+        "id": "scroll_font",
+        "label": "Scroll down Font",
+        "default": "#808080"
+      }
+    ]
+  },
+  {
+    "name": "Photo Menu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "photo_link",
+        "label": "Photo collection link"
+      },
+      {
+        "type": "header",
+        "content": "First Photo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "photo_menu_first",
+        "label": "First Menu image"
+      },
+      {
+        "type": "text",
+        "id": "first_collection_title",
+        "label": "Collection title",
+        "default": "Collection Title"
+      },
+      {
+        "type": "text",
+        "id": "first_photo_menu_title",
+        "label": "First Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "first_photo_menu_link",
+        "label": "First Image Link"
+      },
+      {
+        "type": "header",
+        "content": "Second Photo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "photo_menu_second",
+        "label": "Second Menu image"
+      },
+      {
+        "type": "text",
+        "id": "Second_collection_title",
+        "label": "Collection title",
+        "default": "Collection Title"
+      },
+      {
+        "type": "text",
+        "id": "second_photo_menu_title",
+        "label": "Second Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "second_photo_menu_link",
+        "label": "Second Image Link"
+      },
+      {
+        "type": "header",
+        "content": "Third Photo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "photo_menu_third",
+        "label": "Third Menu image"
+      },
+      {
+        "type": "text",
+        "id": "third_collection_title",
+        "label": "Collection title",
+        "default": "Collection Title"
+      },
+      {
+        "type": "text",
+        "id": "third_photo_menu_title",
+        "label": "Third Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "third_photo_menu_link",
+        "label": "Third Image Link"
+      },
+      {
+        "type": "header",
+        "content": "Forth Photo Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "photo_menu_forth",
+        "label": "Forth Menu image"
+      },
+      {
+        "type": "text",
+        "id": "forth_collection_title",
+        "label": "Collection title",
+        "default": "Collection Title"
+      },
+      {
+        "type": "text",
+        "id": "forth_photo_menu_title",
+        "label": "Forth Image title",
+        "default": "View more"
+      },
+      {
+        "type": "url",
+        "id": "forth_photo_menu_link",
+        "label": "Forth Image Link"
+      }
+    ]
+  },
+  {
+    "name": "Customer Page color settings",
+    "settings": [
+      {
+        "type": "color",
+        "id": "customer_box_color",
+        "label": "Box Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "customer_title_color",
+        "label": "Title Color",
+        "default": "#6F665D"
+      },
+      {
+        "type": "color",
+        "id": "customer_text_color",
+        "label": "Text Color",
+        "default": "#AE7E66"
+      },
+      {
+        "type": "color",
+        "id": "customer_point_color",
+        "label": "point Color",
+        "default": "#BAA098"
+      },
+      {
+        "type": "color",
+        "id": "customer_symbol_bg_color",
+        "label": "Symbol background",
+        "default": "#AE7E66"
+      },
+      {
+        "type": "color",
+        "id": "customer_symbol_text_color",
+        "label": "Symbol point Color",
+        "default": "#BAA098"
+      },
+      {
+        "type": "color",
+        "id": "customer_border_color",
+        "label": "Border Color",
+        "default": "#D9DAC1"
+      },
+      {
+        "type": "color",
+        "id": "customer_button_color",
+        "label": "Button Color",
+        "default": "#E8D5D4"
+      },
+      {
+        "type": "color",
+        "id": "customer_mouseover_color",
+        "label": "Mouseover Color",
+        "default": "#DACCC1"
+      },
+      {
+        "type": "color",
+        "id": "customer_button_border",
+        "label": "Button Border Color",
+        "default": "#926D5A"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Body text"
+      },
+      {
+        "type": "font_picker",
+        "id": "base_font_new",
+        "label": "Font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "header",
+        "content": "Header font settings",
+        "info": "Section header font, header and subfont size"
+      },
+      {
+        "type": "font_picker",
+        "id": "header_font_new",
+        "label": "Font",
+        "default": "work_sans_n6"
+      },
+      {
+        "type": "range",
+        "id": "header_base_size",
+        "label": "Section title font size",
+        "default": 26,
+        "min": 20,
+        "max": 60,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "subfont_size",
+        "label": "Section Subfont size",
+        "default": 15,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Slideshow font style",
+        "info": "Only slidshow font style. please check slideshow section to set font size"
+      },
+      {
+        "type": "font_picker",
+        "id": "slideshow_header",
+        "label": "Slideshow font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "header",
+        "content": "Rich text font style",
+        "info": "Please check richtext section to set font size"
+      },
+      {
+        "type": "font_picker",
+        "id": "richtext_font",
+        "label": "Richtext Section Font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "header",
+        "content": "Hero banner font style",
+        "info": "Please check hero section to set font size"
+      },
+      {
+        "type": "font_picker",
+        "id": "hero_header",
+        "label": "Hero Banner Font",
+        "default": "work_sans_n4"
+      }
+    ]
+  },
+  {
+    "name": "Metafield Icon Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slide show icon box settings",
+        "info": "Please copy and paste icon svg code and define title text"
+      },
+      {
+        "type": "header",
+        "content": "Custom Box1",
+        "info": " icon for 'custom.symbol_first' "
+      },
+      {
+        "type": "html",
+        "id": "iconbox1",
+        "label": "Icon Settings"
+      },
+      {
+        "type": "header",
+        "content": "Custom Box2",
+        "info": " icon for 'custom.symbol_second' "
+      },
+      {
+        "type": "html",
+        "id": "iconbox2",
+        "label": "Icon Settings"
+      },
+      {
+        "type": "header",
+        "content": "Custom Box3",
+        "info": " icon for 'custom.symbol_third' "
+      },
+      {
+        "type": "html",
+        "id": "iconbox3",
+        "label": "Icon Settings"
+      },
+      {
+        "type": "header",
+        "content": "Metafield icon colors"
+      },
+      {
+        "type": "color",
+        "id": "icon_bg_color",
+        "label": "Icon background",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "icon_font_color",
+        "label": "Icon font color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "icon_border_color",
+        "label": "icon border color",
+        "default": "#4b4b4b"
+      }
+    ]
+  },
+  {
+    "name": "Quickview Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "qv_quantity_setting",
+        "default": true,
+        "label": "Quickview turn on"
+      },
+      {
+        "type": "checkbox",
+        "id": "qv_price_setting",
+        "default": true,
+        "label": "Price turn on"
+      },
+      {
+        "type": "checkbox",
+        "id": "qv_symbol_setting",
+        "default": true,
+        "label": "Metafild Symbol turn on",
+        "info": "You must set shopify Metafilds to turn on symbols."
+      },
+      {
+        "type": "header",
+        "content": "Quickview style"
+      },
+      {
+        "type": "color",
+        "id": "qv_background_color",
+        "label": "Quickview background",
+        "default": "#fafafa"
+      },
+      {
+        "type": "color",
+        "id": "qv_scroll_color",
+        "label": "Quickview scroll bar",
+        "default": "#9a9a9a"
+      },
+      {
+        "type": "header",
+        "content": "Quickview font"
+      },
+      {
+        "type": "color",
+        "id": "qv_title_color",
+        "label": "Quickview title color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_text_color",
+        "label": "Quickview text color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_font_color",
+        "label": "Symbol font color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "header",
+        "content": "Quickview symbols"
+      },
+      {
+        "type": "color",
+        "id": "qv_point_color",
+        "label": "Quickview Point color",
+        "default": "#808080"
+      },
+      {
+        "type": "color",
+        "id": "qv_border_color",
+        "label": "Quickview point border",
+        "default": "transparent"
+      },
+      {
+        "type": "header",
+        "content": "Quickview line"
+      },
+      {
+        "type": "color",
+        "id": "qv_line_color",
+        "label": "Quickview description line",
+        "default": "#a9a9a9"
+      },
+      {
+        "type": "header",
+        "content": "Quickview icon"
+      },
+      {
+        "type": "color",
+        "id": "qv_icon_color",
+        "label": "Quickview Icon color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_symbol_border_color",
+        "label": "Icon border color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_symbol_bg_color",
+        "label": "Symbols background color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Quickview Button Color"
+      },
+      {
+        "type": "color",
+        "id": "qv_button_color",
+        "label": "Quickview button color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_button_font_color",
+        "label": "Quickview button border color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "qv_mouseover_color",
+        "label": "Quickview button mouseover color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "qv_mouseover_border_color",
+        "label": "Quickview button mouseover border",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Quickview payment icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "visa_visible",
+        "label": "Visa",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "mastercard_visible",
+        "label": "Mastercard",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "paypal_visible",
+        "label": "Paypal",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "amex_visible",
+        "label": "Amex",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "jcb_visible",
+        "label": "JCB",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "klarna_visible",
+        "label": "Klarna",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "afterpay_visible",
+        "label": "Afterpay",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "applepay_visible",
+        "label": "Apple Pay",
+        "default": true
+      }
+    ]
+  }
+]

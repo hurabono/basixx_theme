@@ -1,0 +1,308 @@
+<div class="container xl:w-[1200px] mx-auto" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" x-data="{new_address:false}" {% if section.settings.animation_setting == true %} data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+  <!-- address title -->
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-4 customer_title_color tracking-wider">
+    {{ 'customer.addresses.title' | t }}
+  </h1>
+
+  <div class="text-center mb-8 md:mb-16 customer_point_color">
+    <a href="{{ routes.account_url }}" class="text-sm underline tracking-widest">
+      {{ 'action.return_to_account_overview' | t }}
+    </a>
+  </div>
+
+
+  <div class="flex flex-col lg:grid lg:grid-cols-3 gap-4 md:gap-8">
+    <!-- add new address -->
+    <div class="address-form lg:col-span-2 pt-4 lg:pt-0">
+      <!-- add new address button -->
+      <div class="h-64 flex justify-center items-center customer_border_color rounded-sm p-4 sm:p-8">
+        <button type="button" class="customer_button_color customer_button_border px-5 py-2 tracking-wider" x-on:click="new_address = true">
+          {{ 'action.add_new_address' | t }}
+        </button>
+      </div>
+
+      <!-- **add new address toggle start** -->
+      <div x-show="new_address" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-3" class="relative top-[-256px] customer_box_color customer_border_color overflow-hidden p-6 md:p-8">
+        <!-- add new address title and close button -->
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg lg:text-xl font-bold mb-6 items-center customer_title_color tracking-wider">
+            {{ 'customer.addresses.add_new_address' | t }}
+          </h2>
+          <button x-on:click="new_address = false" class="customer_point_color">
+            {% render 'icon-cancel' %}
+          </button>
+        </div>
+        <!-- add new address form -->
+        {% form 'customer_address', customer.new_address %}
+          {% render 'layout-account-address-form'%}
+        {% endform %}
+      </div>
+    </div>
+
+
+    <!-- customer addresses -->
+    <div class="col-span-1">
+      <!-- customer addresses title -->
+      <div class="text-lg lg:text-xl font-bold mb-6 customer_title_color tracking-widest">
+        {{ 'customer.account.addresses' | t }}
+      </div>
+
+      <!-- customer addresses list -->
+      <div class="space-y-6 lg:space-y-10">
+        {% for address in customer.addresses %}
+          <div x-data="{ address_{{address.id}}:false }">
+            <div class="relative customer_border_color customer_box_color">
+              <!-- customer addresses default bedge -->
+              {% if address == customer.default_address %}
+                <span class="absolute top-0 right-0 customer_symbol_text_color customer_symbol_bg_color text-sm tracking-widest uppercase rounded-full px-3 py-1 -mt-4 mr-4">
+                  {{ 'common.default' | t }}
+                </span>
+              {% endif %}
+
+              <!-- customer addresses format -->
+              <div class="text-gray-600 border-b p-4 customer_text_color tracking-wider" style="border-bottom: 1px solid {{settings.customer_border_color | color_modify: 'alpha', 0.7}};">
+                {{ address | format_address }}
+              </div>
+
+              <!-- customer addresses edit and delete buttons -->
+              <div class="w-full flex gap-4 p-4">
+                <button type="button" x-on:click="address_{{address.id}} = true" class="customer_button_color customer_button_border px-5 py-2 w-1/2 tracking-wider">
+                  {{ 'action.edit' | t }}
+                </button>
+
+                <form method="post" action="/account/addresses/{{ address.id }}" class="w-1/2">
+                  <input type="hidden" name="_method" value="delete"/>
+
+                  <button class="customer_button_border px-5 py-2 w-full tracking-wider">
+                    {{ 'action.delete' | t }}
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- **edit current address toggle start** -->
+            <div x-show="address_{{ address.id }}" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-300" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-3">
+              <div class="relative max-w-full mx-auto customer_box_color p-[1rem] mt-3 customer_border_color">
+                <div class="flex items-center justify-between mb-4">
+                  <h2 class="uppercase text-lg font-medium customer_title_color tracking-wider">Edit address</h2>
+                  <button x-on:click="address_{{ address.id }} = false" class="customer_point_color">{% render 'icon-cancel' %}
+                  </button>
+                </div>
+
+                {% form 'customer_address', address %}
+                  <div class="mb-4">
+                    <label for="address_fname_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">First name</label>
+                    <input type="text" name="address[first_name]" id="address_fname_{{ form.id }}" value="{{ form.first_name }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none">
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_lname_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">Last name</label>
+                    <input type="text" name="address[last_name]" id="address_lname_{{ form.id }}" value="{{ form.last_name }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none">
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_company_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">Company</label>
+                    <input type="text" name="address[company]" id="address_company_{{ form.id }}" value="{{ form.company }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none">
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_address1_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">Address 1</label>
+                    <input type="text" name="address[address1]" id="address_address1_{{ form.id }}" value="{{ form.address1 }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none">
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_address2_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">Address 2</label>
+                    <input type="text" name="address[address2]" id="address_address2_{{ form.id }}" value="{{ form.address2 }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none">
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_city_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">City</label>
+                    <input type="text" name="address[city]" id="address_city_{{ form.id }}" value="{{ form.city }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none">
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_country_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">Country</label>
+                    <select name="address[country]" id="address_country_{{ form.id }}" value="{{ form.country }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none" data-country-selector data-id="{{ form.id }}">
+                      {{ all_country_option_tags }}
+                    </select>
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_province_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">Province</label>
+                    <select name="address[province]" id="address_province_{{ form.id }}" value="{{ form.province }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none"></select>
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_zip_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">Postal/ZIP code</label>
+                    <input type="text" name="address[zip]" id="address_zip_{{ form.id }}" value="{{ form.zip }}" class="w-full customer_text_color customer_border_color px-4 py-3 focus:outline-none">
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="address_phone_{{ form.id }}" class="uppercase customer_text_color tracking-wider text-xs font-medium mb-2">Phone number</label>
+                    <input type="tel" name="address[phone]" id="address_phone_{{ form.id }}" value="{{ form.phone }}" class="w-full customer_text_color customer_border_color tracking-wider px-4 py-3 focus:outline-none">
+                  </div>
+
+                  <div class="mb-4">
+                    {{ form.set_as_default_checkbox }}
+                    <label for="address_default_address_{{ form.id }}" class="uppercase tracking-wider customer_text_color text-xs font-medium mb-2">Set as default address</label>
+                  </div>
+
+                  <div class="flex flex-row gap-2">
+                    <button type="submit" class="w-full font-medium customer_button_color customer_button_border tracking-wider px-5 py-2 ">Edit address</button>
+
+                  </div>
+                {% endform %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  class CustomerAddress {
+    constructor() {
+      this.initCustomerAddress();
+      this.customerAddressesSelector();
+      this.initDeleteAddressButtons();
+    }
+    initDeleteAddressButtons() {
+      const deleteButtons = document.querySelectorAll("button[data-delete-address]");
+      if (deleteButtons.length < 1) 
+        return;
+      
+
+      deleteButtons.forEach(button => {
+        button.addEventListener("click", function(e) {
+          var url = this.dataset.url;
+          var confirmation = window.confirm("Do you really wish to delete this address?");
+          if (confirmation) {
+            document.querySelector(`form[action="${url}"]`).submit();
+          }
+        })
+      })
+    }
+    initCustomerAddress() {
+      const allAddressesSelector = document.querySelectorAll("select[data-country-selector]");
+      if (allAddressesSelector.length < 1) 
+        return;
+      
+
+
+// console.log(allAddressesSelector);
+      allAddressesSelector.forEach(select => {
+        var selectedCountry = this.getSelectedCountry(select);
+        if (! selectedCountry) 
+          return;
+        
+
+        var provinces = selectedCountry.dataset.provinces;
+        var arrayOfProvince = JSON.parse(provinces);
+        var provinceSelector = document.querySelector(`#address_province_${
+          select.dataset.id
+        }`);
+        if (arrayOfProvince.length < 1) {
+          provinceSelector.setAttribute('disabled', 'disabled');
+        } else {
+          provinceSelector.removeAttribute('disabled');
+        } provinceSelector.innerHTML = '';
+        var options = '';
+        for (var index = 0; index < arrayOfProvince.length; index++) {
+          if (arrayOfProvince[index][0] === provinceSelector.getAttribute('value')) {
+            options += `<option value="${
+              arrayOfProvince[index][0]
+            }" selected>${
+              arrayOfProvince[index][0]
+            }</option>`;
+          } else {
+            options += `<option value="${
+              arrayOfProvince[index][0]
+            }">${
+              arrayOfProvince[index][0]
+            }</option>`;
+          }
+        }
+        provinceSelector.innerHTML = options;
+      })
+    }
+    getSelectedCountry(select) {
+      var option,
+        selectedOption;
+      for (var index = 0; index < select.options.length; index++) {
+        option = select.options[index];
+        if (option.value === select.getAttribute('value')) {
+          selectedOption = option;
+          selectedOption.setAttribute('selected', 'selected');
+          break;
+        }
+      }
+      return selectedOption;
+    }
+
+    customerAddressesSelector() {
+      const addressesSelector = document.querySelectorAll("select[data-country-selector]");
+      if (addressesSelector.length < 1) 
+        return;
+      
+
+      addressesSelector.forEach(select => {
+        select.addEventListener('change', function(e) {
+          var provinces = this.options[this.selectedIndex].dataset.provinces;
+          var arrayOfProvince = JSON.parse(provinces);
+          var provinceSelector = document.querySelector(`#address_province_${
+            this.dataset.id
+          }`);
+          if (arrayOfProvince.length < 1) {
+            provinceSelector.setAttribute('disabled', 'disabled');
+          } else {
+            provinceSelector.removeAttribute('disabled');
+          } provinceSelector.innerHTML = '';
+          var options = '';
+          for (var index = 0; index < arrayOfProvince.length; index++) {
+            options += `<option value="${
+              arrayOfProvince[index][0]
+            }">${
+              arrayOfProvince[index][0]
+            }</option>`;
+          }
+          provinceSelector.innerHTML = options;
+        });
+      });
+    }
+  }
+  const customerAddress = new CustomerAddress();
+</script>
+
+{% schema %}
+  {
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": true,
+        "label": "Animation turn on"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top controll",
+        "default": 15,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }
+    ]
+  }
+{% endschema %} 
