@@ -8,14 +8,22 @@
  }
 
  .form_button:hover{
+<<<<<<< HEAD
        color: {{ section.settings.mo_button_color }};
+=======
+       color: {{ section.settings.mo_button_color}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
        border:1px solid {{ section.settings.mo_border_color }};
        background-color: {{ section.settings.mo_button_bg }};
  }
 
 {% endstyle %}
 
+<<<<<<< HEAD
 <section class=" {{ section.settings.color_schema }} relative" style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;" >
+=======
+<section class=" {{section.settings.color_schema}} relative" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" >
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       <div class="max-w-[1320px] m-auto px-4 md:px-8 lg:flex sm:flex-nowrap flex-wrap" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
         
         <div class="flex lg:w-1/2 bg-gray-300 overflow-hidden mr-0 lg:mr-10 p-10 items-end justify-start relative">
@@ -27,19 +35,32 @@
               (min-width: 640px) 720px,
               600px
             " srcset="
+<<<<<<< HEAD
               {{ section.settings.contact_image | image_url: width: 600 }} 600w,
               {{ section.settings.contact_image | image_url: width: 720 }} 720w,
               {{ section.settings.contact_image | image_url: width: 1000 }} 1000w,
               {{ section.settings.contact_image | image_url: width: 1250 }} 1250w,
               {{ section.settings.contact_image | image_url: width: 1500 }} 1500w
               " src="{{ section.settings.contact_image | image_url: width: 1500 }}" alt="{{ section.settings.contact_image.alt }}" loading="lazy"
+=======
+              {{ section.settings.contact_image | img_url: '600x' }} 600w,
+              {{ section.settings.contact_image | img_url: '720x' }} 720w,
+              {{ section.settings.contact_image | img_url: '1000x' }} 1000w,
+              {{ section.settings.contact_image | img_url: '1250x' }} 1250w,
+              {{ section.settings.contact_image | img_url: '1500x' }} 1500w
+              " src="{{ section.settings.contact_image | img_url: '1500x' }}" alt="{{ section.settings.contact_image.alt }}" loading="lazy"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 class="w-full h-full object-cover object-center absolute inset-0"
                 width="{{ section.settings.contact_image.width }}"
                 height="{{ section.settings.contact_image.height }}"
             >
               {%else%}
               <div  class="w-full h-full object-cover object-center absolute inset-0">
+<<<<<<< HEAD
                  {{ section.settings.contact_map }}
+=======
+                 {{section.settings.contact_map}}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               </div>
              
           {% endif %}
@@ -50,29 +71,52 @@
               <p class="mt-1 text-xs" style="color: {{ section.settings.card_text_color }};">{{ section.settings.address_text }}</p>
             </div>
             <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+<<<<<<< HEAD
               <h2 class="title-font font-semibold tracking-widest text-sm" style="color:{{ section.settings.card_title_color }};">{{ section.settings.email }}</h2>
               <a class="leading-relaxed text-xs" style="color: {{ section.settings.card_text_color }};">{{ section.settings.email_address }}</a>
 
               <h2 class="title-font font-semibold tracking-widest text-sm mt-4" style="color:{{ section.settings.card_title_color }};">{{ section.settings.phone_number_title }}</h2>
               <p class="leading-relaxed text-xs" style="color: {{ section.settings.card_text_color }};">{{ section.settings.phone_number }}</p>
+=======
+              <h2 class="title-font font-semibold tracking-widest text-sm" style="color:{{section.settings.card_title_color}};">{{ section.settings.email }}</h2>
+              <a class="leading-relaxed text-xs" style="color: {{section.settings.card_text_color}};">{{ section.settings.email_address }}</a>
+
+              <h2 class="title-font font-semibold tracking-widest text-sm mt-4" style="color:{{section.settings.card_title_color}};">{{ section.settings.phone_number_title }}</h2>
+              <p class="leading-relaxed text-xs" style="color: {{section.settings.card_text_color}};">{{ section.settings.phone_number }}</p>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             </div>
           </div>
         </div>
 
+<<<<<<< HEAD
         <div class="lg:w-1/2 flex flex-col {{ section.settings.text_align }} md:ml-auto w-full md:mt-0 py-6 lg:py-0">
           <div class="pb-4 text-xl tracking-wider font-semibold" style="color:{{ section.settings.headline_color }};">{{ section.settings.headline }}</div>
           <div class="pb-4 leading-8 tracking-wider text-xs" style="color: {{ section.settings.desc_color }};">{{ section.settings.form_text }}</div>
+=======
+        <div class="lg:w-1/2 flex flex-col {{section.settings.text_align}} md:ml-auto w-full md:mt-0 py-6 lg:py-0">
+          <div class="pb-4 text-xl tracking-wider font-semibold" style="color:{{section.settings.headline_color}};">{{ section.settings.headline }}</div>
+          <div class="pb-4 leading-8 tracking-wider text-xs" style="color: {{section.settings.desc_color}};">{{ section.settings.form_text }}</div>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           {% form 'contact' %}
         <div>
           
             {% if form.posted_successfully? %}
+<<<<<<< HEAD
             <div class="py-4 text-lg tracking-wider" style="color:{{ section.settings.point_positive }};">{{ 'contact.response' | t }}</div>
+=======
+            <div class="py-4 text-lg tracking-wider" style="color:{{section.settings.point_positive}};">{{ 'contact.response' | t }}</div>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             {% endif %}
 
             {% if form.errors %}
             {% capture error_text %}
+<<<<<<< HEAD
               <div class="py-4 text-lg tracking-wider" style="color:{{ section.settings.point_negative }};">{{ form.errors | default_errors }}</div>
             {% endcapture %}
+=======
+              <div class="py-4 text-lg tracking-wider" style="color:{{section.settings.point_negative}};">{{ form.errors | default_errors }}</div>
+            {% endcapture%}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     
             {% render 'layout-message',
               type: 'error'
@@ -86,7 +130,11 @@
               <label
                 for="ContactFormName"
                 class="block"
+<<<<<<< HEAD
                 style="color:{{ section.settings.form_title_color }};"
+=======
+                style="color:{{section.settings.form_title_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               >
                 {{ 'form.name' | t }}*
               </label>
@@ -97,7 +145,11 @@
                 id="ContactFormName"
                 value="{% if form.name %}{{ form.name }}{% endif %}"
                 class="w-full"
+<<<<<<< HEAD
                 style="background: {{ section.settings.form_bg_color }}; border: 1px solid {{ section.settings.form_border_color }};"
+=======
+                style="background: {{section.settings.form_bg_color}}; border: 1px solid {{section.settings.form_border_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 required
               >
             </div>
@@ -106,7 +158,11 @@
               <label
                 for="ContactFormEmail"
                 class="block"
+<<<<<<< HEAD
                 style="color:{{ section.settings.form_title_color }};"
+=======
+                style="color:{{section.settings.form_title_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               >
                 {{ 'form.email' | t }}*
               </label>
@@ -117,7 +173,11 @@
                 id="ContactFormEmail"
                 value="{% if form.email %}{{ form.email }}{% endif %}"
                 class="w-full"
+<<<<<<< HEAD
                 style="background: {{ section.settings.form_bg_color }}; border: 1px solid {{ section.settings.form_border_color }};"
+=======
+                style="background: {{section.settings.form_bg_color}}; border: 1px solid {{section.settings.form_border_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 required
               >
             </div>
@@ -127,7 +187,11 @@
             <label
               for="ContactFormPhone"
               class="block"
+<<<<<<< HEAD
               style="color:{{ section.settings.form_title_color }};"
+=======
+              style="color:{{section.settings.form_title_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             >
               {{ 'form.phone' | t }}
             </label>
@@ -138,7 +202,11 @@
               id="ContactFormPhone"
               value="{% if form.phone %}{{ form.phone }}{% endif %}"
               class="w-full"
+<<<<<<< HEAD
               style="background: {{ section.settings.form_bg_color }}; border: 1px solid {{ section.settings.form_border_color }};"
+=======
+              style="background: {{section.settings.form_bg_color}}; border: 1px solid {{section.settings.form_border_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             >
           </div>
     
@@ -146,7 +214,11 @@
             <label
               for="ContactFormMessage"
               class="block"
+<<<<<<< HEAD
               style="color:{{ section.settings.form_title_color }};"
+=======
+              style="color:{{section.settings.form_title_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             >
               {{ 'form.message' | t }}*
             </label>
@@ -156,7 +228,11 @@
               name="contact[body]"
               id="ContactFormMessage"
               class="w-full"
+<<<<<<< HEAD
               style="background: {{ section.settings.form_bg_color }}; border: 1px solid {{ section.settings.form_border_color }};"
+=======
+              style="background: {{section.settings.form_bg_color}}; border: 1px solid {{section.settings.form_border_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               required
             >
               {% if form.body %}
@@ -170,7 +246,11 @@
               {{ 'action.send' | t }}
             </button>
     
+<<<<<<< HEAD
             <div class="text-sm mt-4 sm:mt-0" style="color:{{ section.settings.desc_color }};">
+=======
+            <div class="text-sm mt-4 sm:mt-0" style="color:{{section.settings.desc_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               *{{ 'form.required' | t }}
             </div>
           </div>
@@ -182,6 +262,7 @@
 </section>
     
     {% schema %}
+<<<<<<< HEAD
 {
   "name": "Contact form",
   "settings": [
@@ -228,6 +309,54 @@
       "id": "padding_top",
       "label": "Padding Top controll",
       "default": 4,
+=======
+    {
+    "name": "Contact form", 
+    "settings": [
+    {
+      "type":"select",
+      "id":"color_schema",
+      "label":"Background color",
+      "options":[
+         {
+            "value":"first_color",
+            "label":"First Color"
+         },
+         {
+            "value":"second_color",
+            "label":"Second Color"
+         },
+         {
+            "value":"third_color",
+            "label":"Third Color"
+         },
+         {
+          "value":"forth_color",
+          "label":"Forth Color"
+        },
+        {
+          "value":"fifth_color",
+          "label":"Fifth Color"
+        },
+        {
+          "value":"background_transparent",
+          "label":"Transparent Color"
+        }
+      ],
+      "default":"background_transparent"
+     },
+    {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": false,
+        "label": "Animation turn on"
+    },
+     {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":4,
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "min": 1,
       "max": 20,
       "step": 1,
@@ -237,12 +366,17 @@
       "type": "range",
       "id": "padding_bottom",
       "label": "Padding Bottom controll",
+<<<<<<< HEAD
       "default": 4,
+=======
+      "default":4,
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "min": 1,
       "max": 20,
       "step": 1,
       "unit": "rem"
     },
+<<<<<<< HEAD
     {
       "type": "header",
       "content": "Contact Image Settings",
@@ -354,10 +488,124 @@
       "content": "Form colors"
     },
     {
+=======
+     {
+      "type": "header",
+      "content": "Contact Image Settings",
+      "info": "Image and Business Information Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "contact_image",
+        "label": "Contact Image"
+      },
+      {
+        "type": "html",
+        "id": "contact_map",
+        "label": "Contact Map"
+      },
+      {
+        "type":"text",
+        "id":"address",
+        "label":"Business info Title",
+        "default":"ADDRESS"
+     },
+     {
+        "type":"textarea",
+        "id":"address_text",
+        "label":"Business Info Text",
+        "default":"Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-5678."
+      },
+      {
+        "type":"text",
+        "id":"email",
+        "label":"Business Info sub title 1",
+        "default":"EMAIL"
+      },
+      {
+        "type":"text",
+        "id":"email_address",
+        "label":"Business Info sub Text 1",
+        "default":"example@email.com"
+      },
+      {
+        "type":"text",
+        "id":"phone_number_title",
+        "label":"Business Info sub title 2",
+        "default":"PHONE"
+      },
+      {
+        "type":"text",
+        "id":"phone_number",
+        "label":"Business Info sub Text 2",
+        "default":"123-456-7890"
+      },
+      {
+        "type": "color",
+        "id": "card_bg_color",
+        "label": "Card background color",
+        "default": "#fafafa"
+      },
+      {
+        "type": "color",
+        "id": "card_title_color",
+        "label": "Card title color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "card_text_color",
+        "label": "Card text color",
+        "default": "#808080"
+      },
+      {
+        "type": "header",
+        "content": "Contact Form Settings",
+        "info": "Contact Form color, line settings"
+      },
+      {
+        "type":"select",
+        "id":"text_align",
+        "label":"Form Text align",
+        "options":[
+           {
+              "value":"font_left",
+              "label":"Left"
+           },
+           {
+              "value":"font_right",
+              "label":"Right"
+           },
+           {
+              "value":"font_center",
+              "label":"Center"
+           }
+        ],
+        "default":"font_left"
+      },
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Form headline",
+        "default":"WE'D LOVE TO HEAR FROM YOU"
+      },
+      {
+          "type":"richtext",
+          "id":"form_text",
+          "label":"Form Text",
+          "default": "<p>Lorem ipsum dolor sit amet. Cum deleniti adipisci et voluptatem magni ab officia mollitia et beatae nesciunt ut quod necessitatibus.</p>"
+      },
+      {
+        "type": "header",
+        "content": "Form colors"
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "headline_color",
       "label": "Headline color",
       "default": "#4b4b4b"
+<<<<<<< HEAD
     },
     {
       "type": "color",
@@ -418,56 +666,158 @@
       "label": "Button round"
     },
     {
+=======
+      },
+      {
+        "type": "color",
+        "id": "desc_color",
+        "label": "Description color",
+        "default": "#808080"
+      },
+      {
+        "type": "color",
+        "id": "form_title_color",
+        "label": "Form title color",
+        "default": "#808080"
+      },
+      {
+        "type": "color",
+        "id": "form_border_color",
+        "label": "Form Border color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "form_bg_color",
+        "label": "Form background color",
+        "default": "transparent"
+      },
+      {
+        "type": "header",
+        "content": "Button Settings"
+      },
+      {
+        "type":"select",
+        "id":"button_size",
+        "label":"Button size",
+        "options":[
+           {
+              "value":"button_small",
+              "label":"Small"
+           },
+           {
+              "value":"button_medium",
+              "label":"Medium"
+           },
+           {
+              "value":"button_large",
+              "label":"Large"
+           },
+           {
+            "value":"button_xlarge",
+            "label":"Extra large"
+          }
+        ],
+        "default":"button_medium"
+       },
+       {
+        "type": "checkbox",
+        "id": "button_round_off",
+        "default": false,
+        "label": "Button round"
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "button_bg",
       "label": "Button background color",
       "default": "transparent"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "button_color",
       "label": "button font color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "border_colors",
       "label": "border color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "mo_button_bg",
       "label": "Mouseover background",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "mo_button_color",
       "label": "Mouseover font color",
       "default": "#fff"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "mo_border_color",
       "label": "Mouseover border color",
       "default": "transparent"
+<<<<<<< HEAD
     },
     {
       "type": "header",
       "content": "Alert Settings"
     },
     {
+=======
+      },
+      {
+        "type": "header",
+        "content": "Alert Settings"
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "point_negative",
       "label": "Negative color",
       "default": "#BD2727"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "point_positive",
       "label": "Successed",
       "default": "#27C82B"
+<<<<<<< HEAD
     }
   ],
   "presets": [
@@ -478,3 +828,15 @@
   ]
 }
 {% endschema %}
+=======
+      }
+    ],
+    "presets": [
+        {
+        "name": "Contact Setting",
+        "category": "Image"
+        }
+      ]
+    }
+    {% endschema %}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0

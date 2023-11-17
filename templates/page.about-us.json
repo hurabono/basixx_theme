@@ -10,7 +10,11 @@
         "overlay_set": true,
         "text_align": "font_left",
         "headline": "Main Page HeadLine",
+<<<<<<< HEAD
         "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.</p>",
+=======
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "text_color": "#5e5e5e"
       }
     },
@@ -38,7 +42,11 @@
             "first_headline": "About us",
             "first_header_color": "#4b4b4b",
             "first_desc_font_size": 0.9,
+<<<<<<< HEAD
             "first_text": "<p>Welcome to Green Lady!  your destination for premium skincare solutions that nurture your skin's natural beauty. We are passionate about helping you achieve radiant and healthy skin through our carefully curated range of products, backed by science and formulated with the finest ingredients.</p>",
+=======
+            "first_text": "<p>Welcome to Green Lady!  your destination for premium skincare solutions that nurture your skin's natural beauty. We are passionate about helping you achieve radiant and healthy skin through our carefully curated range of products, backed by science and formulated with the finest ingredients.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "first_desc_color": "#4b4b4b"
           }
         },
@@ -50,7 +58,11 @@
             "second_headline": "Our Mission",
             "second_header_color": "#4b4b4b",
             "second_desc_font_size": 0.9,
+<<<<<<< HEAD
             "second_text": "<p>Our mission is to empower individuals to embrace their skin and embark on a journey of self-care. We believe that skincare is more than just a routine; it's a way to connect with yourself and enhance your confidence. Through our products, we strive to provide effective, gentle, and sustainable solutions that cater to a variety of skin concerns.</p>",
+=======
+            "second_text": "<p>Our mission is to empower individuals to embrace their skin and embark on a journey of self-care. We believe that skincare is more than just a routine; it's a way to connect with yourself and enhance your confidence. Through our products, we strive to provide effective, gentle, and sustainable solutions that cater to a variety of skin concerns.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "second_desc_color": "#4b4b4b",
             "button_size": "button_small",
             "button_round_off": false,
@@ -85,7 +97,11 @@
           "settings": {
             "block_subtitle": "First",
             "headline": "Science-Backed Formulas",
+<<<<<<< HEAD
             "grid-text": "<p>Our products are developed in collaboration with dermatologists and skincare experts, ensuring that each formulation.</p>",
+=======
+            "grid-text": "<p>Our products are developed in collaboration with dermatologists and skincare experts, ensuring that each formulation.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "textbox_title_align": "font_center",
             "color_box_schema": "fifth_color",
             "grid_header_color_title": "#4b4b4b",
@@ -107,7 +123,11 @@
           "settings": {
             "block_subtitle": "Second",
             "headline": "Premium Ingredients",
+<<<<<<< HEAD
             "grid-text": "<p>We source the finest and most potent ingredients from around the world, aiming to create products that deliver noticeable results.</p>",
+=======
+            "grid-text": "<p>We source the finest and most potent ingredients from around the world, aiming to create products that deliver noticeable results.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "textbox_title_align": "font_center",
             "color_box_schema": "fifth_color",
             "grid_header_color_title": "#4b4b4b",
@@ -129,7 +149,11 @@
           "settings": {
             "block_subtitle": "Third",
             "headline": "Cruelty-Free Commitment",
+<<<<<<< HEAD
             "grid-text": "<p>We are dedicated to animal welfare, and all our products are cruelty-free, never tested on animals.</p><p><strong>&nbsp;</strong></p>",
+=======
+            "grid-text": "<p>We are dedicated to animal welfare, and all our products are cruelty-free, never tested on animals.<\/p><p><strong>&nbsp;<\/strong><\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "textbox_title_align": "font_center",
             "color_box_schema": "fifth_color",
             "grid_header_color_title": "#4b4b4b",
@@ -186,7 +210,11 @@
         "desc_font_style": "font_light",
         "button_size": "button_small",
         "button_round_off": false,
+<<<<<<< HEAD
         "button-url": "shopify://collections/best-seller",
+=======
+        "button-url": "shopify:\/\/collections\/best-seller",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "button-text": "Shop now ⟶",
         "button_bg": "rgba(0,0,0,0)",
         "button_color": "#808080",
@@ -286,7 +314,11 @@
         "textbox_color": "background_transparent",
         "title_align": "font_left",
         "headline": "Frequently asked questions",
+<<<<<<< HEAD
         "text": "<p>Lorem ipsum dolor sit amet.</p><p> Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>",
+=======
+        "text": "<p>Lorem ipsum dolor sit amet.<\/p><p> Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "color_title": "#5e5e5e",
         "color_sub_title": "#a9a9a9",
         "point_color": "#808080",
@@ -319,7 +351,11 @@
         "subtitle": "Green Lady",
         "headline": "Join Our Community",
         "color_title": "#5e5e5e",
+<<<<<<< HEAD
         "text": "<p>By choosing Green Lady, you become a part of a community that values self-care and self-expression. We encourage you to share your skincare journey with us, ask questions, and connect with fellow skincare enthusiasts.</p>",
+=======
+        "text": "<p>By choosing Green Lady, you become a part of a community that values self-care and self-expression. We encourage you to share your skincare journey with us, ask questions, and connect with fellow skincare enthusiasts.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "color_desciption": "#5e5e5e",
         "textbox_align": "font_center",
         "button_size": "button_small",

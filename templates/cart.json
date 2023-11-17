@@ -8,7 +8,11 @@
         "padding_bottom": 3,
         "overlay_set": false,
         "text_align": "font_center",
+<<<<<<< HEAD
         "description": "<p>Here, we've tailored every detail to create an experience that is as unique as your skin.</p>",
+=======
+        "description": "<p>Here, we've tailored every detail to create an experience that is as unique as your skin.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "text_color": "#808080"
       }
     },

@@ -71,6 +71,7 @@
         {% assign apple_pay_payment = 'apple_pay' %}
         
         {% for type in visa_payment %}
+<<<<<<< HEAD
             {% if type == 'visa' and settings.visa_visible == true %}
             {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
             {% endif %}
@@ -116,6 +117,53 @@
             {% if type == 'apple_pay' and settings.applepay_visible == true %}
             {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
             {% endif %}
+=======
+            {%  if type == 'visa' and settings.visa_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in master_payment %}
+            {%  if type == 'master' and settings.mastercard_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in amex_payment %}
+            {%  if type == 'american_express' and settings.amex_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in paypal_payment %}
+            {%  if type == 'paypal' and settings.paypal_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in jcb_payment %}
+            {%  if type == 'jcb' and settings.jcb_visible == true  %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in afterpay_payment %}
+            {%  if type == 'afterpay' and settings.afterpay_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in klarna_payment %}
+            {%  if type == 'klarna' and settings.klarna_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+        {% endfor %}
+  
+        {% for type in apple_pay_payment %}
+            {%  if type == 'apple_pay' and settings.applepay_visible == true %}
+            {{ type | payment_type_svg_tag: class: 'w-10 h-auto ml-2 mt-2' }}
+            {%  endif %}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         {% endfor %}
         
       

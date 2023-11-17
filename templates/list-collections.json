@@ -9,7 +9,11 @@
         "overlay_set": true,
         "text_align": "font_center",
         "headline": "ALL COLLECTIONS",
+<<<<<<< HEAD
         "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.</p><p></p><p><a href=\"/pages/our-service\" title=\"our service\"><strong>contact us</strong></a></p>",
+=======
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p><p><\/p><p><a href=\"\/pages\/our-service\" title=\"our service\"><strong>contact us<\/strong><\/a><\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "title_color": "#5e5e5e",
         "text_color": "#a9a9a9"
       }

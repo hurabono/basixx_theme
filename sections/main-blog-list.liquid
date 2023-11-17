@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 <section class="{{ section.settings.color_schema }} body-font overflow-hidden">
   
   {% paginate blog.articles by 6 %}
   <div class="xl:max-w-[1320px] px-4 md:px-8 mx-auto px-2 md:px-5 mx-auto"
     style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
+=======
+<section class="{{section.settings.color_schema}} body-font overflow-hidden">
+  
+  {% paginate blog.articles by 6 %}
+  <div class="xl:max-w-[1320px] px-4 md:px-8 mx-auto px-2 md:px-5 mx-auto"
+    style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
 
 
@@ -11,12 +19,18 @@
     <div class="w-full grid md:grid-cols-2 gap-4 {% if section.settings.post_off == true %} {{ section.settings.column_design }} {% endif %}">
       {% for article in blog.articles %}
 
+<<<<<<< HEAD
         <div class="flex flex-col p-3 {{ section.settings.textbox_color }} rounded-sm blog-postbox" 
               style="{% if section.settings.show_border %} border:1px solid {{ section.settings.point_color }};{% endif %}">
+=======
+        <div class="flex flex-col p-3 {{section.settings.textbox_color}} rounded-sm blog-postbox" 
+              style="{% if section.settings.show_border %} border:1px solid {{section.settings.point_color}};{% endif %}">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           
           
           <div class="flex justify-between items-center">
             <span class="text-xs font-medium tracking-widest rounded" 
+<<<<<<< HEAD
             style="color: {{ section.settings.text_color }};">
             {{ article.published_at | date: format: 'month_day_year' }}
             </span>
@@ -25,6 +39,16 @@
           </div>
           
             {% if article.image != blank %}  
+=======
+            style="color: {{section.settings.text_color}};">
+            {{ article.published_at | date: format: 'month_day_year' }}
+            </span>
+  
+            <span class="text-xs font-medium tracking-widest" style="color: {{section.settings.text_color}};">{% if article.author %}{{ 'common.by' | t }} {{ article.author }}{% endif %}</span>
+          </div>
+          
+            {% if article.image != blank%}  
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             <div class="w-full h-[190px] overflow-hidden rounded-sm my-4">
               <img sizes="
                 (min-width: 1280px) 1500px,
@@ -33,6 +57,7 @@
                 (min-width: 640px) 720px,
                 600px
               " srcset="
+<<<<<<< HEAD
                 {{ article | image_url: width: 600 }} 600w,
                 {{ article | image_url: width: 720 }} 720w,
                 {{ article | image_url: width: 1000 }} 1000w,
@@ -42,19 +67,38 @@
                 width="{{ article.width }}"
                 height="{{ article.height }}"
                 src="{{ article | image_url: width: 1500 }}" alt="{{ article.image.alt }}" loading="lazy"
+=======
+                {{ article | img_url: '600x' }} 600w,
+                {{ article | img_url: '720x' }} 720w,
+                {{ article | img_url: '1000x' }} 1000w,
+                {{ article | img_url: '1250x' }} 1250w,
+                {{ article | img_url: '1500x' }} 1500w
+              " 
+                width="{{ article.width }}"
+                height="{{ article.height }}"
+                src="{{ article | img_url: '1500x' }}" alt="{{ article.image.alt }}" loading="lazy"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 class="w-full h-full object-cover object-center inset-0">
   
             
             </div>
             <h2 class="text-lg md:text-xl title-font mt-4 mb-4 font-bold uppercase" >
               {% if article.title %}
+<<<<<<< HEAD
                   <a href="{{ article.url }}" style="color: {{ section.settings.title_color }};">
+=======
+                  <a href="{{ article.url }}" style="color: {{section.settings.title_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                     {{ article.title | strip_html | truncate: 20 }}
                   </a>
               {% endif %}
             </h2>
 
+<<<<<<< HEAD
             <p class="w-full leading-relaxed text-sm mb-4" style="color: {{ section.settings.text_color }};">
+=======
+            <p class="w-full leading-relaxed text-sm mb-4" style="color: {{section.settings.text_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               {% if article.excerpt.size > 0 %}
                       {{ article.excerpt }}
                     {% else %}
@@ -62,7 +106,11 @@
               {% endif %}
             </p>
             {% else %}
+<<<<<<< HEAD
             <p class="tracking-wider leading-8 leading-relaxed mb-4" style="color: {{ section.settings.text_color }};">
+=======
+            <p class="tracking-wider leading-8 leading-relaxed mb-4" style="color: {{section.settings.text_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               {% if article.excerpt.size > 0 %}
                       {{ article.excerpt }}
                     {% else %}
@@ -73,7 +121,11 @@
         
          
           <div class="flex items-center justify-between mb-2 w-full">
+<<<<<<< HEAD
             <a href="{{ article.url }}" class="inline-block py-1 rounded inline-flex items-center tracking-widest"  style="color: {{ section.settings.symbol_color }};
+=======
+            <a href="{{ article.url }}" class="inline-block py-1 rounded inline-flex items-center tracking-widest"  style="color: {{section.settings.symbol_color}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             ">
               Read More
               <ion-icon name="arrow-forward-sharp" class="ml-2"></ion-icon>
@@ -83,7 +135,11 @@
               <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                 <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
               </svg>
+<<<<<<< HEAD
               {{ article.comments_count }}
+=======
+              {{article.comments_count}}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             </span>
           </div>
   
@@ -99,6 +155,7 @@
 
       {% comment %} Page title  {% endcomment %}
       <div class="blog-textbox border-t border-b">
+<<<<<<< HEAD
         <h1 style="color:{{ section.settings.post_title_color }};">{{ section.settings.headline }}</h1>
       </div>
       <div class="p-6 mb-8" style="color:{{ section.settings.post_description_color }};">{{ section.settings.page_description }}</div>
@@ -124,6 +181,33 @@
             </div>
         
           {% if article.image != blank %}  
+=======
+        <h1 style="color:{{section.settings.post_title_color}};">{{ section.settings.headline }}</h1>
+      </div>
+      <div class="p-6 mb-8" style="color:{{section.settings.post_description_color}};">{{ section.settings.page_description }}</div>
+
+      {% comment %} Featrued post title  {% endcomment %}
+      <div class="blog-textbox border-t border-b mb-4">
+        <h1 class="text-right" style="color:{{section.settings.post_title_color}};"> {{section.settings.post_headline}} </h1>
+      </div>
+
+      {% comment %} Featured blog list {% endcomment %}
+      {% for article in featured_blog.articles limit:2 %}
+  
+        <div class="blog-textbox {{section.settings.textbox_color}} rounded-sm p-3" 
+            style="{% if section.settings.show_border %} border:1px solid {{section.settings.point_color}};{% endif %}">
+        
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-medium tracking-widest rounded" 
+              style="color: {{section.settings.text_color}};">
+              {{ article.published_at | date: format: 'month_day_year' }}
+              </span>
+    
+              <span class="text-xs font-medium tracking-widest" style="color: {{section.settings.text_color}};">{% if article.author %}{{ 'common.by' | t }} {{ article.author }}{% endif %}</span>
+            </div>
+        
+          {% if article.image != blank%}  
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           <div class="w-full h-[300px] overflow-hidden rounded-sm my-4">
             <img sizes="
               (min-width: 1280px) 1500px,
@@ -132,12 +216,21 @@
               (min-width: 640px) 720px,
               600px
             " srcset="
+<<<<<<< HEAD
               {{ article | image_url: width: 600 }} 600w,
               {{ article | image_url: width: 720 }} 720w,
               {{ article | image_url: width: 1000 }} 1000w,
               {{ article | image_url: width: 1250 }} 1250w,
               {{ article | image_url: width: 1500 }} 1500w
             " src="{{ article | image_url: width: 1500 }}" alt="{{ article.image.alt }}" loading="lazy"
+=======
+              {{ article | img_url: '600x' }} 600w,
+              {{ article | img_url: '720x' }} 720w,
+              {{ article | img_url: '1000x' }} 1000w,
+              {{ article | img_url: '1250x' }} 1250w,
+              {{ article | img_url: '1500x' }} 1500w
+            " src="{{ article | img_url: '1500x' }}" alt="{{ article.image.alt }}" loading="lazy"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               class="w-full h-full object-cover object-center inset-0"
               width="{{ article.width }}"
               height="{{ article.height }}">
@@ -147,13 +240,21 @@
 
           <h2 class="text-xl sm:text-3xl title-font mt-4 mb-4 font-medium uppercase font-bold" >
           {% if article.title %}
+<<<<<<< HEAD
                 <a href="{{ article.url }}" style="color: {{ section.settings.title_color }};">
+=======
+                <a href="{{ article.url }}" style="color: {{section.settings.title_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                   {{ article.title | strip_html | truncate: 20 }}
                 </a>
           {% endif %}
           </h2>
 
+<<<<<<< HEAD
           <p class="leading-relaxed mb-8" style="color: {{ section.settings.text_color }};">
+=======
+          <p class="leading-relaxed mb-8" style="color: {{section.settings.text_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             {% if article.excerpt.size > 0 %}
                     {{ article.excerpt }}
                   {% else %}
@@ -161,7 +262,11 @@
             {% endif %}
           </p>
           {% else %}
+<<<<<<< HEAD
           <p class="tracking-wider leading-8 leading-relaxed mb-8" style="color: {{ section.settings.text_color }};">
+=======
+          <p class="tracking-wider leading-8 leading-relaxed mb-8" style="color: {{section.settings.text_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             {% if article.excerpt.size > 0 %}
                     {{ article.excerpt }}
                   {% else %}
@@ -172,7 +277,11 @@
       
        
         <div class="flex items-center justify-between pb-4 mb-4 w-full">
+<<<<<<< HEAD
           <a href="{{ article.url }}" class="inline-block py-1 inline-flex items-center tracking-widest"  style="color: {{ section.settings.symbol_color }};">
+=======
+          <a href="{{ article.url }}" class="inline-block py-1 inline-flex items-center tracking-widest"  style="color: {{section.settings.symbol_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             Read More
             <ion-icon name="arrow-forward-sharp" class="ml-2"></ion-icon>
           </a>
@@ -181,7 +290,11 @@
             <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
             </svg>
+<<<<<<< HEAD
             {{ article.comments_count }}
+=======
+            {{article.comments_count}}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           </span>
         </div>
         </div>
@@ -201,6 +314,7 @@
 
 {% schema %}
 {
+<<<<<<< HEAD
   "name": "Main Blog List",
   "settings": [
     {
@@ -400,5 +514,206 @@
       "default": "#D3D3D3"
     }
   ]
+=======
+"name": "Main Blog List",
+"settings": [
+{
+  "id": "blog",
+  "type": "blog",
+  "label": "Featured Blog Post"
+},
+{
+  "id":"post_off",
+  "type":"checkbox",
+  "default": false,
+  "label": "Featured blog post turn off"
+},
+{
+  "type": "header",
+  "content": "Textbox settings"
+},
+{
+  "type": "text",
+  "id": "headline",
+  "label": "Page Headline",
+  "default": "About us"
+},
+{
+  "type": "richtext",
+  "id": "page_description",
+  "label": "Page Description",
+  "default": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad molestiae nostrum obcaecati? Ab repudiandae rem, ducimus quae at libero rerum reprehenderit aliquam, similique vel pariatur in id odit adipisci. </p>"
+},
+{
+  "type": "text",
+  "id": "post_headline",
+  "label": "Post Headline",
+  "default": "Featured post"
+},
+ {
+  "type": "color",
+  "id": "post_title_color",
+  "label": "Featured post title",
+  "default": "#5E5E5E"
+},
+ {
+  "type": "color",
+  "id": "post_description_color",
+  "label": "Featured post description",
+  "default": "#808080"
+},
+{
+  "type": "header",
+  "content": "Blog Column",
+  "info": "Setting Blog girds"
+},
+{
+  "type":"select",
+  "id":"column_design",
+  "label":"Column selector",
+  "info": "Selector is available after turning off featured design",
+  "options":[
+     {
+        "value":"two_column",
+        "label":"Two column"
+     },
+     {
+        "value":"three_column",
+        "label":"Three column"
+     },
+     {
+        "value":"four_column",
+        "label":"Four column"
+     }
+  ],
+  "default":"two_column"
+ },
+ {
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+{
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+ {
+  "type": "checkbox",
+  "id": "animation_setting",
+  "default": false,
+  "label": "Animation turn on"
+  },
+  {
+  "type": "checkbox",
+  "id": "show_border",
+  "default": false,
+  "label": "Turn on blog box line"
+  },
+{
+  "type": "header",
+  "content": "Blog color",
+  "info": "Setting background and blog colors"
+},
+{
+  "type":"select",
+  "id":"color_schema",
+  "label":"Background color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"background_transparent"
+ },
+ {
+  "type":"select",
+  "id":"textbox_color",
+  "label":"Textbox color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"background_transparent"
+ },
+ {
+  "type": "color",
+  "id": "title_color",
+  "label": "Title color",
+  "default": "#5E5E5E"
+},
+ {
+  "type": "color",
+  "id": "text_color",
+  "label": "Text color",
+  "default": "#A9A9A9"
+},
+{
+  "type": "color",
+  "id": "symbol_color",
+  "label": "Symbol color",
+  "default": "#5E5E5E"
+},
+{
+  "type": "color",
+  "id": "point_color",
+  "label": "Point color",
+  "default": "#D3D3D3"
+}
+]
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 {% endschema %}    

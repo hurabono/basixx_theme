@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div class="container xl:w-[1320px] mx-auto overflow-hidden px-4 md:px-8" style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+=======
+<div class="container xl:w-[1320px] mx-auto overflow-hidden px-4 md:px-8" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
   <h1 class="text-2xl md:text-3xl font-bold text-center mb-4 customer_title_color tracking-wider">
     {{ 'customer.account.title' | t }}
   </h1>
@@ -18,7 +22,11 @@
       {% paginate customer.orders by 12 %}
         <div class="space-y-4">
           {% if customer.orders.size > 0 %}
+<<<<<<< HEAD
             <div class="hidden lg:grid grid-cols-9 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4" style="border-bottom: 1px solid {{ settings.customer_border_color | color_modify: 'alpha', 0.7 }};">
+=======
+            <div class="hidden lg:grid grid-cols-9 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4" style="border-bottom: 1px solid {{settings.customer_border_color | color_modify: 'alpha', 0.7 }};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               <div class="lg:col-span-2 customer_point_color">
                 {{ 'customer.account.order_number' | t }}
               </div>
@@ -128,6 +136,7 @@
 </div>
 
 {% schema %}
+<<<<<<< HEAD
 {
   "settings": [
     {
@@ -158,4 +167,34 @@
     }
   ]
 }
+=======
+  {
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": true,
+        "label": "Animation turn on"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top controll",
+        "default": 15,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }
+    ]
+  }
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 {% endschema %} 

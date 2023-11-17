@@ -4,8 +4,13 @@
     "theme_name": "Navy Home Agency",
     "theme_version": "3.0.0",
     "theme_author": "Stephanie",
+<<<<<<< HEAD
     "theme_documentation_url": "https://THEME_DOCUMENTATION_URL.com",
     "theme_support_url": "https://THEME_SUPPORT_URL.com"
+=======
+    "theme_documentation_url": "https:\/\/THEME_DOCUMENTATION_URL.com",
+    "theme_support_url": "https:\/\/THEME_SUPPORT_URL.com"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
   },
   {
     "name": "Favicon",

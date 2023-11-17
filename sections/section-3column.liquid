@@ -9,7 +9,11 @@
   }
 
   #block_{{ block.id }}:hover{
+<<<<<<< HEAD
         color: {{ block.settings.mo_button_color }};
+=======
+        color: {{ block.settings.mo_button_color}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         border:1px solid {{ block.settings.mo_border_color }};
         background-color: {{ block.settings.mo_button_bg }};
   }
@@ -18,12 +22,17 @@
   
 {% endstyle %}
 
+<<<<<<< HEAD
 <div class="{{ section.settings.color_schema }}" style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
+=======
+<div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 <section class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="500" {% endif %}>
 
 <div class="mx-auto">
 
   {%- comment -%} headline {%- endcomment -%}
+<<<<<<< HEAD
   <div class="md:mx-[1rem] mb-[1.5rem] flex flex-col {{ section.settings.text_align }}">
       <div class="Left_titlebox">
         {% if section.settings.subtitle != blank %}
@@ -37,12 +46,31 @@
             </h1>
           {% endif %}
             <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{ section.settings.color_text_title }};">
+=======
+  <div class="md:mx-[1rem] mb-[1.5rem] flex flex-col {{section.settings.text_align}}">
+      <div class="Left_titlebox">
+        {% if section.settings.subtitle != blank %}
+            <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+              {{section.settings.subtitle}}
+            </span>
+          {% endif %}
+          {% if section.settings.headline != blank %}
+            <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+              {{ section.settings.headline }}
+            </h1>
+          {% endif %}
+            <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               {{ section.settings.text }}
              </div>  
         </div>
   </div>
 
+<<<<<<< HEAD
   <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 {{ section.settings.grid_style }} gap-4">
+=======
+  <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 {{section.settings.grid_style}} gap-4">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     {% for block in section.blocks %}
     <div class="lg:flex lg:items-center w-full mb-6 sm:mb-6 relative lg:flex-col">
           {% if section.settings.image_onboarding == true %}
@@ -56,6 +84,7 @@
                 (min-width: 640px) 720px,
                 600px
               " srcset="
+<<<<<<< HEAD
                 {{ block.settings.image | image_url: width: 600 }} 600w,
                 {{ block.settings.image | image_url: width: 720 }} 720w,
                 {{ block.settings.image | image_url: width: 1000 }} 1000w,
@@ -63,6 +92,15 @@
                 {{ block.settings.image | image_url: width: 1500 }} 1500w
               "
                 src="{{ block.settings.image | image_url: width: 500 }}"
+=======
+                {{ block.settings.image | img_url: '600x' }} 600w,
+                {{ block.settings.image | img_url: '720x' }} 720w,
+                {{ block.settings.image | img_url: '1000x' }} 1000w,
+                {{ block.settings.image | img_url: '1250x' }} 1250w,
+                {{ block.settings.image | img_url: '1500x' }} 1500w
+              "
+                src="{{ block.settings.image | img_url: '500x' }}"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 alt="{{ block.settings.image.alt }}"
                 loading="lazy"
                 class="w-full object-cover h-full object-center block"
@@ -74,6 +112,7 @@
             {% endif %}
           </div>
           {% endif %} 
+<<<<<<< HEAD
           <div class="w-full {{ block.settings.color_box_schema }} block {{ block.settings.textbox_title_align }} p-6 ">
            {% if block.settings.block_subtitle != blank %}
             <span class="block text-xs mt-4 leading-8 tracking-wider" style="color:{{ block.settings.grid_color_title }};">
@@ -87,6 +126,21 @@
                     <a id="block_{{ block.id }}" href="{{ block.settings.button-url }}"
                           class="tracking-widest mx-2 text-center {{ block.settings.button_size }} {% if block.settings.button_round_off == true %} button_round {% endif %}">
                           {{ block.settings.button-text }}</a>
+=======
+          <div class="w-full {{block.settings.color_box_schema}} block {{block.settings.textbox_title_align}} p-6 ">
+           {% if block.settings.block_subtitle != blank %}
+            <span class="block text-xs mt-4 leading-8 tracking-wider" style="color:{{block.settings.grid_color_title}};">
+              {{block.settings.block_subtitle}}
+            </span>
+          {% endif %}
+            <h2 class="text-xl font-medium title-font tracking-widest" style="color:{{block.settings.grid_header_color_title}};">{{block.settings.headline}}</h2>
+            <div class="text-sm leading-relaxed mt-2 leading-8 tracking-wider py-4" style="color:{{block.settings.grid_color_title}};">{{block.settings.grid-text}}</div>
+            {%- if block.settings.button-text != blank -%}
+                   <div class="py-4 inline-block">
+                    <a id="block_{{ block.id }}" href="{{ block.settings.button-url }}"
+                          class="tracking-widest mx-2 text-center {{block.settings.button_size}} {% if block.settings.button_round_off == true %} button_round {% endif %}">
+                          {{block.settings.button-text }}</a>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                     </div>
            {% endif %}
           </div>
@@ -101,7 +155,11 @@
      <div class="collectionSwiper column_mySwiper overflow-hidden">
         <div class="swiper-wrapper">
            {% for block in section.blocks %}
+<<<<<<< HEAD
            <div class="swiper-slide lg:flex lg:justify-center lg:items-center w-full {{ section.settings.grid_style }} md:p-3 mb-6 sm:mb-6 relative lg:flex-col">
+=======
+           <div class="swiper-slide lg:flex lg:justify-center lg:items-center w-full {{section.settings.grid_style}} md:p-3 mb-6 sm:mb-6 relative lg:flex-col">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 {% if section.settings.image_onboarding == true %}
                 <div class="h-[21rem] justify-center items-center lg:rounded-sm overflow-hidden " {{ block.shopify_attributes }}>
                     {% if block.settings.image != blank %}
@@ -113,6 +171,7 @@
                       (min-width: 640px) 720px,
                       600px
                     " srcset="
+<<<<<<< HEAD
                       {{ block.settings.image | image_url: width: 600 }} 600w,
                       {{ block.settings.image | image_url: width: 720 }} 720w,
                       {{ block.settings.image | image_url: width: 1000 }} 1000w,
@@ -120,6 +179,15 @@
                       {{ block.settings.image | image_url: width: 1500 }} 1500w
                     "
                       src="{{ block.settings.image | image_url: width: 500 }}"
+=======
+                      {{ block.settings.image | img_url: '600x' }} 600w,
+                      {{ block.settings.image | img_url: '720x' }} 720w,
+                      {{ block.settings.image | img_url: '1000x' }} 1000w,
+                      {{ block.settings.image | img_url: '1250x' }} 1250w,
+                      {{ block.settings.image | img_url: '1500x' }} 1500w
+                    "
+                      src="{{ block.settings.image | img_url: '500x' }}"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                       alt="{{ block.settings.image.alt }}"
                       loading="lazy"
                       class="w-full h-full object-cover object-center"
@@ -131,6 +199,7 @@
                   {% endif %}
                 </div>
                 {% endif %} 
+<<<<<<< HEAD
                 <div class="{{ block.settings.color_box_schema }} block text-center {{ block.settings.textbox_title_align }} p-8 ">
                  <h2 class="text-xl font-medium title-font tracking-widest mb-6 mx-2" style="color:{{ block.settings.grid_header_color_title }};">{{ block.settings.headline }}</h2>
                  <div class="text-sm leading-relaxed mt-2 leading-8 tracking-wider mx-2" style="color:{{ block.settings.grid_color_title }};">{{ block.settings.grid-text }}</div>
@@ -139,6 +208,16 @@
                        <a href="{{ block.settings.button-url }}"
                              class="tracking-widest mx-2 {{ block.settings.color_button }} {{ block.settings.button_color_hover }} text-center outline-none transition duration-100 {{ block.settings.button_size }} {% if block.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{ block.settings.border_color }}; color:{{block.settings.border_color}};">
                              {{ block.settings.button-text }}</a>
+=======
+                <div class="{{block.settings.color_box_schema}} block text-center {{block.settings.textbox_title_align}} p-8 ">
+                 <h2 class="text-xl font-medium title-font tracking-widest mb-6 mx-2" style="color:{{block.settings.grid_header_color_title}};">{{block.settings.headline}}</h2>
+                 <div class="text-sm leading-relaxed mt-2 leading-8 tracking-wider mx-2" style="color:{{block.settings.grid_color_title}};">{{block.settings.grid-text}}</div>
+                    {%- if block.settings.button-text != blank -%}
+                       <div class="py-8 inline-block">
+                       <a href="{{ block.settings.button-url }}"
+                             class="tracking-widest mx-2 {{block.settings.color_button}} {{block.settings.button_color_hover}} text-center outline-none transition duration-100 {{block.settings.button_size}} {% if block.settings.button_round_off == true %} button_round {% endif %}" style="border:1px solid {{block.settings.border_color}}; color:{{block.settings.border_color}};">
+                             {{block.settings.button-text }}</a>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                        </div>
                     {% endif %}
                  </div>
@@ -167,6 +246,7 @@
 
 {% schema %}
 {
+<<<<<<< HEAD
   "name": "Column",
   "class": "shopify-section-vue",
   "settings": [
@@ -519,5 +599,357 @@
       ]
     }
   ]
+=======
+"name":"Column",
+"class":"shopify-section-vue",
+"settings":[
+{
+"type":"select",
+"id":"color_schema",
+"label":"Background color",
+"options":[
+  {
+     "value":"first_color",
+     "label":"First Color"
+  },
+  {
+     "value":"second_color",
+     "label":"Second Color"
+  },
+  {
+     "value":"third_color",
+     "label":"Third Color"
+  },
+  {
+   "value":"forth_color",
+   "label":"Forth Color"
+ },
+ {
+   "value":"fifth_color",
+   "label":"Fifth Color"
+ },
+ {
+   "value":"background_transparent",
+   "label":"Transparent Color"
+ }
+],
+"default":"forth_color"
+},
+{
+  "type": "range",
+  "id": "padding_top",
+  "label": "Padding Top controll",
+  "default":4,
+  "min": 1,
+  "max": 20,
+  "step": 1,
+  "unit": "rem"
+},
+{
+  "type": "range",
+  "id": "padding_bottom",
+  "label": "Padding Bottom controll",
+  "default":4,
+  "min": 1,
+  "max": 20,
+  "step": 1,
+  "unit": "rem"
+},
+{
+    "type":"text",
+    "id":"subtitle",
+    "label":"subtitle",
+    "default":"subtitle"
+ },
+ {
+    "type":"text",
+    "id":"headline",
+    "label":"t:common.headline",
+    "default":"Our store"
+ },
+ {
+     "type":"richtext",
+     "id":"text",
+     "label":"t:common.headline",
+     "default": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>"
+},
+{
+        "type": "select",
+        "id": "text_align",
+        "label": "Text align",
+        "options": [
+          {
+            "value": "font_left",
+            "label": "Left"
+          }, {
+            "value": "font_right",
+            "label": "Right"
+          }, {
+            "value": "font_center",
+            "label": "Center"
+          }
+        ],
+        "default": "font_center"
+      },
+{
+  "type": "checkbox",
+  "id": "image_onboarding",
+  "default": true,
+  "label": "Image show up"
+},
+{
+  "type": "checkbox",
+  "id": "animation_setting",
+  "default": false,
+  "label": "Animation turn on"
+},
+{
+  "type":"select",
+  "id":"grid_style",
+  "label":"Grid Style",
+  "options":[
+     {
+        "value":"grid_style1",
+        "label":"2 Column Grid"
+     },
+     {
+        "value":"grid_style2",
+        "label":"3 Column Grid"
+     },
+     {
+        "value":"grid_style3",
+        "label":"4 Column Grid"
+     }
+  ],
+  "default":"grid_style2"
+ },
+{
+  "type": "header",
+  "content": "Title settings",
+  "info": "Setting grid type and title settings"
+},
+  {
+    "type": "color",
+    "id": "color_title",
+    "label": "Section title color",
+    "default": "#4b4b4b"
+  },
+  {
+    "type": "color",
+    "id": "color_text_title",
+    "label": "Section Description color",
+    "default": "#4b4b4b"
+  }
+],
+"blocks":[
+ {
+    "type":"column",
+    "name":"t:common.image",
+    "limit":4,
+    "settings":[
+    {
+     "type": "header",
+     "content": "Block Image settings",
+     "info": "setting block image"
+     },
+       {
+          "type":"image_picker",
+          "id":"image",
+          "label":"t:common.image"
+       },
+      {
+        "type": "header",
+        "content": "Text Box settings",
+        "info": "setting block text contents"
+      },
+      {
+           "type":"text",
+           "id":"block_subtitle",
+           "label":"subtitle",
+           "default":"Subtitle"
+        },
+        {
+          "type":"text",
+          "id":"headline",
+          "label":"t:common.headline",
+          "default":"Headline"
+       },
+       {
+          "type":"richtext",
+          "id":"grid-text",
+          "label":"Grid Text",
+          "default": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>"
+       },
+       {
+        "type":"select",
+        "id":"textbox_title_align",
+        "label":"Textbox title align",
+        "options":[
+           {
+              "value":"font_left",
+              "label":"Left"
+           },
+           {
+              "value":"font_right",
+              "label":"Right"
+           },
+           {
+              "value":"font_center",
+              "label":"Center"
+           }
+        ],
+        "default":"font_center"
+       },
+      {
+        "type":"select",
+        "id":"color_box_schema",
+        "label":"Text Box color",
+        "options":[
+           {
+              "value":"first_color",
+              "label":"First Color"
+           },
+           {
+              "value":"second_color",
+              "label":"Second Color"
+           },
+           {
+              "value":"third_color",
+              "label":"Third Color"
+           },
+           {
+            "value":"forth_color",
+            "label":"Forth Color"
+          },
+          {
+            "value":"fifth_color",
+            "label":"Fifth Color"
+          },
+          {
+            "value":"background_transparent",
+            "label":"Transparent Color"
+          }
+        ],
+        "default":"fifth_color"
+       },
+       {
+        "type": "color",
+        "id": "grid_header_color_title",
+        "label": "Grid title color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "color",
+        "id": "grid_color_title",
+        "label": "Grid Description color",
+        "default": "#4b4b4b"
+      },
+      {
+        "type": "header",
+        "content": "Button settings",
+        "info": "setting buttons color and mouseover"
+      },
+       {
+        "type":"select",
+        "id":"button_size",
+        "label":"Button size",
+        "options":[
+           {
+              "value":"button_small",
+              "label":"Small"
+           },
+           {
+              "value":"button_medium",
+              "label":"Medium"
+           },
+           {
+              "value":"button_large",
+              "label":"Large"
+           },
+           {
+           "value":"button_xlarge",
+           "label":"Extra large"
+        }
+        ],
+        "default":"button_small"
+     },
+     {
+        "type": "checkbox",
+        "id": "button_round_off",
+        "default": false,
+        "label": "Button round"
+     },
+     {
+     "type": "url",
+     "id": "button-url",
+     "label": "t:common.button.url"
+     },
+     {
+     "type": "text",
+     "id": "button-text",
+     "label": "t:common.button.text",
+     "default": "Button"
+     },
+     {
+           "type": "header",
+           "content": "Button color"
+     },
+     {
+           "type": "color",
+           "id": "button_bg",
+           "label": "Button background color",
+           "default": "transparent"
+     },
+     {
+           "type": "color",
+           "id": "button_color",
+           "label": "button font color",
+           "default": "#808080"
+     },
+     {
+           "type": "color",
+           "id": "border_colors",
+           "label": "border color",
+           "default": "#808080"
+     },
+     {
+           "type": "color",
+           "id": "mo_button_bg",
+           "label": "Mouseover background",
+           "default": "#808080"
+     },
+     {
+           "type": "color",
+           "id": "mo_button_color",
+           "label": "Mouseover font color",
+           "default": "#fff"
+     },
+     {
+           "type": "color",
+           "id": "mo_border_color",
+           "label": "Mouseover border color",
+           "default": "transparent"
+     }
+    ]
+ }
+],
+"presets":[
+ {
+    "name":"Column",
+    "category":"column",
+    "blocks":[
+       {
+          "type":"column"
+       },
+       {
+          "type":"column"
+       },
+       {
+          "type":"column"
+       }
+    ]
+ }
+]
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 {% endschema %}

@@ -8,7 +8,11 @@
   }
 
   .button_items:hover{
+<<<<<<< HEAD
         color: {{ section.settings.c_mo_button_color }};
+=======
+        color: {{ section.settings.c_mo_button_color}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         border:1px solid {{ section.settings.c_mo_border_color }};
         background-color: {{ section.settings.c_mo_button_bg }};
   }
@@ -21,7 +25,11 @@
   }
 
   .primary_button:hover{
+<<<<<<< HEAD
         color: {{ section.settings.primary_mo_button_color }};
+=======
+        color: {{ section.settings.primary_mo_button_color}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         border:1px solid {{ section.settings.primary_mo_border_color }};
         background-color: {{ section.settings.primary_mo_button_bg }};
   }
@@ -34,7 +42,11 @@
   }
 
   .secondary_button:hover{
+<<<<<<< HEAD
         color: {{ section.settings.secondary_mo_button_color }};
+=======
+        color: {{ section.settings.secondary_mo_button_color}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         border:1px solid {{ section.settings.secondary_mo_border_color }};
         background-color: {{ section.settings.secondary_mo_button_bg }};
   }
@@ -45,15 +57,26 @@
 
 
 
+<<<<<<< HEAD
 <div class="{{ section.settings.color_schema }}" style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
 <div class="max-w-screen-lg px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600"{% endif %}>
 {% if cart.item_count > 0 %}
   <form action="{{ routes.cart_url }}?locale={{ request.locale.iso_code }}" method="POST" novalidate>
+=======
+<div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+<div class="max-w-screen-lg px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600"{% endif %}>
+{% if cart.item_count > 0 %}
+  <form action="{{routes.cart_url}}?locale={{ request.locale.iso_code }}" method="POST" novalidate>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     <input type="hidden" name="attributes[locale]" value="{{ request.locale.iso_code }}" />
     <div class="flex flex-col gap-4 md:gap-6 mb-6 sm:mb-8">
       {% for item in cart.items %}
           <!-- product - start -->
+<<<<<<< HEAD
           <div class=" {{ section.settings.box_color }} flex flex-col md:flex-row overflow-hidden gap-x-4 sm:gap-y-4 lg:gap-6" style="border: 3px solid {{ section.settings.border_color }};">
+=======
+          <div class=" {{section.settings.box_color}} flex flex-col md:flex-row overflow-hidden gap-x-4 sm:gap-y-4 lg:gap-6" style="border: 3px solid {{section.settings.border_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             <a href="{{ item.url | within: collections.all }}" class="group w-full md:w-[14rem] h-92 md:h-[18rem] block bg-gray-100 overflow-hidden relative">
               {% if item.image %}
                   <img
@@ -62,6 +85,7 @@
                             (min-width: 1024px) 1250px,
                             (min-width: 768px) 1000px,
                             (min-width: 640px) 720px,
+<<<<<<< HEAD
                             600px"
                              srcset="
                             {{ item.image | image_url: width: 600 }} 600w,
@@ -76,12 +100,27 @@
                         >
                 {% else %}
                     {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-cover object-center group-hover:scale-110 transition duration-200' }}
+=======
+                            600px
+                          " srcset="
+                            {{ item.image | img_url: '600x' }} 600w,
+                            {{ item.image | img_url: '720x' }} 720w,
+                            {{ item.image | img_url: '1000x' }} 1000w,
+                            {{ item.image | img_url: '1250x' }} 1250w,
+                            {{ item.image | img_url: '1500x' }} 1500w
+                          " src="{{ item.image | img_url: '1500x' }}" alt="{{ item.image.alt }}" loading="lazy"
+                          class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                        >
+                {%else%}
+                    {{'product-1' | placeholder_svg_tag: 'w-full h-full object-cover object-center group-hover:scale-110 transition duration-200'}}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               {% endif %}
             </a>
           
             <div class="flex flex-col justify-between flex-1 py-4 px-4">
               <div>
                 {% if item.title %}
+<<<<<<< HEAD
                 <a href="{{ item.url | within: collection }}" class="inline-block text-lg lg:text-xl font-bold transition mb-4" style="color: {{ section.settings.main_color }};"> {{ item.title }}</a>
                 {% endif %}
 
@@ -90,13 +129,27 @@
                 <span class="block" style="color: {{ section.settings.item_font_color }};">{{ option.name }}: {{ option.value }}</span>
                 {% endfor %}
                 {% endif %}
+=======
+                <a href="{{ item.url | within: collection }}" class="inline-block text-lg lg:text-xl font-bold transition mb-4" style="color: {{section.settings.main_color}};"> {{ item.title }}</a>
+                {%endif%}
+
+                {% if item.options_with_values %}
+                {% for option in item.options_with_values %}
+                <span class="block" style="color: {{section.settings.item_font_color}};">{{ option.name }}: {{ option.value }}</span>
+                {%endfor%}
+                {%endif%}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 
                 {%- comment -%} Extra Custom Option Code {%- endcomment -%}
                 {% assign property_size = item.properties | size %}
                 {% if property_size > 0 %}
                 {% for p in item.properties %}
                 {% unless p.last == blank %}
+<<<<<<< HEAD
                 <span class="block" style="color: {{ section.settings.item_font_color }};">
+=======
+                <span class="block" style="color: {{section.settings.item_font_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 {{ p.first }}:
                 {% if p.last contains '/uploads/' %}
                 <a class="lightbox" href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
@@ -112,7 +165,11 @@
             
               <div>
                 
+<<<<<<< HEAD
                   <span class="block md:text-lg font-bold my-4 md:my-0" style="color: {{ section.settings.item_price_color }};">
+=======
+                  <span class="block md:text-lg font-bold my-4 md:my-0" style="color: {{section.settings.item_price_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                   {% if section.settings.show_price == true %}
                   {{ item.price | money }}
                   {% endif %}
@@ -129,7 +186,11 @@
                       <div class="qty_control">
                         <div class="qtycard flex items-center justify-center" style="color: {{ section.settings.item_font_color }};">
                           <span class="btnqty qtyminus icon icon-minus">-</span>
+<<<<<<< HEAD
                           <input type="text" id="updates_{{ forloop.index }}" name="updates[]" value="{{ item.quantity }}" min="1" class="quantity-selector quantity-input" readonly="">
+=======
+                          <input type="text" id="updates_{{forloop.index}}" name="updates[]" value="{{item.quantity}}" min="1" class="quantity-selector quantity-input" readonly="">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                           <span class="btnqty qtyplus icon icon-plus">+</span>
                         </div>
                       </div>
@@ -144,7 +205,11 @@
 
               
               
+<<<<<<< HEAD
               <div class="flex flex-row md:flex-col w-full h-full justify-between items-center md:pt-2 md:ml-8 lg:ml-16" style="color: {{ section.settings.item_price_color }};">
+=======
+              <div class="flex flex-row md:flex-col w-full h-full justify-between items-center md:pt-2 md:ml-8 lg:ml-16" style="color: {{section.settings.item_price_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 <span class="block md:text-lg font-bold">
 
                   {% if section.settings.show_totalPrice == true %}
@@ -160,37 +225,64 @@
                   {% endif %}
 
                 </span>
+<<<<<<< HEAD
                 <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="button_items text-sm font-semibold select-none px-[2rem] py-[0.5rem]">Delete</a>
+=======
+                <a href="{{ routes.cart_change_url }}?line={{forloop.index}}&quantity=0" class="button_items text-sm font-semibold select-none px-[2rem] py-[0.5rem]">Delete</a>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               </div>
             </div>
           </div>
           <!-- product - end -->
+<<<<<<< HEAD
       {% endfor %}
 
       <div class="flex flex-col items-start justify-center">
         <label for="cart_notes" class="my-1" style="color:{{ section.settings.item_font_color }};">Cart Notes</label>
         <textarea name="note" id="cart_notes" class="w-full m-auto appearance-none focus:outline-none" cols="50" rows="5" style="background:{{ section.settings.cart_bg_color }}; border: 1px solid {{ section.settings.cart_border_color }};"></textarea>
+=======
+      {%endfor%}
+
+      <div class="flex flex-col items-start justify-center">
+        <label for="cart_notes" class="my-1" style="color:{{section.settings.item_font_color}};">Cart Notes</label>
+        <textarea name="note" id="cart_notes" class="w-full m-auto appearance-none focus:outline-none" cols="50" rows="5" style="background:{{ section.settings.cart_bg_color }}; border: 1px solid {{section.settings.cart_border_color}};"></textarea>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       </div>
     </div>
     
         <!-- totals - start -->
         <div class="flex flex-col items-end gap-4">
           {%- if section.settings.price_total_show == true -%}
+<<<<<<< HEAD
             <div class="{{ section.settings.box_color }} w-full sm:max-w-xs p-4" style="border: 1px solid {{ section.settings.border_color }};">
             <div class="space-y-1">
               <div class="flex justify-between gap-4" style="color: {{ section.settings.item_font_color }};">
+=======
+            <div class="{{section.settings.box_color}} w-full sm:max-w-xs p-4" style="border: 1px solid {{section.settings.border_color}};">
+            <div class="space-y-1">
+              <div class="flex justify-between gap-4" style="color: {{section.settings.item_font_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 <span>{{ 'cart.subtotal' | t }}</span>
                 <span>{{ cart.total_price | money_with_currency }}</span>
               </div>
             </div>
     
+<<<<<<< HEAD
             <div class="pt-4 mt-4" style="border-top: 1px solid {{ section.settings.item_font_color }};">
               <div class="flex justify-between items-start gap-4" style="color: {{ section.settings.item_price_color }};">
+=======
+            <div class="pt-4 mt-4" style="border-top: 1px solid {{section.settings.item_font_color}};">
+              <div class="flex justify-between items-start gap-4" style="color: {{section.settings.item_price_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                 <span class="text-lg font-bold">Total</span>
     
                 <span class="flex flex-col items-end">
                   <span class="text-lg font-bold">{{ cart.total_price | money_with_currency }}</span>
+<<<<<<< HEAD
                   <span class="text-sm" style="color: {{ section.settings.item_font_color }};">
+=======
+                  <span class="text-sm" style="color: {{section.settings.item_font_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                     {% if shop.taxes_included %}
                       {{ 'common.including_tax' | t }}
                     {% else %}
@@ -227,11 +319,19 @@
 
   </form>
   {% else %}
+<<<<<<< HEAD
     <div class="flex flex-col justify-center items-center p-[2rem]" style="color: {{ section.settings.item_font_color }};">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-18 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
       </svg>
       <p class="text-center py-2 text-lg" style="color: {{ section.settings.main_color }};">{{ 'cart.empty_cart' | t }}</p>
+=======
+    <div class="flex flex-col justify-center items-center p-[2rem]" style="color: {{section.settings.item_font_color}};">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-18 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+      </svg>
+      <p class="text-center py-2 text-lg" style="color: {{section.settings.main_color}};">{{ 'cart.empty_cart' | t }}</p>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     </div>
 
     <div class="text-center">
@@ -242,6 +342,7 @@
 {% endif%}
 </div>
 
+<<<<<<< HEAD
 {% schema %}
 {
   "name": "Main Cart",
@@ -397,40 +498,224 @@
       "content": "Cart Button color"
     },
     {
+=======
+{% schema %} 
+
+{
+"name": "Main Cart",
+"settings": [
+{
+"type": "header",
+"content": "General Settings"
+},
+{
+"type":"select",
+"id":"color_schema",
+"label":"Background color",
+"options":[
+ {
+    "value":"first_color",
+    "label":"First Color"
+ },
+ {
+    "value":"second_color",
+    "label":"Second Color"
+ },
+ {
+    "value":"third_color",
+    "label":"Third Color"
+ },
+ {
+  "value":"forth_color",
+  "label":"Forth Color"
+},
+{
+  "value":"fifth_color",
+  "label":"Fifth Color"
+},
+{
+  "value":"background_transparent",
+  "label":"Transparent Color"
+}
+],
+"default":"background_transparent"
+},
+{
+"type": "range",
+"id": "padding_top",
+"label": "Padding Top controll",
+"default":4,
+"min": 1,
+"max": 20,
+"step": 1,
+"unit": "rem"
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"label": "Padding Bottom controll",
+"default":4,
+"min": 1,
+"max": 20,
+"step": 1,
+"unit": "rem"
+},
+{
+"type": "checkbox",
+"id": "animation_setting",
+"default": false,
+"label": "Animation turn on"
+},
+{
+"type": "checkbox",
+"id": "show_quantity",
+"default": true,
+"label": "Show quantity"
+},
+{
+"type": "checkbox",
+"id": "show_totalPrice",
+"default": true,
+"label": "Show total price"
+},
+{
+"type": "checkbox",
+"id": "show_price",
+"default": true,
+"label": "Show single price"
+},
+{
+"type": "checkbox",
+"id": "price_total_show",
+"default": true,
+"label": "Show the Price Total"
+},
+{
+"type": "header",
+"content": "Items"
+},
+{
+"type":"select",
+"id":"box_color",
+"label":"Box color",
+"options":[
+ {
+    "value":"first_color",
+    "label":"First Color"
+ },
+ {
+    "value":"second_color",
+    "label":"Second Color"
+ },
+ {
+    "value":"third_color",
+    "label":"Third Color"
+ },
+ {
+  "value":"forth_color",
+  "label":"Forth Color"
+},
+{
+  "value":"fifth_color",
+  "label":"Fifth Color"
+},
+{
+  "value":"background_transparent",
+  "label":"Transparent Color"
+}
+],
+"default":"background_transparent"
+},
+{
+"type": "color",
+"id": "main_color",
+"label": "Item title color",
+"default": "#5E5E5E"
+},
+{
+"type": "color",
+"id": "item_font_color",
+"label": "Item font color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "item_price_color",
+"label": "Price color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "border_color",
+"label": "Border color",
+"default": "transparent"
+},
+{
+      "type": "header",
+      "content": "Cart Button color"
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "c_button_bg",
       "label": "Button background color",
       "default": "transparent"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "c_button_color",
       "label": "button font color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "c_border_colors",
       "label": "border color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "c_mo_button_bg",
       "label": "Mouseover background",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "c_mo_button_color",
       "label": "Mouseover font color",
       "default": "#fff"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "c_mo_border_color",
       "label": "Mouseover border color",
       "default": "transparent"
+<<<<<<< HEAD
     },
     {
       "type": "header",
@@ -458,81 +743,174 @@
       "content": "Primary Button"
     },
     {
+=======
+},
+{
+"type": "header",
+"content": "Cart note"
+},
+{
+"type": "color",
+"id": "cart_bg_color",
+"label": "background color",
+"default": "transparent"
+},
+{
+"type": "color",
+"id": "cart_border_color",
+"label": "Border color",
+"default": "#A9A9A9"
+},
+{
+"type": "header",
+"content": "Button settings",
+"info":"Setting primary Button, Secondary Button and mouseover colors"
+},
+{
+"type": "header",
+"content": "Primary Button"
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "primary_button_bg",
       "label": "Button background color",
       "default": "transparent"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "primary_button_color",
       "label": "button font color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "primary_border_colors",
       "label": "border color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "primary_mo_button_bg",
       "label": "Mouseover background",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "primary_mo_button_color",
       "label": "Mouseover font color",
       "default": "#fff"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "primary_mo_border_color",
       "label": "Mouseover border color",
       "default": "transparent"
+<<<<<<< HEAD
     },
     {
       "type": "header",
       "content": "Secondary Button"
     },
     {
+=======
+},
+{
+"type": "header",
+"content": "Secondary Button"
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "secondary_button_bg",
       "label": "Button background color",
       "default": "transparent"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "secondary_button_color",
       "label": "button font color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "secondary_border_colors",
       "label": "border color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "secondary_mo_button_bg",
       "label": "Mouseover background",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "secondary_mo_button_color",
       "label": "Mouseover font color",
       "default": "#fff"
+<<<<<<< HEAD
     },
     {
+=======
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "secondary_mo_border_color",
       "label": "Mouseover border color",
       "default": "transparent"
+<<<<<<< HEAD
     }
   ]
+=======
+}
+]
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 {% endschema %}

@@ -2,9 +2,15 @@
 {% assign image = section.settings.image %}
 
 <div
+<<<<<<< HEAD
   class="{{ section.settings.color_schema }} 
           min-h-96 flex items-center flex-1 flex-shrink-0 overflow-hidden relative"
           style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
+=======
+  class="{{section.settings.color_schema}} 
+          min-h-96 flex items-center flex-1 flex-shrink-0 overflow-hidden relative"
+          style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           >
   <!-- image - start -->
   {% if collection.image %}
@@ -15,12 +21,21 @@
   (min-width: 640px) 720px,
   600px
 " srcset="
+<<<<<<< HEAD
   {{ collection.image | image_url: width: 600 }} 600w,
   {{ collection.image | image_url: width: 720 }} 720w,
   {{ collection.image | image_url: width: 1000 }} 1000w,
   {{ collection.image | image_url: width: 1250 }} 1250w,
   {{ collection.image | image_url: width: 1500 }} 1500w
 " src="{{ collection.image | image_url: width: 1500 }}" alt="{{ collection.image.alt }}" loading="lazy"
+=======
+  {{ collection.image | img_url: '600x' }} 600w,
+  {{ collection.image | img_url: '720x' }} 720w,
+  {{ collection.image | img_url: '1000x' }} 1000w,
+  {{ collection.image | img_url: '1250x' }} 1250w,
+  {{ collection.image | img_url: '1500x' }} 1500w
+" src="{{ collection.image | img_url: '1500x' }}" alt="{{ collection.image.alt }}" loading="lazy"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
   class="w-full h-full object-cover object-center absolute inset-0"
   width="{{ collection.image.width }}"
   height="{{ collection.image.height }}" >
@@ -32,6 +47,7 @@
   (min-width: 640px) 720px,
   600px
 " srcset="
+<<<<<<< HEAD
   {{ image | image_url: width: 600 }} 600w,
   {{ image | image_url: width: 720 }} 720w,
   {{ image | image_url: width: 1000 }} 1000w,
@@ -39,6 +55,15 @@
   {{ image | image_url: width: 1500 }} 1500w
 " src="{{ image | image_url: width: 1500 }}" alt="{{ image.alt }}" loading="lazy"
   class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {% endif %}"
+=======
+  {{ image | img_url: '600x' }} 600w,
+  {{ image | img_url: '720x' }} 720w,
+  {{ image | img_url: '1000x' }} 1000w,
+  {{ image | img_url: '1250x' }} 1250w,
+  {{ image | img_url: '1500x' }} 1500w
+" src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
+  class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {%endif%}"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
   width="{{ image.width }}"
   height="{{ image.height }}"
     >
@@ -48,9 +73,15 @@
 
 
   <!-- text start -->
+<<<<<<< HEAD
   <div class="flex flex-col relative px-8 p-4 w-[1440px] m-auto {{ section.settings.text_align }}">
     <h1 class="w-full py-4 text-4xl font-bold tracking-widest" style="color: {{ section.settings.title_color }};"> {{ section.settings.headline }}</h1>
     <div class="subfont_size py-8 tracking-wider leading-8" style="color: {{ section.settings.text_color }};">
+=======
+  <div class="flex flex-col relative px-8 p-4 w-[1440px] m-auto {{section.settings.text_align}}">
+    <h1 class="w-full py-4 text-4xl font-bold tracking-widest" style="color: {{section.settings.title_color}};"> {{ section.settings.headline}}</h1>
+    <div class="subfont_size py-8 tracking-wider leading-8" style="color: {{section.settings.text_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       {{ section.settings.description }}
     </div>
   </div>
@@ -60,6 +91,7 @@
 
 {% schema %}
 {
+<<<<<<< HEAD
   "name": "Collection List Banner",
   "settings": [
     {
@@ -179,5 +211,126 @@
       "default": "#A9A9A9"
     }
   ]
+=======
+"name": "Collection List Banner",
+"settings": [
+{
+  "type": "header",
+  "content": "Banner General",
+  "info": "Setting banner image, base color and size"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "All product image"
+},
+{
+  "type":"select",
+  "id":"color_schema",
+  "label":"Background color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"background_transparent"
+ },
+  {
+    "type": "range",
+    "id": "padding_top",
+    "label": "Padding Top controll",
+    "default":11,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "unit": "rem"
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "label": "Padding Bottom controll",
+    "default":1,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "unit": "rem"
+  },
+{
+  "type": "checkbox",
+  "id": "overlay_set",
+  "default": true,
+  "label": "Overlay cover"
+},
+{
+  "type": "header",
+  "content": "Banner Content",
+  "info": "Setting banner text and color"
+},
+{
+  "type":"select",
+  "id":"text_align",
+  "label":"Text align",
+  "options":[
+     {
+        "value":"font_left",
+        "label":"Left"
+     },
+     {
+        "value":"font_right",
+        "label":"Right"
+     },
+     {
+        "value":"font_center",
+        "label":"Center"
+     }
+  ],
+  "default":"font_center"
+},
+{
+  "type": "text",
+  "id": "headline",
+  "label": "Banner HeadLine",
+  "default":"Collection HeadLine"
+},
+{
+  "type": "richtext",
+  "id": "description",
+  "label": "Description"
+},
+{
+  "type": "color",
+  "id": "title_color",
+  "label": "Title color",
+  "default": "#808080"
+},
+{
+  "type": "color",
+  "id": "text_color",
+  "label": "Text color",
+  "default": "#A9A9A9"
+}
+]
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 {% endschema %}

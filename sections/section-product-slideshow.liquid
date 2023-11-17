@@ -18,9 +18,15 @@ border-radius:999px;
 
 
 .product_slideshow_arrow_color:hover{
+<<<<<<< HEAD
 color:{{ section.settings.arrow_icons_mouseover }};
 background:{{ section.settings.button_bg_mouseover }};
 border: 1px solid {{ section.settings.arrow_border_mouseover }};
+=======
+color:{{section.settings.arrow_icons_mouseover}};
+background:{{section.settings.button_bg_mouseover}};
+border: 1px solid {{section.settings.arrow_border_mouseover}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 
 .{{ section.id }}_button_pslider{
@@ -31,34 +37,56 @@ border: 1px solid {{ section.settings.arrow_border_mouseover }};
    }
 
    .{{ section.id }}_button_pslider:hover{
+<<<<<<< HEAD
          color: {{ section.settings.mo_button_color }};
+=======
+         color: {{ section.settings.mo_button_color}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
          border:1px solid {{ section.settings.mo_border_color }};
          background-color: {{ section.settings.mo_button_bg }};
    }
 
 {% endstyle %}
 
+<<<<<<< HEAD
 <div class="{{ section.settings.color_schema }}">
       <section class="xl:max-w-[1320px] px-4 md:px-8 mx-auto"
             style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;" 
+=======
+<div class="{{section.settings.color_schema}}">
+      <section class="xl:max-w-[1320px] px-4 md:px-8 mx-auto"
+            style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" 
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             {% if section.settings.animation_setting == true %} data-aos="fade-up"{% endif %}>
             <div>
                   {%- comment -%} headline {%- endcomment -%}
                   <div class="md:mx-[1rem] flex flex-col md:flex-row justify-between">
                         <div class="w-full Left_titlebox">
                               {% if section.settings.headline != blank %}
+<<<<<<< HEAD
                               <h1 class="{{ section.settings.title_align }} mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{ section.settings.color_title }};">
                               {{ section.settings.headline }}
                               </h1>
                               {% endif %}
                               <div class="subfont_size {{ section.settings.title_align }} my-8 leading-8 tracking-wider" style="color:{{ section.settings.color_sub_title }};">
+=======
+                              <h1 class="{{section.settings.title_align}} mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                              {{ section.settings.headline }}
+                              </h1>
+                              {% endif %}
+                              <div class="subfont_size {{section.settings.title_align}} my-8 leading-8 tracking-wider" style="color:{{section.settings.color_sub_title}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                               {{ section.settings.text }}
                               </div>  
                         </div>
                   </div>
 
                   {%- comment -%} Product Slideshow {%- endcomment -%}
+<<<<<<< HEAD
                   <div class="lg:flex {{ section.settings.img_array }} flex-col">
+=======
+                  <div class="lg:flex {{section.settings.img_array}} flex-col">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 
                         <div class="w-full pl-0 md:p-3 overflow-hidden">
                               <div class="swiper-container">
@@ -73,8 +101,13 @@ border: 1px solid {{ section.settings.arrow_border_mouseover }};
                                                             product_title_color: section.settings.product_title_color
                                                             product_point_color: section.settings.product_point_color
                                                             product_badge_color: section.settings.product_badge_color
+<<<<<<< HEAD
                                                             mouseover_image: section.settings.mouseover_image
                                                             show_symbol: section.settings.show_symbol
+=======
+                                                            mouseover_image:section.settings.mouseover_image
+                                                            show_symbol:section.settings.show_symbol
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                                                             vendor_set: section.settings.vendor_set
                                                             show_rating: section.settings.show_rating
                                                             product_font_size: section.settings.product_font_size
@@ -115,8 +148,13 @@ border: 1px solid {{ section.settings.arrow_border_mouseover }};
                     {%- if section.settings.button-text != blank -%}
                        <div class="py-2 inline-block">
                         <a href="{{ section.settings.button-url }}"
+<<<<<<< HEAD
                               class="{{ section.id }}_button_pslider tracking-widest mx-2 text-sm text-center {{ section.settings.button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
                               {{ section.settings.button-text }}</a>
+=======
+                              class="{{ section.id }}_button_pslider tracking-widest mx-2 text-sm text-center {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
+                              {{section.settings.button-text }}</a>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                         </div>
                       {% endif %}
                   </div>
@@ -129,6 +167,7 @@ border: 1px solid {{ section.settings.arrow_border_mouseover }};
 
 {% schema %}
 {
+<<<<<<< HEAD
   "name": "Product Slideshow",
   "class": "shopify-section-vue",
   "settings": [
@@ -401,10 +440,286 @@ border: 1px solid {{ section.settings.arrow_border_mouseover }};
       "default": "button_medium"
     },
     {
+=======
+      "name": "Product Slideshow",
+      "class": "shopify-section-vue",
+      "settings": [
+      {
+            "type": "header",
+            "content": "General settings"
+      },
+
+      {
+            "type":"select",
+            "id":"color_schema",
+            "label":"Background color",
+            "options":[
+               {
+                  "value":"first_color",
+                  "label":"First Color"
+               },
+               {
+                  "value":"second_color",
+                  "label":"Second Color"
+               },
+               {
+                  "value":"third_color",
+                  "label":"Third Color"
+               },
+               {
+                "value":"forth_color",
+                "label":"Forth Color"
+              },
+              {
+                "value":"fifth_color",
+                "label":"Fifth Color"
+              },
+              {
+                "value":"background_transparent",
+                "label":"Transparent Color"
+              }
+            ],
+            "default":"fifth_color"
+            },
+            {
+            "type": "range",
+            "id": "padding_top",
+            "label": "Padding Top controll",
+            "default":4,
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "unit": "rem"
+            },
+            {
+            "type": "range",
+            "id": "padding_bottom",
+            "label": "Padding Bottom controll",
+            "default":4,
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "unit": "rem"
+            },
+            {
+            "type": "checkbox",
+            "id": "show_symbol",
+            "default": true,
+            "label": "show metafield symbol",
+            "info" : "You must set metafield"
+            },
+            {
+            "type": "checkbox",
+            "id": "animation_setting",
+            "default": false,
+            "label": "Animation turn on"
+            },
+            {
+            "type": "checkbox",
+            "id": "show_rating",
+            "default": true,
+            "label": "show rating"
+            },
+            {
+              "type": "checkbox",
+              "id": "mouseover_image",
+              "default": true,
+              "label": "Show mouseover Image"
+            },
+            {
+            "type": "header",
+            "content": "Arrow Buttons",
+            "info": "Slide Show Arrow Button Settings"
+            },
+            {
+            "type": "color",
+            "id": "button_background",
+            "label": "Button background",
+            "default": "transparent"
+            },
+            {
+                  "type": "color",
+                  "id": "arrow_icons",
+                  "label": "Arrow Icon color",
+                  "default": "#808080"
+            },
+            {
+                  "type": "color",
+                  "id": "arrow_border",
+                  "label": "Arrow box line",
+                  "default": "#808080"
+            },
+            {
+            "type": "header",
+            "content": "Arrow mouseover"
+            },
+            {
+                  "type": "color",
+                  "id": "button_bg_mouseover",
+                  "label": "Button background",
+                  "default": "#808080"
+            },
+            {
+                  "type": "color",
+                  "id": "arrow_icons_mouseover",
+                  "label": "Arrow Icon color",
+                  "default": "#fff"
+            },
+            {
+                  "type": "color",
+                  "id": "arrow_border_mouseover",
+                  "label": "Arrow box line",
+                  "default": "transparent"
+            },
+            {
+            "type": "header",
+            "content": "Title settings",
+            "info": "Section Title and color settings"
+            },
+           {
+            "type":"select",
+            "id":"title_align",
+            "label":"Title align",
+            "options":[
+                {
+                "value":"font_left",
+                "label":"Left"
+                },
+                {
+                "value":"font_right",
+                "label":"Right"
+                },
+                {
+                "value":"font_center",
+                "label":"Center"
+                }
+              ],
+              "default":"font_center"
+          },
+            {
+            "type": "text",
+            "id": "headline",
+            "label": "t:common.headline",
+            "default": "Headline"
+            },
+            {
+            "type": "richtext",
+            "id": "text",
+            "label": "t:common.text",
+            "default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora</p><p> omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
+            },
+            {
+                  "type": "color",
+                  "id": "color_title",
+                  "label": "Section title color",
+                  "default": "#4b4b4b"
+            },
+            {
+                  "type": "color",
+                  "id": "color_sub_title",
+                  "label": "Section Description color",
+                  "default": "#4b4b4b"
+            },
+            {
+                  "type": "header",
+                  "content": "Collection settings",
+                  "info": "setting collection and color text and price"
+            },
+            {
+                  "type": "collection",
+                  "id": "collection_featured",
+                  "label": "t:common.collection"
+            },
+            {
+                  "type": "range",
+                  "id": "product_font_size",
+                  "label": "Prodcut Font size",
+                  "default":1,
+                  "min": 0.1,
+                  "max": 3,
+                  "step": 0.1,
+                  "unit": "rem"
+            },
+            {
+                  "type": "checkbox",
+                  "id": "vendor_set",
+                  "default": false,
+                  "label": "Show vendor"
+            },
+            {
+                  "type": "color",
+                  "id": "product_title_color",
+                  "label": "Product title color",
+                  "default": "#4b4b4b"
+            },
+            {
+                  "type": "color",
+                  "id":"product_point_color",
+                  "label": "Product point color",
+                  "default": "#C33131"
+            },
+            {
+                  "type": "color",
+                  "id":"product_badge_color",
+                  "label": "Product badge color",
+                  "default": "#E8D5D4"
+            },
+            {
+                  "type": "header",
+                  "content": "Button settings",
+                  "info": "Button color and mouse over color settings"
+            },
+            {
+              "type":"select",
+              "id":"button_align",
+              "label":"Button align",
+              "options":[
+                    {
+                    "value":"font_left",
+                    "label":"Left"
+                    },
+                    {
+                    "value":"font_right",
+                    "label":"Right"
+                    },
+                    {
+                    "value":"font_center",
+                    "label":"Center"
+                    }
+              ],
+              "default":"font_center"
+          },
+           {
+            "type":"select",
+            "id":"button_size",
+            "label":"Button size",
+            "options":[
+            {
+            "value":"button_small",
+            "label":"Small"
+            },
+            {
+            "value":"button_medium",
+            "label":"Medium"
+            },
+            {
+            "value":"button_large",
+            "label":"Large"
+            },
+            {
+            "value":"button_xlarge",
+            "label":"Extra large"
+      }
+      ],
+            "default":"button_medium"
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "checkbox",
       "id": "button_round_off",
       "default": false,
       "label": "Button round"
+<<<<<<< HEAD
     },
     {
       "type": "url",
@@ -412,50 +727,94 @@ border: 1px solid {{ section.settings.arrow_border_mouseover }};
       "label": "t:common.button.url"
     },
     {
+=======
+      },
+      {
+      "type": "url",
+      "id": "button-url",
+      "label": "t:common.button.url"
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "text",
       "id": "button-text",
       "label": "t:common.button.text",
       "default": "Button"
+<<<<<<< HEAD
     },
     {
       "type": "header",
       "content": "Button color"
     },
     {
+=======
+      },
+      {
+        "type": "header",
+        "content": "Button color"
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "button_bg",
       "label": "Button background color",
       "default": "transparent"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "button_color",
       "label": "button font color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "border_colors",
       "label": "border color",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "mo_button_bg",
       "label": "Mouseover background",
       "default": "#808080"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "mo_button_color",
       "label": "Mouseover font color",
       "default": "#fff"
+<<<<<<< HEAD
     },
     {
+=======
+      },
+      {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "color",
       "id": "mo_border_color",
       "label": "Mouseover border color",
       "default": "transparent"
+<<<<<<< HEAD
     }
   ],
   "presets": [
@@ -464,5 +823,15 @@ border: 1px solid {{ section.settings.arrow_border_mouseover }};
       "category": "Image"
     }
   ]
+=======
+      }
+      ],
+            "presets": [
+            {
+            "name": "Product SlideShow",
+            "category": "Image"
+            }
+      ]
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 {% endschema %}

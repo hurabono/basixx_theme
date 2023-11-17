@@ -7,7 +7,11 @@
   }
 
   .{{ section.id }}_button_style:hover{
+<<<<<<< HEAD
         color: {{ section.settings.mo_button_color }};
+=======
+        color: {{ section.settings.mo_button_color}};
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         border:1px solid {{ section.settings.mo_border_color }};
         background-color: {{ section.settings.mo_button_bg }};
   }
@@ -16,6 +20,7 @@
 
     
     
+<<<<<<< HEAD
 <div class="{{ section.settings.color_schema }}" 
       style="{% if section.settings.image %} background-image:url('{{ section.settings.image.src | image_url }}'); background-size: cover; background-position: center; {% endif %} padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
   <section class="max-w-[1320px] m-auto px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
@@ -24,11 +29,22 @@
     <div class="overflow-hidden w-full lg:w-[60%] bg-white">
         {%- if section.settings.video != blank -%}
           {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: true, image_size: 'master', class: 'h-[25rem] md:h-[40rem] object-cover object-center' }}
+=======
+<div class="{{section.settings.color_schema}}" 
+      style="{% if section.settings.image %} background-image:url('{{ section.settings.image.src | img_url: 'master' }}'); background-size: cover; background-position: center; {% endif %} padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+  <section class="max-w-[1320px] m-auto px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
+    <div class="relative flex flex-col {{section.settings.img_array}} gap-8 md:gap-16">
+    {%- comment -%} image area {%- endcomment -%}
+    <div class="overflow-hidden w-full lg:w-[60%] bg-white">
+        {%- if section.settings.video != blank -%}
+          {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: true, image_size: 'master', class:'h-[25rem] md:h-[40rem] object-cover object-center' }}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         {%- else -%}
           {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
         {%- endif -%}
     </div>
     {%- comment -%} Text area {%- endcomment -%}
+<<<<<<< HEAD
     <div class="flex flex-col {{ section.settings.text_position }} items-start w-full lg:w-[40%] {{ section.settings.text_align }}">
       <div class="text-xs mb-3 tracking-widest" style="color: {{ section.settings.text_color }};">
         {{ section.settings.subtext }}
@@ -39,14 +55,31 @@
       </div>
 
       <div class="my-8 tracking-wider leading-8" style="color: {{ section.settings.text_color }}; font-size:{{ section.settings.desc_font_size }}rem;">
+=======
+    <div class="flex flex-col {{section.settings.text_position}} items-start w-full lg:w-[40%] {{section.settings.text_align}}">
+      <div class="text-xs mb-3 tracking-widest" style="color: {{section.settings.text_color}};">
+        {{section.settings.subtext}}
+      </div>
+
+      <div class="text-2xl lg:text-3xl font-bold mb-2 tracking-widest" style="color: {{section.settings.header_color}}; font-size:{{section.settings.header_font_size}}rem;">
+        {{ section.settings.headline }}
+      </div>
+
+      <div class="my-8 tracking-wider leading-8" style="color: {{section.settings.text_color}}; font-size:{{section.settings.desc_font_size}}rem;">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         {{ section.settings.text }}
       </div>
 
     {%- if section.settings.button-text != blank -%}
         <div class="py-2 inline-block">
           <a href="{{ section.settings.button-url }}"
+<<<<<<< HEAD
               class="{{ section.id }}_button_style tracking-widest text-center {{ section.settings.button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
               {{ section.settings.button-text }}</a>
+=======
+              class="{{ section.id }}_button_style tracking-widest text-center {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
+              {{section.settings.button-text }}</a>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           </div>
     {% endif %}
 
@@ -60,6 +93,7 @@
 
 {% schema %}
 {
+<<<<<<< HEAD
   "name": "Video Banner",
   "class": "shopify-section-vue",
   "settings": [
@@ -115,20 +149,87 @@
       "id": "padding_top",
       "label": "Padding Top controll",
       "default": 4,
+=======
+"name": "Video Banner",
+"class": "shopify-section-vue",
+"settings": [
+{
+  "type": "header",
+  "content": "General settings"
+},
+{
+   "type":"select",
+   "id":"color_schema",
+   "label":"Background color",
+   "options":[
+      {
+         "value":"first_color",
+         "label":"First Color"
+      },
+      {
+         "value":"second_color",
+         "label":"Second Color"
+      },
+      {
+         "value":"third_color",
+         "label":"Third Color"
+      },
+      {
+       "value":"forth_color",
+       "label":"Forth Color"
+     },
+     {
+       "value":"fifth_color",
+       "label":"Fifth Color"
+     },
+     {
+       "value":"background_transparent",
+       "label":"Transparent Color"
+     }
+   ],
+   "default":"background_transparent"
+  },
+  {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": false,
+        "label": "Animation turn on"
+  },
+  {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+    },
+   {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default":4,
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "min": 0,
       "max": 20,
       "step": 1,
       "unit": "rem"
+<<<<<<< HEAD
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "label": "Padding Bottom controll",
       "default": 4,
+=======
+   },
+   {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default":4,
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "min": 0,
       "max": 20,
       "step": 1,
       "unit": "rem"
+<<<<<<< HEAD
     },
     {
       "type": "video",
@@ -275,10 +376,159 @@
       "default": "button_small"
     },
     {
+=======
+   },
+{
+  "type": "video",
+  "id": "video",
+  "label": "A Shopify-hosted video"
+},
+  {
+    "type":"select",
+    "id":"img_array",
+    "label":"Image location",
+    "options":[
+       {
+          "value":"left_img",
+          "label":"Left"
+       },
+       {
+          "value":"right_img",
+          "label":"Right"
+       }
+    ],
+    "default":"left_img"
+},
+{
+    "type":"select",
+    "id":"text_position",
+    "label":"Text Position",
+    "options":[
+       {
+          "value":"position_top",
+          "label":"Top"
+       },
+       {
+          "value":"position_center",
+          "label":"Center"
+       },
+       {
+          "value":"position_bottom",
+          "label":"Bottom"
+       }
+    ],
+    "default":"position_center"
+},
+ {
+  "type": "header",
+  "content": "Text settings"
+},
+{
+"type": "text",
+"id": "subtext",
+"label": "subtext",
+"default": "This is subtext"
+},
+{
+"type": "text",
+"id": "headline",
+"label": "t:common.headline",
+"default": "Headline"
+},
+{
+  "type": "range",
+  "id": "header_font_size",
+  "label": "Title Font size",
+  "default":2.3,
+  "min": 0.1,
+  "max": 4,
+  "step": 0.1,
+  "unit": "rem"
+},
+{
+  "type":"select",
+  "id":"text_align",
+  "label":"Text align",
+  "options":[
+     {
+        "value":"banner_font_left",
+        "label":"Left"
+     },
+     {
+        "value":"banner_font_right",
+        "label":"Right"
+     },
+     {
+        "value":"banner_font_center",
+        "label":"Center"
+     }
+  ],
+  "default":"banner_font_center"
+},
+{
+  "type": "range",
+  "id": "desc_font_size",
+  "label": "Description Font size",
+  "default":0.8,
+  "min": 0.1,
+  "max": 4,
+  "step": 0.1,
+  "unit": "rem"
+},
+{
+"type": "textarea",
+"id": "text",
+"label": "t:common.text",
+"default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+},
+{
+"type": "color",
+"id": "header_color",
+"label": "Header color",
+"default": "#4B4B4B"
+},
+{
+"type": "color",
+"id": "text_color",
+"label": "Text color",
+"default": "#808080"
+},
+{
+  "type": "header",
+  "content": "Button settings",
+  "info": "Button color and mouse over color settings"
+},
+{
+  "type":"select",
+  "id":"button_size",
+  "label":"Button size",
+  "options":[
+    {
+     "value":"button_small",
+      "label":"Small"
+    },
+    {
+      "value":"button_medium",
+      "label":"Medium"
+    },
+    {
+      "value":"button_large",
+      "label":"Large"
+    },
+    {
+      "value":"button_xlarge",
+      "label":"Extra large"
+    }
+      ],
+      "default":"button_small"
+},
+{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "checkbox",
       "id": "button_round_off",
       "default": false,
       "label": "Button round"
+<<<<<<< HEAD
     },
     {
       "type": "url",
@@ -338,5 +588,66 @@
       "category": "Image"
     }
   ]
+=======
+},
+{
+"type": "url",
+"id": "button-url",
+"label": "t:common.button.url"
+},
+{
+"type": "text",
+"id": "button-text",
+"label": "t:common.button.text",
+"default": "Button"
+},
+{
+  "type": "header",
+  "content": "Button colors"
+},
+{
+   "type": "color",
+   "id": "button_bg",
+   "label": "Button background color",
+   "default": "transparent"
+},
+{
+   "type": "color",
+   "id": "button_color",
+   "label": "button font color",
+   "default": "#808080"
+},
+{
+   "type": "color",
+   "id": "border_colors",
+   "label": "border color",
+   "default": "#808080"
+},
+{
+   "type": "color",
+   "id": "mo_button_bg",
+   "label": "Mouseover background",
+   "default": "#808080"
+},
+{
+   "type": "color",
+   "id": "mo_button_color",
+   "label": "Mouseover font color",
+   "default": "#fff"
+},
+{
+   "type": "color",
+   "id": "mo_border_color",
+   "label": "Mouseover border color",
+   "default": "transparent"
+}
+],
+"presets": [
+{
+"name": "Video Banner",
+"category": "Image"
+}
+]
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 {% endschema %}

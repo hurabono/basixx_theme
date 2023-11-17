@@ -18,14 +18,22 @@
         "headline": "THANKS FOR USING BASIXX THEME",
         "font_style": "font_bold",
         "color_title": "#5c5353",
+<<<<<<< HEAD
         "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.</p>",
+=======
+        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "color_desciption": "#5c5353",
         "textbox_align": "font_right",
         "textbox_color": "background_transparent",
         "button_align": "font_right",
         "button_size": "button_medium",
         "button_round_off": false,
+<<<<<<< HEAD
         "button-url": "/",
+=======
+        "button-url": "\/",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "button-text": "view more",
         "button_bg": "#ffffff",
         "button_color": "#808080",
@@ -35,12 +43,20 @@
         "mo_border_color": "rgba(0,0,0,0)"
       }
     },
+<<<<<<< HEAD
     "rich-text": {
       "type": "section-richtext",
       "settings": {
       }
     },
     "section-product-slideshow1": {
+=======
+    "rich-text":{
+      "type":"section-richtext",
+      "settings":{}
+    },
+    "section-product-slideshow1":{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "section-product-slideshow",
       "settings": {
         "color_schema": "forth_color",
@@ -58,7 +74,11 @@
         "arrow_border_mouseover": "#4b4b4b",
         "title_align": "font_center",
         "headline": "NEW LISTING",
+<<<<<<< HEAD
         "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.</p>",
+=======
+        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "color_title": "#4b4b4b",
         "color_sub_title": "#808080",
         "collection_featured": "",
@@ -80,7 +100,11 @@
         "mo_border_color": "rgba(0,0,0,0)"
       }
     },
+<<<<<<< HEAD
     "section-product-slideshow2": {
+=======
+    "section-product-slideshow2":{
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       "type": "section-product-slideshow",
       "settings": {
         "color_schema": "fifth_color",
@@ -120,9 +144,15 @@
         "mo_border_color": "rgba(0,0,0,0)"
       }
     },
+<<<<<<< HEAD
     "section-newsletter": {
       "type": "section-newsletter",
       "settings": {
+=======
+    "section-newsletter":{
+      "type": "section-newsletter",
+        "settings": {
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "color_schema": "background_transparent",
         "padding_top": 4,
         "padding_bottom": 4,
@@ -130,7 +160,11 @@
         "animation_setting": true,
         "img_array": "left_img",
         "headline": "Our newsletter",
+<<<<<<< HEAD
         "text": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>",
+=======
+        "text": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "header_color": "#5e5e5e",
         "description_color": "#808080",
         "title_align": "font_left",

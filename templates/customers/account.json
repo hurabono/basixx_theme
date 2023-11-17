@@ -4,7 +4,11 @@
       "type": "section-hero",
       "settings": {
         "color_schema": "second_color",
+<<<<<<< HEAD
         "image": "shopify://shop_images/17_d44e02c8-77de-4771-ba92-3556dd0cc11c.png",
+=======
+        "image": "shopify:\/\/shop_images\/17_d44e02c8-77de-4771-ba92-3556dd0cc11c.png",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "padding_top": 9,
         "padding_bottom": 1,
         "overlay_set": true,
@@ -19,7 +23,11 @@
         "headline": "MY ACCOUNT OVERVIEW",
         "font_style": "font_normal",
         "color_title": "#fff",
+<<<<<<< HEAD
         "text": "<p>Your account is your gateway to a world of radiant beauty and self-care. </p><p>From managing your orders to accessing personalized recommendations, this page is designed to cater to your every skincare need.</p>",
+=======
+        "text": "<p>Your account is your gateway to a world of radiant beauty and self-care. <\/p><p>From managing your orders to accessing personalized recommendations, this page is designed to cater to your every skincare need.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "color_desciption": "#fafafa",
         "textbox_align": "font_center",
         "textbox_color": "background_transparent",
@@ -65,14 +73,22 @@
           "settings": {
             "block_subtitle": "",
             "headline": "Wishlist Management",
+<<<<<<< HEAD
             "grid-text": "<p>Curate your skincare aspirations by organizing your wishlist, saving must-have products, and planning your next self-care indulgence.</p>",
+=======
+            "grid-text": "<p>Curate your skincare aspirations by organizing your wishlist, saving must-have products, and planning your next self-care indulgence.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "textbox_title_align": "font_center",
             "color_box_schema": "fifth_color",
             "grid_header_color_title": "#4b4b4b",
             "grid_color_title": "#4b4b4b",
             "button_size": "button_small",
             "button_round_off": false,
+<<<<<<< HEAD
             "button-url": "shopify://pages/wish-list",
+=======
+            "button-url": "shopify:\/\/pages\/wish-list",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "button-text": "view detail ⟶",
             "button_bg": "transparent",
             "button_color": "#808080",
@@ -87,14 +103,22 @@
           "settings": {
             "block_subtitle": "",
             "headline": "Customer Support",
+<<<<<<< HEAD
             "grid-text": "<p>Have questions or need assistance? Reach out to our customer support team directly from your account for a prompt and personalized response.</p>",
+=======
+            "grid-text": "<p>Have questions or need assistance? Reach out to our customer support team directly from your account for a prompt and personalized response.<\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "textbox_title_align": "font_center",
             "color_box_schema": "fifth_color",
             "grid_header_color_title": "#4b4b4b",
             "grid_color_title": "#4b4b4b",
             "button_size": "button_small",
             "button_round_off": false,
+<<<<<<< HEAD
             "button-url": "shopify://pages/contact",
+=======
+            "button-url": "shopify:\/\/pages\/contact",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             "button-text": "contact us ⟶",
             "button_bg": "transparent",
             "button_color": "#808080",
@@ -154,7 +178,11 @@
         "button_align": "font_center",
         "button_size": "button_small",
         "button_round_off": false,
+<<<<<<< HEAD
         "button-url": "shopify://collections/new-arrivals",
+=======
+        "button-url": "shopify:\/\/collections\/new-arrivals",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "button-text": "view more ⟶",
         "button_bg": "transparent",
         "button_color": "#808080",

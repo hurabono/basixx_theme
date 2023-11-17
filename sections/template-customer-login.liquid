@@ -4,11 +4,19 @@
       
 
       <!-- content - start -->
+<<<<<<< HEAD
       <div style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
         <div class="max-w-screen-2xl mx-auto">
           <h2 class="text-2xl lg:text-3xl text-center mb-4 md:mb-8 customer_title_color">Login</h2>
               
           {% form 'customer_login', class: 'max-w-lg mx-auto' %}
+=======
+      <div style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+        <div class="max-w-screen-2xl mx-auto">
+          <h2 class="text-2xl lg:text-3xl text-center mb-4 md:mb-8 customer_title_color">Login</h2>
+              
+          {% form 'customer_login', class:'max-w-lg mx-auto' %}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 
             <div class="flex flex-col gap-4 p-4 md:p-8">
               <div>
@@ -35,7 +43,11 @@
               </div>
             </div>
             <div class="flex justify-center">
+<<<<<<< HEAD
               <a href="{{ routes.account_url }}/register" class="text-center customer_point_color underline">Create account </a>
+=======
+              <a href="{{routes.account_url}}/register" class="text-center customer_point_color underline">Create account </a>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             </div>
             <div class="flex justify-center">
               <a href="{{ shop.url }}" class="text-center customer_point_color underline">Return to store </a>
@@ -62,7 +74,11 @@
 
 
       <!-- recover password -->
+<<<<<<< HEAD
       <div style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
+=======
+      <div style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       <div x-show="pwRecoverForm" class="max-w-screen-xl px-4 md:px-8 mx-auto">
         <div>
           
@@ -72,7 +88,11 @@
             <div class="max-w-screen-2xl mx-auto">
               <h2 class="text-2xl lg:text-3xl text-center mb-4 md:mb-8 customer_title_color">Recover your password</h2>
                   
+<<<<<<< HEAD
               {% form 'recover_customer_password', class: 'max-w-lg mx-auto' %}
+=======
+              {% form 'recover_customer_password', class:'max-w-lg mx-auto' %}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 
                 <div class="flex flex-col gap-4 p-4 md:p-8">
                   <div>
@@ -90,7 +110,11 @@
                   <button type="submit" class="block customer_button_color customer_button_border text-sm md:text-base font-semibold text-center px-8 py-3">recover password</button>
           
                   <div class="flex justify-center items-center relative">
+<<<<<<< HEAD
                     <span class="customer_text_color text-sm relative px-4"> Do you have your Email? <a href="{{ routes.account_url }}/register" class="customer_point_color underline"> Create account </a></span>
+=======
+                    <span class="customer_text_color text-sm relative px-4"> Do you have your Email? <a href="{{routes.account_url}}/register" class="customer_point_color underline"> Create account </a></span>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                   </div>
                 </div>
                 <div class="flex justify-center">
@@ -114,6 +138,7 @@
 {% schema %}
 {
   "settings": [
+<<<<<<< HEAD
     {
       "type": "checkbox",
       "id": "animation_setting",
@@ -140,6 +165,34 @@
       "step": 1,
       "unit": "rem"
     }
+=======
+  {
+    "type": "checkbox",
+    "id": "animation_setting",
+    "default": true,
+    "label": "Animation turn on"
+    },
+    {
+"type": "range",
+"id": "padding_top",
+"label": "Padding Top controll",
+"default":15,
+"min": 1,
+"max": 20,
+"step": 1,
+"unit": "rem"
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"label": "Padding Bottom controll",
+"default":6,
+"min": 1,
+"max": 20,
+"step": 1,
+"unit": "rem"
+}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
   ]
 }
 {% endschema %}

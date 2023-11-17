@@ -22,8 +22,13 @@
 
 
       <div
+<<<<<<< HEAD
             class="{% if animation_setting == true %} cardcontainer {% endif %} default_mobile {{ textbox_position }} flex flex-col md:flex-1 flex-shrink-0 bg-gray-100 relative overflow-hidden h-full"
             style="padding-top:{{ padding_top }}rem; padding-bottom:{{ padding_bottom }}rem;"
+=======
+            class="{% if animation_setting == true %} cardcontainer {% endif %} default_mobile {{textbox_position}} flex flex-col md:flex-1 flex-shrink-0 bg-gray-100 relative overflow-hidden h-full"
+            style="padding-top:{{padding_top}}rem; padding-bottom:{{padding_bottom}}rem;"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       >
             <!-- image - start -->
             {% if image %}
@@ -57,10 +62,17 @@
             <!-- overlay - end -->
 
             <!-- text start -->
+<<<<<<< HEAD
             <div class="default_mobile {{ textbox_position }}" {% if animation_setting == true %} data-swiper-animation="animate__fadeInUp" {% endif %}>
                   
                   <div {{ block.shopify_attributes }} class="txtbox_mobile flex flex-col relative {{ text_align }} {{ color_schema }} {{ mobile_color }} {{ textbox_location }} p-6 w-[22rem] md:w-[29rem]"
                         style="border: 2px solid {{ textbox_border }};"
+=======
+            <div class="default_mobile {{textbox_position}}" {% if animation_setting == true %} data-swiper-animation="animate__fadeInUp" {% endif %}>
+                  
+                  <div {{ block.shopify_attributes }} class="txtbox_mobile flex flex-col relative {{text_align}} {{color_schema}} {{ mobile_color }} {{textbox_location}} p-6 w-[22rem] md:w-[29rem]"
+                        style="border: 2px solid {{textbox_border}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                   >
                         <div class="hidden_arrow relative w-full top-[-6rem] flex justify-end ml-0 md:ml-[1.5rem]">
                               
@@ -73,6 +85,7 @@
                               
 
                         </div>
+<<<<<<< HEAD
                         <div class="relative top-[-2rem] flex justify-center" style="color:{{ color_text }};">
                               {{ subicon }}
                         </div>
@@ -80,6 +93,15 @@
                               {{ headline }}
                         </div>
                         <p class="relative top-[-3rem] my-4 md:mb-8 tracking-wider leading-8 mx-2 " style="color:{{ color_text }}; font-size:{{ slider_sub_size }}px;">
+=======
+                        <div class="relative top-[-2rem] flex justify-center" style="color:{{color_text}};">
+                              {{ subicon }}
+                        </div>
+                        <div class="relative top-[-2rem] slideshow_header font-bold py-2 tracking-widest" style="color:{{color_title}}; font-size:{{slider_font_size}}px;">
+                              {{ headline }}
+                        </div>
+                        <p class="relative top-[-3rem] my-4 md:mb-8 tracking-wider leading-8 mx-2 " style="color:{{color_text}}; font-size:{{slider_sub_size}}px;">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                               {{ text }}
                         </p>
                         
@@ -88,21 +110,33 @@
                                     {% if boxtext1 != blank %}
                                     <li class="text-xs md:text-sm tracking-wider w-1/3 md:w-full m-1 flex flex-col md:flex-row justify-evenly items-center py-2"
                                     style="border: 1px solid {{ iconbox_border }};">
+<<<<<<< HEAD
                                           {{ iconbox1 }} <span class="p-2 md:p-0" style="color: {{ iconbox_color }};">{{ boxtext1 }}</span>
+=======
+                                          {{iconbox1}} <span class="p-2 md:p-0" style="color: {{ iconbox_color }};">{{boxtext1}}</span>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                                     </li>
                                     {% endif %}
 
                                     {% if boxtext2 != blank %}
                                     <li class="text-xs md:text-sm tracking-wider w-1/3 md:w-full m-1 flex flex-col md:flex-row px-2 justify-evenly items-center py-2"
                                     style="border: 1px solid {{ iconbox_border }};">
+<<<<<<< HEAD
                                           {{ iconbox2 }} <span class="p-2 md:p-0" style="color: {{ iconbox_color }};"> {{ boxtext2 }}</span>
+=======
+                                          {{iconbox2}} <span class="p-2 md:p-0" style="color: {{ iconbox_color }};"> {{boxtext2}}</span>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                                     </li>
                                     {% endif %}
                                     
                                     {% if boxtext3 != blank %}
                                     <li class="text-xs md:text-sm tracking-wider w-1/3 md:w-full m-1 flex flex-col md:flex-row px-2 justify-evenly items-center py-2"
                                     style="border: 1px solid {{ iconbox_border }};">
+<<<<<<< HEAD
                                           {{ iconbox3 }}  <span class="p-2 md:p-0" style="color: {{ iconbox_color }};"> {{ boxtext3 }} </span>
+=======
+                                          {{iconbox3}}  <span class="p-2 md:p-0" style="color: {{ iconbox_color }};"> {{boxtext3}} </span>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                                     </li>
                                     {% endif %}
                               </ul>
@@ -113,7 +147,11 @@
                               id="block_{{ block_id }}"
                               class="relative top-[-1.5rem] mx-2 tracking-widest text-center pb-2 text-base
                               {% if button_round_off == true %} button_round {% endif %}" >
+<<<<<<< HEAD
                               {{ button-text }}</a>
+=======
+                              {{button-text }}</a>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                         </div>
                   </div>
             </div>

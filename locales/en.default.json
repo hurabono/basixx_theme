@@ -70,7 +70,11 @@
     "apartment": "Apartment, suite, etc.",
     "city": "City",
     "country": "Country",
+<<<<<<< HEAD
     "zip_code": "Postal/Zip Code",
+=======
+    "zip_code": "Postal\/Zip Code",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     "phone": "Phone",
     "message": "Message"
   },
@@ -119,9 +123,12 @@
     },
     "reset_password": {
       "title": "Reset Password"
+<<<<<<< HEAD
     },
     "register": {
       "password": "TODO"
+=======
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     }
   },
   "collections": {
@@ -163,6 +170,7 @@
     "social": "Social",
     "settings": "Settings",
     "payment_methods": "Payment methods"
+<<<<<<< HEAD
   },
   "products": {
     "product": {
@@ -173,4 +181,7 @@
     }
   },
   "star review": "TODO"
+=======
+  }
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }

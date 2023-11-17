@@ -17,10 +17,17 @@
                 400px
               "
               srcset="
+<<<<<<< HEAD
                 {{ collection.image | image_url: width: 275 }} 275w,
                 {{ collection.image | image_url: width: 450 }} 450w
               "
               src="{{ collection.image | image_url: width: 400 }}"
+=======
+                {{ collection.image | img_url: '275x' }} 275w,
+                {{ collection.image | img_url: '450x' }} 450w
+              "
+              src="{{ collection.image | img_url: '400x' }}"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               alt="{{ collection.image.alt | escape }}"
               loading="lazy"
               class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-sm
@@ -28,11 +35,19 @@
               width="{{ collection.image.width }}"
               height="{{ collection.image.height }}"
             >  
+<<<<<<< HEAD
               <div class="w-full flex flex-col {{ section.settings.textbox_position }} {{ section.settings.color_textbox }} {{ section.settings.text_align }} relative p-4 rounded-sm">
                 {% if section.settings.show_shopname %}
                     <span class="text-gray-500 text-xs" style="color: {{ section.settings.point_color }};"> {{ shop.name }} </span>
                 {% endif %}
                 <span class="font-bold" style="color: {{ section.settings.text_color }}; font-size: {{ section.settings.collection_title_size }}px;"> {{ collection.title | escape }} </span>
+=======
+              <div class="w-full flex flex-col {{section.settings.textbox_position}} {{section.settings.color_textbox}} {{section.settings.text_align}} relative p-4 rounded-sm">
+                {% if section.settings.show_shopname %}
+                    <span class="text-gray-500 text-xs" style="color: {{section.settings.point_color}};"> {{ shop.name }} </span>
+                {% endif %}
+                <span class="font-bold" style="color: {{ section.settings.text_color }}; font-size: {{section.settings.collection_title_size}}px;"> {{ collection.title | escape }} </span>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               </div>
             </a>
           </div>
@@ -59,6 +74,7 @@
 
 {% schema %}
 {
+<<<<<<< HEAD
   "name": "Collection List",
   "settings": [
     {
@@ -255,6 +271,204 @@
       "label": "Sub text color",
       "default": "#9B9191"
     }
+=======
+"name": "Collection List",
+"settings": [
+{
+  "type": "header",
+  "content": "General Settings",
+  "info": "Settings animation, background color and column design"
+  },
+{
+  "type":"select",
+  "id":"color_schema",
+  "label":"Background color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"background_transparent"
+ },
+ {
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+{
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+ {
+  "type":"select",
+  "id":"color_textbox",
+  "label":"Textbox color",
+  "options":[
+     {
+        "value":"first_color",
+        "label":"First Color"
+     },
+     {
+        "value":"second_color",
+        "label":"Second Color"
+     },
+     {
+        "value":"third_color",
+        "label":"Third Color"
+     },
+     {
+      "value":"forth_color",
+      "label":"Forth Color"
+    },
+    {
+      "value":"fifth_color",
+      "label":"Fifth Color"
+    },
+    {
+      "value":"background_transparent",
+      "label":"Transparent Color"
+    }
+  ],
+  "default":"forth_color"
+ },
+ {
+  "type": "checkbox",
+  "id": "overlay_set",
+  "default": true,
+  "label": "Overlay cover"
+},
+{
+  "type": "checkbox",
+  "id": "animation_setting",
+  "default": false,
+  "label": "Animation turn on"
+},
+ {
+  "type":"select",
+  "id":"column_design",
+  "label":"Column selector",
+  "options":[
+     {
+        "value":"two_column",
+        "label":"Two column"
+     },
+     {
+        "value":"three_column",
+        "label":"Three column"
+     },
+     {
+        "value":"four_column",
+        "label":"Four column"
+     }
+  ],
+  "default":"four_column"
+ },
+ {
+  "type": "checkbox",
+  "id": "show_shopname",
+  "default": false,
+  "label": "Shop name turn on"
+},
+ {
+  "type": "header",
+  "content": "Textbox",
+  "info": "Setting textbox color, align, and position"
+  },
+ {
+  "type":"select",
+  "id":"text_align",
+  "label":"Text align",
+  "options":[
+     {
+        "value":"font_left",
+        "label":"Left"
+     },
+     {
+        "value":"font_right",
+        "label":"Right"
+     },
+     {
+        "value":"font_center",
+        "label":"Center"
+     }
+  ],
+  "default":"font_center"
+},
+{
+  "type": "range",
+  "id": "collection_title_size",
+  "label": "Title font size",
+  "default": 20,
+  "min": 12,
+  "max": 30,
+  "step": 1,
+  "unit": "px"
+},
+{
+  "type":"select",
+  "id":"textbox_position",
+  "label":"Text box position",
+  "options":[
+     {
+        "value":"collection_top",
+        "label":"Top"
+     },
+     {
+        "value":"collection_center",
+        "label":"Center"
+     },
+     {
+        "value":"collection_bottom",
+        "label":"Bottom"
+     }
+  ],
+  "default":"collection_bottom"
+},
+{
+  "type": "color",
+  "id": "text_color",
+  "label": "Collection title color",
+  "default": "#9B9191"
+},
+{
+  "type": "color",
+  "id": "point_color",
+  "label": "Sub text color",
+  "default": "#9B9191"
+}
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
   ]
 }
 {% endschema %}

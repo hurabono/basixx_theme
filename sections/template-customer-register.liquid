@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <div class="{{ section.settings.color_schema }}">
   <div class="2xl:w-[1280px] m-auto" style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+=======
+<div class="{{section.settings.color_schema}}">
+  <div class="2xl:w-[1280px] m-auto" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     <div class="mt-10 sm:mt-0">
       <div class="mt-5 md:mt-0 md:col-span-2">
         {% form 'create_customer' %}
@@ -11,7 +16,11 @@
               </h2>
               <ul>
                 {%- for field in form.errors -%}
+<<<<<<< HEAD
                   <li class="flex py-2" style="color: {{ section.settings.font_color }};">
+=======
+                  <li class="flex py-2" style="color: {{section.settings.font_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                     {%- if field == 'form' -%}
                       {{ form.errors.messages[field] }}
                     {%- else -%}
@@ -31,6 +40,7 @@
             <div class="px-4 py-5 sm:p-6">
               <div class="gap-6">
                 <div class="sm:col-span-3 py-4">
+<<<<<<< HEAD
                   <label for="first_name" class="block text-sm font-medium text-gray-700 tracking-widest px-2" style="color: {{ section.settings.font_color }};">First name</label>
                   <input type="text" name="customer[first_name]" id="first_name" autocomplete="given-name" placeholder="First name" class="mt-1 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300" style="border:1px solid {{ section.settings.form_border_color }};" required>
                 </div>
@@ -48,6 +58,25 @@
                 <div class="sm:col-span-3 py-4">
                   <label for="password" class="block text-sm font-medium text-gray-700 tracking-widest px-2" style="color: {{ section.settings.font_color }};">password</label>
                   <input type="password" name="customer[password]" id="password" autocomplete="current-password" placeholder="Password" class="mt-1 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300" aria-required="true" {% if form.errors contains 'password' %}aria-invalid="true"aria-describedby="password-error"{% endif %}placeholder="{{ 'customer.register.password' | t }}" style="border:1px solid {{ section.settings.form_border_color }};" required>
+=======
+                  <label for="first_name" class="block text-sm font-medium text-gray-700 tracking-widest px-2" style="color: {{section.settings.font_color}};">First name</label>
+                  <input type="text" name="customer[first_name]" id="first_name" autocomplete="given-name" placeholder="First name" class="mt-1 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300" style="border:1px solid {{section.settings.form_border_color}};" required>
+                </div>
+
+                <div class="sm:col-span-3 py-4">
+                  <label for="last_name" class="block text-sm font-medium text-gray-700 tracking-widest px-2" style="color: {{section.settings.font_color}};">Last name</label>
+                  <input type="text" name="customer[last_name]" id="last_name" autocomplete="family-name" placeholder="Last name" class="mt-1  block focus:outline-none w-full shadow-sm sm:text-sm border-gray-300" style="border:1px solid {{section.settings.form_border_color}};">
+                </div>
+
+                <div class="sm:col-span-3 py-4">
+                  <label for="email_address" class="block text-sm font-medium text-gray-700 tracking-widest px-2" style="color: {{section.settings.font_color}};">Email address</label>
+                  <input type="email" name="customer[email]" id="email_address" autocomplete="email" placeholder="Email" class="mt-1 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300" style="border:1px solid {{section.settings.form_border_color}};" required>
+                </div>
+
+                <div class="sm:col-span-3 py-4">
+                  <label for="password" class="block text-sm font-medium text-gray-700 tracking-widest px-2" style="color: {{section.settings.font_color}};">password</label>
+                  <input type="password" name="customer[password]" id="password" autocomplete="current-password" placeholder="Password" class="mt-1 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300" aria-required="true" {% if form.errors contains 'password' %}aria-invalid="true"aria-describedby="password-error"{% endif %}placeholder="{{ 'customer.register.password' | t }}" style="border:1px solid {{section.settings.form_border_color}};" required>
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                   {%- if form.errors contains 'password' -%}
                     <span id="password-error" class="form__message">
                       {{ form.errors.translated_fields['password'] | capitalize }}
@@ -60,7 +89,11 @@
               </div>
             </div>
             <div class="flex justify-center px-10 py-5 text-right sm:px-6">
+<<<<<<< HEAD
               <input type="submit" value="Create Account" class="{{ section.settings.color_button }} {{ section.settings.button_color_hover }} inline-flex justify-center py-2 px-4 cursor-pointer" style="border: 1px solid {{ section.settings.border_color }}; color:{{section.settings.border_color}};">
+=======
+              <input type="submit" value="Create Account" class="{{section.settings.color_button}} {{section.settings.button_color_hover}} inline-flex justify-center py-2 px-4 cursor-pointer" style="border: 1px solid {{section.settings.border_color}}; color:{{section.settings.border_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             </div>
           </div>
         {% endform %}
@@ -71,6 +104,7 @@
 
 
 {% schema %}
+<<<<<<< HEAD
 {
   "name": "Customer Register",
   "settings": [
@@ -220,4 +254,143 @@
     }
   ]
 }
+=======
+  {
+    "name": "Customer Register",
+    "settings": [
+      {
+        "type": "select",
+        "id": "color_schema",
+        "label": "Background color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "background_transparent"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top controll",
+        "default": 1,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      },
+      {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": true,
+        "label": "Animation turn on"
+      }, {
+        "type": "color",
+        "id": "font_color",
+        "label": "Font color",
+        "default": "#BAA098"
+      }, {
+        "type": "color",
+        "id": "form_border_color",
+        "label": "Form border color",
+        "default": "#E8D5D4"
+      }, {
+        "type": "header",
+        "content": "Button Settings"
+      }, {
+        "type": "select",
+        "id": "color_button",
+        "label": "Button color",
+        "options": [
+          {
+            "value": "first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "second_color"
+      }, {
+        "type": "select",
+        "id": "button_color_hover",
+        "label": "Button moseover color",
+        "options": [
+          {
+            "value": "button_first_color",
+            "label": "First Color"
+          },
+          {
+            "value": "button_second_color",
+            "label": "Second Color"
+          },
+          {
+            "value": "button_third_color",
+            "label": "Third Color"
+          },
+          {
+            "value": "button_forth_color",
+            "label": "Forth Color"
+          }, {
+            "value": "button_fifth_color",
+            "label": "Fifth Color"
+          }, {
+            "value": "button_background_transparent",
+            "label": "Transparent Color"
+          }
+        ],
+        "default": "button_third_color"
+      }, {
+        "type": "color",
+        "id": "border_color",
+        "label": "Button border color",
+        "default": "#926D5A"
+      }
+    ]
+  }
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 {% endschema %} 

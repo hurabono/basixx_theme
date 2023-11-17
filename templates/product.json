@@ -47,21 +47,33 @@
           "type": "custom_textbox",
           "settings": {
             "custom_title": "",
+<<<<<<< HEAD
             "custom_desc": "<p>{{ product.metafields.custom.product_info | metafield_tag }}</p>"
+=======
+            "custom_desc": "<p>{{ product.metafields.custom.product_info | metafield_tag }}<\/p>"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         },
         "dcc1b0e6-8edc-4a05-81f4-9b3ebfaadd93": {
           "type": "custom_textbox",
           "settings": {
             "custom_title": "Suitable for",
+<<<<<<< HEAD
             "custom_desc": "<p>{{ product.metafields.custom.symbol_first.value }}</p>"
+=======
+            "custom_desc": "<p>{{ product.metafields.custom.symbol_first.value }}<\/p>"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         },
         "664c4024-3ca2-4df1-b2aa-ab0b4ee1b410": {
           "type": "custom_textbox",
           "settings": {
             "custom_title": "Suited to",
+<<<<<<< HEAD
             "custom_desc": "<p>{{ product.metafields.custom.symbol_second.value }}</p>"
+=======
+            "custom_desc": "<p>{{ product.metafields.custom.symbol_second.value }}<\/p>"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         },
         "5b5cfa0d-c775-48c4-90ad-3a551c7e1083": {
@@ -91,7 +103,11 @@
           "type": "custom_textbox",
           "settings": {
             "custom_title": "",
+<<<<<<< HEAD
             "custom_desc": "<p>Please check shipping polish. 2-3 business days required.</p>"
+=======
+            "custom_desc": "<p>Please check shipping polish. 2-3 business days required.<\/p>"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         },
         "9298048d-7d30-490d-b069-b4b9725182ff": {
@@ -297,31 +313,51 @@
         "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-0": {
           "type": "image",
           "settings": {
+<<<<<<< HEAD
             "image": "shopify://shop_images/1_cb1d5275-b989-463e-98cd-9fb56f0f9a54.png"
+=======
+            "image": "shopify:\/\/shop_images\/1_cb1d5275-b989-463e-98cd-9fb56f0f9a54.png"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         },
         "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-1": {
           "type": "image",
           "settings": {
+<<<<<<< HEAD
             "image": "shopify://shop_images/2_eb1871d3-a9bb-4ae1-8942-f6038fdcccc4.png"
+=======
+            "image": "shopify:\/\/shop_images\/2_eb1871d3-a9bb-4ae1-8942-f6038fdcccc4.png"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         },
         "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-2": {
           "type": "image",
           "settings": {
+<<<<<<< HEAD
             "image": "shopify://shop_images/4_9a37e1c9-e794-4cb2-9ed7-770d24e48255.png"
+=======
+            "image": "shopify:\/\/shop_images\/4_9a37e1c9-e794-4cb2-9ed7-770d24e48255.png"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         },
         "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-3": {
           "type": "image",
           "settings": {
+<<<<<<< HEAD
             "image": "shopify://shop_images/3.png"
+=======
+            "image": "shopify:\/\/shop_images\/3.png"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         },
         "template--17408783548719__187100e1-8c89-4a88-8950-98fe58379e52-168366289649e77cdc-4": {
           "type": "image",
           "settings": {
+<<<<<<< HEAD
             "image": "shopify://shop_images/5_c35ea147-576e-4ada-87ed-158219887416.png"
+=======
+            "image": "shopify:\/\/shop_images\/5_c35ea147-576e-4ada-87ed-158219887416.png"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           }
         }
       },
@@ -385,7 +421,11 @@
         "textbox_color": "fifth_color",
         "title_align": "font_center",
         "headline": "FAQ list about properties",
+<<<<<<< HEAD
         "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/></p>",
+=======
+        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/><\/p>",
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "color_title": "#808080",
         "color_sub_title": "#787d80",
         "point_color": "#5e5e5e",
