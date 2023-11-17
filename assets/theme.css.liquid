@@ -1,19 +1,13 @@
+{{ settings.header_font_new | font_face: font_display: 'swap' }}
+{{ settings.base_font_new | font_face: font_display: 'swap' }}
+{{ settings.slideshow_header | font_face: font_display: 'swap' }}
+{{ settings.hero_header | font_face: font_display: 'swap' }}
+{{ settings.richtext_font | font_face: font_display: 'swap' }}
+{{ settings.subfont_size | font_face: font_display: 'swap' }}
 
-
-{{ settings.header_font_new | font_face:font_display: 'swap' }}
-{{ settings.base_font_new | font_face:font_display: 'swap' }}
-{{ settings.slideshow_header | font_face:font_display: 'swap' }}
-{{ settings.hero_header | font_face:font_display: 'swap' }}
-{{ settings.richtext_font | font_face:font_display: 'swap' }}
-{{ settings.subfont_size | font_face:font_display: 'swap' }}
-
-{%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
-{%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
-{%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
-
-{{ base_font_bold | font_face:font_display: 'swap' }}
-{{ base_font_italic | font_face:font_display: 'swap' }}
-{{ base_font_bold_italic | font_face:font_display: 'swap' }}
+{{ base_font_bold | font_face: font_display: 'swap' }}
+{{ base_font_italic | font_face: font_display: 'swap' }}
+{{ base_font_bold_italic | font_face: font_display: 'swap' }}
 
 
 /* FONT STYLES */
@@ -157,28 +151,28 @@ h1 {
 /* MAIN COLOR STYLES */
 
 body{
-      background-color:{{settings.page_background_color}};
+      background-color:{{ settings.page_background_color }};
 }
 
 
 .first_color{
-      background-color:{{settings.first_color }};
+      background-color:{{ settings.first_color }};
 }
 
 .second_color{
-      background-color:{{settings.second_color }};
+      background-color:{{ settings.second_color }};
 }
 
 .third_color{
-      background-color:{{settings.third_color}};
+      background-color:{{ settings.third_color }};
 }
 
 .forth_color{
-      background-color:{{settings.forth_color}};
+      background-color:{{ settings.forth_color }};
 }
 
 .fifth_color{
-      background-color:{{settings.fifth_color}};
+      background-color:{{ settings.fifth_color }};
 }
 
 .background_transparent{
@@ -284,7 +278,7 @@ body{
 
 }
 .button_first_color:hover{
-      background-color:{{settings.first_color }};
+      background-color:{{ settings.first_color }};
 }
 
 .button_second_color{
@@ -292,7 +286,7 @@ body{
 
 }
 .button_second_color:hover{
-      background-color:{{settings.second_color}};
+      background-color:{{ settings.second_color }};
 }
 
 .button_third_color{
@@ -300,7 +294,7 @@ body{
 
 }
 .button_third_color:hover{
-      background-color:{{settings.third_color}};
+      background-color:{{ settings.third_color }};
       
 }
 
@@ -310,7 +304,7 @@ body{
 }
 
 .button_forth_color:hover{
-      background-color:{{settings.forth_color}};
+      background-color:{{ settings.forth_color }};
 }
 
 .button_fifth_color{
@@ -320,8 +314,8 @@ body{
 
 
 .button_fifth_color:hover{
-      background-color:{{settings.fifth_color}};
-      color:{{settings.fifth_color | color_darken: 50 }} !important;
+      background-color:{{ settings.fifth_color }};
+      color:{{ settings.fifth_color | color_darken: 50 }} !important;
       
 }
 
@@ -346,8 +340,8 @@ body{
 
 }
 .button_first_mouseover_color:hover{
-      border: 1px solid {{settings.first_color}} !important;
-      color:{{settings.first_color }}!important;
+      border: 1px solid {{ settings.first_color }} !important;
+      color:{{ settings.first_color }}!important;
 }
 
 .button_second_mouseover_color{
@@ -355,8 +349,8 @@ body{
 
 }
 .button_second_mouseover_color:hover{
-      border: 1px solid {{settings.second_color}}!important;
-      color:{{settings.second_color}}!important;
+      border: 1px solid {{ settings.second_color }}!important;
+      color:{{ settings.second_color }}!important;
 }
 
 .button_third_mouseover_color{
@@ -364,8 +358,8 @@ body{
 
 }
 .button_third_mouseover_color:hover{
-      border: 1px solid {{settings.third_color}}!important;
-      color:{{settings.third_color}}!important;
+      border: 1px solid {{ settings.third_color }}!important;
+      color:{{ settings.third_color }}!important;
       
 }
 
@@ -375,8 +369,8 @@ body{
 }
 
 .button_forth_mouseover_color:hover{
-      border: 1px solid {{settings.forth_color}}!important;
-      color:{{settings.forth_color}}!important;
+      border: 1px solid {{ settings.forth_color }}!important;
+      color:{{ settings.forth_color }}!important;
 }
 
 .button_fifth_mouseover_color{
@@ -386,8 +380,8 @@ body{
 
 
 .button_fifth_mouseover_color:hover{
-      border: 1px solid {{settings.fifth_color}}!important;
-      color:{{settings.fifth_color}}!important;
+      border: 1px solid {{ settings.fifth_color }}!important;
+      color:{{ settings.fifth_color }}!important;
       
 }
 
@@ -398,8 +392,8 @@ body{
 
 
 .button_point_mouseover_color:hover{
-      border: 1px solid {{settings.point_color}}!important;
-      color:{{settings.point_color}}!important;
+      border: 1px solid {{ settings.point_color }}!important;
+      color:{{ settings.point_color }}!important;
       
 }
 
@@ -413,7 +407,7 @@ body{
 }
 .nav_color_first:hover{
       
-      background-color:{{settings.first_color}};
+      background-color:{{ settings.first_color }};
 }
 
 .nav_color_second{
@@ -421,14 +415,14 @@ body{
 }
 
 .nav_color_second:hover{
-      background-color:{{settings.second_color}};
+      background-color:{{ settings.second_color }};
 }
 
 .nav_color_third{
       transition: 0.5s;
 }
 .nav_color_third:hover{
-      background-color:{{settings.third_color}};
+      background-color:{{ settings.third_color }};
       transition: 0.5s;
 }
 
@@ -436,7 +430,7 @@ body{
       transition: 0.5s;
 }
 .nav_color_forth:hover{
-      background-color:{{settings.forth_color}};
+      background-color:{{ settings.forth_color }};
       transition: 0.5s;
 }
 
@@ -444,7 +438,7 @@ body{
       transition: 0.5s;
 }
 .nav_color_fifth:hover{
-      background-color:{{settings.fifth_color}};
+      background-color:{{ settings.fifth_color }};
       transition: 0.5s;
 }
 
@@ -455,26 +449,26 @@ body{
 
 .nav_color{
       background: {{ settings.nav_color }};
-      color: {{ settings.nav_font}};
-      border-bottom: 1px solid {{ settings.nav_border}};
+      color: {{ settings.nav_font }};
+      border-bottom: 1px solid {{ settings.nav_border }};
 }
 
 
 .nav_color.nav_scroll{
     background: {{ settings.scroll_color }};
-    color:{{ settings.scroll_font}};
+    color:{{ settings.scroll_font }};
     transition: 0.3s;
 }
 
 .nav_color_page{
   background: {{ settings.navPage_color }};
-  color: {{ settings.navPage_font}};
-  border-bottom: 1px solid {{ settings.navPage_border}};
+  color: {{ settings.navPage_font }};
+  border-bottom: 1px solid {{ settings.navPage_border }};
 }
 
 .nav_color_page.nav_scroll {
     background: {{ settings.scroll_color }};
-    color:{{ settings.scroll_font}};
+    color:{{ settings.scroll_font }};
     transition: 0.3s;
 }
 
@@ -500,30 +494,30 @@ body{
 /* MAIN COLOR STYLES */
 
 .header_color{
-      color:{{settings.header_color}};
+      color:{{ settings.header_color }};
 }
 
 
 .sub_color{
-      color:{{settings.sub_color}};
+      color:{{ settings.sub_color }};
 }
 
 .section_color{
-      color:{{settings.section_color}};
+      color:{{ settings.section_color }};
 }
 
 .text_color{
-      color:{{settings.text_color}};
+      color:{{ settings.text_color }};
 }
 
 .point_color{
-      background: {{settings.point_color}};
+      background: {{ settings.point_color }};
 }
 
 
 /* MAIN COLOR STYLES */
 .bg_color{
-      background-color:{{settings.bg_color}};     
+      background-color:{{ settings.bg_color }};     
 }
 
 .mobile-navigation {
@@ -540,11 +534,11 @@ body{
 }
 
 .swiper-pagination-bullet-active{
-      background: {{settings.point_color}} !important;
+      background: {{ settings.point_color }} !important;
 }
 
 .arrow_color{
-      color: {{settings.point_color}} !important;;
+      color: {{ settings.point_color }} !important;;
 }
 
 .header-width {
@@ -668,46 +662,46 @@ input[type="number"]::-webkit-inner-spin-button{
 /* Customer Page color settings */
 
 .customer_title_color{
-      color: {{settings.customer_title_color}};
+      color: {{ settings.customer_title_color }};
 }
 
 .customer_text_color{
-      color: {{settings.customer_text_color}};
+      color: {{ settings.customer_text_color }};
 }
 
 .customer_point_color{
-      color: {{settings.customer_point_color}};
+      color: {{ settings.customer_point_color }};
 }
 
 .customer_symbol_bg_color{
-      background: {{settings.customer_symbol_bg_color}};
+      background: {{ settings.customer_symbol_bg_color }};
 }
 
 .customer_symbol_text_color{
-      color: {{settings.customer_symbol_text_color}};
+      color: {{ settings.customer_symbol_text_color }};
 }
 
 .customer_border_color{
-      border: 1px solid {{settings.customer_border_color}};
+      border: 1px solid {{ settings.customer_border_color }};
 }
 
 .customer_button_color{
-      background: {{settings.customer_button_color}};
+      background: {{ settings.customer_button_color }};
 }
 
 .customer_button_color:hover{
-      background: {{settings.customer_mouseover_color}};
+      background: {{ settings.customer_mouseover_color }};
       transition: 0.5s;
 }
 
 .customer_button_border{
-      color: {{settings.customer_button_border}};
-      border: 1px solid {{settings.customer_button_border}};
+      color: {{ settings.customer_button_border }};
+      border: 1px solid {{ settings.customer_button_border }};
       transition: 0.5s;
 }
 
 .customer_box_color{
-      background: {{settings.customer_box_color}};
+      background: {{ settings.customer_box_color }};
 }
 
 .sticky_nav{
@@ -858,7 +852,7 @@ img{
     .metafield_icons{
       background-color: {{ settings.icon_bg_color }};
       color:{{ settings.icon_font_color | color_desaturate: 50 }};
-      border: 1px solid {{ settings.icon_border_color}};
+      border: 1px solid {{ settings.icon_border_color }};
     }
 
 @media only screen and (max-width: 767px) {
@@ -871,23 +865,23 @@ img{
       }
 
     .mobile_first_color{
-          background-color:{{settings.first_color }};
+          background-color:{{ settings.first_color }};
     }
     
     .mobile_second_color{
-          background-color:{{settings.second_color }};
+          background-color:{{ settings.second_color }};
     }
     
     .mobile_third_color{
-          background-color:{{settings.third_color}};
+          background-color:{{ settings.third_color }};
     }
     
     .mobile_forth_color{
-          background-color:{{settings.forth_color}};
+          background-color:{{ settings.forth_color }};
     }
     
     .mobile_fifth_color{
-          background-color:{{settings.fifth_color}};
+          background-color:{{ settings.fifth_color }};
     }
     
     .moblie_background_transparent{

@@ -1,11 +1,11 @@
+
 // regular banner  - design mode
 document.addEventListener('shopify:block:select', function(event) {
   const blockSelectedIsSlide = event.target.classList.contains('swiper-slide');
   if (!blockSelectedIsSlide) return;
-
-
 // regular banner swiper
-let swiperAnimation = new SwiperAnimation();
+var swiperAnimation = new SwiperAnimation();
+
 var swiper = new Swiper(".mySwiper", {
   lazy: true,
   pagination: {
@@ -38,8 +38,8 @@ document.addEventListener('shopify:block:deselect', function(event) {
 });
 
 
-// regular banner swiper
-let swiperAnimation = new SwiperAnimation();
+// regular banner swipervar
+var swiperAnimation = new SwiperAnimation();
 var swiper = new Swiper(".mySwiper", {
   lazy: true,
   pagination: {

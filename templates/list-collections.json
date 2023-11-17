@@ -9,7 +9,7 @@
         "overlay_set": true,
         "text_align": "font_center",
         "headline": "ALL COLLECTIONS",
-        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p><p><\/p><p><a href=\"\/pages\/our-service\" title=\"our service\"><strong>contact us<\/strong><\/a><\/p>",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.</p><p></p><p><a href=\"/pages/our-service\" title=\"our service\"><strong>contact us</strong></a></p>",
         "title_color": "#5e5e5e",
         "text_color": "#a9a9a9"
       }

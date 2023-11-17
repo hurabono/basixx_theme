@@ -70,7 +70,7 @@
     "apartment": "Apartment, suite, etc.",
     "city": "City",
     "country": "Country",
-    "zip_code": "Postal\/Zip Code",
+    "zip_code": "Postal/Zip Code",
     "phone": "Phone",
     "message": "Message"
   },
@@ -119,6 +119,9 @@
     },
     "reset_password": {
       "title": "Reset Password"
+    },
+    "register": {
+      "password": "TODO"
     }
   },
   "collections": {
@@ -160,5 +163,14 @@
     "social": "Social",
     "settings": "Settings",
     "payment_methods": "Payment methods"
-  }
+  },
+  "products": {
+    "product": {
+      "pickup_availability": {
+        "unavailable": "TODO",
+        "refresh": "TODO"
+      }
+    }
+  },
+  "star review": "TODO"
 }
