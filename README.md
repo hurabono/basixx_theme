@@ -75,4 +75,3 @@ Download the theme zip file from Git Hub and upload the theme file from the dash
 
 ![photo](https://static.wixstatic.com/media/4cff20_d1cc984c40804b38805e20d20752405a~mv2.png)
 
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
