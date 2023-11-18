@@ -14,12 +14,21 @@
   (min-width: 640px) 720px,
   600px
 " srcset="
+<<<<<<< HEAD
   {{ image | image_url: '600x' }} 600w,
   {{ image | image_url: '720x' }} 720w,
   {{ image | image_url: '1000x' }} 1000w,
   {{ image | image_url: '1250x' }} 1250w,
   {{ image | image_url: '1500x' }} 1500w
 " src="{{ image | image_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
+=======
+  {{ image | image_url: width: 600 }} 600w,
+  {{ image | image_url: width: 720 }} 720w,
+  {{ image | image_url: width: 1000 }} 1000w,
+  {{ image | image_url: width: 1250 }} 1250w,
+  {{ image | image_url: width: 1500 }} 1500w
+" src="{{ image | image_url: width: 1500 }}" alt="{{ image.alt }}" loading="lazy"
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
   class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {% endif %}"
   width="{{ image.width }}"
   height="{{ image.height }}">
@@ -41,6 +50,7 @@
 
 {% schema %}
 {
+<<<<<<< HEAD
    "name":"Page Top Banner",
    "settings":[
       {
@@ -154,5 +164,120 @@
          "default":"#fff"
       }
    ]
+=======
+  "name": "Page Top Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner General",
+      "info": "Setting banner image, base color and size"
+    },
+    {
+      "type": "select",
+      "id": "color_schema",
+      "label": "Background color",
+      "options": [
+        {
+          "value": "first_color",
+          "label": "First Color"
+        },
+        {
+          "value": "second_color",
+          "label": "Second Color"
+        },
+        {
+          "value": "third_color",
+          "label": "Third Color"
+        },
+        {
+          "value": "forth_color",
+          "label": "Forth Color"
+        },
+        {
+          "value": "fifth_color",
+          "label": "Fifth Color"
+        },
+        {
+          "value": "background_transparent",
+          "label": "Transparent Color"
+        }
+      ],
+      "default": "third_color"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Default product image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default": 11,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default": 3,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_set",
+      "default": true,
+      "label": "Overlay cover"
+    },
+    {
+      "type": "header",
+      "content": "Banner Content",
+      "info": "Setting banner text and color"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text align",
+      "options": [
+        {
+          "value": "font_left",
+          "label": "Left"
+        },
+        {
+          "value": "font_right",
+          "label": "Right"
+        },
+        {
+          "value": "font_center",
+          "label": "Center"
+        }
+      ],
+      "default": "font_center"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Banner HeadLine",
+      "default": "Main Page HeadLine"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text box color",
+      "default": "#fff"
+    }
+  ]
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
 }
 {% endschema %}

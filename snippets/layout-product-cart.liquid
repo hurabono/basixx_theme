@@ -26,6 +26,8 @@ input[type=number] {
           "
           src="{{ product | img_url: '400x' }}"
           alt="{{ product.title | escape }}"
+          width="{{ product.featured_image.width }}"
+          height="{{ product.featured_image.height }}"
           loading="lazy"
           class="w-full h-full object-cover object-center"
         >

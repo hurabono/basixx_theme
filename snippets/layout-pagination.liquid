@@ -6,7 +6,11 @@
     <a
       href="{{ paginate.previous.url }}"
       class="{{ link_class }} {% if paginate.previous %}{{ link_class_arrow }}{% else %}{{ link_class_arrow_disabled }}{% endif %}"
+<<<<<<< HEAD
+      style="color: {{ product_title_color }};"
+=======
       style="color: {{product_title_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     >
       {% render 'icon-chevron-left', class: 'w-4 h-auto' %}
     </a>
@@ -16,7 +20,11 @@
           <a
             href="{{ part.url }}"
             class="{{ link_class }}"
+<<<<<<< HEAD
+            style="color: {{ product_title_color }};"
+=======
             style="color: {{product_title_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           >
             {{ part.title }}
           </a>
@@ -26,7 +34,11 @@
             {{ part.title }}
           </div>
         {% else %}
+<<<<<<< HEAD
+          <div class="{{ link_class }}" style="color: {{ product_title_color }};">
+=======
           <div class="{{ link_class }}" style="color: {{product_title_color}};">
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             {{ part.title }}
           </div>
         {% endif %}
@@ -36,7 +48,11 @@
     <a
       href="{{ paginate.next.url }}"
       class="{{ link_class }} {% if paginate.next %}{{ link_class_arrow }}{% else %}{{ link_class_arrow_disabled }}{% endif %}"
+<<<<<<< HEAD
+      style="color: {{ product_title_color }};"
+=======
       style="color: {{product_title_color}};"
+>>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     >
       {% render 'icon-chevron-right', class: 'w-4 h-auto' %}
     </a>

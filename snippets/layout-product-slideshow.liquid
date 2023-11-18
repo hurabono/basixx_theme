@@ -1,15 +1,15 @@
 <style>
   
 .badge_design {
-  background-color: {{  settings.product_badge_color }};
-  color:{{settings.badge_font }};
+  background-color: {{ settings.product_badge_color }};
+  color:{{ settings.badge_font }};
   border: 1px solid {{ settings.badge_border }};
 }
 
 
 .wishlist_button{
-  background-color: {{settings.wl_bg_color}};
-  border: 0.5px solid {{settings.wl_border_color}};
+  background-color: {{ settings.wl_bg_color }};
+  border: 0.5px solid {{ settings.wl_border_color }};
   
 }
   
@@ -36,9 +36,9 @@
 </div>
   <a href="{{ product.url | within: collection }}" class="block group block relative grid-view-item__link {% if product.images.size > 1 %} has-secondary{% endif %}">
     <img sizes="(min-width: 768px) 450px,630px"
-          srcset="{{ product.featured_image.src | img_url: '450x' }} 450w,
-                  {{ product.featured_image.src | img_url: '630x' }} 630w" 
-                  src="{{ product.featured_image.src | img_url: '630x' }}" 
+          srcset="{{ product.featured_image.src | image_url: width: 450 }} 450w,
+                  {{ product.featured_image.src | image_url: width: 630 }} 630w" 
+                  src="{{ product.featured_image.src | image_url: width: 630 }}" 
                   alt="{{ product.featured_image.alt | escape }}" 
                   loading="lazy"
                   width="{{ product.featured_image.width }}"
@@ -52,13 +52,14 @@
           630px
         "
         srcset="
-          {{ product.images.last | img_url: '450x' }} 450w,
-          {{ product.images.last | img_url: '630x' }} 630w
+          {{ product.images.last | image_url: width: 450 }} 450w,
+          {{ product.images.last | image_url: width: 630 }} 630w
         "
         width="{{ product.images.last.width }}"
         height="{{ product.images.last.height }}"
-        src="{{ product.images.last | img_url: '630x' }}"
+        src="{{ product.images.last | image_url: width: 630 }}"
         alt="{{ product.images.last.alt | escape }}"
+        loading="lazy"
         > 
      {% endif %}
     {% endif %}
@@ -69,7 +70,7 @@
     {% endif %}    
   </a>
 
-  <div class="{{product_title}} mt-4" style="color: {{product_title_color}};">
+  <div class="{{ product_title }} mt-4" style="color: {{ product_title_color }};">
 
     {% if vendor_set == true %}
       <a href="{{ product.url | within: collection }}" class="block text-xs">
@@ -82,8 +83,8 @@
     <div class="flex flex-col sm:flex-row justify-between">
     {% if product.title %}
       <div>
-        <a href="{{ product.url | within: collection }}" class="font-bold" style="font-size: {{product_font_size}}rem;">
-        {{ product.title | strip_html | truncate: 20}}
+        <a href="{{ product.url | within: collection }}" class="font-bold" style="font-size: {{ product_font_size }}rem;">
+        {{ product.title | strip_html | truncate: 20 }}
         </a>
       </div>
       
@@ -118,11 +119,11 @@
           </div>
         {% endif %}
       </div>
-    {%endif%}
+    {% endif %}
     </div>
 
     {%- comment -%} line 2 - Metafield option box {%- endcomment -%}
-    {% if show_symbol  == true  %}
+    {% if show_symbol == true %}
     <div class="relative">
       
         <ul class="flex justify-between gap-[0.5rem] py-2 text-xs text-center">
@@ -131,7 +132,7 @@
             <li class="metafield_icons text-xs tracking-wider flex flex-col w-full md:flex-row justify-evenly items-center rounded-sm py-1"
                 
             >
-                <span class="slider_symbol p-0">{{iconbox1}}  </span>
+                <span class="slider_symbol p-0">{{ iconbox1 }}  </span>
                 <span class="slider_symbol p-0"> {{ product.metafields.custom.symbol_first.value }} </span>
             </li>
             {%- endif -%}
@@ -140,7 +141,7 @@
             <li class="metafield_icons text-xs tracking-wider flex flex-col w-full md:flex-row justify-evenly items-center rounded-sm py-1"
                 
             >
-                <span class="slider_symbol p-0"> {{iconbox2}} </span>
+                <span class="slider_symbol p-0"> {{ iconbox2 }} </span>
                 <span class="slider_symbol p-0">  {{ product.metafields.custom.symbol_second.value }}</span>
             </li>
             {%- endif -%}
@@ -149,7 +150,7 @@
             <li class="metafield_icons text-xs tracking-wider flex flex-col w-full md:flex-row justify-evenly items-center rounded-sm py-1"
                 
             >
-               <span class="slider_symbol p-1 p-0"> {{iconbox3}}</span> 
+               <span class="slider_symbol p-1 p-0"> {{ iconbox3 }}</span> 
             <span class="slider_symbol p-1 p-0">  {{ product.metafields.custom.symbol_third.value }}  </span>
             </li>
             {%- endif -%}
@@ -164,11 +165,11 @@
         <div class="flex items-center">
         
         {% if product.metafields.custom.custom_price.value != blank or product.price == 0 %}
-          <span class="text-lg font-bold" {% if product.compare_at_price %} style="color: {{product_title_color}};" {% endif %}>
+          <span class="text-lg font-bold" {% if product.compare_at_price %} style="color: {{ product_title_color }};" {% endif %}>
           {{ product.metafields.custom.custom_price.value }}
           </span>
         {%- else -%}
-            <span class="text-lg font-bold" {% if product.compare_at_price %} style="color: {{product_point_color}};" {% endif %}>
+            <span class="text-lg font-bold" {% if product.compare_at_price %} style="color: {{ product_point_color }};" {% endif %}>
             {{ product.price | money }}
           </span>
 

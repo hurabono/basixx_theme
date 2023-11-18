@@ -1,11 +1,10 @@
-
-
 {{ settings.header_font_new | font_face:font_display: 'swap' }}
 {{ settings.base_font_new | font_face:font_display: 'swap' }}
 {{ settings.slideshow_header | font_face:font_display: 'swap' }}
 {{ settings.hero_header | font_face:font_display: 'swap' }}
 {{ settings.richtext_font | font_face:font_display: 'swap' }}
 {{ settings.subfont_size | font_face:font_display: 'swap' }}
+
 
 {%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
 {%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
@@ -18,10 +17,10 @@
 
 /* FONT STYLES */
 
+
 * {
       font-family: {{ settings.base_font_new.family }}, {{ settings.base_font_new.fallback_families }};
 }
-
 
 h1 {
       font-family: {{ settings.header_font_new.family }}, {{ settings.header_font_new.fallback_families }};

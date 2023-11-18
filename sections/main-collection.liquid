@@ -4,7 +4,7 @@
   class="max-w-[1320px] m-auto items-center overflow-hidden px-6"
   style="margin-top: {{ section.settings.margin_top }}rem; margin-bottom:{{ section.settings.margin_bottom }}rem;" >
   
-  {% if section.settings.show_image == true%}
+  {% if section.settings.show_image == true %}
 
   <div class=" h-[300px]">
   <!-- image - start -->
@@ -18,6 +18,7 @@
       (min-width: 640px) 720px " 
       
       srcset="
+<<<<<<< HEAD
       {{ image | image_url: '600x' }} 600w,
       {{ image | image_url: '720x' }} 720w,
       {{ image | image_url: '1000x' }} 1000w,
@@ -25,6 +26,15 @@
       {{ image | image_url: '1500x' }} 1500w " 
       
       src="{{ image | image_url: '1500x' }}" 
+=======
+      {{ image | image_url: width: 600 }} 600w,
+      {{ image | image_url: width: 720 }} 720w,
+      {{ image | image_url: width: 1000 }} 1000w,
+      {{ image | image_url: width: 1250 }} 1250w,
+      {{ image | image_url: width: 1500 }} 1500w " 
+      
+      src="{{ image | image_url: width: 1500 }}" 
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
       alt="{{ image.alt }}" loading="lazy"
       class="w-full h-full object-cover object-center 
       {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {% endif %}"
@@ -57,6 +67,7 @@
 
 {% schema %}
 {
+<<<<<<< HEAD
    "name":"Collection Banner",
    "settings":[
       {
@@ -139,5 +150,89 @@
          "default":"#A9A9A9"
       }
    ]
+=======
+  "name": "Collection Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General settings",
+      "info": "Base background color and image settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "Show Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Default product image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top controll",
+      "default": 4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom controll",
+      "default": 0,
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_set",
+      "default": true,
+      "label": "Overlay cover"
+    },
+    {
+      "type": "header",
+      "content": "Collection Text",
+      "info": "Collection Content settings"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text align",
+      "options": [
+        {
+          "value": "font_left",
+          "label": "Left"
+        },
+        {
+          "value": "font_right",
+          "label": "Right"
+        },
+        {
+          "value": "font_center",
+          "label": "Center"
+        }
+      ],
+      "default": "font_center"
+    },
+    {
+      "type": "color",
+      "id": "collection_title_color",
+      "label": "Text box color",
+      "default": "#808080"
+    },
+    {
+      "type": "color",
+      "id": "collection_text_color",
+      "label": "Text box color",
+      "default": "#A9A9A9"
+    }
+  ]
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
 }
 {% endschema %}

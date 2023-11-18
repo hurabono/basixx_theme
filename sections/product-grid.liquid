@@ -8,7 +8,7 @@
       }
       
       #mySidenav::-webkit-scrollbar-thumb{
-            background: {{section.settings.active_button_color}};
+            background: {{ section.settings.active_button_color }};
       }
       
       input[type="range"]::-webkit-slider-thumb{
@@ -17,7 +17,7 @@
             pointer-events: auto;
             border-radius: 50%;
             -webkit-appearance: none;
-            background: {{section.settings.active_button_color}};
+            background: {{ section.settings.active_button_color }};
       }
       
       input[type="range"]::-moz-range-thumb{
@@ -27,18 +27,18 @@
             pointer-events: auto;
             border-radius: 50%;
             -moz-appearance: none;
-            background: {{section.settings.active_button_color}};
+            background: {{ section.settings.active_button_color }};
       }
       
       input[type="checkbox"]:checked{
-            background:{{section.settings.active_button_color}};
-            border: 1px solid {{section.settings.active_button_color}};
+            background:{{ section.settings.active_button_color }};
+            border: 1px solid {{ section.settings.active_button_color }};
       }
       
       
       .sort_tab_active{
-        background-color: {{section.settings.sort_box_color }};
-        color:{{section.settings.sort_font_color }};
+        background-color: {{ section.settings.sort_box_color }};
+        color:{{ section.settings.sort_font_color }};
       }
 {% endstyle %}
 
@@ -46,19 +46,15 @@
 {% if collection and collection.products %}
 {% assign amount = collection.all_products_count %}
 
-<div class="product_card {{section.settings.color_schema}}" 
-     style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+<div class="product_card {{ section.settings.color_schema }}" 
+     style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
 
 
     <div x-data="{ open: false }" >
 
       {%- comment -%} sort bar {%- endcomment -%}
-            <div class="{{section.settings.filter_box_color}}" style="color: {{section.settings.sortbox_font_color}};">
-                  <div class="max-w-[1320px] m-auto flex justify-between h-16 m-auto items-center px-6">
-
-                        <div class="hidden sm:flex items-center">
+            <div class="{{ section.settings.filter_box_color }}" style="color: {{ section.settings.sortbox_font_color }};">
                         {{ amount }} {% if amount > 1 %}{{ 'common.products' | t }}{% else %}{{ 'common.product' | t }}{% endif %}
-                        </div>
                         
                         {% unless template == 'search' %}
                         <div class="flex items-center">
@@ -76,7 +72,7 @@
                               {{ 'common.sort' | t }}
                               </div>
                               <div class="h-full pr-1">
-                              {% render 'layout-select-sort', sort_box_color:section.settings.sort_box_color %}
+                              {% render 'layout-select-sort', sort_box_color: section.settings.sort_box_color %}
                               </div>
                               </div>
                         </div>
@@ -97,13 +93,13 @@
                         class="text-gray-500 my-4" 
                         x-show="open">
 
-                  <div id="mySidenav" class="my-4 h-full" style="color: {{section.settings.filter_font_color}}; background:{{section.settings.filter_selector}};">
+                  <div id="mySidenav" class="my-4 h-full" style="color: {{ section.settings.filter_font_color }}; background:{{ section.settings.filter_selector }};">
                         <div class="py-4 mx-7 items-center">
                               <form action="{{ collection.url }}?sort_by={{ collection.sort_by }}" method="get" class="flex flex-col flex-wrap lg:flex-row lg:justify-between">
                                     {%- for filter in collection.filters -%}
                                           <div class="filter-group my-2" x-data="{ open : false }">
                                                 <div class="filter-group-summary inline cursor-pointer" x-on:click="open = ! open">
-                                                      <div class="py-2 px-4 w-full lg:min-w-[280px]" style="background:{{ section.settings.filter_background }}; border: 1px solid {{section.settings.filter_title_bg}};">
+                                                      <div class="py-2 px-4 w-full lg:min-w-[280px]" style="background:{{ section.settings.filter_background }}; border: 1px solid {{ section.settings.filter_title_bg }};">
                                                             <span class="flex justify-between tracking-widest text-sm">{{ filter.label }}
                                                             {%- if filter.active_values.size > 0 -%}
                                                             ({{ filter.active_values.size }})
@@ -282,25 +278,25 @@
             data-aos="fade-in" data-aos="fade-up" data-aos-offset="600" 
             {% endif %}
       >
-            <div class="w-full grid grid-cols-2 md:grid-cols-2 {{section.settings.column_design}} gap-4" 
+            <div class="w-full grid grid-cols-2 md:grid-cols-2 {{ section.settings.column_design }} gap-4" 
                   style="grid-template-rows:fit-content(100%)">
             {% for product in collection.products %}
                   {% render 'layout-product', product: product,
-                  show_vendor:section.settings.show_vendor 
+                  show_vendor: section.settings.show_vendor 
                   show_rating: section.settings.show_rating 
                   product_title_color: section.settings.product_title_color
-                  point_color:section.settings.point_color
-                  product_point_color:section.settings.product_point_color
-                  mouseover_image:section.settings.mouseover_image
-                  show_symbol:section.settings.show_symbol
-                  base_color:section.settings.base_color
-                  quickview_title_color:section.settings.quickview_title_color
-                  qv_button_color_hover:section.settings.qv_button_color_hover
-                  qv_color_button:section.settings.qv_color_button
-                  qv_mouseover_color:section.settings.qv_mouseover_color
-                  iconbox1:settings.iconbox1
-                  iconbox2:settings.iconbox2
-                  iconbox3:settings.iconbox3
+                  point_color: section.settings.point_color
+                  product_point_color: section.settings.product_point_color
+                  mouseover_image: section.settings.mouseover_image
+                  show_symbol: section.settings.show_symbol
+                  base_color: section.settings.base_color
+                  quickview_title_color: section.settings.quickview_title_color
+                  qv_button_color_hover: section.settings.qv_button_color_hover
+                  qv_color_button: section.settings.qv_color_button
+                  qv_mouseover_color: section.settings.qv_mouseover_color
+                  iconbox1: settings.iconbox1
+                  iconbox2: settings.iconbox2
+                  iconbox3: settings.iconbox3
                   %}
             {% endfor %}
             </div>
@@ -375,50 +371,50 @@
 
 {% schema %}
 {
-"name": "Product grid",
-"settings": [
-{
-  "type": "header",
-  "content": "General settings",
-  "info": "Product grid general settings"
-},
-{
-  "type":"select",
-  "id":"color_schema",
-  "label":"Background color",
-  "options":[
-     {
-        "value":"first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"third_color",
-        "label":"Third Color"
-     },
-     {
-      "value":"forth_color",
-      "label":"Forth Color"
+  "name": "Product grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General settings",
+      "info": "Product grid general settings"
     },
     {
-      "value":"fifth_color",
-      "label":"Fifth Color"
+      "type": "select",
+      "id": "color_schema",
+      "label": "Background color",
+      "options": [
+        {
+          "value": "first_color",
+          "label": "First Color"
+        },
+        {
+          "value": "second_color",
+          "label": "Second Color"
+        },
+        {
+          "value": "third_color",
+          "label": "Third Color"
+        },
+        {
+          "value": "forth_color",
+          "label": "Forth Color"
+        },
+        {
+          "value": "fifth_color",
+          "label": "Fifth Color"
+        },
+        {
+          "value": "background_transparent",
+          "label": "Transparent Color"
+        }
+      ],
+      "default": "fifth_color"
     },
     {
-      "value":"background_transparent",
-      "label":"Transparent Color"
-    }
-  ],
-  "default":"fifth_color"
- },
- {
       "type": "range",
       "id": "padding_top",
       "label": "Padding Top controll",
-      "default":4,
+      "default": 4,
       "min": 0,
       "max": 20,
       "step": 1,
@@ -428,176 +424,176 @@
       "type": "range",
       "id": "padding_bottom",
       "label": "Padding Bottom controll",
-      "default":4,
+      "default": 4,
       "min": 0,
       "max": 20,
       "step": 1,
       "unit": "rem"
     },
- {
-  "type":"select",
-  "id":"column_design",
-  "label":"Column selector",
-  "options":[
-     {
-        "value":"three_column",
-        "label":"Three column"
-     },
-     {
-        "value":"four_column",
-        "label":"Four column"
-     }
-  ],
-  "default":"four_column"
- },
-{
-  "type": "checkbox",
-  "id": "show_vendor",
-  "default": true,
-  "label": "show vendor"
-},
-{
-  "type": "checkbox",
-  "id": "show_symbol",
-  "default": true,
-  "label": "show metafield symbol",
-  "info" : "You must set metafield"
-},
-{
-  "type": "checkbox",
-  "id": "show_rating",
-  "default": true,
-  "label": "show rating"
-},
-{
-  "type": "checkbox",
-  "id": "animation_setting",
-  "default": false,
-  "label": "Animation turn on"
-  },
     {
-    "type": "checkbox",
-    "id": "mouseover_image",
-    "default": true,
-    "label": "Show mouseover Image"
-  },
-{
-  "type": "header",
-  "content": "Product Filter",
-  "info": "Setting product top filter design"
-},
-{
-  "type": "header",
-  "content": "Sort box"
-},
-{
-  "type":"select",
-  "id":"filter_box_color",
-  "label":"Sort box color",
-  "options":[
-     {
-        "value":"first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"third_color",
-        "label":"Third Color"
-     },
-     {
-      "value":"forth_color",
-      "label":"Forth Color"
+      "type": "select",
+      "id": "column_design",
+      "label": "Column selector",
+      "options": [
+        {
+          "value": "three_column",
+          "label": "Three column"
+        },
+        {
+          "value": "four_column",
+          "label": "Four column"
+        }
+      ],
+      "default": "four_column"
     },
     {
-      "value":"fifth_color",
-      "label":"Fifth Color"
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": true,
+      "label": "show vendor"
     },
     {
-      "value":"background_transparent",
-      "label":"Transparent Color"
+      "type": "checkbox",
+      "id": "show_symbol",
+      "default": true,
+      "label": "show metafield symbol",
+      "info": "You must set metafield"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": true,
+      "label": "show rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "animation_setting",
+      "default": false,
+      "label": "Animation turn on"
+    },
+    {
+      "type": "checkbox",
+      "id": "mouseover_image",
+      "default": true,
+      "label": "Show mouseover Image"
+    },
+    {
+      "type": "header",
+      "content": "Product Filter",
+      "info": "Setting product top filter design"
+    },
+    {
+      "type": "header",
+      "content": "Sort box"
+    },
+    {
+      "type": "select",
+      "id": "filter_box_color",
+      "label": "Sort box color",
+      "options": [
+        {
+          "value": "first_color",
+          "label": "First Color"
+        },
+        {
+          "value": "second_color",
+          "label": "Second Color"
+        },
+        {
+          "value": "third_color",
+          "label": "Third Color"
+        },
+        {
+          "value": "forth_color",
+          "label": "Forth Color"
+        },
+        {
+          "value": "fifth_color",
+          "label": "Fifth Color"
+        },
+        {
+          "value": "background_transparent",
+          "label": "Transparent Color"
+        }
+      ],
+      "info": "Product sortbox color",
+      "default": "forth_color"
+    },
+    {
+      "type": "color",
+      "id": "sortbox_font_color",
+      "label": "Sort box Font color",
+      "default": "#5E5E5E"
+    },
+    {
+      "type": "color",
+      "id": "sort_box_color",
+      "label": "Sort Button background",
+      "default": "#808080"
+    },
+    {
+      "type": "color",
+      "id": "sort_font_color",
+      "label": "Sort Button color",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Filterbox"
+    },
+    {
+      "type": "color",
+      "id": "filter_selector",
+      "label": "Filter Box color",
+      "info": " dorp down filterbox color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "filter_background",
+      "label": "Filter Tag Color",
+      "info": "Filter Tag colors in the filter box",
+      "default": "#Fff"
+    },
+    {
+      "type": "color",
+      "id": "filter_title_bg",
+      "label": "Filter Title border color",
+      "info": " dorp down filterbox border color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "filter_font_color",
+      "label": "Filter Font color",
+      "info": " dorp down filterbox font color",
+      "default": "#808080"
+    },
+    {
+      "type": "color",
+      "id": "active_button_color",
+      "label": "Point Color",
+      "default": "#5E5E5E"
+    },
+    {
+      "type": "header",
+      "content": "Product settings",
+      "info": "Setting product grid color and tite align"
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product title color",
+      "info": "Product Title, Price, and metafild symbol font colors",
+      "default": "#4b4b4b"
+    },
+    {
+      "type": "color",
+      "id": "product_point_color",
+      "label": "Product point color",
+      "info": "Discount Price Tag Colors",
+      "default": "#C33131"
     }
-  ],
-  "info":"Product sortbox color",
-  "default":"forth_color"
- },
- {
-  "type": "color",
-  "id": "sortbox_font_color",
-  "label": "Sort box Font color",
-  "default": "#5E5E5E"
-},
- {
-  "type": "color",
-  "id": "sort_box_color",
-  "label": "Sort Button background",
-  "default": "#808080"
-},
-{
-  "type": "color",
-  "id": "sort_font_color",
-  "label": "Sort Button color",
-  "default": "#fff"
-},
- {
-  "type": "header",
-  "content": "Filterbox"
-},
-{
-  "type": "color",
-  "id": "filter_selector",
-  "label": "Filter Box color",
-  "info":" dorp down filterbox color",
-  "default": "#FFFFFF"
-},
- {
-  "type": "color",
-  "id": "filter_background",
-  "label": "Filter Tag Color",
-  "info": "Filter Tag colors in the filter box",
-  "default": "#Fff"
-},
-{
-  "type": "color",
-  "id": "filter_title_bg",
-  "label": "Filter Title border color",
-  "info":" dorp down filterbox border color",
-  "default": "#fafafa"
-},
-{
-  "type": "color",
-  "id": "filter_font_color",
-  "label": "Filter Font color",
-  "info":" dorp down filterbox font color",
-  "default": "#808080"
-}, 
-{
-  "type": "color",
-  "id": "active_button_color",
-  "label": "Point Color",
-  "default": "#5E5E5E"
-},
-{
-  "type": "header",
-  "content": "Product settings",
-  "info": "Setting product grid color and tite align"
-},
- {
-  "type": "color",
-  "id": "product_title_color",
-  "label": "Product title color",
-  "info": "Product Title, Price, and metafild symbol font colors",
-  "default": "#4b4b4b"
-},
-{
-    "type": "color",
-    "id":"product_point_color",
-    "label": "Product point color",
-    "info": "Discount Price Tag Colors",
-    "default": "#C33131"
-}
-]
+  ]
 }
 {% endschema %}

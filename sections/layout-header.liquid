@@ -7,7 +7,11 @@
   }
 
   .mega_header_color{
+<<<<<<< HEAD
     color: {{ settings.headmenu_color}};
+=======
+    color: {{ settings.headmenu_color }};
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
   }
   
   .mega_header_color:hover{
@@ -37,7 +41,11 @@
 {% endstyle %}
 
 <header class="body-font">
+<<<<<<< HEAD
   <div {% if section.settings.nav_type == 'sticky_nav' %} id="navbar" {% endif %} class="{% if request.page_type == 'index' %} nav_color {% else %} nav_color_page {% endif %} {{ section.settings.hover_schema }} {{ section.settings.nav_type }} w-full top-0 z-50">
+=======
+  <div {% if section.settings.nav_type == 'sticky_nav' %} id="navbar" {% endif %} class="{% if request.page_type == 'index' %} nav_color {% else %} nav_color_page {% endif %} {{ section.settings.hover_schema }} {{section.settings.nav_type}} w-full top-0 z-50">
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
           
         <!-- Top navigation -->   
           <div class="hidden w-full px-4 pt-1 md:flex text-xs" style="background: {{ section.settings.color_top_nav }}; color: {{ section.settings.nav_font_point }};">
@@ -58,7 +66,7 @@
                           <ul id="LanguageList" role="list" class="mt-2 disclosure__list" hidden>
                             <div id="local_dropdown" class="{{ section.settings.sub_color }} max-h-[160px] overflow-y-scroll absolute z-10 ">
                               {% for language in localization.available_languages %}
-                              <li class="disclosure__item py-2 px-2" tabindex="-1" style="color: {{section.settings.nav_subfont_color}};">
+                              <li class="disclosure__item py-2 px-2" tabindex="-1" style="color: {{ section.settings.nav_subfont_color }};">
                                 <a href="#"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}" data-value="{{ language.iso_code }}">
                                   {{ language.endonym_name | capitalize }}
                                 </a>
@@ -83,9 +91,9 @@
                         </button>
           
                         <ul id="CountryList" role="list" class="mt-2 disclosure__list" hidden>
-                            <div id="local_dropdown" class="{{section.settings.sub_color}} max-h-[160px] overflow-y-scroll absolute z-10 ">
+                            <div id="local_dropdown" class="{{ section.settings.sub_color }} max-h-[160px] overflow-y-scroll absolute z-10 ">
                             {% for country in localization.available_countries %}
-                              <li class="disclosure__item py-2 px-2" tabindex="-1" style="color: {{section.settings.nav_subfont_color}};">
+                              <li class="disclosure__item py-2 px-2" tabindex="-1" style="color: {{ section.settings.nav_subfont_color }};">
                                 <a href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
                                   {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
                                 </a>
@@ -132,7 +140,7 @@
                     
                     {% if cart.item_count > 0 %}
                     <div
-                      class="w-5 h-5 flex justify-center items-center text-xs border rounded-full absolute top-0 left-[20px]" style="background:{{section.settings.badge_color}}; color: {{section.settings.nav_font_point}}; border:1px solid {{section.settings.nav_font_point}};">
+                      class="w-5 h-5 flex justify-center items-center text-xs border rounded-full absolute top-0 left-[20px]" style="background:{{ section.settings.badge_color }}; color: {{ section.settings.nav_font_point }}; border:1px solid {{section.settings.nav_font_point}};">
                       {{ cart.item_count }}
                     </div>
                     {% endif %}
@@ -203,7 +211,7 @@
                     {% assign link_handle = link.handle | replace: '-', '_' %}
                     <div x-data="{ {{ link_handle }}: false }">
                       <button type="button" x-on:click="{{ link_handle }} = ! {{ link_handle }}" class=" inline-flex items-center text-sm tracking-widest">
-                        {{link.title}}
+                        {{ link.title }}
                         {% render 'icon-dropdown' %}
                       </button>
                       <div  x-cloak 
@@ -215,7 +223,7 @@
                       x-transition:leave-end="opacity-0 translate-y-3"
                        x-show="{{ link_handle }}"  x-on:click.away="{{ link_handle }} = false" class="absolute block bg-blue-100 w-full m-auto h-full inset-0 {% if section.settings.nav_logo != 'logo_center' %} magamenu-top{% endif %} {% if section.settings.nav_logo == 'logo_center' %} magamenu-top-center {% endif %}">
                     <!-- code here -->
-                    <div class="shadow-lg {{section.settings.sub_color}}">
+                    <div class="shadow-lg {{ section.settings.sub_color }}">
                       <div class="relative megamenu-width grid grid-cols-2 lg:grid-cols-4 sm:gap-4 p-8 items-center mx-auto">
 
                         <div class="image_wrapper">
@@ -233,6 +241,10 @@
                                   sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                   alt="{{ settings.photo_menu_first.src.alt | escape }}"
                                   class="w-full h-full object-cover object-center inset-0"
+<<<<<<< HEAD
+=======
+                                  loading="lazy"
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                                   width="{{ settings.photo_menu_first }}"
                                   height="{{ settings.photo_menu_first.height }}"
                                   loading = "lazy"
@@ -240,8 +252,8 @@
                             {% endif %}
                             </div>
                             <div class="ml-2">
-                              <span class="nav_font_color block pt-3 text-base tracking-widest font-bold"> {{settings.first_collection_title}} </span>
-                              <a href="{{settings.first_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.first_photo_menu_title}}</a>
+                              <span class="nav_font_color block pt-3 text-base tracking-widest font-bold"> {{ settings.first_collection_title }} </span>
+                              <a href="{{ settings.first_photo_menu_link }}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{ settings.first_photo_menu_title }}</a>
                             </div>
                         </div>
 
@@ -260,6 +272,10 @@
                                   sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                   alt="{{ settings.photo_menu_second.src.alt | escape }}"
                                   class="w-full h-full object-cover object-center inset-0"
+<<<<<<< HEAD
+=======
+                                  loading="lazy"
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                                   width="{{ settings.photo_menu_second.width }}"
                                   height="{{ settings.photo_menu_second.height }}"
                                   loading = "lazy"
@@ -267,8 +283,8 @@
                             {% endif %}
                             </div>
                             <div class="ml-2">
-                              <span class="nav_font_color block pt-3 text-base tracking-widest font-bold"> {{settings.Second_collection_title}} </span>
-                              <a href="{{settings.second_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.second_photo_menu_title}}</a>
+                              <span class="nav_font_color block pt-3 text-base tracking-widest font-bold"> {{ settings.Second_collection_title }} </span>
+                              <a href="{{ settings.second_photo_menu_link }}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{ settings.second_photo_menu_title }}</a>
                             </div>
                            </div>
 
@@ -287,6 +303,10 @@
                                   sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                   alt="{{ settings.photo_menu_third.src.alt | escape }}"
                                   class="w-full h-full object-cover object-center inset-0"
+<<<<<<< HEAD
+=======
+                                  loading="lazy"
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                                   width="{{ settings.photo_menu_third.width }}"
                                   height="{{ settings.photo_menu_third.height }}"
                                   loading = "lazy"
@@ -294,8 +314,8 @@
                             {% endif %}
                             </div>
                             <div class="ml-2">
-                              <span class="nav_font_color block pt-3 text-lg tracking-widest font-bold"> {{settings.third_collection_title}} </span>
-                              <a href="{{settings.third_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.third_photo_menu_title}}</a>
+                              <span class="nav_font_color block pt-3 text-lg tracking-widest font-bold"> {{ settings.third_collection_title }} </span>
+                              <a href="{{ settings.third_photo_menu_link }}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{ settings.third_photo_menu_title }}</a>
                             </div>
                           </div>
 
@@ -314,6 +334,10 @@
                                   sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                                   alt="{{ settings.photo_menu_forth.src.alt | escape }}"
                                   class="w-full h-full object-cover object-center inset-0"
+<<<<<<< HEAD
+=======
+                                  loading="lazy"
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                                   width="{{ settings.photo_menu_forth.width }}"
                                   height="{{ settings.photo_menu_forth.height }}"
                                   loading = "lazy"
@@ -321,8 +345,8 @@
                             {% endif %}
                             </div>
                             <div class="ml-2">
-                              <span class="nav_font_color block pt-3 text-base tracking-widest font-bold"> {{settings.forth_collection_title}} </span>
-                              <a href="{{settings.forth_photo_menu_link}}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{settings.forth_photo_menu_title}}</a>
+                              <span class="nav_font_color block pt-3 text-base tracking-widest font-bold"> {{ settings.forth_collection_title }} </span>
+                              <a href="{{ settings.forth_photo_menu_link }}" class="block pt-1 text-sm cursor-pointer mega_submenu_color tracking-widest">{{ settings.forth_photo_menu_title }}</a>
                             </div>
                         </div>
 
@@ -339,7 +363,7 @@
     
         <!-- shop logo and name -->
         <a href="{{ routes.root_url }}"
-          class="{{section.settings.nav_logo}} nav_m_logo tablet_nav_logo flex order-first w-full m-auto title-font overfolow-hidden font-medium py-2 items-center lg:items-center md:mb-0 md:mt-0 w-full md:w-1/3">
+          class="{{ section.settings.nav_logo }} nav_m_logo tablet_nav_logo flex order-first w-full m-auto title-font overfolow-hidden font-medium py-2 items-center lg:items-center md:mb-0 md:mt-0 w-full md:w-1/3">
           {%- if section.settings.logo != blank -%}
           {%- assign image_size_2x = section.settings.logo_width | times: 2 | at_most: 5760 -%}
           <img srcset="{{ section.settings.logo | image_url: width: section.settings.logo_width }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
@@ -438,6 +462,7 @@ customElements.define('localization-form', LocalizationForm);
 
 {% schema %}
 {
+<<<<<<< HEAD
    "name":"t:sections.header.name",
    "class":"shopify-section-vue",
    "settings":[
@@ -637,5 +662,206 @@ customElements.define('localization-form', LocalizationForm);
          "label":"Heading Navigation Menu"
       }
    ]
+=======
+  "name": "t:sections.header.name",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement settings",
+      "info": "Announcement text settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "visible",
+      "label": "t:sections.announcement-bar.settings.show-announcement-bar",
+      "default": false
+    },
+    {
+      "type": "html",
+      "id": "content",
+      "label": "t:common.content",
+      "default": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "type": "header",
+      "content": "Navigation Position settings",
+      "info": "Place your navigation and logo left, right or center"
+    },
+    {
+      "type": "select",
+      "id": "nav_type",
+      "label": "Navigation Type",
+      "options": [
+        {
+          "value": "sticky_nav",
+          "label": "Sticky Navigation"
+        },
+        {
+          "value": "collapse_nav",
+          "label": "Collapse Navigation"
+        },
+        {
+          "value": "regular_nav",
+          "label": "Regular Navigation"
+        }
+      ],
+      "default": "collapse_nav"
+    },
+    {
+      "type": "select",
+      "id": "nav_logo",
+      "label": "Navigation Logo position",
+      "options": [
+        {
+          "value": "logo_left",
+          "label": "Logo Left"
+        },
+        {
+          "value": "logo_right",
+          "label": "Logo Right"
+        },
+        {
+          "value": "logo_center",
+          "label": "Logo Center"
+        }
+      ],
+      "default": "logo_center"
+    },
+    {
+      "type": "select",
+      "id": "nav_position",
+      "label": "Navigation position",
+      "options": [
+        {
+          "value": "nav_left",
+          "label": "Navigation Left"
+        },
+        {
+          "value": "nav_right",
+          "label": "Navigation right"
+        },
+        {
+          "value": "nav_center",
+          "label": "Navigation Center"
+        }
+      ],
+      "default": "nav_center"
+    },
+    {
+      "type": "header",
+      "content": "Navigation color settings",
+      "info": "Please go to the theme setting navigation section to make custom navigation color and control opacity"
+    },
+    {
+      "type": "color",
+      "id": "color_top_nav",
+      "label": "Top Navigation Color",
+      "default": "#ECE2D7"
+    },
+    {
+      "type": "color",
+      "id": "nav_font_color",
+      "label": "Navigation font color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "nav_font_point",
+      "label": "Navigation Point color",
+      "default": "#6F665D"
+    },
+    {
+      "type": "color",
+      "id": "nav_subfont_color",
+      "label": "Navigation SubFont Color",
+      "default": "#6A5D6F",
+      "info": "Dropdown menu color, This is not for megamenu"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Navigation Badge Color",
+      "default": "#DACCC1",
+      "info": "For cart product count icons"
+    },
+    {
+      "type": "select",
+      "id": "hover_schema",
+      "label": "Navigation mouse over",
+      "options": [
+        {
+          "value": "nav_color_first",
+          "label": "First Color"
+        },
+        {
+          "value": "nav_color_second",
+          "label": "Second Color"
+        },
+        {
+          "value": "nav_color_third",
+          "label": "Third Color"
+        },
+        {
+          "value": "nav_color_forth",
+          "label": "Forth Color"
+        },
+        {
+          "value": "nav_color_fifth",
+          "label": "Fifth Color"
+        },
+        {
+          "value": "background_transparent",
+          "label": "Transparent Color"
+        }
+      ],
+      "default": "nav_color_third"
+    },
+    {
+      "type": "select",
+      "id": "sub_color",
+      "label": "Submenu color",
+      "options": [
+        {
+          "value": "first_color",
+          "label": "First Color"
+        },
+        {
+          "value": "second_color",
+          "label": "Second Color"
+        },
+        {
+          "value": "third_color",
+          "label": "Third Color"
+        },
+        {
+          "value": "forth_color",
+          "label": "Forth Color"
+        },
+        {
+          "value": "fifth_color",
+          "label": "Fifth Color"
+        }
+      ],
+      "default": "second_color"
+    },
+    {
+      "type": "header",
+      "content": "Navigation Content",
+      "info": "Logo Image and Menu settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:common.image"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Heading Navigation Menu"
+    }
+  ]
+>>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
 }
 {% endschema %}
