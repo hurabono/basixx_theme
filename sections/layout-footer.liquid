@@ -11,11 +11,7 @@
 </style>
 
 
-<<<<<<< HEAD
 <div class="{{ section.settings.color_schema }} overflow-hidden" style="border-top:1px solid {{ section.settings.footer_border_top }};">
-=======
-<div class="{{section.settings.color_schema}} overflow-hidden" style="border-top:1px solid {{section.settings.footer_border_top}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
   <div class="xl:max-w-[1320px] mx-auto flex px-5 py-16 lg:flex-row flex-col">
     <div class="md:w-[23rem] flex-shrink-0 lg:mx-0 mx-auto text-center lg:text-left px-2">
         <a href="{{ routes.root_url }}" class="flex title-font tracking-widest items-center lg:justify-start justify-center">
@@ -30,19 +26,11 @@
               alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
             >
           {%- else -%}
-<<<<<<< HEAD
             <span  class="text-xl" style="color: {{ section.settings.footer_title_color }};"> {{ shop.name }}</span >
           {%- endif -%}
         </a>
       <p class="pt-4 text-sm tracking-wider leading-8" style="color: {{ section.settings.footer_text_color }};">{{ section.settings.description }}</p>
       <span class="inline-flex sm:ml-auto sm:mt-4 mt-2 justify-center sm:justify-start" style="color: {{ section.settings.footer_title_color }};">
-=======
-            <span  class="text-xl" style="color: {{section.settings.footer_title_color}};"> {{ shop.name }}</span >
-          {%- endif -%}
-        </a>
-      <p class="pt-4 text-sm tracking-wider leading-8" style="color: {{section.settings.footer_text_color}};">{{section.settings.description}}</p>
-      <span class="inline-flex sm:ml-auto sm:mt-4 mt-2 justify-center sm:justify-start" style="color: {{section.settings.footer_title_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         {% if
           section.settings.social_instagram_visible or
           section.settings.social_twitter_visible or
@@ -67,21 +55,13 @@
 
       {% if section.settings.newsletter_visible %}
       <div class="py-6">
-<<<<<<< HEAD
         <p class="tracking-widest" style="color: {{ section.settings.footer_title_color }};">Newsletter</p>
-=======
-        <p class="tracking-widest" style="color: {{section.settings.footer_title_color}};">Newsletter</p>
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
        {% form 'customer', class: 'w-full' %}
           
           {% if form.errors %}
               {% capture error_text %}
                 {{ form.errors | default_errors }}
-<<<<<<< HEAD
               {% endcapture %}
-=======
-              {% endcapture%}
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       
               {% render 'layout-message',
                 type: 'error'
@@ -91,11 +71,7 @@
           {% endif %}
 
           <input type="hidden" name="contact[tags]" value="newsletter">
-<<<<<<< HEAD
           <div class="flex" style="border-bottom: 1px solid {{ section.settings.footer_text_color }};">
-=======
-          <div class="flex" style="border-bottom: 1px solid {{section.settings.footer_text_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             <input
                   type="email"
                   placeholder="Email"
@@ -105,23 +81,14 @@
                   required >
             <button
                   type="submit"
-<<<<<<< HEAD
                   class="{{ section.settings.color_button }} mt-4 sm:mt-0 sm:mx-2 text-sm py-2 md:text-base text-center outline-none transition duration-100" 
                   style="color:{{ section.settings.footer_text_color }};">
-=======
-                  class="{{section.settings.color_button}} mt-4 sm:mt-0 sm:mx-2 text-sm py-2 md:text-base text-center outline-none transition duration-100" 
-                  style="color:{{section.settings.footer_text_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                   {{ 'action.subscribe' | t }}
             </button>
           </div>  
 
           {% if form.posted_successfully? %}
-<<<<<<< HEAD
             <span class="mx-2 mt-2 text-sm text-gray-400 tracking-wider" style="color: {{ section.settings.footer_title_color }};"> ** Thanks for subscribing!</span>
-=======
-            <span class="mx-2 mt-2 text-sm text-gray-400 tracking-wider" style="color: {{section.settings.footer_title_color}};"> ** Thanks for subscribing!</span>
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           {% endif %}
 
        {% endform %}
@@ -132,22 +99,13 @@
     
     <div class="flex-grow flex flex-wrap lg:pl-20 lg:mt-0 mt-10 lg:text-left text-center" style="justify-content: space-around;">
       {% if section.settings.menu_first.links != blank %}
-<<<<<<< HEAD
         <div class="{{ section.settings.grid_style }}  px-4">
         <h2 class="title-font font-medium tracking-widest text-base" style="color: {{ section.settings.footer_title_color }};">
-=======
-        <div class="{{section.settings.grid_style}}  px-4">
-        <h2 class="title-font font-medium tracking-widest text-base" style="color: {{section.settings.footer_title_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           {{ section.settings.category_first }}
         </h2>
         <nav class="list-none mb-10 ml-1 pt-1">
           {% for link in section.settings.menu_first.links %}
-<<<<<<< HEAD
           <div class="mt-4" style="color: {{ section.settings.footer_text_color }};">
-=======
-          <div class="mt-4" style="color: {{section.settings.footer_text_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             <a href="{{ link.url }}">{{ link.title }}</a>
           </div>
           {% endfor %}
@@ -156,22 +114,13 @@
       {% endif %}
       
       {% if section.settings.menu_second.links != blank %}
-<<<<<<< HEAD
         <div class="{{ section.settings.grid_style }}  px-4">
           <h2 class="title-font font-medium text-gray-900 tracking-widest text-base" style="color: {{ section.settings.footer_title_color }};">
-=======
-        <div class="{{section.settings.grid_style}}  px-4">
-          <h2 class="title-font font-medium text-gray-900 tracking-widest text-base" style="color: {{section.settings.footer_title_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             {{ section.settings.category_second }}
           </h2>
           <nav class="list-none mb-10 ml-1 pt-1">
             {% for link in section.settings.menu_second.links %}
-<<<<<<< HEAD
             <div class="mt-4" style="color: {{ section.settings.footer_text_color }};">
-=======
-            <div class="mt-4" style="color: {{section.settings.footer_text_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
               <a href="{{ link.url }}">{{ link.title }}</a>
             </div>
             {% endfor %}
@@ -181,22 +130,13 @@
 
       
       {% if section.settings.menu_third.links != blank %}
-<<<<<<< HEAD
         <div class="{{ section.settings.grid_style }}  px-4">
         <h2 class="title-font font-medium text-gray-900 tracking-widest text-base" style="color: {{ section.settings.footer_title_color }};">
-=======
-        <div class="{{section.settings.grid_style}}  px-4">
-        <h2 class="title-font font-medium text-gray-900 tracking-widest text-base" style="color: {{section.settings.footer_title_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           {{ section.settings.category_third }}
         </h2>
         <nav class="list-none mb-10 ml-1 pt-1">
           {% for link in section.settings.menu_third.links %}
-<<<<<<< HEAD
           <div class="mt-4" style="color: {{ section.settings.footer_text_color }};">
-=======
-          <div class="mt-4" style="color: {{section.settings.footer_text_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
             <a href="{{ link.url }}">{{ link.title }}</a>
           </div>
           {% endfor %}
@@ -207,17 +147,10 @@
   </div>
 </div>
 
-<<<<<<< HEAD
 <div style="background: {{ section.settings.footer_point_color }};">
   <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row items-center">
 
     <p class="text-center sm:text-left" style="color: {{ section.settings.copy_right }};"> &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}
-=======
-<div style="background: {{section.settings.footer_point_color}};">
-  <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row items-center">
-
-    <p class="text-center sm:text-left" style="color: {{section.settings.copy_right}};"> &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     </p>
 
     <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
@@ -231,7 +164,6 @@
       {% assign apple_pay_payment = 'apple_pay' %}
       
       {% for type in visa_payment %}
-<<<<<<< HEAD
           {% if type == 'visa' and section.settings.visa_visible == true %}
           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
           {% endif %}
@@ -277,53 +209,6 @@
           {% if type == 'apple_pay' and section.settings.applepay_visible == true %}
           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
           {% endif %}
-=======
-          {%  if type == 'visa' and section.settings.visa_visible == true %}
-          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-          {%  endif %}
-      {% endfor %}
-
-      {% for type in master_payment %}
-          {%  if type == 'master' and section.settings.mastercard_visible == true %}
-          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-          {%  endif %}
-      {% endfor %}
-
-      {% for type in amex_payment %}
-          {%  if type == 'american_express' and section.settings.amex_visible == true %}
-          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-          {%  endif %}
-      {% endfor %}
-
-      {% for type in paypal_payment %}
-          {%  if type == 'paypal' and section.settings.paypal_visible == true %}
-          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-          {%  endif %}
-      {% endfor %}
-
-      {% for type in jcb_payment %}
-          {%  if type == 'jcb' and section.settings.jcb_visible == true  %}
-          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-          {%  endif %}
-      {% endfor %}
-
-      {% for type in afterpay_payment %}
-          {%  if type == 'afterpay' and section.settings.afterpay_visible == true %}
-          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-          {%  endif %}
-      {% endfor %}
-
-      {% for type in klarna_payment %}
-          {%  if type == 'klarna' and section.settings.klarna_visible == true %}
-          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-          {%  endif %}
-      {% endfor %}
-
-      {% for type in apple_pay_payment %}
-          {%  if type == 'apple_pay' and section.settings.applepay_visible == true %}
-          {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-          {%  endif %}
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       {% endfor %}
       
     
@@ -334,7 +219,6 @@
 
 {% schema %}
 {
-<<<<<<< HEAD
   "name": "t:sections.footer.name",
   "settings": [
     {
@@ -598,270 +482,5 @@
       "label": "t:common.link"
     }
   ]
-=======
-"name": "t:sections.footer.name",
-"settings": [
-{
-  "type": "header",
-  "content": "Footer Colors",
-  "info": "Footer color settings"
-},
-{
-  "type":"select",
-  "id":"color_schema",
-  "label":"Background color",
-  "options":[
-     {
-        "value":"first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"third_color",
-        "label":"Third Color"
-     },
-     {
-      "value":"forth_color",
-      "label":"Forth Color"
-    },
-    {
-      "value":"fifth_color",
-      "label":"Fifth Color"
-    },
-    {
-      "value":"background_transparent",
-      "label":"Transparent Color"
-    }
-  ],
-  "default":"fifth_color"
- },
- {
-  "type": "color",
-  "id": "footer_title_color",
-  "label": "Footer Title Color",
-  "default": "#D2AFAE"
-  },
-  {
-    "type": "color",
-    "id": "footer_point_color",
-    "label": "Footer Point Color",
-    "default": "#D2AFAE"
-  },
-  {
-    "type": "color",
-    "id": "footer_text_color",
-    "label": "Footer text Color",
-    "default": "#D2AFAE"
-  },
-  {
-    "type": "color",
-    "id": "footer_border_top",
-    "label": "Footer border",
-    "default": "#ccc"
-  },
-  {
-    "type": "color",
-    "id": "copy_right",
-    "label": "Copy right color",
-    "default": "#fff"
-  },
-  {
-  "type": "header",
-  "content": "Your store Information",
-  "info": "Footer settings for your store info"
-  },
-  {
-    "type": "image_picker",
-    "id": "logo",
-    "label": "t:common.image"
-  },
-  {
-    "type": "textarea",
-    "id": "description",
-    "label": "Information",
-    "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
-  },
-  {
-    "type": "checkbox",
-    "id": "newsletter_visible",
-    "label": "Show newsletter",
-    "default":true
-  },
-  {
-    "type": "header",
-    "content": "Link settings",
-    "info": "Footer link settings maximum 3"
-  },
-  {
-    "type":"select",
-    "id":"grid_style",
-    "label":"Grid Style",
-    "options":[
-       {
-          "value":"width_3grid",
-          "label":"Grid Style 1"
-       },
-       {
-          "value":"width_2grid",
-          "label":"Grid Style 2"
-       }
-    ],
-    "default":"width_3grid"
-   },
-  {
-    "type": "text",
-    "id": "category_first",
-    "label": "Category First",
-    "default": "Category First"
-  },
-  {
-    "type": "link_list",
-    "id": "menu_first",
-    "default" : "main-menu",
-    "label": "Footer Navigation Menu First"
-  },
-  {
-    "type": "text",
-    "id": "category_second",
-    "label": "Category Second",
-    "default": "Category Second"
-  },
-  {
-    "type": "link_list",
-    "id": "menu_second",
-    "default" : "main-menu",
-    "label": "Footer Navigation Menu Second"
-  },
-  {
-    "type": "text",
-    "id": "category_third",
-    "label": "Category Third",
-    "default": "Category Third"
-  },
-  {
-    "type": "link_list",
-    "id": "menu_third",
-    "default" : "main-menu",
-    "label": "Footer Navigation Menu Third"
-  },
-  {
-    "type": "header",
-    "content": "Payment method",
-    "info": "turn on and off payment method"
-  },
-  {
-    "type": "checkbox",
-    "id": "visa_visible",
-    "label": "Visa",
-    "default": true
-  },
-  {
-    "type": "checkbox",
-    "id": "mastercard_visible",
-    "label": "Mastercard",
-    "default": true
-  },
-  {
-    "type": "checkbox",
-    "id": "paypal_visible",
-    "label": "Paypal",
-    "default": true
-  },
-  {
-    "type": "checkbox",
-    "id": "amex_visible",
-    "label": "Amex",
-    "default": true
-  },
-  {
-    "type": "checkbox",
-    "id": "jcb_visible",
-    "label": "JCB",
-    "default": true
-  },
-  {
-    "type": "checkbox",
-    "id": "klarna_visible",
-    "label": "Klarna",
-    "default": true
-  },
-  {
-    "type": "checkbox",
-    "id": "afterpay_visible",
-    "label": "Afterpay",
-    "default": true
-  },
-  {
-    "type": "checkbox",
-    "id": "applepay_visible",
-    "label": "Apple Pay",
-    "default": true
-  },
-  {
-    "type": "header",
-    "content": "t:sections.footer.settings.header.content",
-    "info": "t:sections.footer.settings.header.info"
-  },
-  {
-    "type": "header",
-    "content": "Instagram"
-  },
-  {
-    "type": "checkbox",
-    "id": "social_instagram_visible",
-    "label": "t:sections.footer.settings.show-icon"
-  },
-  {
-    "type": "url",
-    "id": "social_instagram_link",
-    "label": "t:common.link"
-  },
-  {
-    "type": "header",
-    "content": "Twitter"
-  },
-  {
-    "type": "checkbox",
-    "id": "social_twitter_visible",
-    "label": "t:sections.footer.settings.show-icon"
-  },
-  {
-    "type": "url",
-    "id": "social_twitter_link",
-    "label": "t:common.link"
-  },
-  {
-    "type": "header",
-    "content": "Facebook"
-  },
-  {
-    "type": "checkbox",
-    "id": "social_facebook_visible",
-    "label": "t:sections.footer.settings.show-icon"
-  },
-  {
-    "type": "url",
-    "id": "social_facebook_link",
-    "label": "t:common.link"
-  },
-  {
-    "type": "header",
-    "content": "Youtube"
-  },
-  {
-    "type": "checkbox",
-    "id": "social_youtube_visible",
-    "label": "t:sections.footer.settings.show-icon"
-  },
-  {
-    "type": "url",
-    "id": "social_youtube_link",
-    "label": "t:common.link"
-  }
-]
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 {% endschema %}

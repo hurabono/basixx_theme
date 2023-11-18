@@ -4,11 +4,7 @@
       "type": "section-hero",
       "settings": {
         "color_schema": "forth_color",
-<<<<<<< HEAD
         "image": "shopify://shop_images/15_7251a6d6-f064-4289-b82f-b09d75169525.png",
-=======
-        "image": "shopify:\/\/shop_images\/15_7251a6d6-f064-4289-b82f-b09d75169525.png",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "padding_top": 8,
         "padding_bottom": 1,
         "overlay_set": true,
@@ -23,11 +19,7 @@
         "headline": "Login your account",
         "font_style": "font_normal",
         "color_title": "#fafafa",
-<<<<<<< HEAD
         "text": "<p>Join us in the pursuit of radiant skin and experience a skincare journey like no other.</p>",
-=======
-        "text": "<p>Join us in the pursuit of radiant skin and experience a skincare journey like no other.<\/p>",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "color_desciption": "#fafafa",
         "textbox_align": "font_center",
         "textbox_color": "background_transparent",

@@ -1,190 +1,189 @@
 {
-  "sections": {
-    "hero-banner": {
-      "type": "section-hero",
-      "settings": {
-        "color_schema": "fifth_color",
-        "padding_top": 10,
-        "padding_bottom": 5,
-        "overlay_set": false,
-        "image_fixed": false,
-        "show_line": false,
-        "line_position": "line_center",
-        "line_border": "#5e5e5e",
-        "banner_title_font_size": 38,
-        "banner_font_size": 14,
-        "animation_setting": true,
-        "subtitle": "THEMEBLING",
-        "headline": "THANKS FOR USING BASIXX THEME",
-        "font_style": "font_bold",
-        "color_title": "#5c5353",
-<<<<<<< HEAD
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.</p>",
-=======
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
-        "color_desciption": "#5c5353",
-        "textbox_align": "font_right",
-        "textbox_color": "background_transparent",
-        "button_align": "font_right",
-        "button_size": "button_medium",
-        "button_round_off": false,
-<<<<<<< HEAD
-        "button-url": "/",
-=======
-        "button-url": "\/",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
-        "button-text": "view more",
-        "button_bg": "#ffffff",
-        "button_color": "#808080",
-        "border_colors": "#808080",
-        "mo_button_bg": "#808080",
-        "mo_button_color": "#ffffff",
-        "mo_border_color": "rgba(0,0,0,0)"
+        "sections": {
+          "hero-banner": {
+            "type": "section-hero",
+            "settings": {
+              "color_schema": "fifth_color",
+              "padding_top": 10,
+              "padding_bottom": 5,
+              "overlay_set": false,
+              "image_fixed": false,
+              "show_line": false,
+              "line_position": "line_center",
+              "line_border": "#5e5e5e",
+              "banner_title_font_size": 38,
+              "banner_font_size": 14,
+              "animation_setting": true,
+              "subtitle": "THEMEBLING",
+              "headline": "THANKS FOR USING BASIXX THEME",
+              "font_style": "font_bold",
+              "color_title": "#5c5353",
+              "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+              "color_desciption": "#5c5353",
+              "textbox_align": "font_right",
+              "textbox_color": "background_transparent",
+              "button_align": "font_right",
+              "button_size": "button_medium",
+              "button_round_off": false,
+              "button-url": "\/",
+              "button-text": "view more",
+              "button_bg": "#ffffff",
+              "button_color": "#808080",
+              "border_colors": "#808080",
+              "mo_button_bg": "#808080",
+              "mo_button_color": "#ffffff",
+              "mo_border_color": "rgba(0,0,0,0)"
+            }
+          },
+          "rich-text": {
+            "type": "section-richtext",
+            "settings": {
+              "color_schema": "third_color",
+              "button_round_off": false,
+              "animation_setting": false,
+              "show_line": true,
+              "line_position": "line_center",
+              "line_border": "#5e5e5e",
+              "padding_top": 4,
+              "padding_bottom": 4,
+              "banner_title_font_size": 45,
+              "banner_font_size": 15,
+              "subtitle": "H Real Esate",
+              "headline": "Headline",
+              "color_title": "#5e5e5e",
+              "text": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora<\/p><p>omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.<\/p>",
+              "color_desciption": "#5e5e5e",
+              "textbox_align": "font_center",
+              "button_size": "button_small",
+              "button-url": "",
+              "button-text": "Button",
+              "button_bg": "rgba(0,0,0,0)",
+              "button_color": "#808080",
+              "border_colors": "#808080",
+              "mo_button_bg": "#808080",
+              "mo_button_color": "#ffffff",
+              "mo_border_color": "rgba(0,0,0,0)",
+              "button-url_second": "",
+              "button-text_second": "Button",
+              "button_bg2": "#808080",
+              "button_color2": "#ffffff",
+              "border_colors2": "#808080",
+              "mo_button_bg2": "rgba(0,0,0,0)",
+              "mo_button_color2": "#808080",
+              "mo_border_color2": "#808080"
+            }
+          },
+          "section-product-slideshow1": {
+            "type": "section-product-slideshow",
+            "settings": {
+              "color_schema": "forth_color",
+              "padding_top": 5,
+              "padding_bottom": 1,
+              "show_symbol": true,
+              "animation_setting": true,
+              "show_rating": true,
+              "mouseover_image": true,
+              "button_background": "rgba(0,0,0,0)",
+              "arrow_icons": "#4b4b4b",
+              "arrow_border": "#4b4b4b",
+              "button_bg_mouseover": "#ffffff",
+              "arrow_icons_mouseover": "#4b4b4b",
+              "arrow_border_mouseover": "#4b4b4b",
+              "title_align": "font_center",
+              "headline": "NEW LISTING",
+              "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
+              "color_title": "#4b4b4b",
+              "color_sub_title": "#808080",
+              "collection_featured": "",
+              "product_font_size": 1,
+              "vendor_set": false,
+              "product_title_color": "#ffffff",
+              "product_point_color": "#5e5e5e",
+              "product_badge_color": "#5e5e5e",
+              "button_align": "font_center",
+              "button_size": "button_medium",
+              "button_round_off": false,
+              "button-url": "",
+              "button-text": "",
+              "button_bg": "rgba(0,0,0,0)",
+              "button_color": "#808080",
+              "border_colors": "#808080",
+              "mo_button_bg": "#808080",
+              "mo_button_color": "#ffffff",
+              "mo_border_color": "rgba(0,0,0,0)"
+            }
+          },
+          "section-product-slideshow2": {
+            "type": "section-product-slideshow",
+            "settings": {
+              "color_schema": "fifth_color",
+              "padding_top": 1,
+              "padding_bottom": 2,
+              "show_symbol": true,
+              "animation_setting": true,
+              "show_rating": true,
+              "mouseover_image": true,
+              "button_background": "rgba(0,0,0,0)",
+              "arrow_icons": "#4b4b4b",
+              "arrow_border": "#4b4b4b",
+              "button_bg_mouseover": "#4b4b4b",
+              "arrow_icons_mouseover": "#ffffff",
+              "arrow_border_mouseover": "#4b4b4b",
+              "title_align": "font_center",
+              "headline": "",
+              "text": "",
+              "color_title": "#4b4b4b",
+              "color_sub_title": "#4b4b4b",
+              "collection_featured": "",
+              "product_font_size": 1,
+              "vendor_set": false,
+              "product_title_color": "#4b4b4b",
+              "product_point_color": "#c33131",
+              "product_badge_color": "#e8d5d4",
+              "button_align": "font_center",
+              "button_size": "button_medium",
+              "button_round_off": false,
+              "button-url": "",
+              "button-text": "",
+              "button_bg": "rgba(0,0,0,0)",
+              "button_color": "#808080",
+              "border_colors": "#808080",
+              "mo_button_bg": "#808080",
+              "mo_button_color": "#ffffff",
+              "mo_border_color": "rgba(0,0,0,0)"
+            }
+          },
+          "section-newsletter": {
+            "type": "section-newsletter",
+            "settings": {
+              "color_schema": "background_transparent",
+              "padding_top": 4,
+              "padding_bottom": 4,
+              "image_hide": false,
+              "animation_setting": true,
+              "img_array": "left_img",
+              "headline": "Our newsletter",
+              "text": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.<\/p>",
+              "header_color": "#5e5e5e",
+              "description_color": "#808080",
+              "title_align": "font_left",
+              "button_round_off": false,
+              "button_bg": "rgba(0,0,0,0)",
+              "button_color": "#808080",
+              "border_colors": "#808080",
+              "mo_button_bg": "#808080",
+              "mo_button_color": "#ffffff",
+              "mo_border_color": "rgba(0,0,0,0)",
+              "input_bg_color": "rgba(0,0,0,0)",
+              "point_color": "#808080"
+            }
+          }
+        },
+        "order": [
+          "hero-banner",
+          "rich-text",
+          "section-product-slideshow1",
+          "section-product-slideshow2",
+          "section-newsletter"
+        ]
       }
-    },
-<<<<<<< HEAD
-    "rich-text": {
-      "type": "section-richtext",
-      "settings": {
-      }
-    },
-    "section-product-slideshow1": {
-=======
-    "rich-text":{
-      "type":"section-richtext",
-      "settings":{}
-    },
-    "section-product-slideshow1":{
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
-      "type": "section-product-slideshow",
-      "settings": {
-        "color_schema": "forth_color",
-        "padding_top": 5,
-        "padding_bottom": 1,
-        "show_symbol": true,
-        "animation_setting": true,
-        "show_rating": true,
-        "mouseover_image": true,
-        "button_background": "rgba(0,0,0,0)",
-        "arrow_icons": "#4b4b4b",
-        "arrow_border": "#4b4b4b",
-        "button_bg_mouseover": "#ffffff",
-        "arrow_icons_mouseover": "#4b4b4b",
-        "arrow_border_mouseover": "#4b4b4b",
-        "title_align": "font_center",
-        "headline": "NEW LISTING",
-<<<<<<< HEAD
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.</p>",
-=======
-        "text": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br\/>Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
-        "color_title": "#4b4b4b",
-        "color_sub_title": "#808080",
-        "collection_featured": "",
-        "product_font_size": 1,
-        "vendor_set": false,
-        "product_title_color": "#ffffff",
-        "product_point_color": "#5e5e5e",
-        "product_badge_color": "#5e5e5e",
-        "button_align": "font_center",
-        "button_size": "button_medium",
-        "button_round_off": false,
-        "button-url": "",
-        "button-text": "",
-        "button_bg": "rgba(0,0,0,0)",
-        "button_color": "#808080",
-        "border_colors": "#808080",
-        "mo_button_bg": "#808080",
-        "mo_button_color": "#ffffff",
-        "mo_border_color": "rgba(0,0,0,0)"
-      }
-    },
-<<<<<<< HEAD
-    "section-product-slideshow2": {
-=======
-    "section-product-slideshow2":{
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
-      "type": "section-product-slideshow",
-      "settings": {
-        "color_schema": "fifth_color",
-        "padding_top": 1,
-        "padding_bottom": 2,
-        "show_symbol": true,
-        "animation_setting": true,
-        "show_rating": true,
-        "mouseover_image": true,
-        "button_background": "rgba(0,0,0,0)",
-        "arrow_icons": "#4b4b4b",
-        "arrow_border": "#4b4b4b",
-        "button_bg_mouseover": "#4b4b4b",
-        "arrow_icons_mouseover": "#ffffff",
-        "arrow_border_mouseover": "#4b4b4b",
-        "title_align": "font_center",
-        "headline": "",
-        "text": "",
-        "color_title": "#4b4b4b",
-        "color_sub_title": "#4b4b4b",
-        "collection_featured": "",
-        "product_font_size": 1,
-        "vendor_set": false,
-        "product_title_color": "#4b4b4b",
-        "product_point_color": "#c33131",
-        "product_badge_color": "#e8d5d4",
-        "button_align": "font_center",
-        "button_size": "button_medium",
-        "button_round_off": false,
-        "button-url": "",
-        "button-text": "",
-        "button_bg": "rgba(0,0,0,0)",
-        "button_color": "#808080",
-        "border_colors": "#808080",
-        "mo_button_bg": "#808080",
-        "mo_button_color": "#ffffff",
-        "mo_border_color": "rgba(0,0,0,0)"
-      }
-    },
-<<<<<<< HEAD
-    "section-newsletter": {
-      "type": "section-newsletter",
-      "settings": {
-=======
-    "section-newsletter":{
-      "type": "section-newsletter",
-        "settings": {
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
-        "color_schema": "background_transparent",
-        "padding_top": 4,
-        "padding_bottom": 4,
-        "image_hide": false,
-        "animation_setting": true,
-        "img_array": "left_img",
-        "headline": "Our newsletter",
-<<<<<<< HEAD
-        "text": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>",
-=======
-        "text": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.<\/p>",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
-        "header_color": "#5e5e5e",
-        "description_color": "#808080",
-        "title_align": "font_left",
-        "button_round_off": false,
-        "button_bg": "rgba(0,0,0,0)",
-        "button_color": "#808080",
-        "border_colors": "#808080",
-        "mo_button_bg": "#808080",
-        "mo_button_color": "#ffffff",
-        "mo_border_color": "rgba(0,0,0,0)",
-        "input_bg_color": "rgba(0,0,0,0)",
-        "point_color": "#808080"
-      }
-    }
-  },
-  "order": [
-    "hero-banner",
-    "rich-text",
-    "section-product-slideshow1",
-    "section-product-slideshow2",
-    "section-newsletter"
-  ]
-}

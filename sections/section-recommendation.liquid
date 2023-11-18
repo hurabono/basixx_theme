@@ -2,37 +2,21 @@
 {% style %}
 
       .product__title{
-<<<<<<< HEAD
         color:{{ section.settings.base_color }};
       }
     
       .product__price{
         color: {{ section.settings.point_color }};
-=======
-        color:{{ section.settings.base_color}};
-      }
-    
-      .product__price{
-        color: {{ section.settings.point_color}};
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       }
       
     {% endstyle %}
     
     {%- if section.settings.show_product_recommendations -%}
-<<<<<<< HEAD
     <div class="{{ section.settings.color_schema }}" style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
           <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
                 <div class="mx-[2rem]">
                       {% if section.settings.headline %}
                       <h1 class="{{ section.settings.title_align }} my-[2rem] text-2xl lg:text-3xl font-bold text-center" style="color:{{ section.settings.color_title }};">
-=======
-    <div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
-          <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
-                <div class="mx-[2rem]">
-                      {% if section.settings.headline %}
-                      <h1 class="{{section.settings.title_align}} my-[2rem] text-2xl lg:text-3xl font-bold text-center" style="color:{{section.settings.color_title}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                         {{ section.settings.headline }}
                       </h1>
                       {% endif %}
@@ -48,21 +32,14 @@
                                         class="product__img "
                                         src="{{ product.featured_image | image_url: width: 500, height: 500 }}"
                                         alt="{{ product.featured_image.alt }}"
-<<<<<<< HEAD
                                         width="{{ product.featured_image.width }}"
                                         height="{{ product.featured_image.height }}"
                                         loading="lazy"
-=======
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                                         />
           
                                   <div class="py-6">
                                         <p class="product__title">{{ product.title }}</p>
-<<<<<<< HEAD
                                         <p class="product__price">{{ product.price | money }}</p>
-=======
-                                        <p class="product__price">{{ product.price | money}}</p>
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
                                   </div>
                                   </a>
                                   </div>
@@ -72,14 +49,9 @@
                 </div>
           </div>
     </div>
-<<<<<<< HEAD
     {% endif %}
-=======
-    {%endif%}
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     
-    
-    {% javascript %}
+    <script>
       const handleIntersection = (entries, observer) => {
         if (!entries[0].isIntersecting) return;
     
@@ -107,12 +79,9 @@
       const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
     
       observer.observe(productRecommendationsSection);
+    </script>
     
-      
-    {% endjavascript %}
-    
-    {% schema %}
-<<<<<<< HEAD
+{% schema %}
 {
   "name": "Product recommendations",
   "settings": [
@@ -227,121 +196,5 @@
   ]
 }
 {% endschema %}
-=======
-      {
-        "name": "Product recommendations",
-        "settings": [
-          {
-                "type":"text",
-                "id":"headline",
-                "label":"t:common.headline",
-                "default":"You may also like"
-          },
-          {
-                "type": "color",
-                "id": "color_title",
-                "label": "Header Text color",
-                "default": "#A76561"
-          },
-          {
-                "type": "checkbox",
-                "id": "show_product_recommendations",
-                "label": "Turn on product recommendations",
-                "default": true
-          },
-          {
-                "type": "checkbox",
-                "id": "animation_setting",
-                "default": false,
-                "label": "Animation turn on"
-          },
-          {
-                "type":"select",
-                "id":"color_schema",
-                "label":"Background color",
-                "options":[
-                   {
-                      "value":"first_color",
-                      "label":"First Color"
-                   },
-                   {
-                      "value":"second_color",
-                      "label":"Second Color"
-                   },
-                   {
-                      "value":"third_color",
-                      "label":"Third Color"
-                   },
-                   {
-                    "value":"forth_color",
-                    "label":"Forth Color"
-                  },
-                  {
-                    "value":"fifth_color",
-                    "label":"Fifth Color"
-                  },
-                  {
-                    "value":"background_transparent",
-                    "label":"Transparent Color"
-                  }
-                ],
-                "default":"fifth_color"
-          },
-          {
-                "type": "range",
-                "id": "padding_top",
-                "label": "Padding Top controll",
-                "default":4,
-                "min": 1,
-                "max": 20,
-                "step": 1,
-                "unit": "rem"
-          },
-          {
-                "type": "range",
-                "id": "padding_bottom",
-                "label": "Padding Bottom controll",
-                "default":4,
-                "min": 1,
-                "max": 20,
-                "step": 1,
-                "unit": "rem"
-          },
-          {
-                "type":"select",
-                "id":"title_align",
-                "label":"Title align",
-                "options":[
-                   {
-                      "value":"font_left",
-                      "label":"Left"
-                   },
-                   {
-                      "value":"font_right",
-                      "label":"Right"
-                   },
-                   {
-                      "value":"font_center",
-                      "label":"Center"
-                   }
-                ],
-               "default":"font_center"
-          },
-          {
-                "type": "color",
-                "id": "base_color",
-                "label": "Product title color",
-                "default": "#C87D89"
-          },
-          {
-                "type": "color",
-                "id": "point_color",
-                "label": "Price color",
-                "default": "#926D5A"
-          }
-        ]
-      }
-    {% endschema %}
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     
     

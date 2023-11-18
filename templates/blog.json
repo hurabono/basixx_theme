@@ -8,11 +8,7 @@
         "padding_bottom": 1,
         "overlay_set": false,
         "text_align": "font_center",
-<<<<<<< HEAD
         "description": "<p>We believe that skincare is more than just a routine – it's a journey towards healthier, radiant skin and enhanced self-confidence.</p><p> Our blog is an extension of our commitment to providing you with not only exceptional skincare products but also a wealth of knowledge and guidance to help you achieve your skincare goals.</p>",
-=======
-        "description": "<p>We believe that skincare is more than just a routine – it's a journey towards healthier, radiant skin and enhanced self-confidence.<\/p><p> Our blog is an extension of our commitment to providing you with not only exceptional skincare products but also a wealth of knowledge and guidance to help you achieve your skincare goals.<\/p>",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "page_title_color": "#5e5e5e",
         "text_color": "#808080"
       }
@@ -23,11 +19,7 @@
         "blog": "for-summer-vacation",
         "post_off": false,
         "headline": "About us",
-<<<<<<< HEAD
         "page_description": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad molestiae nostrum obcaecati? Ab repudiandae rem, ducimus quae at libero rerum reprehenderit aliquam, similique vel pariatur in id odit adipisci. </p>",
-=======
-        "page_description": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad molestiae nostrum obcaecati? Ab repudiandae rem, ducimus quae at libero rerum reprehenderit aliquam, similique vel pariatur in id odit adipisci. <\/p>",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "post_headline": "Featured post",
         "post_title_color": "#5e5e5e",
         "post_description_color": "#808080",
@@ -47,23 +39,14 @@
     "6dc797a5-7f5c-440a-b661-fe62b3a835c3": {
       "type": "section-2column_banner",
       "settings": {
-<<<<<<< HEAD
         "image_left": "shopify://shop_images/bath-bomb-ad.jpg",
         "image_right": "shopify://shop_images/woman-lounges-in-bathrobe-with-phone.jpg",
-=======
-        "image_left": "shopify:\/\/shop_images\/bath-bomb-ad.jpg",
-        "image_right": "shopify:\/\/shop_images\/woman-lounges-in-bathrobe-with-phone.jpg",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "textbox_align": "font_center",
         "textbox_position": "text_box_center",
         "animation_setting": false,
         "textbox_color_schema": "fifth_color",
         "headline": "Join Us on This Journey",
-<<<<<<< HEAD
         "text": "<p>We invite you to explore our blog articles, ask questions, and engage with our community. Skincare is a lifelong pursuit, and we're here to support you every step of the way. </p>",
-=======
-        "text": "<p>We invite you to explore our blog articles, ask questions, and engage with our community. Skincare is a lifelong pursuit, and we're here to support you every step of the way. <\/p>",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "textbox_header_color": "#5e5e5e",
         "textbox_desc_color": "#a9a9a9",
         "button_size": "button_small",

@@ -4,11 +4,7 @@
     "main": {
       "type": "main-404",
       "settings": {
-<<<<<<< HEAD
         "image": "shopify://shop_images/modern-city-architecture.jpg",
-=======
-        "image": "shopify:\/\/shop_images\/modern-city-architecture.jpg",
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
       }
     }

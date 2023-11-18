@@ -1,21 +1,10 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 // regular banner  - design mode
 document.addEventListener('shopify:block:select', function(event) {
   const blockSelectedIsSlide = event.target.classList.contains('swiper-slide');
   if (!blockSelectedIsSlide) return;
-<<<<<<< HEAD
 // regular banner swiper
 var swiperAnimation = new SwiperAnimation();
 
-=======
-
-
-// regular banner swiper
-let swiperAnimation = new SwiperAnimation();
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 var swiper = new Swiper(".mySwiper", {
   lazy: true,
   pagination: {
@@ -48,13 +37,8 @@ document.addEventListener('shopify:block:deselect', function(event) {
 });
 
 
-<<<<<<< HEAD
 // regular banner swipervar
 var swiperAnimation = new SwiperAnimation();
-=======
-// regular banner swiper
-let swiperAnimation = new SwiperAnimation();
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 var swiper = new Swiper(".mySwiper", {
   lazy: true,
   pagination: {

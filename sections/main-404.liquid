@@ -6,7 +6,6 @@
       <!-- image - start -->
       <div class="h-80 md:h-[100vh] bg-gray-100 overflow-hidden shadow-lg sm:shadow-none rounded-lg sm:rounded-none">
         {% if section.settings.image != blank %}
-<<<<<<< HEAD
           <img 
           src="{{ section.settings.image | image_url }}" 
           alt="{{ section.settings.image.alt }}" 
@@ -14,9 +13,6 @@
           width="{{ section.settings.image.width }}"
           height="{{ section.settings.image.height }}"
           class="w-full h-full object-cover object-center">
-=======
-          <img src="{{section.settings.image | img_url: 'master' }}" alt="{{block.settings.image.alt}}" loading="lazy" class="w-full h-full object-cover object-center">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
           {% else %}
           {{ 'lifestyle-2' | placeholder_svg_tag: 'w-full h-full object-cover object-center' }}
         {% endif %}
@@ -28,11 +24,7 @@
         <p class="tracking-widest customer_point_color text-sm md:text-base font-semibold uppercase mb-4">{{ '404.title' | t }}</p>
         <h1 class="tracking-widest customer_title_color text-2xl md:text-3xl font-bold text-center sm:text-left mb-2">{{ '404.text' | t }}</h1>
 
-<<<<<<< HEAD
         <p class="tracking-wider py-8 customer_text_color md:text-lg text-center sm:text-left mb-8">{{ section.settings.description }}</p>
-=======
-        <p class="tracking-wider py-8 customer_text_color md:text-lg text-center sm:text-left mb-8">{{section.settings.description}}</p>
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 
         <a href="{{ routes.root_url }}" class="customer_button_color customer_button_border px-5 py-2 inline-flex justify-center">
           {{ 'action.continue_shopping' | t }}
@@ -45,7 +37,6 @@
 
 {% schema %}
 {
-<<<<<<< HEAD
   "name": "404 page",
   "settings": [
     {
@@ -60,21 +51,5 @@
       "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
     }
   ]
-=======
-"name": "404 page",
-"settings": [
-{
-"type": "image_picker",
-"id": "image",
-"label": "404 Banner Image"
-},
-{
-"type": "textarea",
-"id": "description",
-"label": "coming soon description (optional)",
-"default":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
-}
-]
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
 }
 {% endschema %}
