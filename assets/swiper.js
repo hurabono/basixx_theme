@@ -5,7 +5,7 @@ document.addEventListener('shopify:block:select', function(event) {
 
 
 // regular banner swiper
-let swiperAnimation = new SwiperAnimation();
+var swiperAnimation = new SwiperAnimation();
 var swiper = new Swiper(".mySwiper", {
   lazy: true,
   pagination: {
@@ -39,7 +39,7 @@ document.addEventListener('shopify:block:deselect', function(event) {
 
 
 // regular banner swiper
-let swiperAnimation = new SwiperAnimation();
+var swiperAnimation = new SwiperAnimation();
 var swiper = new Swiper(".mySwiper", {
   lazy: true,
   pagination: {

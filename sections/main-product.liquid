@@ -9,15 +9,15 @@
 
   .options-container::-webkit-scrollbar{
         width: 8px;
-        background: {{section.settings.point_color | color_modify: 'alpha', 0.7 }};
+        background: {{ section.settings.point_color | color_modify: 'alpha', 0.7 }};
   }
 
   .options-container::-webkit-scrollbar-thumb{
-        background: {{section.settings.point_color}};
+        background: {{ section.settings.point_color }};
   }
 
   .product_box .gallery-filter .filter-item{
-    color: {{section.settings.tab_color}};
+    color: {{ section.settings.tab_color }};
     font-size: 18px;
     text-transform: uppercase;
     display: inline-block;
@@ -29,8 +29,8 @@
   }
 
   .product_box .gallery-filter .filter-item.active{
-    color: {{section.settings.tab_active}};
-    border-color :{{section.settings.tab_active}};
+    color: {{ section.settings.tab_active }};
+    border-color :{{ section.settings.tab_active }};
   }
 
   .customBox p{
@@ -489,8 +489,8 @@
                     <pickup-availability-preview class="pickup-availability-preview">
                     {% render 'icon-unavailable' %}
                     <div class="pickup-availability-info">
-                    <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
-                    <a class="pickup-availability-button link link--text underlined-link">{{ 'products.product.pickup_availability.refresh' | t }}</a>
+                    <p class="caption-large">unavailable</p>
+                    <a class="pickup-availability-button link link--text underlined-link">unavailable</a>
                     </div>
                     </pickup-availability-preview>
                     </template>
@@ -524,7 +524,7 @@
                       <p class="custom_font" style="font-size: 12px;">{{block.settings.custom_title}} :</p>
                       {% endif %}
                       <p class="custom_font{% if block.settings.custom_title != blank %} ml-2{% endif %}">
-                      {{block.settings.custom_desc}}
+                      {{ block.settings.custom_desc }}
                       </p>
                     </div>
                 </div>
@@ -534,20 +534,20 @@
                 {% when 'custom_radio' %}
                 <div class="customBox-{{block.id}} py-2" style="color: {{section.settings.base_color}};">
                   <p class="line-item-property__field">
-                  <label style="font-size:0.8rem;">{{block.settings.audio_title}}</label><br>
+                  <label style="font-size:0.8rem;">{{ block.settings.audio_title }}</label><br>
 
                   <div class="custom_riadio flex pt-4">
                     {% if block.settings.first_option != blank %}
                       <div class="option_buttons select_box mr-2">
-                        <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.first_option}}" id="option-{{block.settings.first_option}}-{{block.id}}" checked>
+                        <input required class="mx-2" type="radio" name="properties[{{ block.settings.audio_title }}]" value="{{ block.settings.first_option }}" id="option-{{ block.settings.first_option }}-{{block.id}}" checked>
                         <label class="radio_title_{{ block.id }} cursor-pointer text-xs" for="option-{{block.settings.first_option}}-{{block.id}}">{{block.settings.first_option}}</label>
                       </div>
                     {% endif %}
 
                     {% if block.settings.second_option != blank %}
                       <div class="option_buttons select_box mr-2">
-                        <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.second_option}}" id="option-{{block.settings.second_option}}-{{block.id}}">
-                        <label class="radio_title_{{ block.id }} cursor-pointer" for="option-{{block.settings.second_option}}-{{block.id}}"> {{block.settings.second_option}} </label>
+                        <input required class="mx-2" type="radio" name="properties[{{ block.settings.audio_title }}]" value="{{ block.settings.second_option }}" id="option-{{block.settings.second_option}}-{{block.id}}">
+                        <label class="radio_title_{{ block.id }} cursor-pointer" for="option-{{ block.settings.second_option }}-{{block.id}}"> {{block.settings.second_option}} </label>
                       </div>
                     {% endif %}
 
@@ -711,7 +711,7 @@
                       <span aria-hidden="true" style="color: {{ block.settings.rating_font }};">({{ product.metafields.reviews.rating_count }})</span>
                       <!-- <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} total reviews</span> -->
                     </p>
-                      {%else%}
+                      {% else %}
                       <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
                         <span aria-hidden="true" class="no-rating-product" 
                         style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};
@@ -743,51 +743,51 @@
                       {% assign apple_pay_payment = 'apple_pay' %}
                       
                       {% for type in visa_payment %}
-                          {%  if type == 'visa' and block.settings.visa_visible == true %}
+                          {% if type == 'visa' and block.settings.visa_visible == true %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
                           {%  endif %}
                       {% endfor %}
                 
                       {% for type in master_payment %}
-                          {%  if type == 'master' and block.settings.mastercard_visible == true %}
+                          {% if type == 'master' and block.settings.mastercard_visible == true %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-                          {%  endif %}
+                          {% endif %}
                       {% endfor %}
                 
                       {% for type in amex_payment %}
-                          {%  if type == 'american_express' and block.settings.amex_visible == true %}
+                          {% if type == 'american_express' and block.settings.amex_visible == true %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-                          {%  endif %}
+                          {% endif %}
                       {% endfor %}
                 
                       {% for type in paypal_payment %}
-                          {%  if type == 'paypal' and block.settings.paypal_visible == true %}
+                          {% if type == 'paypal' and block.settings.paypal_visible == true %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-                          {%  endif %}
+                          {% endif %}
                       {% endfor %}
                 
                       {% for type in jcb_payment %}
-                          {%  if type == 'jcb' and block.settings.jcb_visible == true  %}
+                          {% if type == 'jcb' and block.settings.jcb_visible == true  %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-                          {%  endif %}
+                          {% endif %}
                       {% endfor %}
                 
                       {% for type in afterpay_payment %}
-                          {%  if type == 'afterpay' and block.settings.afterpay_visible == true %}
+                          {% if type == 'afterpay' and block.settings.afterpay_visible == true %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-                          {%  endif %}
+                          {% endif %}
                       {% endfor %}
                 
                       {% for type in klarna_payment %}
-                          {%  if type == 'klarna' and block.settings.klarna_visible == true %}
+                          {% if type == 'klarna' and block.settings.klarna_visible == true %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-                          {%  endif %}
+                          {% endif %}
                       {% endfor %}
                 
                       {% for type in apple_pay_payment %}
-                          {%  if type == 'apple_pay' and block.settings.applepay_visible == true %}
+                          {% if type == 'apple_pay' and block.settings.applepay_visible == true %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-                          {%  endif %}
+                          {% endif %}
                       {% endfor %}
                       
                     

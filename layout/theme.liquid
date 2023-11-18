@@ -31,20 +31,20 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {%- endif -%}
   <!-- Ajax add to cart / Jquery cdn header -->
-  <script rel="preload" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script rel="preload" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"async></script>
    
   <!-- Quickview settings -->
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" ></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" async ></script>
   {{ '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css' | stylesheet_tag }}
   {{ 'slick.css' | asset_url | stylesheet_tag: preload: true }}
   {{ 'quickview.css' | asset_url | stylesheet_tag }}
   <script type="module" src="{{ 'quickview.js' | asset_url }}" defer></script>
   
   <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js" async></script>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" ></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" async></script>
   <script src="https://cdn.jsdelivr.net/npm/@cycjimmy/swiper-animation@6/dist/swiper-animation.umd.min.js" async></script>
   <link href="//unpkg.com/animate.css@4/animate.min.css" rel="stylesheet">
 

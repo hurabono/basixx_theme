@@ -12,7 +12,7 @@
     {% endstyle %}
     
     {%- if section.settings.show_product_recommendations -%}
-    <div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+    <div class="{{ section.settings.color_schema }}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
           <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
                 <div class="mx-[2rem]">
                       {% if section.settings.headline %}
@@ -30,8 +30,11 @@
                                   <a href="{{ product.url }}">
                                         <img
                                         class="product__img "
+                                        width="{{ product.featured_image.width }}"
+                                        height="{{ product.featured_image.height }}"
                                         src="{{ product.featured_image | image_url: width: 500, height: 500 }}"
                                         alt="{{ product.featured_image.alt }}"
+                                        loading="lazy"
                                         />
           
                                   <div class="py-6">
@@ -46,10 +49,10 @@
                 </div>
           </div>
     </div>
-    {%endif%}
+    {% endif %}
     
     
-    {% javascript %}
+    <script>
       const handleIntersection = (entries, observer) => {
         if (!entries[0].isIntersecting) return;
     
@@ -77,9 +80,7 @@
       const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
     
       observer.observe(productRecommendationsSection);
-    
-      
-    {% endjavascript %}
+    </script>
     
     {% schema %}
       {

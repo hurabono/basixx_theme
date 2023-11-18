@@ -1,0 +1,415 @@
+{% style %}
+  .{{ section.id }}_button_faq{
+     color: {{ section.settings.button_color }};
+     border: 1px solid {{ section.settings.border_colors }};
+     background-color: {{ section.settings.button_bg }};
+     transition:0.5s;
+  }
+
+  .{{ section.id }}_button_faq:hover{
+        color: {{ section.settings.mo_button_color}};
+        border:1px solid {{ section.settings.mo_border_color }};
+        background-color: {{ section.settings.mo_button_bg }};
+  }
+{% endstyle %}
+
+<div class="{{section.settings.color_schema}}" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
+     <div class="max-w-[1320px] m-auto overflow-hidden px-4 md:px-6" {% if section.settings.animation_setting == true %} data-aos="fade-up"  {% endif %}>
+       <div class="flex flex-col {{section.settings.title_position}} gap-4">
+         <!-- text - start -->
+         <div class="{% if section.settings.title_image == false%}hidden{% endif %} w-full flex justify-center items-center {{section.settings.textbox_color}} p-0 mb-4 md:mb-0">
+           
+           <div class="w-full px-5 py-2">
+             {% if section.settings.headline %}
+           <h1 class="{{section.settings.title_align}} mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+             {{ section.settings.headline }}
+           </h1>
+           {% endif %}
+           <div class="subfont_size {{section.settings.title_align}} my-6 leading-8 tracking-wider" style="color:{{section.settings.color_sub_title}};">
+             {{ section.settings.text }}
+           </div>
+
+           <div class="w-full mt-10 flex Right_titlebox {{ section.settings.button_align }}">
+             {%- if section.settings.button-text != blank -%}
+                 <div class="py-2 inline-block">
+                     <a href="{{ section.settings.button-url }}"
+                       class="{{ section.id }}_button_faq tracking-widest mx-2 text-center {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}">
+                       {{section.settings.button-text }}</a>
+                 </div>
+             {% endif %}
+           </div>
+
+           </div>
+           
+         </div>
+         <!-- text - end -->
+         
+         <!-- dropdown start -->
+         <div class="w-full px-0 md:px-5 mx-auto" data-section-id="{{ section.id }}">
+           <!-- question - start -->
+           {% for block in section.blocks %}
+           {% assign link_handle = section.id | replace: '-', '_' %}
+             <div x-data="{ {{ link_handle }}: false }" style="border-bottom: 1px solid {{section.settings.point_color}};">
+               <div class="flex justify-between text-black hover:text-indigo-500 cursor-pointer gap-2 py-4"  x-on:click="{{ link_handle }} = ! {{ link_handle }}">
+                 <span class="md:text-lg font-bold" style="color:{{block.settings.dropdown_title}};">{{block.settings.faq_title}}</span>
+
+                 <span>
+                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" style="color: {{section.settings.point_color}};">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                   </svg>
+                   
+                 </span>
+               </div>
+
+               <p
+               style="color:{{block.settings.dropdown_text}}; font-weight:300;"
+               x-cloak 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 translate-y-3"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               x-transition:leave="transition ease-out duration-300"
+               x-transition:leave-start="opacity-100 translate-y-0"
+               x-transition:leave-end="opacity-0 translate-y-3" 
+               class="my-4 tracking-wider leading-8" 
+               x-show="{{ link_handle }}"  
+               x-on:click.away="{{ link_handle }} = false">
+               {{block.settings.faq_text}}</p>
+             </div>
+           {% endfor %}
+           <!-- question - end -->
+         </div>
+         <!-- dropdown end -->
+       </div>
+     </div>
+   </div>
+
+
+   {% schema %}
+   {
+     "name": "Dropdown box",
+     "class": "shopify-section-vue",
+     "settings":[
+     {
+       "type":"select",
+       "id":"color_schema",
+       "label":"Background color",
+       "options":[
+          {
+             "value":"first_color",
+             "label":"First Color"
+          },
+          {
+             "value":"second_color",
+             "label":"Second Color"
+          },
+          {
+             "value":"third_color",
+             "label":"Third Color"
+          },
+          {
+           "value":"forth_color",
+           "label":"Forth Color"
+         },
+         {
+           "value":"fifth_color",
+           "label":"Fifth Color"
+         },
+         {
+           "value":"background_transparent",
+           "label":"Transparent Color"
+         }
+       ],
+       "default":"background_transparent"
+       },
+       {
+         "type": "range",
+         "id": "padding_top",
+         "label": "Padding Top controll",
+         "default":4,
+         "min": 1,
+         "max": 20,
+         "step": 1,
+         "unit": "rem"
+       },
+       {
+         "type": "range",
+         "id": "padding_bottom",
+         "label": "Padding Bottom controll",
+         "default":4,
+         "min": 1,
+         "max": 20,
+         "step": 1,
+         "unit": "rem"
+       },
+       {
+         "type": "checkbox",
+         "id": "animation_setting",
+         "default": false,
+         "label": "Animation turn on"
+         },
+         {
+         "type": "checkbox",
+         "id": "title_image",
+         "default": true,
+         "label": "Show Title banner"
+         },
+         {
+           "type":"select",
+           "id":"title_position",
+           "label":"Title Position",
+           "options":[
+           {
+           "value":"title_column",
+           "label":"Top"
+           },
+           {
+           "value":"title_left",
+           "label":"Left"
+           },
+           {
+           "value":"title_right",
+           "label":"right"
+           }
+         ],
+               "default":"title_column"
+         },
+         {
+         "type":"select",
+         "id":"textbox_color",
+         "label":"Background color",
+         "options":[
+          {
+             "value":"first_color",
+             "label":"First Color"
+          },
+          {
+             "value":"second_color",
+             "label":"Second Color"
+          },
+          {
+             "value":"third_color",
+             "label":"Third Color"
+          },
+          {
+           "value":"forth_color",
+           "label":"Forth Color"
+         },
+         {
+           "value":"fifth_color",
+           "label":"Fifth Color"
+         },
+         {
+           "value":"background_transparent",
+           "label":"Transparent Color"
+         }
+       ],
+       "default":"background_transparent"
+       },
+       {
+         "type":"select",
+         "id":"title_align",
+         "label":"Title align",
+         "options":[
+            {
+               "value":"font_left",
+               "label":"Left"
+            },
+            {
+               "value":"font_right",
+               "label":"Right"
+            },
+            {
+               "value":"font_center",
+               "label":"Center"
+            }
+         ],
+         "default":"font_left"
+       },
+       {
+         "type":"text",
+         "id":"headline",
+         "label":"t:common.headline",
+         "default":"Frequently asked questions"
+       },
+       {
+         "type":"richtext",
+         "id":"text",
+         "label":"t:common.headline",
+         "default": "<p>Lorem ipsum dolor sit amet.</p><p> Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
+       },
+       {
+         "type": "color",
+         "id": "color_title",
+         "label": "Header Text color",
+         "default": "#5E5E5E"
+       },
+       {
+         "type": "color",
+         "id": "color_sub_title",
+         "label": "Sub text color",
+         "default": "#A9A9A9"
+       },
+       {
+         "type": "color",
+         "id": "point_color",
+         "label": "Point color",
+         "default": "#808080"
+       },
+       {
+       "type": "header",
+       "content": "Button settings"
+       },
+     {
+             "type":"select",
+             "id":"button_align",
+             "label":"Button align",
+             "options":[
+                   {
+                   "value":"font_left",
+                   "label":"Left"
+                   },
+                   {
+                   "value":"font_right",
+                   "label":"Right"
+                   },
+                   {
+                   "value":"font_center",
+                   "label":"Center"
+                   }
+             ],
+             "default":"font_center"
+         },
+          {
+           "type":"select",
+           "id":"button_size",
+           "label":"Button size",
+           "options":[
+           {
+           "value":"button_small",
+           "label":"Small"
+           },
+           {
+           "value":"button_medium",
+           "label":"Medium"
+           },
+           {
+           "value":"button_large",
+           "label":"Large"
+           },
+           {
+           "value":"button_xlarge",
+           "label":"Extra large"
+     }
+     ],
+           "default":"button_medium"
+     },
+     {
+     "type": "checkbox",
+     "id": "button_round_off",
+     "default": false,
+     "label": "Button round"
+     },
+     {
+     "type": "url",
+     "id": "button-url",
+     "label": "t:common.button.url"
+     },
+     {
+     "type": "text",
+     "id": "button-text",
+     "label": "t:common.button.text"
+     },
+     {
+       "type": "header",
+       "content": "Button color"
+     },
+     {
+     "type": "color",
+     "id": "button_bg",
+     "label": "Button background color",
+     "default": "transparent"
+     },
+     {
+     "type": "color",
+     "id": "button_color",
+     "label": "button font color",
+     "default": "#808080"
+     },
+     {
+     "type": "color",
+     "id": "border_colors",
+     "label": "border color",
+     "default": "#808080"
+     },
+     {
+     "type": "color",
+     "id": "mo_button_bg",
+     "label": "Mouseover background",
+     "default": "#808080"
+     },
+     {
+     "type": "color",
+     "id": "mo_button_color",
+     "label": "Mouseover font color",
+     "default": "#fff"
+     },
+     {
+     "type": "color",
+     "id": "mo_border_color",
+     "label": "Mouseover border color",
+     "default": "transparent"
+     }
+     ],
+
+     "blocks": [
+       {
+         "type": "dropbox",
+         "name": "faq",
+         "limit": 8,
+         "settings": [
+           {
+             "type": "text",
+             "id": "faq_title",
+             "label": "faq title",
+             "default": "This is dropdown title"
+           },
+           {
+             "type": "textarea",
+             "id": "faq_text",
+             "label": "faq textarea",
+             "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+           },
+           {
+             "type": "color",
+             "id": "dropdown_title",
+             "label": "Dropdown Title color",
+             "default": "#5E5E5E"
+           },
+           {
+             "type": "color",
+             "id": "dropdown_text",
+             "label": "Dropdown Text color",
+             "default": "#A9A9A9"
+           }
+         ]
+       }
+     ],
+     "presets": [
+       {
+         "name": "Dropdown Text Box",
+         "category": "dropbox",
+         "blocks": [
+           {
+             "type": "dropbox"
+           },
+           {
+             "type": "dropbox"
+           },
+           {
+             "type": "dropbox"
+           }
+         ]
+       }
+     ]
+   }
+   {% endschema %}

@@ -1,18 +1,18 @@
 <style>
 .tab_buttons{
-      background-color: {{section.settings.color_button}};
-      color:{{section.settings.button_font_color}}; 
-      border-bottom: 1px solid {{section.settings.button_border_color}};
+      background-color: {{ section.settings.color_button }};
+      color:{{ section.settings.button_font_color }}; 
+      border-bottom: 1px solid {{ section.settings.button_border_color }};
 }
 .tab_buttons:hover{
-      background-color: {{section.settings.button_color_hover}};
-      color:{{section.settings.button_font_hover}};
-      border-bottom: 1px solid {{section.settings.button_border_hover}};
+      background-color: {{ section.settings.button_color_hover }};
+      color:{{ section.settings.button_font_hover }};
+      border-bottom: 1px solid {{ section.settings.button_border_hover }};
 }
 .tab_active{
-  background-color: {{section.settings.active_button_color }};
-  color:{{section.settings.active_font_color }};
-  border-bottom: 1px solid {{section.settings.active_border_color}};
+  background-color: {{ section.settings.active_button_color }};
+  color:{{ section.settings.active_font_color }};
+  border-bottom: 1px solid {{ section.settings.active_border_color }};
 }
 
 .tab-panel{
@@ -35,23 +35,23 @@
 
 <div class="{{section.settings.color_schema}}">
       <div class="xl:max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" 
-      style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+      style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
       {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000" {% endif %}>
 
         {%- comment -%} headline {%- endcomment -%}
-            <div class="md:mx-[1rem] mb-[1.5rem] flex flex-col {{section.settings.text_align}}">
+            <div class="md:mx-[1rem] mb-[1.5rem] flex flex-col {{ section.settings.text_align }}">
                 <div class="Left_titlebox">
                   {% if section.settings.subtitle != blank %}
-                      <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
-                        {{section.settings.subtitle}}
+                      <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{ section.settings.color_text_title }};">
+                        {{ section.settings.subtitle }}
                       </span>
                     {% endif %}
                     {% if section.settings.headline != blank %}
-                      <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
+                      <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{ section.settings.color_title }};">
                         {{ section.settings.headline }}
                       </h1>
                     {% endif %}
-                      <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
+                      <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{ section.settings.color_text_title }};">
                         {{ section.settings.text }}
                        </div>  
                   </div>
@@ -75,7 +75,7 @@
                               {{ block.settings.headline_tab_title}}
                         </div>
                         {% else %}
-                              <div class="cursor-pointer"> {{ block.settings.headline_tab_title}} </div>
+                              <div class="cursor-pointer"> {{ block.settings.headline_tab_title }} </div>
                         {% endif %}
                         </label>
 
@@ -88,10 +88,10 @@
                         >
                         {% if block.settings.review_tab != blank %}
                         <div class="cursor-pointer">
-                              {{ block.settings.review_tab}}
+                              {{ block.settings.review_tab }}
                         </div>
                         {% else %}
-                              <div class="cursor-pointer"> {{ block.settings.review_tab}} </div>
+                              <div class="cursor-pointer"> {{ block.settings.review_tab }} </div>
                         {% endif %}
                         </label>
 
@@ -105,7 +105,7 @@
                         >
                         {% if block.settings.information_tab_title != blank %}
                         <div class="cursor-pointer">
-                              {{ block.settings.information_tab_title}}
+                              {{ block.settings.information_tab_title }}
                         </div>
                         {% else %}
                               <div class="cursor-pointer"> {{ block.settings.information_tab_title}} </div>
@@ -141,7 +141,7 @@
                               {{ block.settings.tab_map_title}}
                         </div>
                         {% else %}
-                              <div class="cursor-pointer"> {{block.settings.tab_map_title}} </div>
+                              <div class="cursor-pointer"> {{ block.settings.tab_map_title }} </div>
                         {% endif %}
                         </label>
 
@@ -157,7 +157,7 @@
                               {{ block.settings.custom_tab_title}}
                         </div>
                         {% else %}
-                              <div class="cursor-pointer"> {{ block.settings.custom_tab_title}} </div>
+                              <div class="cursor-pointer"> {{ block.settings.custom_tab_title }} </div>
                         {% endif %}
                         </label>
                   {% endcase %}
@@ -191,12 +191,12 @@
                                                 (min-width: 640px) 720px,
                                                 600px
                                                 " srcset="
-                                                {{ block.settings.image | img_url: '600x' }} 600w,
-                                                {{ block.settings.image | img_url: '720x' }} 720w,
-                                                {{ block.settings.image | img_url: '1000x' }} 1000w,
-                                                {{ block.settings.image | img_url: '1250x' }} 1250w,
-                                                {{ block.settings.image | img_url: '1500x' }} 1500w
-                                                " src="{{ block.settings.image | img_url: '1500x' }}" alt="{{ block.settings.image.alt }}" loading="lazy"
+                                                {{ block.settings.image | image_url: '600x' }} 600w,
+                                                {{ block.settings.image | image_url: '720x' }} 720w,
+                                                {{ block.settings.image | image_url: '1000x' }} 1000w,
+                                                {{ block.settings.image | image_url: '1250x' }} 1250w,
+                                                {{ block.settings.image | image_url: '1500x' }} 1500w
+                                                " src="{{ block.settings.image | image_url: '1500x' }}" alt="{{ block.settings.image.alt }}" loading="lazy"
                                                 class="w-full h-full object-cover object-center rounded-md"
                                                 width="{{ block.settings.image.width }}"
                                                 height="{{ block.settings.image.height }}"
@@ -208,10 +208,10 @@
                                           <div class="about_product_Box w-full {% if block.settings.image != blank %} md:w-1/2 {% endif %}">
                                                 <h1 class="px-6 text-2xl font-bold" 
                                                 style="color: {{block.settings.headline_text_color}};">
-                                                      {{ block.settings.headline_title}}
+                                                      {{ block.settings.headline_title }}
                                                 </h1>
                                                 <div class="py-6 px-6 leading-8 tracking-wider" 
-                                                style="color: {{block.settings.text_color}};">
+                                                style="color: {{ block.settings.text_color }};">
                                                       {{ product.description }}
                                                 </div>
                                           </div>
@@ -230,7 +230,7 @@
 
                         <div class="tab_contents lg:w-4/5 sm:mx-auto">
                               <div class="gallery-item-inner py-4">
-                              <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+                              <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
                               </div>
                         </div>
                   </div>
@@ -246,11 +246,11 @@
                        
                               <div class="tab_contents lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 py-4">
                                     <h1 class="pb-4 text-2xl font-bold" 
-                                          style="color: {{block.settings.info_title_color}};">
+                                          style="color: {{ block.settings.info_title_color }};">
                                           {{ block.settings.information_title}}
                                     </h1>
                                     <div class="subfont_size pb-4 leading-8 tracking-wider" 
-                                          style="color:{{block.settings.info_title_color}};">
+                                          style="color:{{ block.settings.info_title_color }};">
                                           {{ block.settings.information_desc }}
                                     </div>  
                                     
@@ -284,7 +284,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}}; ">
+                                    style="color: {{ block.settings.table_text_color }}; ">
                                           {{ block.settings.second_desc }}
                                     </div>
 
@@ -303,7 +303,7 @@
                                     </div>
                                     
                                     <div class=" mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.third_desc }}
                                     </div>
 
@@ -322,7 +322,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.forth_desc }}
                                     </div>
 
@@ -342,7 +342,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.fifth_desc }}
                                     </div>
 
@@ -362,7 +362,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.sixth_desc }}
                                     </div>
 
@@ -383,7 +383,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.seventh_desc }}
                                     </div>
 
@@ -404,7 +404,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.eighth_desc }}
                                     </div>
 
@@ -424,7 +424,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.ninth_desc }}
                                     </div>
 
@@ -445,7 +445,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.tenth_desc }}
                                     </div>
 
@@ -467,7 +467,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}};">
+                                    style="color: {{ block.settings.table_text_color }};">
                                           {{ block.settings.eleventh_desc }}
                                     </div>
 
@@ -528,7 +528,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}}; ">
+                                    style="color: {{ block.settings.table_text_color }}; ">
                                           {{ block.settings.fourteenth_desc }}
                                     </div>
 
@@ -549,7 +549,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{block.settings.table_text_color}}; border-right: 1px solid {{ block.settings.table_border_color}};  border-bottom: 1px solid {{ block.settings.table_border_color}}; ">
+                                    style="color: {{ block.settings.table_text_color }}; border-right: 1px solid {{ block.settings.table_border_color}};  border-bottom: 1px solid {{ block.settings.table_border_color}}; ">
                                           {{ block.settings.fifteenth_desc }}
                                     </div>
 
@@ -572,12 +572,12 @@
                         <div class="tab_contents py-4">
                               <div class="tab_contents lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
                                     <h1 class="pb-4 px-2 text-2xl font-bold" 
-                                          style="color: {{block.settings.featured_title_color}};">
+                                          style="color: {{ block.settings.featured_title_color }};">
                                           {{ block.settings.featured_title }}
                                     </h1>
 
                                     <div class="subfont_size pb-2 px-2 leading-8 tracking-wider" 
-                                          style="color:{{block.settings.featured_title_color}};">
+                                          style="color:{{ block.settings.featured_title_color }};">
                                           {{ block.settings.featured_description }}
                                     </div>  
                               </div>
@@ -638,7 +638,7 @@
                               {%- if block.settings.show_icon == true -%}
                               {% if block.settings.icon_box3 != blank %}
                                     <span class="mr-4"> 
-                                      {{block.settings.icon_box3}}
+                                      {{ block.settings.icon_box3 }}
                                     </span>
                                 {% else %}
                                   
@@ -649,7 +649,7 @@
                               </svg>
                               {% endif %}
                                {% endif %}
-                              <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
+                              <span class="title-font font-medium" style="color: {{ block.settings.featured_text_color }};">
                                     {{ block.settings.featured_text3 }}
                               </span>
                               </div>
@@ -663,7 +663,7 @@
                               {%- if block.settings.show_icon == true -%}
                                 {% if block.settings.icon_box4 != blank %}
                                       <span class="mr-4"> 
-                                        {{block.settings.icon_box4}}
+                                        {{ block.settings.icon_box4 }}
                                       </span>
                                   {% else %}
                                     
@@ -690,7 +690,7 @@
                                 {%- if block.settings.show_icon == true -%}
                                 {% if block.settings.icon_box5 != blank %}
                                       <span class="mr-4"> 
-                                        {{block.settings.icon_box5}}
+                                        {{ block.settings.icon_box5 }}
                                       </span>
                                   {% else %}
                                     
@@ -702,7 +702,7 @@
                                 {% endif %}
                                {% endif %}
                                 
-                              <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
+                              <span class="title-font font-medium" style="color: {{ block.settings.featured_text_color }};">
                                     {{ block.settings.featured_text5 }}
                               </span>
                               </div>
@@ -716,7 +716,7 @@
                               {%- if block.settings.show_icon == true -%}
                                 {% if block.settings.icon_box6 != blank %}
                                       <span class="mr-4"> 
-                                        {{block.settings.icon_box6}}
+                                        {{ block.settings.icon_box6 }}
                                       </span>
                                   {% else %}
                                     
@@ -727,7 +727,7 @@
                                 </svg>
                                 {% endif %}
                                {% endif %}
-                              <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
+                              <span class="title-font font-medium" style="color: {{ block.settings.featured_text_color }};">
                                     {{ block.settings.featured_text6 }}
                               </span>
                               </div>

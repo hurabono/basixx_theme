@@ -119,6 +119,9 @@
     },
     "reset_password": {
       "title": "Reset Password"
+    },
+    "register": {
+      "password" : "Password" 
     }
   },
   "collections": {

@@ -1,7 +1,7 @@
 {% assign image = section.settings.image %}
 <div
-  class="{{section.settings.color_schema}} flex items-center flex-1 flex-shrink-0 overflow-hidden relative"
-  style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
+  class="{{ section.settings.color_schema }} flex items-center flex-1 flex-shrink-0 overflow-hidden relative"
+  style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
   >
   
   <!-- image - start -->
@@ -13,22 +13,22 @@
   (min-width: 640px) 720px,
   600px
 " srcset="
-  {{ image | img_url: '600x' }} 600w,
-  {{ image | img_url: '720x' }} 720w,
-  {{ image | img_url: '1000x' }} 1000w,
-  {{ image | img_url: '1250x' }} 1250w,
-  {{ image | img_url: '1500x' }} 1500w
-" src="{{ image | img_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
+  {{ image | image_url: '600x' }} 600w,
+  {{ image | image_url: '720x' }} 720w,
+  {{ image | image_url: '1000x' }} 1000w,
+  {{ image | image_url: '1250x' }} 1250w,
+  {{ image | image_url: '1500x' }} 1500w
+" src="{{ image | image_url: '1500x' }}" alt="{{ image.alt }}" loading="lazy"
     width="{{ image.width }}"
     height="{{ image.height }}"
-    class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {%endif%}">
-  {%else%}
+    class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {% endif %}">
+  {% else %}
   {% endif %}
   <!-- image - end -->
   <!-- text start -->
-  <div class="flex flex-col relative p-4 w-[1000px] m-auto {{section.settings.text_align}}">
-    <h1 class="w-full text-4xl font-bold mb-8 md:mb-12 tracking-widest" style="color: {{section.settings.text_color}};">{{ 'cart.title' | t }}</h1>
-    <div class="{{section.settings.text_align}} subfont_size" style="color: {{section.settings.text_color}};">
+  <div class="flex flex-col relative p-4 w-[1000px] m-auto {{ section.settings.text_align }}">
+    <h1 class="w-full text-4xl font-bold mb-8 md:mb-12 tracking-widest" style="color: {{ section.settings.text_color }};">{{ 'cart.title' | t }}</h1>
+    <div class="{{ section.settings.text_align }} subfont_size" style="color: {{ section.settings.text_color }};">
       {% if section.settings.description != blank %}
       {{ section.settings.description }}
       {% endif %}

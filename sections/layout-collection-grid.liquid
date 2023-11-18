@@ -1,6 +1,6 @@
 
 <!-- collaction grid -->
-<div id="bg-image" class="{{section.settings.color_schema}}" 
+<div id="bg-image" class="{{ section.settings.color_schema }}" 
       style="{% if section.settings.image %} background-image:url('{{ section.settings.image.src | img_url: 'master' }}'); background-size: cover; background-position: center; {% endif %} padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
       
       {%- comment -%} headline {%- endcomment -%}
@@ -8,7 +8,7 @@
           <div class="Left_titlebox">
               {% if section.settings.subtitle != blank %}
                 <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
-                  {{section.settings.subtitle}}
+                  {{ section.settings.subtitle }}
                 </span>
               {% endif %}
               {% if section.settings.headline != blank %}
@@ -26,7 +26,7 @@
       
       {% for block in section.blocks %}
           <!-- product - start -->
-      <div class="{% if section.settings.image_round == true %} rounded-t-full {%endif%} overflow-hidden">
+      <div class="{% if section.settings.image_round == true %} rounded-t-full {% endif %} overflow-hidden">
         {% if block.settings.collection.image != blank %}
             <a href="{{ block.settings.collection.url }}" class="group h-[25rem] flex justify-center items-end bg-gray-100 overflow-hidden relative p-4">
               <img
@@ -41,7 +41,7 @@
                     {{ block.settings.collection.image | image_url }} {{ block.settings.collection.image.width }}w"
                     src="{{ block.settings.collection.image | image_url: width: 1500 }}"
                     sizes="(min-width: {{ block.settings.collection.image.width }}px) {% if  block.settings.collection.image.size == 1 %}calc({{ block.settings.collection.image.width }}px - 100px){% else %}{{ block.settings.collection.image.width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if  block.settings.collection.image.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
-                    alt="{{ sblock.settings.collection.image.alt | escape }}"
+                    alt="{{ block.settings.collection.image.alt | escape }}"
                     loading="lazy"
                     width="{{ block.settings.collection.image.width }}"
                     height="{{ block.settings.collection.image.height }}"
@@ -90,7 +90,7 @@
                     {{ block.settings.collection.image | image_url }} {{ block.settings.collection.image.width }}w"
                     src="{{ block.settings.collection.image | image_url: width: 1500 }}"
                     sizes="(min-width: {{ block.settings.collection.image.width }}px) {% if  block.settings.collection.image.size == 1 %}calc({{ block.settings.collection.image.width }}px - 100px){% else %}{{ block.settings.collection.image.width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if  block.settings.collection.image.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
-                    alt="{{ sblock.settings.collection.image.alt | escape }}"
+                    alt="{{ block.settings.collection.image.alt | escape }}"
                     loading="lazy"
                     width="{{ block.settings.collection.image.width }}"
                     height="{{ block.settings.collection.image.height }}"
@@ -122,285 +122,295 @@
 
 
 {% schema %}
+
   {
-    "name": "Featured Collection List",
-    "class": "shopify-section-vue",
-    "settings": [
+   "name":"Featured Collection List",
+   "class":"shopify-section-vue",
+   "settings":[
       {
-      "type": "header",
-      "content": "Section Title Settings",
-      "info": "Setting section title and description"
+         "type":"header",
+         "content":"Section Title Settings",
+         "info":"Setting section title and description"
       },
       {
-        "type":"text",
-        "id":"subtitle",
-        "label":"subtitle",
-        "default":"Subtitle"
-     },
-      {
-        "type":"text",
-        "id":"headline",
-        "label":"t:common.headline",
-        "default":"Our store"
-     },
-     {
-      "type":"richtext",
-      "id":"text",
-      "label":"t:common.headline",
-      "default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic </p><p>tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
-    },
-    {
-            "type": "select",
-            "id": "title_text_align",
-            "label": "Text align",
-            "options": [
-              {
-                "value": "font_left",
-                "label": "Left"
-              }, {
-                "value": "font_right",
-                "label": "Right"
-              }, {
-                "value": "font_center",
-                "label": "Center"
-              }
-            ],
-            "default": "font_center"
+         "type":"text",
+         "id":"subtitle",
+         "label":"subtitle",
+         "default":"Subtitle"
       },
       {
-        "type": "color",
-        "id": "color_title",
-        "label": "Section title color",
-        "default": "#4b4b4b"
+         "type":"text",
+         "id":"headline",
+         "label":"t:common.headline",
+         "default":"Our store"
       },
       {
-        "type": "color",
-        "id": "color_text_title",
-        "label": "Section Description color",
-        "default": "#4b4b4b"
+         "type":"richtext",
+         "id":"text",
+         "label":"t:common.headline",
+         "default":"<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic </p><p>tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
       },
       {
-      "type": "header",
-      "content": "General Settings",
-      "info": "Settings animation, background color and column design"
+         "type":"select",
+         "id":"title_text_align",
+         "label":"Text align",
+         "options":[
+            {
+               "value":"font_left",
+               "label":"Left"
+            },
+            {
+               "value":"font_right",
+               "label":"Right"
+            },
+            {
+               "value":"font_center",
+               "label":"Center"
+            }
+         ],
+         "default":"font_center"
       },
       {
-        "type": "select",
-        "id": "color_schema",
-        "label": "Background color",
-        "options": [
-          {
-            "value": "first_color",
-            "label": "First Color"
-          },
-          {
-            "value": "second_color",
-            "label": "Second Color"
-          },
-          {
-            "value": "third_color",
-            "label": "Third Color"
-          },
-          {
-            "value": "forth_color",
-            "label": "Forth Color"
-          }, {
-            "value": "fifth_color",
-            "label": "Fifth Color"
-          }, {
-            "value": "background_transparent",
-            "label": "Transparent Color"
-          }
-        ],
-        "default": "fifth_color"
+         "type":"color",
+         "id":"color_title",
+         "label":"Section title color",
+         "default":"#4b4b4b"
       },
       {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Background Image"
+         "type":"color",
+         "id":"color_text_title",
+         "label":"Section Description color",
+         "default":"#4b4b4b"
       },
       {
-        "type": "range",
-        "id": "font_size",
-        "label": "Prodcut Font size",
-        "default":1,
-        "min": 0.1,
-        "max": 3,
-        "step": 0.1,
-        "unit": "rem"
+         "type":"header",
+         "content":"General Settings",
+         "info":"Settings animation, background color and column design"
       },
       {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top controll",
-      "default":4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom controll",
-      "default":4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type":"select",
-      "id":"text_align",
-      "label":"Title align",
-      "options":[
-         {
-            "value":"font_left",
-            "label":"Left"
-         },
-         {
-            "value":"font_right",
-            "label":"Right"
-         },
-         {
-            "value":"font_center",
-            "label":"Center"
-         }
-      ],
-      "default":"font_center",
-      "info":"Please turn off rounded nametag to set text align"
-    },
-     {
-  "type":"select",
-  "id":"column_design",
-  "label":"Column selector",
-  "options":[
-     {
-        "value":"two_column",
-        "label":"Two column"
-     },
-     {
-        "value":"three_column",
-        "label":"Three column"
-     },
-     {
-        "value":"four_column",
-        "label":"Four column"
-     }
-  ],
-  "default":"four_column"
- },
-    {
-  "type":"select",
-  "id":"color_textbox",
-  "label":"Textbox color",
-  "options":[
-     {
-        "value":"first_color",
-        "label":"First Color"
-     },
-     {
-        "value":"second_color",
-        "label":"Second Color"
-     },
-     {
-        "value":"third_color",
-        "label":"Third Color"
-     },
-     {
-      "value":"forth_color",
-      "label":"Forth Color"
-    },
-    {
-      "value":"fifth_color",
-      "label":"Fifth Color"
-    },
-    {
-      "value":"background_transparent",
-      "label":"Transparent Color"
-    }
-  ],
-  "default":"forth_color"
- },
-      {
-        "type": "checkbox",
-        "id": "animation_setting",
-        "default": false,
-        "label": "Animation turn on"
-      }, {
-        "type": "checkbox",
-        "id": "image_round",
-        "default": false,
-        "label": "Image Round Top"
+         "type":"select",
+         "id":"color_schema",
+         "label":"Background color",
+         "options":[
+            {
+               "value":"first_color",
+               "label":"First Color"
+            },
+            {
+               "value":"second_color",
+               "label":"Second Color"
+            },
+            {
+               "value":"third_color",
+               "label":"Third Color"
+            },
+            {
+               "value":"forth_color",
+               "label":"Forth Color"
+            },
+            {
+               "value":"fifth_color",
+               "label":"Fifth Color"
+            },
+            {
+               "value":"background_transparent",
+               "label":"Transparent Color"
+            }
+         ],
+         "default":"fifth_color"
       },
       {
-        "type": "checkbox",
-        "id": "rounded_nametag",
-        "default": true,
-        "label": "Rounded nameTag"
+         "type":"image_picker",
+         "id":"image",
+         "label":"Background Image"
       },
       {
-        "type":"select",
-        "id":"textbox_position",
-        "label":"Text box position",
-        "options":[
-          {
-              "value":"collection_top",
-              "label":"Top"
-          },
-          {
-              "value":"collection_center",
-              "label":"Center"
-          },
-          {
-              "value":"collection_bottom",
-              "label":"Bottom"
-          }
-        ],
-        "default":"collection_bottom"
+         "type":"range",
+         "id":"font_size",
+         "label":"Prodcut Font size",
+         "default":1,
+         "min":0.1,
+         "max":3,
+         "step":0.1,
+         "unit":"rem"
+      },
+      {
+         "type":"range",
+         "id":"padding_top",
+         "label":"Padding Top controll",
+         "default":4,
+         "min":1,
+         "max":20,
+         "step":1,
+         "unit":"rem"
+      },
+      {
+         "type":"range",
+         "id":"padding_bottom",
+         "label":"Padding Bottom controll",
+         "default":4,
+         "min":1,
+         "max":20,
+         "step":1,
+         "unit":"rem"
+      },
+      {
+         "type":"select",
+         "id":"text_align",
+         "label":"Title align",
+         "options":[
+            {
+               "value":"font_left",
+               "label":"Left"
+            },
+            {
+               "value":"font_right",
+               "label":"Right"
+            },
+            {
+               "value":"font_center",
+               "label":"Center"
+            }
+         ],
+         "default":"font_center",
+         "info":"Please turn off rounded nametag to set text align"
+      },
+      {
+         "type":"select",
+         "id":"column_design",
+         "label":"Column selector",
+         "options":[
+            {
+               "value":"two_column",
+               "label":"Two column"
+            },
+            {
+               "value":"three_column",
+               "label":"Three column"
+            },
+            {
+               "value":"four_column",
+               "label":"Four column"
+            }
+         ],
+         "default":"four_column"
+      },
+      {
+         "type":"select",
+         "id":"color_textbox",
+         "label":"Textbox color",
+         "options":[
+            {
+               "value":"first_color",
+               "label":"First Color"
+            },
+            {
+               "value":"second_color",
+               "label":"Second Color"
+            },
+            {
+               "value":"third_color",
+               "label":"Third Color"
+            },
+            {
+               "value":"forth_color",
+               "label":"Forth Color"
+            },
+            {
+               "value":"fifth_color",
+               "label":"Fifth Color"
+            },
+            {
+               "value":"background_transparent",
+               "label":"Transparent Color"
+            }
+         ],
+         "default":"forth_color"
+      },
+      {
+         "type":"checkbox",
+         "id":"animation_setting",
+         "default":false,
+         "label":"Animation turn on"
+      },
+      {
+         "type":"checkbox",
+         "id":"image_round",
+         "default":false,
+         "label":"Image Round Top"
+      },
+      {
+         "type":"checkbox",
+         "id":"rounded_nametag",
+         "default":true,
+         "label":"Rounded nameTag"
+      },
+      {
+         "type":"select",
+         "id":"textbox_position",
+         "label":"Text box position",
+         "options":[
+            {
+               "value":"collection_top",
+               "label":"Top"
+            },
+            {
+               "value":"collection_center",
+               "label":"Center"
+            },
+            {
+               "value":"collection_bottom",
+               "label":"Bottom"
+            }
+         ],
+         "default":"collection_bottom"
       }
-    ],
-    "max_blocks": 16,
-    "blocks": [
+   ],
+   "max_blocks":16,
+   "blocks":[
       {
-        "type": "featured_collection",
-        "name": "Collection",
-        "settings": [
-          {
-            "type": "collection",
-            "id": "collection",
-            "label": "featured collection"
-          },
-          {
-          "type": "checkbox",
-          "id": "overlay_set",
-          "default": true,
-          "label": "Overlay cover"
-        },
-        {
-        "type": "color",
-        "id": "color_collection_title",
-        "label": "Section title color",
-        "default": "#4b4b4b"
+         "type":"featured_collection",
+         "name":"Collection",
+         "settings":[
+            {
+               "type":"collection",
+               "id":"collection",
+               "label":"featured collection"
+            },
+            {
+               "type":"checkbox",
+               "id":"overlay_set",
+               "default":true,
+               "label":"Overlay cover"
+            },
+            {
+               "type":"color",
+               "id":"color_collection_title",
+               "label":"Section title color",
+               "default":"#4b4b4b"
+            }
+         ]
       }
-        ]
-      }
-    ],
-    "presets": [
+   ],
+   "presets":[
       {
-        "name": "Featured Collection List",
-        "blocks": [
-          {
-            "type": "featured_collection"
-          }, {
-            "type": "featured_collection"
-          }, {
-            "type": "featured_collection"
-          }, {
-            "type": "featured_collection"
-          }
-        ]
+         "name":"Featured Collection List",
+         "blocks":[
+            {
+               "type":"featured_collection"
+            },
+            {
+               "type":"featured_collection"
+            },
+            {
+               "type":"featured_collection"
+            },
+            {
+               "type":"featured_collection"
+            }
+         ]
       }
-    ]
-  }
+   ]
+}
+
 {% endschema %}
