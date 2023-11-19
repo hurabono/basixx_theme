@@ -1,5 +1,54 @@
 {
   "sections": {
+    "86c805a5-f670-46c4-90a1-87e5c89ab5e0": {
+      "type": "section-hero",
+      "settings": {
+        "color_schema": "second_color",
+        "image": "shopify:\/\/shop_images\/17_d44e02c8-77de-4771-ba92-3556dd0cc11c.png",
+        "padding_top": 9,
+        "padding_bottom": 1,
+        "overlay_set": true,
+        "image_fixed": true,
+        "show_line": false,
+        "line_position": "line_center",
+        "line_border": "#5E5E5E",
+        "banner_title_font_size": 35,
+        "banner_font_size": 12,
+        "animation_setting": false,
+        "subtitle": "",
+        "headline": "MY ACCOUNT OVERVIEW",
+        "font_style": "font_normal",
+        "color_title": "#fff",
+        "text": "<p>Your account is your gateway to a world of radiant beauty and self-care. <\/p><p>From managing your orders to accessing personalized recommendations, this page is designed to cater to your every skincare need.<\/p>",
+        "color_desciption": "#fafafa",
+        "textbox_align": "font_center",
+        "textbox_color": "background_transparent",
+        "button_align": "font_center",
+        "button_size": "button_medium",
+        "button_round_off": false,
+        "button-url": "",
+        "button-text": "",
+        "button_bg": "transparent",
+        "button_color": "#fff",
+        "border_colors": "#fff",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#fff",
+        "mo_border_color": "transparent"
+      }
+    },
+    "21f8ba72-e16a-49e8-bae2-5d9c94b8be73": {
+      "type": "section-submenu",
+      "settings": {
+        "submenu": "service",
+        "color_schema": "fifth_color",
+        "animation_setting": false,
+        "padding_top": 1,
+        "padding_bottom": 1,
+        "text_align": "font_center",
+        "font_color": "#808080",
+        "font_size": 17
+      }
+    },
     "template": {
       "type": "template-customer-account",
       "settings": {
@@ -7,9 +56,120 @@
         "padding_top": 3,
         "padding_bottom": 4
       }
+    },
+    "ccdc06ea-51d3-42be-9678-b2fe1ed2166b": {
+      "type": "section-3column",
+      "blocks": {
+        "template--17100983697718__ccdc06ea-51d3-42be-9678-b2fe1ed2166b-167117727432a9998a-1": {
+          "type": "column",
+          "settings": {
+            "block_subtitle": "",
+            "headline": "Wishlist Management",
+            "grid-text": "<p>Curate your skincare aspirations by organizing your wishlist, saving must-have products, and planning your next self-care indulgence.<\/p>",
+            "textbox_title_align": "font_center",
+            "color_box_schema": "fifth_color",
+            "grid_header_color_title": "#4b4b4b",
+            "grid_color_title": "#4b4b4b",
+            "button_size": "button_small",
+            "button_round_off": false,
+            "button-url": "shopify:\/\/pages\/wish-list",
+            "button-text": "view detail ⟶",
+            "button_bg": "transparent",
+            "button_color": "#808080",
+            "border_colors": "#808080",
+            "mo_button_bg": "#808080",
+            "mo_button_color": "#fff",
+            "mo_border_color": "transparent"
+          }
+        },
+        "template--17100983697718__ccdc06ea-51d3-42be-9678-b2fe1ed2166b-167117727432a9998a-2": {
+          "type": "column",
+          "settings": {
+            "block_subtitle": "",
+            "headline": "Customer Support",
+            "grid-text": "<p>Have questions or need assistance? Reach out to our customer support team directly from your account for a prompt and personalized response.<\/p>",
+            "textbox_title_align": "font_center",
+            "color_box_schema": "fifth_color",
+            "grid_header_color_title": "#4b4b4b",
+            "grid_color_title": "#4b4b4b",
+            "button_size": "button_small",
+            "button_round_off": false,
+            "button-url": "shopify:\/\/pages\/contact",
+            "button-text": "contact us ⟶",
+            "button_bg": "transparent",
+            "button_color": "#808080",
+            "border_colors": "#808080",
+            "mo_button_bg": "#808080",
+            "mo_button_color": "#fff",
+            "mo_border_color": "transparent"
+          }
+        }
+      },
+      "block_order": [
+        "template--17100983697718__ccdc06ea-51d3-42be-9678-b2fe1ed2166b-167117727432a9998a-1",
+        "template--17100983697718__ccdc06ea-51d3-42be-9678-b2fe1ed2166b-167117727432a9998a-2"
+      ],
+      "settings": {
+        "color_schema": "background_transparent",
+        "padding_top": 2,
+        "padding_bottom": 4,
+        "subtitle": "",
+        "headline": "",
+        "text": "",
+        "text_align": "font_center",
+        "image_onboarding": false,
+        "animation_setting": false,
+        "grid_style": "grid_style1",
+        "color_title": "#5e5e5e",
+        "color_text_title": "#5e5e5e"
+      }
+    },
+    "16384d9c-1d3a-434a-bed1-0c59f40efe6a": {
+      "type": "section-product-slideshow",
+      "settings": {
+        "color_schema": "fifth_color",
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "show_symbol": true,
+        "animation_setting": false,
+        "show_rating": true,
+        "mouseover_image": true,
+        "button_background": "rgba(0,0,0,0)",
+        "arrow_icons": "#5e5e5e",
+        "arrow_border": "#5e5e5e",
+        "button_bg_mouseover": "#5e5e5e",
+        "arrow_icons_mouseover": "#ffffff",
+        "arrow_border_mouseover": "#5e5e5e",
+        "title_align": "font_center",
+        "headline": "New Listing today",
+        "text": "",
+        "color_title": "#4b4b4b",
+        "color_sub_title": "#4b4b4b",
+        "collection_featured": "new-arrivals",
+        "product_font_size": 0.9,
+        "vendor_set": false,
+        "product_title_color": "#4b4b4b",
+        "product_point_color": "#c33131",
+        "product_badge_color": "#e8d5d4",
+        "button_align": "font_center",
+        "button_size": "button_small",
+        "button_round_off": false,
+        "button-url": "shopify:\/\/collections\/new-arrivals",
+        "button-text": "view more ⟶",
+        "button_bg": "transparent",
+        "button_color": "#808080",
+        "border_colors": "#808080",
+        "mo_button_bg": "#808080",
+        "mo_button_color": "#fff",
+        "mo_border_color": "transparent"
+      }
     }
   },
   "order": [
-    "template"
+    "86c805a5-f670-46c4-90a1-87e5c89ab5e0",
+    "21f8ba72-e16a-49e8-bae2-5d9c94b8be73",
+    "template",
+    "ccdc06ea-51d3-42be-9678-b2fe1ed2166b",
+    "16384d9c-1d3a-434a-bed1-0c59f40efe6a"
   ]
 }

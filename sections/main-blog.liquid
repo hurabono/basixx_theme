@@ -1,11 +1,7 @@
 
 {% assign image = section.settings.image %}
 
-<<<<<<< HEAD
 <div
-=======
-<d0v
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
   class="{{ section.settings.color_schema }} flex items-center flex-1 flex-shrink-0 overflow-hidden relative"
   style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
   >
@@ -13,22 +9,12 @@
   <!-- image - start -->
   {% if image %}
   <img 
-<<<<<<< HEAD
     src="{{ section.settings.image | img_url: 'master' }}" alt="{{ image.alt }}" 
     loading="lazy"
     width="{{ section.settings.image.width }}"
     height="{{ section.settings.image.height }}"
     class="w-full h-full object-cover object-center absolute inset-0 {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {% endif %}">
   {% else %}
-=======
-    src="{{ section.settings.image | image_url }}" alt="{{ image.alt }}" loading="lazy"
-    class="w-full h-full object-cover object-center absolute inset-0 
-    {% if section.settings.overlay_set == true %} bg-gray-300 mix-blend-multiply {% endif %}"
-    width="{{ section.settings.image.width }}"
-    height="{{ section.settings.image.height }}"
-    >
-  {%else%}
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
   {% endif %}
   <!-- image - end -->
 
@@ -46,7 +32,6 @@
 
 {% schema %}
 {
-<<<<<<< HEAD
    "name":"Page Banner",
    "settings":[
       {
@@ -160,120 +145,5 @@
          "default":"#9A9A9A"
       }
    ]
-=======
-  "name": "Page Banner",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Banner General",
-      "info": "Setting banner image, base color and size"
-    },
-    {
-      "type": "select",
-      "id": "color_schema",
-      "label": "Background color",
-      "options": [
-        {
-          "value": "first_color",
-          "label": "First Color"
-        },
-        {
-          "value": "second_color",
-          "label": "Second Color"
-        },
-        {
-          "value": "third_color",
-          "label": "Third Color"
-        },
-        {
-          "value": "forth_color",
-          "label": "Forth Color"
-        },
-        {
-          "value": "fifth_color",
-          "label": "Fifth Color"
-        },
-        {
-          "value": "background_transparent",
-          "label": "Transparent Color"
-        }
-      ],
-      "default": "background_transparent"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Default product image (optional)"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top controll",
-      "default": 11,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom controll",
-      "default": 3,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "checkbox",
-      "id": "overlay_set",
-      "default": true,
-      "label": "Overlay cover"
-    },
-    {
-      "type": "header",
-      "content": "Banner Content",
-      "info": "Setting banner text and color"
-    },
-    {
-      "type": "select",
-      "id": "text_align",
-      "label": "Text align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "Description"
-    },
-    {
-      "type": "color",
-      "id": "page_title_color",
-      "label": "Title color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text box color",
-      "default": "#9A9A9A"
-    }
-  ]
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
 }
 {% endschema %}

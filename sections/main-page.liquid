@@ -1,13 +1,13 @@
 
-<div class="{{ section.settings.color_schema }}">
+<div class="{{section.settings.color_schema}}">
   <div class="container max-w-screen-md" 
-    style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
+    style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
     {% if section.settings.animation_setting == true %} data-aos="fade-in" data-aos-duration="3000"  data-aos-duration="1500"{% endif %}>
-    <h1 class="{{ section.settings.title_align }} py-4 text-2xl md:text-3xl font-bold text-center" style="color: {{ section.settings.header_color }};">
+    <h1 class="{{section.settings.title_align}} py-4 text-2xl md:text-3xl font-bold text-center" style="color: {{section.settings.header_color}};">
       {{ page.title }}
     </h1>
   
-    <div class="max-w-screen-md m-auto tracking-wider leading-8" style="color: {{ section.settings.text_color }};" >
+    <div class="max-w-screen-md m-auto tracking-wider leading-8" style="color: {{section.settings.text_color}};" >
       {{ page.content }}
     </div>
   </div>
@@ -17,96 +17,96 @@
 {
   "name": "Main Page",
   "settings": [
-    {
-      "type": "select",
-      "id": "color_schema",
-      "label": "Background color",
-      "options": [
-        {
-          "value": "first_color",
-          "label": "First Color"
-        },
-        {
-          "value": "second_color",
-          "label": "Second Color"
-        },
-        {
-          "value": "third_color",
-          "label": "Third Color"
-        },
-        {
-          "value": "forth_color",
-          "label": "Forth Color"
-        },
-        {
-          "value": "fifth_color",
-          "label": "Fifth Color"
-        },
-        {
-          "value": "background_transparent",
-          "label": "Transparent Color"
-        }
-      ],
-      "default": "background_transparent"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top controll",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom controll",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
+  {
+    "type":"select",
+    "id":"color_schema",
+    "label":"Background color",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"background_transparent"
+   },
+   {
+   "type": "range",
+   "id": "padding_top",
+   "label": "Padding Top controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+{
+   "type": "range",
+   "id": "padding_bottom",
+   "label": "Padding Bottom controll",
+   "default":4,
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "unit": "rem"
+ },
+  {
       "type": "checkbox",
       "id": "animation_setting",
       "default": false,
       "label": "Animation turn on"
-    },
-    {
-      "type": "select",
-      "id": "title_align",
-      "label": "Text align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center"
-    },
-    {
-      "type": "color",
-      "id": "header_color",
-      "label": "Title color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "default": "#9A9A9A"
-    }
+   },
+   {
+    "type":"select",
+    "id":"title_align",
+    "label":"Text align",
+    "options":[
+       {
+          "value":"font_left",
+          "label":"Left"
+       },
+       {
+          "value":"font_right",
+          "label":"Right"
+       },
+       {
+          "value":"font_center",
+          "label":"Center"
+       }
+    ],
+    "default":"font_center"
+  },
+  {
+    "type": "color",
+    "id": "header_color",
+    "label": "Title color",
+    "default": "#808080"
+  },
+  {
+    "type": "color",
+    "id": "text_color",
+    "label": "Text color",
+    "default": "#9A9A9A"
+  }
   ]
 }
 {% endschema %}

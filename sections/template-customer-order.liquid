@@ -1,4 +1,4 @@
-<div class="container xl:w-[1200px] mx-auto" style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+<div class="container xl:w-[1200px] mx-auto" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
   <h1 class="text-2xl md:text-3xl font-bold text-center mb-4 customer_title_color">
     {{ 'customer.order.title' | t }}
   </h1>
@@ -46,7 +46,7 @@
             </div>
           </div>
 
-          <div class="flex flex-col md:gap-4 md:py-4 mb-4 md:mb-8" style="border-top: 1px solid {{ settings.customer_border_color | color_modify: 'alpha', 0.7 }};">
+          <div class="flex flex-col md:gap-4 md:py-4 mb-4 md:mb-8" style="border-top: 1px solid {{settings.customer_border_color | color_modify: 'alpha', 0.7 }};">
             {% for line_item in order.line_items %}
               <div class="grid md:grid-cols-8 gap-x-4 gap-y-1 md:gap-y-0 py-4 md:py-0 md:pr-8">
                 <div class="md:col-span-5">
@@ -108,7 +108,7 @@
           </div>
 
           <div>
-            <div class="flex justify-between border-b border-t py-4 md:pr-8 " style="border-top: 1px solid {{ settings.customer_border_color | color_modify: 'alpha', 0.7 }}; border-bottom: 1px solid {{settings.customer_border_color | color_modify: 'alpha', 0.7 }};">
+            <div class="flex justify-between border-b border-t py-4 md:pr-8 " style="border-top: 1px solid {{settings.customer_border_color | color_modify: 'alpha', 0.7 }}; border-bottom: 1px solid {{settings.customer_border_color | color_modify: 'alpha', 0.7 }};">
               <div class="font-medium customer_text_color">
                 {{ 'customer.order.subtotal' | t }}
               </div>
@@ -118,7 +118,7 @@
               </div>
             </div>
 
-            {% unless order.discount_applications %}
+            {% unless order.discount_applications%}
               <div class="border-b py-4 md:pr-8">
                 {% for discount_application in order.discount_applications %}
                   {{ discount_application.title }}
@@ -231,34 +231,32 @@
 </div>
 
 {% schema %}
-{
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "animation_setting",
-      "default": true,
-      "label": "Animation turn on"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top controll",
-      "default": 15,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom controll",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    }
-  ]
-}
+  {
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": true,
+        "label": "Animation turn on"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top controll",
+        "default": 15,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom controll",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }
+    ]
+  }
 {% endschema %} 

@@ -1,24 +1,9 @@
 <div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
-<<<<<<< HEAD
-  <div class="md:px-6 lg:px-12" style="color:{{ icon_color }};">
-=======
   <div class="md:px-6 lg:px-12" style="color:{{icon_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
     {% if quotation_show == true %}
     {% render 'icon-quotation-marks', class: 'w-5 h-auto mx-auto mb-8' %}
     {% endif %}
     
-<<<<<<< HEAD
-    <div class="text-center mb-5 text-sm" style="color: {{ subtext_color }};">
-      {{ star_rating_box }}
-    </div>
-
-    <div class="text-center mb-6" style="color: {{ text_color }}; font-size: {{ quote_text_size }}px;">
-      {{ text }}
-    </div>
-
-    <div class="text-gray-600 text-sm text-center" style="color: {{ subtext_color }}; font-size:{{ quote_authorText_size }}px;">
-=======
     <div class="text-center mb-5 text-sm" style="color: {{subtext_color}};">
       {{star_rating_box}}
     </div>
@@ -28,7 +13,6 @@
     </div>
 
     <div class="text-gray-600 text-sm text-center" style="color: {{subtext_color}}; font-size:{{quote_authorText_size}}px;">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
       — {{ author }}
     </div>
   </div>

@@ -3,14 +3,14 @@
 {% style %}
 
 .badge_design {
-  background-color: {{ settings.product_badge_color }};
-  color:{{ settings.badge_font }};
+  background-color: {{  settings.product_badge_color }};
+  color:{{settings.badge_font }};
   border: 1px solid {{ settings.badge_border }}
 }
 
   .wishlist_button{
-  background-color: {{ settings.wl_bg_color }};
-  border: 0.5px solid {{ settings.wl_border_color }};
+  background-color: {{settings.wl_bg_color}};
+  border: 0.5px solid {{settings.wl_border_color}};
   
 }
 
@@ -43,12 +43,12 @@
       630px
     "
     srcset="
-      {{ product.featured_image.src | image_url: width: 450 }} 450w,
-      {{ product.featured_image.src | image_url: width: 630 }} 630w
+      {{ product.featured_image.src | img_url: '450x' }} 450w,
+      {{ product.featured_image.src | img_url: '630x' }} 630w
     "
     width="{{ product.featured_image.width }}"
     height="{{ product.featured_image.height }}"
-    src="{{ product.featured_image.src | image_url: width: 630 }}"
+    src="{{ product.featured_image.src | img_url: '630x' }}"
     alt="{{ product.featured_image.alt | escape }}"
     loading="lazy"
     class="w-full h-full object-cover object-center rounded-sm {% if mouseover_image == true %}grid-view-item__image {% endif %}"
@@ -61,12 +61,12 @@
           630px
         "
         srcset="
-          {{ product.images.last | image_url: width: 450 }} 450w,
-          {{ product.images.last | image_url: width: 630 }} 630w
+          {{ product.images.last | img_url: '450x' }} 450w,
+          {{ product.images.last | img_url: '630x' }} 630w
         "
         width="{{ product.images.last.width }}"
         height="{{ product.images.last.height }}"
-        src="{{ product.images.last | image_url: width: 630 }}"
+        src="{{ product.images.last | img_url: '630x' }}"
         alt="{{ product.images.last.alt | escape }}"
         loading="lazy" > 
      {% endif %}
@@ -78,7 +78,7 @@
     {% endif %}
   </a>
 
-  <div class="flex flex-col justify-center pt-4 " style="color: {{ product_title_color }};">
+  <div class="flex flex-col justify-center pt-4 " style="color: {{product_title_color}};">
     
     {%- if show_vendor -%}
     <a href="{{ product.url | within: collection }}" class="block text-xs">
@@ -91,7 +91,7 @@
     {% if product.title %}
       <div>
         <a href="{{ product.url | within: collection }}" class="text-sm md:text-base font-bold ">
-        {{ product.title | strip_html | truncate: 20 }}
+        {{ product.title | strip_html | truncate: 20}}
         </a>
       </div>
       
@@ -126,14 +126,14 @@
           </div>
         {% endif %}
       </div>
-    {% endif %}
+    {%endif%}
     </div>
     {%- comment -%} line 1 - end {%- endcomment -%}
 
 
 
     {%- comment -%} line 2 - Metafield option box {%- endcomment -%}
-    {% if show_symbol == true %}
+    {% if show_symbol  == true  %}
       <div class="relative">
       
         <ul class="flex justify-between gap-[0.5rem] py-2 text-xs text-center">
@@ -143,7 +143,7 @@
                 
             >
                 {% if iconbox1 != blank %}
-                <span class="symbol_font p-0">{{ iconbox1 }}  </span>
+                <span class="symbol_font p-0">{{iconbox1}}  </span>
                 {% endif %}
 
                 <span class="symbol_font px-1 text-center"> {{ product.metafields.custom.symbol_first.value }} </span>
@@ -155,7 +155,7 @@
                 
             >
                 {% if iconbox2 != blank %}
-                <span class="symbol_font p-0"> {{ iconbox2 }} </span>
+                <span class="symbol_font p-0"> {{iconbox2}} </span>
                 {% endif %}
                 <span class="symbol_font px-1 text-center">  {{ product.metafields.custom.symbol_second.value }}</span>
             </li>
@@ -167,9 +167,9 @@
             >
 
               {% if iconbox3 != blank %}
-               <span class="symbol_font p-0"> {{ iconbox3 }}</span>
+               <span class="symbol_font p-0"> {{iconbox3}}</span>
               {% endif %} 
-            <span class="symbol_font px-1 text-center">  {{ product.metafields.custom.symbol_third.value }}  </span>
+            <span class="symbol_font px-1 text-center">  {{product.metafields.custom.symbol_third.value}}  </span>
             </li>
             {%- endif -%}
         </ul>
@@ -184,11 +184,11 @@
         <div class="flex items-center">
         
         {% if product.metafields.custom.custom_price.value != blank or product.price == 0 %}
-          <span class="text-lg font-bold" {% if product.compare_at_price %} style="color: {{ product_title_color }};" {% endif %}>
+          <span class="text-lg font-bold" {% if product.compare_at_price %} style="color: {{product_title_color}};" {% endif %}>
           {{ product.metafields.custom.custom_price.value }}
           </span>
         {%- else -%}
-            <span class="text-lg font-bold" {% if product.compare_at_price %} style="color: {{ product_point_color }};" {% endif %}>
+            <span class="text-lg font-bold" {% if product.compare_at_price %} style="color: {{product_point_color}};" {% endif %}>
             {{ product.price | money }}
           </span>
 

@@ -58,7 +58,10 @@
         "point_color": "#111e2f",
         "content_color": "#787d80",
         "border_color": "#4b5264",
-        "comment_bg": "background_transparent"
+        "comment_bg": "background_transparent",
+        "color_button": "background_transparent",
+        "button_color_hover": "button_fifth_color",
+        "button_border_color": "#5a6988"
       }
     }
   },

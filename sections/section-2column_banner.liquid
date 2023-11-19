@@ -7,7 +7,7 @@
     }
  
     .{{ section.id }}_button_first:hover{
-          color: {{ section.settings.mo_button_color }};
+          color: {{ section.settings.mo_button_color}};
           border:1px solid {{ section.settings.mo_border_color }};
           background-color: {{ section.settings.mo_button_bg }};
     }
@@ -21,7 +21,7 @@
     }
  
     .{{ section.id }}_button_second:hover{
-          color: {{ section.settings.mo_button_color2 }};
+          color: {{ section.settings.mo_button_color2}};
           border:1px solid {{ section.settings.mo_border_color2 }};
           background-color: {{ section.settings.mo_button_bg2 }};
     }
@@ -42,16 +42,16 @@
           (min-width: 640px) 500px,
           600px
         " srcset="
-          {{ image_left | image_url: width: 400 }} 400w,
-          {{ image_left | image_url: width: 500 }} 500w,
-          {{ image_left | image_url: width: 600 }} 600w,
-          {{ image_left | image_url: width: 700 }} 700w,
-          {{ image_left | image_url: width: 850 }} 850w,
-          {{ image_left | image_url: width: 1000 }} 1000w
-        " src="{{ image_left | image_url: width: 1000 }}" alt="{{ image_left.alt }}" loading="lazy"
+          {{ image_left| img_url: '400x' }} 400w,
+          {{ image_left | img_url: '500x' }} 500w,
+          {{ image_left | img_url: '600x' }} 600w,
+          {{ image_left | img_url: '700x' }} 700w,
+          {{ image_left | img_url: '850x' }} 850w,
+          {{ image_left | img_url: '1000x' }} 1000w
+        " src="{{ image_left | img_url: '1000x' }}" alt="{{ image_left.alt }}" loading="lazy"
           class="w-full h-full object-cover object-center"
           width="{{ image_left.width }}"
-          height="{{ image_left.height }}">
+          height="{{image_left.height }}">
     {% else %}
     {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full object-cover object-center' }}
     {% endif %}
@@ -67,13 +67,13 @@
             (min-width: 640px) 500px,
             600px
           " srcset="
-            {{ image_right | image_url: width: 400 }} 400w,
-            {{ image_right | image_url: width: 500 }} 500w,
-            {{ image_right | image_url: width: 600 }} 600w,
-            {{ image_right | image_url: width: 700 }} 700w,
-            {{ image_right | image_url: width: 850 }} 850w,
-            {{ image_right | image_url: width: 1000 }} 1000w
-          " src="{{ image_right | image_url: width: 1000 }}" alt="{{ image_right.alt }}" loading="lazy"
+            {{ image_right | img_url: '400x' }} 400w,
+            {{ image_right | img_url: '500x' }} 500w,
+            {{ image_right | img_url: '600x' }} 600w,
+            {{ image_right | img_url: '700x' }} 700w,
+            {{ image_right | img_url: '850x' }} 850w,
+            {{ image_right | img_url: '1000x' }} 1000w
+          " src="{{ image_right | img_url: '1000x' }}" alt="{{ image_right.alt }}" loading="lazy"
             class="w-full h-full object-cover object-center"
             width="{{ image_right.width }}"
             height="{{ image_right.height }}">
@@ -82,12 +82,12 @@
       {% endif %}
     </div>
 
-    <div class="{{ section.settings.textbox_color_schema }} {{ section.settings.textbox_align }} absolute top-[25rem] {{ section.settings.textbox_position }} p-[2rem] md:w-[32rem] flex flex-col justify-center md:p-8 z-10" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="350" {% endif %}>
-      <h1 class="text-2xl lg:text-3xl font-bold mb-2" style="color:{{ section.settings.textbox_header_color }};">
+    <div class="{{section.settings.textbox_color_schema}} {{section.settings.textbox_align}} absolute top-[25rem] {{section.settings.textbox_position}} p-[2rem] md:w-[32rem] flex flex-col justify-center md:p-8 z-10" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="350" {% endif %}>
+      <h1 class="text-2xl lg:text-3xl font-bold mb-2" style="color:{{section.settings.textbox_header_color}};">
         {{ section.settings.headline }}
       </h1>
   
-      <div class="my-8" style="color:{{ section.settings.textbox_desc_color }};">
+      <div class="my-8" style="color:{{section.settings.textbox_desc_color}};">
         {{ section.settings.text }}
       </div>
   
@@ -96,8 +96,8 @@
          <div class="py-3 inline-block mx-3">
               <div class="py-2 inline-block">
                   <a href="{{ section.settings.button-url }}"
-                    class="{{ section.id }}_button_first mx-2 tracking-widest text-center {{ section.settings.button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
-                    {{ section.settings.button-text }}</a>
+                    class="{{ section.id }}_button_first mx-2 tracking-widest text-center {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
+                    {{section.settings.button-text }}</a>
               </div>
          </div>     
      {% endif %}
@@ -106,8 +106,8 @@
            <div class="py-3 inline-block mx-3">
               <div class="py-2 inline-block">
                   <a href="{{ section.settings.button-url_second }}"
-                    class="{{ section.id }}_button_second mx-2 tracking-widest text-center {{ section.settings.button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
-                    {{ section.settings.button-text_second }}</a>
+                    class="{{ section.id }}_button_second mx-2 tracking-widest text-center {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}" >
+                    {{section.settings.button-text_second }}</a>
               </div>
            </div>
      {% endif %} 
@@ -119,278 +119,278 @@
 
 {% schema %}
 {
-  "name": "Two Images Banner",
-  "class": "shopify-section-vue",
-  "settings": [
-    {
-      "type": "header",
-      "content": "General settings",
-      "info": "Image settings and textbox position "
-    },
-    {
-      "type": "image_picker",
-      "id": "image_left",
-      "label": "Image Left"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_right",
-      "label": "Image Right"
-    },
-    {
-      "type": "select",
-      "id": "textbox_align",
-      "label": "Title align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center"
-    },
-    {
-      "type": "select",
-      "id": "textbox_position",
-      "label": "Text Box Position",
-      "options": [
-        {
-          "value": "text_box_top",
-          "label": "Top"
-        },
-        {
-          "value": "text_box_center",
-          "label": "Center"
-        },
-        {
-          "value": "text_box_bottom",
-          "label": "Bottom"
-        }
-      ],
-      "default": "text_box_center"
-    },
-    {
-      "type": "checkbox",
-      "id": "animation_setting",
-      "default": false,
-      "label": "Animation turn on"
-    },
-    {
-      "type": "header",
-      "content": "Text Content settings",
-      "info": "Setting headline, text and textbox color "
-    },
-    {
-      "type": "select",
-      "id": "textbox_color_schema",
-      "label": "Textbox color",
-      "options": [
-        {
-          "value": "first_color",
-          "label": "First Color"
-        },
-        {
-          "value": "second_color",
-          "label": "Second Color"
-        },
-        {
-          "value": "third_color",
-          "label": "Third Color"
-        },
-        {
-          "value": "forth_color",
-          "label": "Forth Color"
-        },
-        {
-          "value": "fifth_color",
-          "label": "Fifth Color"
-        },
-        {
-          "value": "background_transparent",
-          "label": "Transparent Color"
-        }
-      ],
-      "default": "fifth_color"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "t:common.headline",
-      "default": "Headline"
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "t:common.text",
-      "default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
-    },
-    {
-      "type": "color",
-      "id": "textbox_header_color",
-      "label": "Textbox Header Color",
-      "default": "#5E5E5E"
-    },
-    {
-      "type": "color",
-      "id": "textbox_desc_color",
-      "label": "Textbox Description Color",
-      "default": "#808080"
-    },
-    {
-      "type": "header",
-      "content": "Button settings",
-      "info": "Setting button color, mouseover color. Two buttons available. "
-    },
-    {
-      "type": "select",
-      "id": "button_size",
-      "label": "Button size",
-      "options": [
-        {
-          "value": "button_small",
-          "label": "Small"
-        },
-        {
-          "value": "button_medium",
-          "label": "Medium"
-        },
-        {
-          "value": "button_large",
-          "label": "Large"
-        },
-        {
-          "value": "button_xlarge",
-          "label": "Extra large"
-        }
-      ],
-      "default": "button_small"
-    },
-    {
-      "type": "checkbox",
-      "id": "button_round_off",
-      "default": false,
-      "label": "Button round"
-    },
-    {
-      "type": "url",
-      "id": "button-url",
-      "label": "t:common.button.url"
-    },
-    {
-      "type": "text",
-      "id": "button-text",
-      "label": "t:common.button.text",
-      "default": "Button"
-    },
-    {
-      "type": "header",
-      "content": "Button color"
-    },
-    {
-      "type": "color",
-      "id": "button_bg",
-      "label": "Button background color",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "button_color",
-      "label": "button font color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "border_colors",
-      "label": "border color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "mo_button_bg",
-      "label": "Mouseover background",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "mo_button_color",
-      "label": "Mouseover font color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "mo_border_color",
-      "label": "Mouseover border color",
-      "default": "transparent"
-    },
-    {
-      "type": "header",
-      "content": "Button 2"
-    },
-    {
-      "type": "url",
-      "id": "button-url_second",
-      "label": "t:common.button.url"
-    },
-    {
-      "type": "text",
-      "id": "button-text_second",
-      "label": "t:common.button.text",
-      "default": "Button"
-    },
-    {
-      "type": "header",
-      "content": "Button color"
-    },
-    {
-      "type": "color",
-      "id": "button_bg2",
-      "label": "Button background color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "button_color2",
-      "label": "button font color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "border_colors2",
-      "label": "border color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "mo_button_bg2",
-      "label": "Mouseover background",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "mo_button_color2",
-      "label": "Mouseover font color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "mo_border_color2",
-      "label": "Mouseover border color",
-      "default": "#808080"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Two Images Banner",
-      "category": "Image"
-    }
-  ]
+"name": "Two Images Banner",
+"class": "shopify-section-vue",
+"settings": [
+{
+   "type": "header",
+   "content": "General settings",
+   "info": "Image settings and textbox position "
+},
+{
+"type": "image_picker",
+"id": "image_left",
+"label": "Image Left"
+},
+{
+"type": "image_picker",
+"id": "image_right",
+"label": "Image Right"
+},
+{
+   "type":"select",
+   "id":"textbox_align",
+   "label":"Title align",
+   "options":[
+      {
+         "value":"font_left",
+         "label":"Left"
+      },
+      {
+         "value":"font_right",
+         "label":"Right"
+      },
+      {
+         "value":"font_center",
+         "label":"Center"
+      }
+   ],
+   "default":"font_center"
+},
+{
+   "type":"select",
+   "id":"textbox_position",
+   "label":"Text Box Position",
+   "options":[
+      {
+         "value":"text_box_top",
+         "label":"Top"
+      },
+      {
+         "value":"text_box_center",
+         "label":"Center"
+      },
+      {
+         "value":"text_box_bottom",
+         "label":"Bottom"
+      }
+   ],
+   "default":"text_box_center"
+  },
+  {
+   "type": "checkbox",
+   "id": "animation_setting",
+   "default": false,
+   "label": "Animation turn on"
+   },
+  {
+   "type": "header",
+   "content": "Text Content settings",
+   "info": "Setting headline, text and textbox color "
+},
+{
+   "type":"select",
+   "id":"textbox_color_schema",
+   "label":"Textbox color",
+   "options":[
+      {
+         "value":"first_color",
+         "label":"First Color"
+      },
+      {
+         "value":"second_color",
+         "label":"Second Color"
+      },
+      {
+         "value":"third_color",
+         "label":"Third Color"
+      },
+      {
+         "value":"forth_color",
+         "label":"Forth Color"
+      },
+      {
+         "value":"fifth_color",
+         "label":"Fifth Color"
+      },
+      {
+         "value":"background_transparent",
+         "label":"Transparent Color"
+      }
+   ],
+   "default":"fifth_color"
+ },
+{
+"type": "text",
+"id": "headline",
+"label": "t:common.headline",
+"default": "Headline"
+},
+{
+"type": "richtext",
+"id": "text",
+"label": "t:common.text",
+"default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
+},
+{
+  "type": "color",
+  "id": "textbox_header_color",
+  "label": "Textbox Header Color",
+  "default": "#5E5E5E"
+},
+{
+  "type": "color",
+  "id": "textbox_desc_color",
+  "label": "Textbox Description Color",
+  "default": "#808080"
+},
+{
+   "type": "header",
+   "content": "Button settings",
+   "info": "Setting button color, mouseover color. Two buttons available. "
+},
+{
+   "type":"select",
+   "id":"button_size",
+   "label":"Button size",
+   "options":[
+      {
+         "value":"button_small",
+         "label":"Small"
+      },
+      {
+         "value":"button_medium",
+         "label":"Medium"
+      },
+      {
+         "value":"button_large",
+         "label":"Large"
+      },
+      {
+       "value":"button_xlarge",
+       "label":"Extra large"
+     }
+   ],
+   "default":"button_small"
+  },
+   {
+   "type": "checkbox",
+   "id": "button_round_off",
+   "default": false,
+   "label": "Button round"
+ },
+{
+"type": "url",
+"id": "button-url",
+"label": "t:common.button.url"
+},
+{
+"type": "text",
+"id": "button-text",
+"label": "t:common.button.text",
+"default": "Button"
+},
+{
+  "type": "header",
+  "content": "Button color"
+},
+{
+"type": "color",
+"id": "button_bg",
+"label": "Button background color",
+"default": "transparent"
+},
+{
+"type": "color",
+"id": "button_color",
+"label": "button font color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "border_colors",
+"label": "border color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "mo_button_bg",
+"label": "Mouseover background",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "mo_button_color",
+"label": "Mouseover font color",
+"default": "#fff"
+},
+{
+"type": "color",
+"id": "mo_border_color",
+"label": "Mouseover border color",
+"default": "transparent"
+},
+{
+   "type": "header",
+   "content": "Button 2"
+},
+{
+"type": "url",
+"id": "button-url_second",
+"label": "t:common.button.url"
+},
+{
+"type": "text",
+"id": "button-text_second",
+"label": "t:common.button.text",
+"default": "Button"
+},
+{
+  "type": "header",
+  "content": "Button color"
+},
+{
+"type": "color",
+"id": "button_bg2",
+"label": "Button background color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "button_color2",
+"label": "button font color",
+"default": "#fff"
+},
+{
+"type": "color",
+"id": "border_colors2",
+"label": "border color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "mo_button_bg2",
+"label": "Mouseover background",
+"default": "transparent"
+},
+{
+"type": "color",
+"id": "mo_button_color2",
+"label": "Mouseover font color",
+"default": "#808080"
+},
+{
+"type": "color",
+"id": "mo_border_color2",
+"label": "Mouseover border color",
+"default": "#808080"
+}
+],
+"presets": [
+{
+"name": "Two Images Banner",
+"category": "Image"
+}
+]
 }
 {% endschema %}

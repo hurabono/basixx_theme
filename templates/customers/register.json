@@ -8,7 +8,7 @@
         "padding_bottom": 1,
         "overlay_set": true,
         "headline": "Registration",
-        "description": "<p>Unlock a world of benefits and possibilities by registering for an account with us</p>",
+        "description": "<p>Unlock a world of benefits and possibilities by registering for an account with us<\/p>",
         "color_schema": "background_transparent",
         "text_align": "font_center",
         "page_title_color": "#808080",
@@ -23,7 +23,7 @@
           "settings": {
             "text_block": "Exclusive Access",
             "text_font_color": "#4b4b4b",
-            "icon_box": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" viewbox=\"0 0 576 512\"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z\"></path></svg>"
+            "icon_box": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"1em\" viewbox=\"0 0 576 512\"><!--! Font Awesome Free 6.4.2 by @fontawesome - https:\/\/fontawesome.com License - https:\/\/fontawesome.com\/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z\"><\/path><\/svg>"
           }
         },
         "template--17408106627375__e9b388c2-f0d7-4abb-8950-6ea4bbce5b75-column-2": {
@@ -31,7 +31,7 @@
           "settings": {
             "text_block": "Personalized Recommendations",
             "text_font_color": "#4b4b4b",
-            "icon_box": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" viewbox=\"0 0 448 512\"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M388.32,104.1a4.66,4.66,0,0,0-4.4-4c-2,0-37.23-.8-37.23-.8s-21.61-20.82-29.62-28.83V503.2L442.76,472S388.72,106.5,388.32,104.1ZM288.65,70.47a116.67,116.67,0,0,0-7.21-17.61C271,32.85,255.42,22,237,22a15,15,0,0,0-4,.4c-.4-.8-1.2-1.2-1.6-2C223.4,11.63,213,7.63,200.58,8c-24,.8-48,18-67.25,48.83-13.61,21.62-24,48.84-26.82,70.06-27.62,8.4-46.83,14.41-47.23,14.81-14,4.4-14.41,4.8-16,18-1.2,10-38,291.82-38,291.82L307.86,504V65.67a41.66,41.66,0,0,0-4.4.4S297.86,67.67,288.65,70.47ZM233.41,87.69c-16,4.8-33.63,10.4-50.84,15.61,4.8-18.82,14.41-37.63,25.62-50,4.4-4.4,10.41-9.61,17.21-12.81C232.21,54.86,233.81,74.48,233.41,87.69ZM200.58,24.44A27.49,27.49,0,0,1,215,28c-6.4,3.2-12.81,8.41-18.81,14.41-15.21,16.42-26.82,42-31.62,66.45-14.42,4.41-28.83,8.81-42,12.81C131.33,83.28,163.75,25.24,200.58,24.44ZM154.15,244.61c1.6,25.61,69.25,31.22,73.25,91.66,2.8,47.64-25.22,80.06-65.65,82.47-48.83,3.2-75.65-25.62-75.65-25.62l10.4-44s26.82,20.42,48.44,18.82c14-.8,19.22-12.41,18.81-20.42-2-33.62-57.24-31.62-60.84-86.86-3.2-46.44,27.22-93.27,94.47-97.68,26-1.6,39.23,4.81,39.23,4.81L221.4,225.39s-17.21-8-37.63-6.4C154.15,221,153.75,239.8,154.15,244.61ZM249.42,82.88c0-12-1.6-29.22-7.21-43.63,18.42,3.6,27.22,24,31.23,36.43Q262.63,78.68,249.42,82.88Z\"></path></svg>"
+            "icon_box": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"1em\" viewbox=\"0 0 448 512\"><!--! Font Awesome Free 6.4.2 by @fontawesome - https:\/\/fontawesome.com License - https:\/\/fontawesome.com\/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M388.32,104.1a4.66,4.66,0,0,0-4.4-4c-2,0-37.23-.8-37.23-.8s-21.61-20.82-29.62-28.83V503.2L442.76,472S388.72,106.5,388.32,104.1ZM288.65,70.47a116.67,116.67,0,0,0-7.21-17.61C271,32.85,255.42,22,237,22a15,15,0,0,0-4,.4c-.4-.8-1.2-1.2-1.6-2C223.4,11.63,213,7.63,200.58,8c-24,.8-48,18-67.25,48.83-13.61,21.62-24,48.84-26.82,70.06-27.62,8.4-46.83,14.41-47.23,14.81-14,4.4-14.41,4.8-16,18-1.2,10-38,291.82-38,291.82L307.86,504V65.67a41.66,41.66,0,0,0-4.4.4S297.86,67.67,288.65,70.47ZM233.41,87.69c-16,4.8-33.63,10.4-50.84,15.61,4.8-18.82,14.41-37.63,25.62-50,4.4-4.4,10.41-9.61,17.21-12.81C232.21,54.86,233.81,74.48,233.41,87.69ZM200.58,24.44A27.49,27.49,0,0,1,215,28c-6.4,3.2-12.81,8.41-18.81,14.41-15.21,16.42-26.82,42-31.62,66.45-14.42,4.41-28.83,8.81-42,12.81C131.33,83.28,163.75,25.24,200.58,24.44ZM154.15,244.61c1.6,25.61,69.25,31.22,73.25,91.66,2.8,47.64-25.22,80.06-65.65,82.47-48.83,3.2-75.65-25.62-75.65-25.62l10.4-44s26.82,20.42,48.44,18.82c14-.8,19.22-12.41,18.81-20.42-2-33.62-57.24-31.62-60.84-86.86-3.2-46.44,27.22-93.27,94.47-97.68,26-1.6,39.23,4.81,39.23,4.81L221.4,225.39s-17.21-8-37.63-6.4C154.15,221,153.75,239.8,154.15,244.61ZM249.42,82.88c0-12-1.6-29.22-7.21-43.63,18.42,3.6,27.22,24,31.23,36.43Q262.63,78.68,249.42,82.88Z\"><\/path><\/svg>"
           }
         },
         "template--17408106627375__e9b388c2-f0d7-4abb-8950-6ea4bbce5b75-column-3": {
@@ -39,7 +39,7 @@
           "settings": {
             "text_block": "Events and Workshops",
             "text_font_color": "#4b4b4b",
-            "icon_box": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" viewbox=\"0 0 448 512\"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z\"></path></svg>"
+            "icon_box": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"1em\" viewbox=\"0 0 448 512\"><!--! Font Awesome Free 6.4.2 by @fontawesome - https:\/\/fontawesome.com License - https:\/\/fontawesome.com\/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z\"><\/path><\/svg>"
           }
         },
         "template--17408106627375__e9b388c2-f0d7-4abb-8950-6ea4bbce5b75-column-4": {
@@ -47,7 +47,7 @@
           "settings": {
             "text_block": "Community Connection",
             "text_font_color": "#4b4b4b",
-            "icon_box": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" viewbox=\"0 0 512 512\"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z\"></path></svg>"
+            "icon_box": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"1em\" viewbox=\"0 0 512 512\"><!--! Font Awesome Free 6.4.2 by @fontawesome - https:\/\/fontawesome.com License - https:\/\/fontawesome.com\/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z\"><\/path><\/svg>"
           }
         }
       },
@@ -63,7 +63,7 @@
         "padding_bottom": 1,
         "subtitle": "🌺",
         "headline": "Why join us?",
-        "text": "<p>we're a community that embraces the art of self-care and the science of beauty. </p><p>Join us on a journey to discover the secrets of radiant skin and indulge in a world of pampering and transformation.</p>",
+        "text": "<p>we're a community that embraces the art of self-care and the science of beauty. <\/p><p>Join us on a journey to discover the secrets of radiant skin and indulge in a world of pampering and transformation.<\/p>",
         "text_align": "font_center",
         "textbox_align": "font_center",
         "animation_setting": false,

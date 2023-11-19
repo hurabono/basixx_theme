@@ -4,7 +4,7 @@
     visibility: visible !important;
     text-decoration: underline;
     background-color: none;
-    color: {{ section.settings.base_color }};
+    color: {{ section.settings.base_color}};
   }
 
   .options-container::-webkit-scrollbar{
@@ -54,13 +54,13 @@
 
       /* variant dropdown style */
       .variant_color_{{ block.id }}{
-          background:{{ block.settings.dropdown_bg }};
+          background:{{ block.settings.dropdown_bg  }};
           color: {{ block.settings.dropdown_font }};
           transition:0.5s;
       }
 
       .variant_color_{{ block.id }}:hover {
-          background:{{ block.settings.dropdown_mo_bg }};
+          background:{{ block.settings.dropdown_mo_bg  }};
           color: {{ block.settings.dropdown_mo_font }};
       }
 
@@ -81,7 +81,7 @@
       }
 
       .radio_style_{{ block.id }}:hover{
-        background-color:{{ block.settings.dropdown_mo_bg }};
+        background-color:{{ block.settings.dropdown_mo_bg  }};
         color: {{ block.settings.dropdown_mo_font }};
       }
     
@@ -95,14 +95,14 @@
       .button-shopify-buy-it-now .shopify-payment-button__button {
         color:{{ block.settings.secondary_button_color }};
         border:1px solid {{ block.settings.secondary_button_border }};
-        background:{{ block.settings.secondary_button_bg }};
+        background:{{block.settings.secondary_button_bg}};
         transition:0.5s;
       }
 
       .button-shopify-buy-it-now .shopify-payment-button__button:hover{
         color:{{ block.settings.secondary_over_font }};
         border:1px solid {{ block.settings.secondary_mo_border }};
-        background:{{ block.settings.secondary_mo_bg }};
+        background:{{block.settings.secondary_mo_bg}};
       }
 
       /* product buttons */
@@ -114,7 +114,7 @@
       }
 
       .main_product_button:hover{
-            color: {{ block.settings.mo_button_color }};
+            color: {{ block.settings.mo_button_color}};
             border:1px solid {{ block.settings.mo_border_color }};
             background-color: {{ block.settings.mo_button_bg }};
       }
@@ -124,7 +124,7 @@
 
     .no-rating-product::before{
       content: '★★★★★';
-      background-color: {{ block.settings.rating_color }};
+      background-color: {{ block.settings.rating_color}};
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -206,8 +206,8 @@
   }
 
   .product_padding_mobile{
-      padding-top:{{ section.settings.mobile_padding_top }}rem;
-      padding-bottom:{{ section.settings.mobile_padding_bottom }}rem;
+      padding-top:{{ section.settings.mobile_padding_top}}rem;
+      padding-bottom:{{section.settings.mobile_padding_bottom}}rem;
   }
   
   
@@ -225,8 +225,8 @@
     }
 
     .product_paddings{
-        padding-top:{{ section.settings.padding_top }}rem;
-        padding-bottom:{{ section.settings.padding_bottom }}rem;
+        padding-top:{{ section.settings.padding_top}}rem;
+        padding-bottom:{{section.settings.padding_bottom}}rem;
     }
 
   }
@@ -241,7 +241,7 @@
 {{ 'drop_down.css' | asset_url | stylesheet_tag }}
 {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
-<div class="product_paddings product_padding_mobile {{ section.settings.color_schema }}">
+<div class="product_paddings product_padding_mobile {{section.settings.color_schema}}">
   <div class="max-w-[1320px] m-auto px-4 md:px-8" {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="300"{% endif %}>
     
     <!-- product breadcrumb -->
@@ -249,7 +249,7 @@
       {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
 
       <nav class="breadcrumbs inline-block p-4" role="navigation" aria-label="breadcrumbs">
-        <ol class="breadcrumbs__list flex items-center text-xs md:text-sm font-bold" style="color: {{ section.settings.base_color }};">
+        <ol class="breadcrumbs__list flex items-center text-xs md:text-sm font-bold" style="color: {{section.settings.base_color}};">
           <p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -282,7 +282,7 @@
                         {% for media in product.media %}
                               <div class="swiper-slide">
                                     <div class="h-100 p-2 rounded-sm">
-                                          {% render 'product-media', media: media %}
+                                          {%render 'product-media', media: media%}
                                     </div>
                               </div>
                         {% endfor %}
@@ -296,7 +296,7 @@
                         {% for media in product.media %}
                               <div class="swiper-slide" style="cursor:pointer;">
                                     <div class="h-100 overflow-hidden p-2">
-                                          {% render 'product-media', media: media %}
+                                          {%render 'product-media', media: media%}
                                     </div>
                               </div>
                         {% endfor %}
@@ -329,19 +329,19 @@
             19) payment icons -->
             
       <div class="product-information pt-4">
-        {% form 'product', product, id: 'product-form' %}
+        {% form 'product', product, id: 'product-form'%}
             {% for block in section.blocks %}
               {% case block.type %}
                 
                 {% when 'vendor' %}
-                  {% if product.vendor %}
-                  <span itemprop="brand" class="text-sm text-gray-500" style="color:{{ section.settings.base_color }};">{{ product.vendor }}</span>
-                  {% endif %}
+                  {%if product.vendor%}
+                  <span itemprop="brand" class="text-sm text-gray-500" style="color:{{section.settings.base_color}};">{{ product.vendor }}</span>
+                  {%endif%}
                   
                   
                 {% when 'title' %}
                   {% if product.title %}
-                  <h1 class="text-2xl lg:text-3xl font-bold mb-2" style="color:{{ block.settings.title_color }};">
+                  <h1 class="text-2xl lg:text-3xl font-bold mb-2" style="color:{{block.settings.title_color}};">
                     {{ product.title }}
                   </h1>
                 {% endif %}
@@ -349,15 +349,15 @@
 
                 {% when 'price' %}
                     {% if selected_variant.available %}
-                    <div class="my-3" id="price-{{ section.id }}">
+                    <div class="my-3" id="price-{{section.id}}">
   
                             <span class="text-lg text-gray-500 line-through"
-                                  style="color:{{ block.settings.price_point }};"
+                                  style="color:{{ block.settings.price_point}};"
                             >
-                                  {{ selected_variant.compare_at_price | money }}
+                                  {{selected_variant.compare_at_price | money}}
                             </span>
                             <span class="text-2xl font-bold" style="color:{{ block.settings.price_color }};">
-                                  {{ selected_variant.price | money }}
+                                  {{selected_variant.price | money}}
                             </span>
   
                       <!-- price Sale bedge -->
@@ -387,7 +387,7 @@
                     <div class="flex flex-col items-start gap-2">
                           <div class="qty">
                                 <div class="qty_control"> 
-                                  <label for="Quantity-{{ section.id }}" style="font-size:0.8rem; color:{{ section.settings.base_color }};">Quantity </label>
+                                  <label for="Quantity-{{ section.id }}" style="font-size:0.8rem; color:{{section.settings.base_color}};">Quantity </label>
                                   <div class="qtycard px-2 qty_style_{{ block.id }} {% if block.settings.qty_radius == true %} qty_border {% endif %}">
                                       <span class="btnqty qtyminus icon icon-minus qty_icon_{{ block.id }}">-</span>
                                       <input type="text" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" class="qty_background_{{ block.id }} quantity-selector quantity-input" readonly="">
@@ -405,19 +405,19 @@
                 {% when 'date_set' %}
                 <div class="flex my-4">
                   <p class="line-item-property__field w-full md:w-1/2">
-                <label class="block" for="timeSet" style="font-size:0.8rem; color:{{ section.settings.base_color }};"> {{ block.settings.dateset_title }} </label>
+                <label class="block" for="timeSet" style="font-size:0.8rem; color:{{section.settings.base_color}};"> {{ block.settings.dateset_title }} </label>
                 <input class="w-full border-none focus:outline-none" required id="timeSet" type="date" name="properties[Avilable Date]" class="w-full appearance-none focus:outline-none" 
-                style="background:transparent; border-bottom: 1px solid {{ section.settings.point_color }}; height:2rem; color:{{section.settings.point_color}};">
+                style="background:transparent; border-bottom: 1px solid {{section.settings.point_color}}; height:2rem; color:{{section.settings.point_color}};">
                 </p>
                 </div>
 
 
 
                 {% when 'time_set' %}
-                <div class="my-4" style="color:{{ section.settings.base_color }};">
+                <div class="my-4" style="color:{{section.settings.base_color}};">
                     <p class="line-item-property__field w-full md:w-1/2">
-                      <label class="block" for="available_time" style="font-size:0.8rem; color:{{ section.settings.base_color }};">{{ block.settings.timeset_title }}</label>
-                      <input class="w-full border-none focus:outline-none" style="background:transparent; border-bottom: 1px solid {{ section.settings.point_color }}; height:2rem;" type="time" id="available_time" name="properties[Available Time]" min="09:00" max="18:00" required>
+                      <label class="block" for="available_time" style="font-size:0.8rem; color:{{section.settings.base_color}};">{{ block.settings.timeset_title  }}</label>
+                      <input class="w-full border-none focus:outline-none" style="background:transparent; border-bottom: 1px solid {{section.settings.point_color}}; height:2rem;" type="time" id="available_time" name="properties[Available Time]" min="09:00" max="18:00" required>
                       </p>
                 </div>
 
@@ -426,7 +426,7 @@
                 {% when 'custom_note' %}
                 <div class="flex pb-4">
                 <p class="line-item-property__field w-full">
-                <label for="custom-message" style="font-size:0.8rem; color:{{ section.settings.base_color }};">Custom message</label>
+                <label for="custom-message" style="font-size:0.8rem; color:{{section.settings.base_color}};">Custom message</label>
                 <textarea id="custom-message" name="properties[Custom message]" class="note_style_{{ block.id }} w-full appearance-none focus:outline-none bg-transparent border-none" style="color:{{ section.settings.point_color }}"></textarea>
                 </p>
                 </div>
@@ -437,7 +437,7 @@
 
 
                 {% when 'stock' %}
-                <div class="inventoryWrapper py-2" id="variantStock-{{ section.id }}" style="color: {{ section.settings.base_color }};">
+                <div class="inventoryWrapper py-2" id="variantStock-{{section.id}}" style="color: {{section.settings.base_color}};">
 
                   {% if selected_variant.inventory_quantity > 0 and selected_variant.inventory_management == 'shopify' %}
                     
@@ -476,7 +476,7 @@
 
                 {% when 'store_pickup' %}
 
-                  <div class="inventoryWrapper py-2" id="pickupStock-{{ section.id }}" style="color: {{ section.settings.base_color }};">
+                  <div class="inventoryWrapper py-2" id="pickupStock-{{section.id}}" style="color: {{section.settings.base_color}};">
                     {%- assign pick_up_availabilities = selected_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 
                     <pickup-availability class="product__pickup-availabilities "
@@ -500,7 +500,7 @@
                  
 
                 {% when 'product_type' %}
-                <div class="productType py-2" style="color: {{ section.settings.base_color }};">
+                <div class="productType py-2" style="color: {{section.settings.base_color}};">
                   <div class="flex items-center">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -515,13 +515,13 @@
 
 
                 {% when 'custom_textbox' %}
-                <div class="customBox py-2" style="color: {{ section.settings.base_color }};">
+                <div class="customBox py-2" style="color: {{section.settings.base_color}};">
                   <div class="flex items-center">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2 basis-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                       {% if block.settings.custom_title != blank %}
-                      <p class="custom_font" style="font-size: 12px;">{{ block.settings.custom_title }} :</p>
+                      <p class="custom_font" style="font-size: 12px;">{{block.settings.custom_title}} :</p>
                       {% endif %}
                       <p class="custom_font{% if block.settings.custom_title != blank %} ml-2{% endif %}">
                       {{ block.settings.custom_desc }}
@@ -532,38 +532,29 @@
 
 
                 {% when 'custom_radio' %}
-                <div class="customBox-{{ block.id }} py-2" style="color: {{ section.settings.base_color }};">
+                <div class="customBox-{{block.id}} py-2" style="color: {{section.settings.base_color}};">
                   <p class="line-item-property__field">
                   <label style="font-size:0.8rem;">{{ block.settings.audio_title }}</label><br>
 
                   <div class="custom_riadio flex pt-4">
                     {% if block.settings.first_option != blank %}
                       <div class="option_buttons select_box mr-2">
-<<<<<<< HEAD
                         <input required class="mx-2" type="radio" name="properties[{{ block.settings.audio_title }}]" value="{{ block.settings.first_option }}" id="option-{{ block.settings.first_option }}-{{block.id}}" checked>
                         <label class="radio_title_{{ block.id }} cursor-pointer text-xs" for="option-{{block.settings.first_option}}-{{block.id}}">{{block.settings.first_option}}</label>
-=======
-                        <input required class="mx-2" type="radio" name="properties[{{ block.settings.audio_title }}]" value="{{ block.settings.first_option }}" id="option-{{block.settings.first_option}}-{{ block.id }}" checked>
-                        <label class="radio_title_{{ block.id }} cursor-pointer text-xs" for="option-{{ block.settings.first_option }}-{{block.id}}">{{block.settings.first_option}}</label>
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                       </div>
                     {% endif %}
 
                     {% if block.settings.second_option != blank %}
                       <div class="option_buttons select_box mr-2">
-<<<<<<< HEAD
                         <input required class="mx-2" type="radio" name="properties[{{ block.settings.audio_title }}]" value="{{ block.settings.second_option }}" id="option-{{block.settings.second_option}}-{{block.id}}">
-=======
-                        <input required class="mx-2" type="radio" name="properties[{{ block.settings.audio_title }}]" value="{{ block.settings.second_option }}" id="option-{{block.settings.second_option}}-{{ block.id }}">
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                         <label class="radio_title_{{ block.id }} cursor-pointer" for="option-{{ block.settings.second_option }}-{{block.id}}"> {{block.settings.second_option}} </label>
                       </div>
                     {% endif %}
 
                     {% if block.settings.third_option != blank %}
                       <div class="option_buttons select_box mr-2">
-                        <input required class="mx-2" type="radio" name="properties[{{ block.settings.audio_title }}]" value="{{ block.settings.third_option }}" id="option-{{block.settings.third_option}}-{{ block.id }}"> 
-                        <label class="radio_title_{{ block.id }} cursor-pointer" for="option-{{ block.settings.third_option }}-{{block.id}}"> {{block.settings.third_option}} </label>
+                        <input required class="mx-2" type="radio" name="properties[{{block.settings.audio_title}}]" value="{{block.settings.third_option}}" id="option-{{block.settings.third_option}}-{{block.id}}"> 
+                        <label class="radio_title_{{ block.id }} cursor-pointer" for="option-{{block.settings.third_option}}-{{block.id}}"> {{block.settings.third_option}} </label>
                       </div>
                     {% endif %}
                   </div>
@@ -574,18 +565,18 @@
 
                 
                 {% when 'selected_variant' %}
-                <input type="hidden" name="id" value="{{ selected_variant.id }}">
+                <input type="hidden" name="id" value="{{selected_variant.id}}">
                       <!-- product variant dropdown and radio button / 
                           "radio_selector" makes switching the radio button -->
 
                       <div class="my-3">
                             {% unless product.has_only_default_variant %}
-                            <variant-selector data-url="{{ product.url }}" data-section="{{ section.id }}">
+                            <variant-selector data-url="{{product.url}}" data-section="{{section.id}}">
                             
                             {%- for option in product.options_with_values -%}
                             {% assign link_handle = section.id | replace: '-', '_' %}
                                 
-                            <fieldset class="product-form__input" {% if section.settings.radio_selector != true %} x-data="{ {{ link_handle }}: false, option: '{{ option.selected_value }}' }" {% endif %}>
+                            <fieldset class="product-form__input" {% if section.settings.radio_selector != true %} x-data="{ {{ link_handle }}: false, option: '{{option.selected_value}}' }" {% endif %}>
                                       
                                 <legend
                                     class="
@@ -596,7 +587,7 @@
                                     {% if section.settings.radio_selector != true %}  
                                     x-on:click="{{ link_handle }} = ! {{ link_handle }}" 
                                     {% endif %} 
-                                    style="color:{{ section.settings.base_color }}; border-bottom: 1px solid {{ block.settings.dropdown_border }}; display:flex; justify-content:space-between; align-items:end;">
+                                    style="color:{{section.settings.base_color}}; border-bottom: 1px solid {{block.settings.dropdown_border}}; display:flex; justify-content:space-between; align-items:end;">
                                   <div 
                                     class="{% if section.settings.radio_selector == true %} text-xs {% endif %}">{{ option.name }} {% if section.settings.radio_selector != true %}/ <span x-text="option"></span> {% endif %}
                                   </div>
@@ -675,7 +666,7 @@
                   </div>
                   <!-- social sharing -->
                   <div class="social_{{ block.id }} w-full lg:w-1/2 flex flex-col md:flex-row text-xs justify-center items-center py-2 bg-white mb-4 px-2">
-                    {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, icon_color: block.settings.social_icon_color %} 
+                    {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, icon_color:block.settings.social_icon_color %} 
                     <p class="pt-3 md:py-0 px-4 text-center">SOCIAL SHAREING</p>
                   </div>
                   </div>
@@ -754,7 +745,7 @@
                       {% for type in visa_payment %}
                           {% if type == 'visa' and block.settings.visa_visible == true %}
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
-                          {% endif %}
+                          {%  endif %}
                       {% endfor %}
                 
                       {% for type in master_payment %}
@@ -776,11 +767,7 @@
                       {% endfor %}
                 
                       {% for type in jcb_payment %}
-<<<<<<< HEAD
                           {% if type == 'jcb' and block.settings.jcb_visible == true  %}
-=======
-                          {% if type == 'jcb' and block.settings.jcb_visible == true %}
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                           {{ type | payment_type_svg_tag: class: 'w-12 h-auto ml-2' }}
                           {% endif %}
                       {% endfor %}
@@ -913,51 +900,51 @@
 
 {% schema %}
 {
-  "name": "Product",
+  "name":"Product",
   "max_blocks": 25,
-  "settings": [
-    {
-      "type": "header",
-      "content": "General settings",
-      "info": "Background color, text align"
-    },
-    {
-      "type": "select",
-      "id": "color_schema",
-      "label": "Background color",
-      "options": [
-        {
-          "value": "first_color",
-          "label": "First Color"
-        },
-        {
-          "value": "second_color",
-          "label": "Second Color"
-        },
-        {
-          "value": "third_color",
-          "label": "Third Color"
-        },
-        {
-          "value": "forth_color",
-          "label": "Forth Color"
-        },
-        {
-          "value": "fifth_color",
-          "label": "Fifth Color"
-        },
-        {
-          "value": "background_transparent",
-          "label": "Transparent Color"
-        }
-      ],
-      "default": "background_transparent"
+  "settings":[
+  {
+    "type": "header",
+    "content": "General settings",
+    "info": "Background color, text align"
+  },
+  {
+    "type":"select",
+    "id":"color_schema",
+    "label":"Background color",
+    "options":[
+       {
+          "value":"first_color",
+          "label":"First Color"
+       },
+       {
+          "value":"second_color",
+          "label":"Second Color"
+       },
+       {
+          "value":"third_color",
+          "label":"Third Color"
+       },
+       {
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"background_transparent"
     },
     {
       "type": "range",
       "id": "padding_top",
       "label": "Padding Top controll",
-      "default": 9,
+      "default":9,
       "min": 1,
       "max": 20,
       "step": 1,
@@ -967,22 +954,22 @@
       "type": "range",
       "id": "padding_bottom",
       "label": "Padding Bottom controll",
-      "default": 5,
+      "default":5,
       "min": 1,
       "max": 20,
       "step": 1,
       "unit": "rem"
     },
-    {
-      "type": "header",
-      "content": "Mobile Padding",
-      "info": "setting mobile padding view"
+     {
+    "type": "header",
+    "content": "Mobile Padding",
+    "info": "setting mobile padding view"
     },
     {
       "type": "range",
       "id": "mobile_padding_top",
       "label": "Padding Top controll",
-      "default": 3,
+      "default":3,
       "min": 1,
       "max": 10,
       "step": 1,
@@ -992,7 +979,7 @@
       "type": "range",
       "id": "mobile_padding_bottom",
       "label": "Padding Bottom controll",
-      "default": 3,
+      "default":3,
       "min": 1,
       "max": 10,
       "step": 1,
@@ -1028,17 +1015,18 @@
       "label": "Point color",
       "default": "#5E5E5E"
     }
+      
   ],
-  "blocks": [
+  "blocks":[
     {
-      "type": "vendor",
-      "name": "Vendor",
-      "limit": 1
+      "type":"vendor",
+      "name":"Vendor",
+      "limit":1
     },
     {
-      "type": "title",
-      "name": "Title",
-      "limit": 1,
+      "type":"title",
+      "name":"Title",
+      "limit":1,
       "settings": [
         {
           "type": "color",
@@ -1049,28 +1037,28 @@
       ]
     },
     {
-      "type": "price",
-      "name": "Price",
-      "limit": 1,
+      "type":"price",
+      "name":"Price",
+      "limit":1,
       "settings": [
         {
-          "type": "color",
-          "id": "price_color",
-          "label": "Price color",
-          "default": "#5E5E5E"
+        "type": "color",
+        "id": "price_color",
+        "label": "Price color",
+        "default": "#5E5E5E"
         },
         {
-          "type": "color",
-          "id": "price_point",
-          "label": "price point color",
-          "default": "#808080"
+        "type": "color",
+        "id": "price_point",
+        "label": "price point color",
+        "default": "#808080"
         }
       ]
     },
     {
-      "type": "selected_variant",
-      "name": "Variants",
-      "limit": 1,
+      "type":"selected_variant",
+      "name":"Variants",
+      "limit":1,
       "settings": [
         {
           "type": "color",
@@ -1081,7 +1069,7 @@
         {
           "type": "header",
           "content": "Dropdown color",
-          "info": "Change here for dropdown style"
+          "info":"Change here for dropdown style"
         },
         {
           "type": "color",
@@ -1120,7 +1108,7 @@
         {
           "type": "header",
           "content": "Radio button color",
-          "info": "Change here for radio button style"
+          "info":"Change here for radio button style"
         },
         {
           "type": "color",
@@ -1165,22 +1153,22 @@
       ]
     },
     {
-      "type": "division_line",
-      "name": "Division Line",
-      "limit": 3,
-      "settings": [
-        {
-          "type": "color",
-          "id": "line_color",
-          "label": "Line color",
-          "default": "#9A9A9A"
-        }
-      ]
+        "type": "division_line",
+        "name": "Division Line",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "color",
+            "id": "line_color",
+            "label": "Line color",
+            "default": "#9A9A9A"
+          }
+        ]
     },
     {
-      "type": "quantity",
-      "name": "Quantity",
-      "limit": 1,
+      "type":"quantity",
+      "name":"Quantity",
+      "limit":1,
       "settings": [
         {
           "type": "checkbox",
@@ -1198,7 +1186,7 @@
           "type": "color",
           "id": "qty_font_color",
           "label": "quantity font color",
-          "default": "#5E5E5E"
+          "default": "#5E5E5E" 
         },
         {
           "type": "color",
@@ -1215,9 +1203,9 @@
       ]
     },
     {
-      "type": "social",
-      "name": "Social Shareing",
-      "limit": 1,
+      "type":"social",
+      "name":"Social Shareing",
+      "limit":1,
       "settings": [
         {
           "type": "color",
@@ -1240,9 +1228,9 @@
       ]
     },
     {
-      "type": "time_set",
-      "name": "Time Settings",
-      "limit": 1,
+      "type":"time_set",
+      "name":"Time Settings",
+      "limit":1,
       "settings": [
         {
           "type": "text",
@@ -1253,9 +1241,9 @@
       ]
     },
     {
-      "type": "date_set",
-      "name": "Date Settings",
-      "limit": 1,
+      "type":"date_set",
+      "name":"Date Settings",
+      "limit":1,
       "settings": [
         {
           "type": "text",
@@ -1266,14 +1254,14 @@
       ]
     },
     {
-      "type": "stock",
-      "name": "Stock",
-      "limit": 1
+      "type":"stock",
+      "name":"Stock",
+      "limit":1
     },
     {
-      "type": "store_pickup",
-      "name": "Store Pick-up",
-      "limit": 1,
+      "type":"store_pickup",
+      "name":"Store Pick-up",
+      "limit":1,
       "settings": [
         {
           "type": "header",
@@ -1283,7 +1271,7 @@
           "type": "color",
           "id": "pickup_background",
           "label": "background color",
-          "default": "#fafafa"
+          "default":"#fafafa"
         },
         {
           "type": "color",
@@ -1306,9 +1294,9 @@
       ]
     },
     {
-      "type": "custom_note",
-      "name": "Custom Note",
-      "limit": 1,
+      "type":"custom_note",
+      "name":"Custom Note",
+      "limit":1,
       "settings": [
         {
           "type": "color",
@@ -1325,19 +1313,19 @@
       ]
     },
     {
-      "type": "product_type",
-      "name": "Product Type",
-      "limit": 1
+      "type":"product_type",
+      "name":"Product Type",
+      "limit":1
     },
     {
-      "type": "space",
-      "name": "Empty space",
-      "limit": 5
+      "type":"space",
+      "name":"Empty space",
+      "limit":5
     },
     {
-      "type": "custom_textbox",
-      "name": "Custom Textbox",
-      "limit": 5,
+      "type":"custom_textbox",
+      "name":"Custom Textbox",
+      "limit":5,
       "settings": [
         {
           "type": "text",
@@ -1354,9 +1342,9 @@
       ]
     },
     {
-      "type": "custom_radio",
-      "name": "Custom radio button",
-      "limit": 5,
+      "type":"custom_radio",
+      "name":"Custom radio button",
+      "limit":5,
       "settings": [
         {
           "type": "text",
@@ -1425,91 +1413,91 @@
       ]
     },
     {
-      "type": "checkout_buttons",
-      "name": "Checkout Buttons",
-      "limit": 1,
+      "type":"checkout_buttons",
+      "name":"Checkout Buttons",
+      "limit":1,
       "settings": [
         {
-          "type": "header",
-          "content": "Button",
-          "info": "Settings button and text color and mouseover color"
-        },
-        {
-          "type": "color",
-          "id": "button_bg",
-          "label": "Button background color",
-          "default": "transparent"
-        },
-        {
-          "type": "color",
-          "id": "button_color",
-          "label": "button font color",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "border_colors",
-          "label": "border color",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "mo_button_bg",
-          "label": "Mouseover background",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "mo_button_color",
-          "label": "Mouseover font color",
-          "default": "#fff"
-        },
-        {
-          "type": "color",
-          "id": "mo_border_color",
-          "label": "Mouseover border color",
-          "default": "transparent"
-        },
-        {
-          "type": "header",
-          "content": "Buy it now Button"
-        },
-        {
-          "type": "color",
-          "id": "secondary_button_bg",
-          "label": "Button background color",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "secondary_button_color",
-          "label": "button font color",
-          "default": "#fff"
-        },
-        {
-          "type": "color",
-          "id": "secondary_button_border",
-          "label": "border color",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "secondary_mo_bg",
-          "label": "Mouseover background",
-          "default": "#A9A9A9"
-        },
-        {
-          "type": "color",
-          "id": "secondary_over_font",
-          "label": "Mouseover font color",
-          "default": "#fff"
-        },
-        {
-          "type": "color",
-          "id": "secondary_mo_border",
-          "label": "Mouseover border color",
-          "default": "transparent"
-        }
+      "type": "header",
+      "content": "Button",
+      "info": "Settings button and text color and mouseover color"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background color",
+      "default": "transparent"
+      },
+      {
+      "type": "color",
+      "id": "button_color",
+      "label": "button font color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "border_colors",
+      "label": "border color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "mo_button_bg",
+      "label": "Mouseover background",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "mo_button_color",
+      "label": "Mouseover font color",
+      "default": "#fff"
+      },
+      {
+      "type": "color",
+      "id": "mo_border_color",
+      "label": "Mouseover border color",
+      "default": "transparent"
+      },
+      {
+      "type": "header",
+      "content": "Buy it now Button"
+      },
+      {
+      "type": "color",
+      "id": "secondary_button_bg",
+      "label": "Button background color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "secondary_button_color",
+      "label": "button font color",
+      "default": "#fff"
+      },
+      {
+      "type": "color",
+      "id": "secondary_button_border",
+      "label": "border color",
+      "default": "#808080"
+      },
+      {
+      "type": "color",
+      "id": "secondary_mo_bg",
+      "label": "Mouseover background",
+      "default": "#A9A9A9"
+      },
+      {
+      "type": "color",
+      "id": "secondary_over_font",
+      "label": "Mouseover font color",
+      "default": "#fff"
+      },
+      {
+      "type": "color",
+      "id": "secondary_mo_border",
+      "label": "Mouseover border color",
+      "default": "transparent"
+      }
       ]
     },
     {
@@ -1522,23 +1510,23 @@
           "content": "Rating is shopify app riquired"
         },
         {
-          "type": "color",
-          "id": "rating_color",
-          "label": "Rating color",
-          "default": "#BFBFBF"
+        "type": "color",
+        "id": "rating_color",
+        "label": "Rating color",
+        "default": "#BFBFBF"
         },
         {
-          "type": "color",
-          "id": "rating_font",
-          "label": "Rating font",
-          "default": "#808080"
+        "type": "color",
+        "id": "rating_font",
+        "label": "Rating font",
+        "default": "#808080"
         }
       ]
     },
     {
-      "type": "payment_icon",
-      "name": "Payment icon",
-      "limit": 1,
+      "type":"payment_icon",
+      "name":"Payment icon",
+      "limit":1,
       "settings": [
         {
           "type": "header",

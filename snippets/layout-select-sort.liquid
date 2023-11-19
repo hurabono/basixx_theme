@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<select id="sort-by" class="bg-gray-50 text-gray-900 text-sm block w-full px-4 py-1.5 appearance-none focus:outline-none" style="border: 2px solid {{ sort_box_color }};">
-=======
 <select id="sort-by" class="bg-gray-50 text-gray-900 text-sm block w-full px-4 py-1.5 appearance-none focus:outline-none" style="border: 2px solid {{sort_box_color}};">
->>>>>>> 85654d2464565174a20afee8bee16bae4fdf30a0
   {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
   {% for option in collection.sort_options %}

@@ -13,9 +13,9 @@
    }
    
    .{{ section.id }}_featured_slider_arrow_color:hover{
-   color:{{ section.settings.arrow_icons_mouseover }};
-   background:{{ section.settings.button_bg_mouseover }};
-   border: 1px solid {{ section.settings.arrow_border_mouseover }};
+   color:{{section.settings.arrow_icons_mouseover}};
+   background:{{section.settings.button_bg_mouseover}};
+   border: 1px solid {{section.settings.arrow_border_mouseover}};
    border-radius:999px;
    cursor:pointer;
    }
@@ -30,7 +30,7 @@
          }
    
          #block_{{ block.id }}:hover{
-               color: {{ block.settings.mo_button_color }};
+               color: {{ block.settings.mo_button_color}};
                border:1px solid {{ block.settings.mo_border_color }};
                background-color: {{ block.settings.mo_button_bg }};
          }
@@ -56,39 +56,39 @@
    
                   {% render 'section-slide',
                 image: block.settings.image
-                subicon: block.settings.subicon
+                subicon:block.settings.subicon
                 headline: block.settings.headline
-                padding_top: block.settings.padding_top
-                padding_bottom: block.settings.padding_bottom
-                color_title: block.settings.color_title
-                color_text: block.settings.color_text
-                color_schema: block.settings.color_schema
-                mobile_color: block.settings.mobile_color
+                padding_top:block.settings.padding_top
+                padding_bottom:block.settings.padding_bottom
+                color_title:block.settings.color_title
+                color_text:block.settings.color_text
+                color_schema:block.settings.color_schema
+                mobile_color:block.settings.mobile_color
                 text: block.settings.text
                 button-url: block.settings.button-url
                 button-text: block.settings.button-text
-                color_button: block.settings.color_button
-                button_color_hover: block.settings.button_color_hover
-                border_color: block.settings.border_color
-                textbox_border: block.settings.textbox_border
-                textbox_position: block.settings.textbox_position
-                textbox_location: block.settings.textbox_location
-                overlay_set: block.settings.overlay_set
-                text_align: block.settings.text_align
-                button_size: block.settings.button_size
-                slider_font_size: section.settings.slider_font_size
-                slider_sub_size: section.settings.slider_sub_size
-                animation_setting: section.settings.animation_setting
-                button_round_off: block.settings.button_round_off
-                iconbox1: block.settings.iconbox1
-                boxtext1: block.settings.boxtext1
-                iconbox2: block.settings.iconbox2
-                boxtext2: block.settings.boxtext2
-                iconbox3: block.settings.iconbox3
-                boxtext3: block.settings.boxtext3
-                iconbox_color: block.settings.iconbox_color
-                iconbox_border: block.settings.iconbox_border
-                block_id: block.id
+                color_button:block.settings.color_button
+                button_color_hover:block.settings.button_color_hover
+                border_color:block.settings.border_color
+                textbox_border:block.settings.textbox_border
+                textbox_position:block.settings.textbox_position
+                textbox_location:block.settings.textbox_location
+                overlay_set:block.settings.overlay_set
+                text_align:block.settings.text_align
+                button_size:block.settings.button_size
+                slider_font_size:section.settings.slider_font_size
+                slider_sub_size:section.settings.slider_sub_size
+                animation_setting:section.settings.animation_setting
+                button_round_off:block.settings.button_round_off
+                iconbox1:block.settings.iconbox1
+                boxtext1:block.settings.boxtext1
+                iconbox2:block.settings.iconbox2
+                boxtext2:block.settings.boxtext2
+                iconbox3:block.settings.iconbox3
+                boxtext3:block.settings.boxtext3
+                iconbox_color:block.settings.iconbox_color
+                iconbox_border:block.settings.iconbox_border
+                block_id:block.id
                 %}
                   
    
@@ -104,20 +104,20 @@
    
    
    {% schema %}
-{
-  "name": "Slideshow",
-  "class": "shopify-section-vue",
-  "settings": [
-    {
+   {
+   "name": "Slideshow",
+   "class": "shopify-section-vue",
+   "settings":[
+   {
       "type": "header",
       "content": "Slideshow Font size",
       "info": "Setting slideshow font size. Please setting custom font in the typography section."
-    },
-    {
+   },
+   {
       "type": "range",
       "id": "slider_font_size",
       "label": "Slide Header font size",
-      "default": 56,
+      "default":56,
       "min": 30,
       "max": 80,
       "step": 1,
@@ -127,7 +127,7 @@
       "type": "range",
       "id": "slider_sub_size",
       "label": "Slide sub font size",
-      "default": 18,
+      "default":18,
       "min": 12,
       "max": 50,
       "step": 1,
@@ -138,398 +138,399 @@
       "id": "animation_setting",
       "default": false,
       "label": "Animation turn on"
-    },
-    {
+   },
+   {
       "type": "header",
       "content": "Arrow Buttons",
       "info": "Settings arrow button colors and mouseover color"
-    },
-    {
-      "type": "color",
-      "id": "button_background",
-      "label": "Button background",
-      "default": "#fafafa"
-    },
-    {
-      "type": "color",
-      "id": "arrow_icons",
-      "label": "Arrow Icon color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "arrow_border",
-      "label": "Arrow box line",
-      "default": "#808080"
-    },
-    {
+   },
+   {
+         "type": "color",
+         "id": "button_background",
+         "label": "Button background",
+         "default": "#fafafa"
+   },
+   {
+         "type": "color",
+         "id": "arrow_icons",
+         "label": "Arrow Icon color",
+         "default": "#808080"
+   },
+   {
+         "type": "color",
+         "id": "arrow_border",
+         "label": "Arrow box line",
+         "default": "#808080"
+   },
+   {
       "type": "header",
       "content": "Arrow mouseover"
+   },
+   {
+         "type": "color",
+         "id": "button_bg_mouseover",
+         "label": "Button background",
+         "default": "#808080"
+   },
+   {
+         "type": "color",
+         "id": "arrow_icons_mouseover",
+         "label": "Arrow Icon color",
+         "default": "#fff"
+   },
+   {
+         "type": "color",
+         "id": "arrow_border_mouseover",
+         "label": "Arrow box line",
+         "default": "#808080"
+   }
+   ],
+   "blocks": [
+   {
+   "type": "slideshow",
+   "name": "slideshow",
+   "limit": 5,
+   "settings": [
+   {
+      "type": "header",
+      "content": "Slide show Image",
+      "info": "Settings Slideshow Image and Button"
+   },
+   {
+      "type":"select",
+      "id":"text_align",
+      "label":"Title align",
+      "options":[
+         {
+            "value":"font_left",
+            "label":"Left"
+         },
+         {
+            "value":"font_right",
+            "label":"Right"
+         },
+         {
+            "value":"font_center",
+            "label":"Center"
+         }
+      ],
+      "default":"font_center"
     },
-    {
+   {
+      "type": "checkbox",
+      "id": "overlay_set",
+      "default": true,
+      "label": "Overlay cover"
+    },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top controll",
+      "default": 4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+   },
+   {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom controll",
+      "default": 4,
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "rem"
+   },
+   {
+      "type": "header",
+      "content": "Slide show Image"
+   },
+   {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:common.image"
+   },
+   {
+      "type": "header",
+      "content": "Slide show icon"
+   },
+   {
+      "type": "html",
+      "id": "subicon",
+      "label": "Icon Settings"
+   },
+      {
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.headline",
+      "default": "Headline"
+   },
+   {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:common.text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+   },
+   {
+   "type": "url",
+   "id": "button-url",
+   "label": "t:common.button.url"
+   },
+   {
+   "type": "text",
+   "id": "button-text",
+   "label": "t:common.button.text",
+   "default": "Button ⟶"
+   },
+   {
+      "type": "checkbox",
+      "id": "button_round_off",
+      "default": false,
+      "label": "Button round"
+   },
+   {
+     "type": "header",
+     "content": "Button color"
+   },
+   {
+   "type": "color",
+   "id": "button_bg",
+   "label": "Button background color",
+   "default": "transparent"
+   },
+   {
+   "type": "color",
+   "id": "button_color",
+   "label": "button font color",
+   "default": "#808080"
+   },
+   {
+   "type": "color",
+   "id": "border_colors",
+   "label": "border color",
+   "default": "transparent"
+   },
+   {
+   "type": "color",
+   "id": "mo_button_bg",
+   "label": "Mouseover background",
+   "default": "transparent"
+   },
+   {
+   "type": "color",
+   "id": "mo_button_color",
+   "label": "Mouseover font color",
+   "default": "#808080"
+   },
+   {
+   "type": "color",
+   "id": "mo_border_color",
+   "label": "Mouseover border color",
+   "default": "transparent"
+   },
+   {
+      "type": "header",
+      "content": "Slide show Textbox settings",
+      "info": "Settings Slideshow Textbox and colors"
+   },
+   {
+         "type":"select",
+         "id":"color_schema",
+         "label":"Background color",
+         "options":[
+            {
+               "value":"first_color",
+               "label":"First Color"
+            },
+            {
+               "value":"second_color",
+               "label":"Second Color"
+            },
+            {
+               "value":"third_color",
+               "label":"Third Color"
+            },
+            {
+               "value":"forth_color",
+               "label":"Forth Color"
+            },
+            {
+               "value":"fifth_color",
+               "label":"Fifth Color"
+            },
+            {
+               "value":"background_transparent",
+               "label":"Transparent Color"
+            }
+         ],
+         "default":"fifth_color"
+   },
+   {
+         "type":"select",
+         "id":"mobile_color",
+         "label":"Mobile textbox color",
+         "options":[
+            {
+               "value":"mobile_first_color",
+               "label":"First Color"
+            },
+            {
+               "value":"mobile_second_color",
+               "label":"Second Color"
+            },
+            {
+               "value":"mobile_third_color",
+               "label":"Third Color"
+            },
+            {
+               "value":"mobile_forth_color",
+               "label":"Forth Color"
+            },
+            {
+               "value":"mobile_fifth_color",
+               "label":"Fifth Color"
+            },
+            {
+               "value":"moblie_background_transparent",
+               "label":"Transparent Color"
+            }
+         ],
+         "default":"mobile_fifth_color"
+   },
+   {
+         "type": "color",
+         "id": "color_title",
+         "label": "Title color",
+         "default": "#5E5E5E"
+   },
+   {
+         "type": "color",
+         "id": "color_text",
+         "label": "Text color",
+         "default": "#A9A9A9"
+   },
+   {
+   "type": "color",
+   "id": "textbox_border",
+   "label": "Textbox line color",
+   "default": "#A9A9A9"
+   },
+   {
+      "type": "header",
+      "content": "Slide show icon box settings",
+      "info": "Please copy and paste icon svg code and define title text"
+   },
+   {
+      "type": "html",
+      "id": "iconbox1",
+      "label": "Icon Settings"
+   },
+      {
+      "type": "text",
+      "id": "boxtext1",
+      "label": "Title",
+      "default": "Headline"
+   },
+   {
+      "type": "html",
+      "id": "iconbox2",
+      "label": "Icon Settings"
+   },
+      {
+      "type": "text",
+      "id": "boxtext2",
+      "label": "Title",
+      "default": "Headline"
+   },
+   {
+      "type": "html",
+      "id": "iconbox3",
+      "label": "Icon Settings"
+   },
+      {
+      "type": "text",
+      "id": "boxtext3",
+      "label": "Title",
+      "default": "Headline"
+   },
+   {
       "type": "color",
-      "id": "button_bg_mouseover",
-      "label": "Button background",
+      "id": "iconbox_color",
+      "label": "Text color",
       "default": "#808080"
-    },
-    {
+   },
+   {
       "type": "color",
-      "id": "arrow_icons_mouseover",
-      "label": "Arrow Icon color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "arrow_border_mouseover",
-      "label": "Arrow box line",
+      "id": "iconbox_border",
+      "label": "Border color",
       "default": "#808080"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "slideshow",
-      "name": "slideshow",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "header",
-          "content": "Slide show Image",
-          "info": "Settings Slideshow Image and Button"
-        },
-        {
-          "type": "select",
-          "id": "text_align",
-          "label": "Title align",
-          "options": [
+   },
+   {
+      "type": "header",
+      "content": "Textbox position",
+      "info": "Settings Slideshow textbox position"
+   },
+   {
+         "type":"select",
+         "id":"textbox_position",
+         "label":"Textbox position X",
+         "options":[
             {
-              "value": "font_left",
-              "label": "Left"
+               "value":"textbox_center",
+               "label":"Center"
             },
             {
-              "value": "font_right",
-              "label": "Right"
+               "value":"textbox_right",
+               "label":"Right"
             },
             {
-              "value": "font_center",
-              "label": "Center"
+               "value":"textbox_left",
+               "label":"Left"
             }
-          ],
-          "default": "font_center"
-        },
-        {
-          "type": "checkbox",
-          "id": "overlay_set",
-          "default": true,
-          "label": "Overlay cover"
-        },
-        {
-          "type": "range",
-          "id": "padding_top",
-          "label": "Padding Top controll",
-          "default": 4,
-          "min": 1,
-          "max": 20,
-          "step": 1,
-          "unit": "rem"
-        },
-        {
-          "type": "range",
-          "id": "padding_bottom",
-          "label": "Padding Bottom controll",
-          "default": 4,
-          "min": 1,
-          "max": 20,
-          "step": 1,
-          "unit": "rem"
-        },
-        {
-          "type": "header",
-          "content": "Slide show Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "t:common.image"
-        },
-        {
-          "type": "header",
-          "content": "Slide show icon"
-        },
-        {
-          "type": "html",
-          "id": "subicon",
-          "label": "Icon Settings"
-        },
-        {
-          "type": "text",
-          "id": "headline",
-          "label": "t:common.headline",
-          "default": "Headline"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "t:common.text",
-          "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        },
-        {
-          "type": "url",
-          "id": "button-url",
-          "label": "t:common.button.url"
-        },
-        {
-          "type": "text",
-          "id": "button-text",
-          "label": "t:common.button.text",
-          "default": "Button ⟶"
-        },
-        {
-          "type": "checkbox",
-          "id": "button_round_off",
-          "default": false,
-          "label": "Button round"
-        },
-        {
-          "type": "header",
-          "content": "Button color"
-        },
-        {
-          "type": "color",
-          "id": "button_bg",
-          "label": "Button background color",
-          "default": "transparent"
-        },
-        {
-          "type": "color",
-          "id": "button_color",
-          "label": "button font color",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "border_colors",
-          "label": "border color",
-          "default": "transparent"
-        },
-        {
-          "type": "color",
-          "id": "mo_button_bg",
-          "label": "Mouseover background",
-          "default": "transparent"
-        },
-        {
-          "type": "color",
-          "id": "mo_button_color",
-          "label": "Mouseover font color",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "mo_border_color",
-          "label": "Mouseover border color",
-          "default": "transparent"
-        },
-        {
-          "type": "header",
-          "content": "Slide show Textbox settings",
-          "info": "Settings Slideshow Textbox and colors"
-        },
-        {
-          "type": "select",
-          "id": "color_schema",
-          "label": "Background color",
-          "options": [
+         ],
+         "default":"textbox_center"
+   },
+   {
+         "type":"select",
+         "id":"textbox_location",
+         "label":"Textbox position Y",
+         "options":[
             {
-              "value": "first_color",
-              "label": "First Color"
+               "value":"location_center",
+               "label":"Canter"
             },
             {
-              "value": "second_color",
-              "label": "Second Color"
+               "value":"location_top",
+               "label":"Top"
             },
             {
-              "value": "third_color",
-              "label": "Third Color"
-            },
-            {
-              "value": "forth_color",
-              "label": "Forth Color"
-            },
-            {
-              "value": "fifth_color",
-              "label": "Fifth Color"
-            },
-            {
-              "value": "background_transparent",
-              "label": "Transparent Color"
+               "value":"location_bottom",
+               "label":"Bottom"
             }
-          ],
-          "default": "fifth_color"
-        },
-        {
-          "type": "select",
-          "id": "mobile_color",
-          "label": "Mobile textbox color",
-          "options": [
-            {
-              "value": "mobile_first_color",
-              "label": "First Color"
-            },
-            {
-              "value": "mobile_second_color",
-              "label": "Second Color"
-            },
-            {
-              "value": "mobile_third_color",
-              "label": "Third Color"
-            },
-            {
-              "value": "mobile_forth_color",
-              "label": "Forth Color"
-            },
-            {
-              "value": "mobile_fifth_color",
-              "label": "Fifth Color"
-            },
-            {
-              "value": "moblie_background_transparent",
-              "label": "Transparent Color"
-            }
-          ],
-          "default": "mobile_fifth_color"
-        },
-        {
-          "type": "color",
-          "id": "color_title",
-          "label": "Title color",
-          "default": "#5E5E5E"
-        },
-        {
-          "type": "color",
-          "id": "color_text",
-          "label": "Text color",
-          "default": "#A9A9A9"
-        },
-        {
-          "type": "color",
-          "id": "textbox_border",
-          "label": "Textbox line color",
-          "default": "#A9A9A9"
-        },
-        {
-          "type": "header",
-          "content": "Slide show icon box settings",
-          "info": "Please copy and paste icon svg code and define title text"
-        },
-        {
-          "type": "html",
-          "id": "iconbox1",
-          "label": "Icon Settings"
-        },
-        {
-          "type": "text",
-          "id": "boxtext1",
-          "label": "Title",
-          "default": "Headline"
-        },
-        {
-          "type": "html",
-          "id": "iconbox2",
-          "label": "Icon Settings"
-        },
-        {
-          "type": "text",
-          "id": "boxtext2",
-          "label": "Title",
-          "default": "Headline"
-        },
-        {
-          "type": "html",
-          "id": "iconbox3",
-          "label": "Icon Settings"
-        },
-        {
-          "type": "text",
-          "id": "boxtext3",
-          "label": "Title",
-          "default": "Headline"
-        },
-        {
-          "type": "color",
-          "id": "iconbox_color",
-          "label": "Text color",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "iconbox_border",
-          "label": "Border color",
-          "default": "#808080"
-        },
-        {
-          "type": "header",
-          "content": "Textbox position",
-          "info": "Settings Slideshow textbox position"
-        },
-        {
-          "type": "select",
-          "id": "textbox_position",
-          "label": "Textbox position X",
-          "options": [
-            {
-              "value": "textbox_center",
-              "label": "Center"
-            },
-            {
-              "value": "textbox_right",
-              "label": "Right"
-            },
-            {
-              "value": "textbox_left",
-              "label": "Left"
-            }
-          ],
-          "default": "textbox_center"
-        },
-        {
-          "type": "select",
-          "id": "textbox_location",
-          "label": "Textbox position Y",
-          "options": [
-            {
-              "value": "location_center",
-              "label": "Canter"
-            },
-            {
-              "value": "location_top",
-              "label": "Top"
-            },
-            {
-              "value": "location_bottom",
-              "label": "Bottom"
-            }
-          ],
-          "default": "location_center"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Slideshow",
-      "category": "Images",
-      "blocks": [
-        {
-          "type": "slideshow"
-        },
-        {
-          "type": "slideshow"
-        },
-        {
-          "type": "slideshow"
-        }
-      ]
-    }
-  ]
-}
-{% endschema %}
+         ],
+         "default":"location_center"
+   }
+   
+   ]
+   }
+   ],
+   "presets": [
+   {
+   "name": "Slideshow",
+   "category": "Images",
+   "blocks": [
+   {
+   "type": "slideshow"
+   },
+   {
+   "type": "slideshow"
+   },
+   {
+   "type": "slideshow"
+   }
+   ]
+   }
+   ]
+   }
+   {% endschema %}

@@ -7,21 +7,12 @@
       <div class="h-80 md:h-[100vh] bg-gray-100 overflow-hidden shadow-lg sm:shadow-none rounded-lg sm:rounded-none">
         {% if section.settings.image != blank %}
           <img 
-<<<<<<< HEAD
             src="{{ section.settings.image | img_url: 'master' }}" 
             alt="{{ section.settings.image.alt }}" 
             loading="lazy"
             width="{{ section.settings.image.width }}"
             height="{{ section.settings.image.height }}"
             class="w-full h-full object-cover object-center">
-=======
-          src="{{ section.settings.image | image_url }}" 
-          alt="{{ section.settings.image.alt }}" 
-          loading="lazy"
-          width="{{ section.settings.image.width }}"
-          height="{{ section.settings.image.height }}"
-          class="w-full h-full object-cover object-center">
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
           {% else %}
           {{ 'lifestyle-2' | placeholder_svg_tag: 'w-full h-full object-cover object-center' }}
         {% endif %}
@@ -46,7 +37,6 @@
 
 {% schema %}
 {
-<<<<<<< HEAD
    "name":"404 page",
    "settings":[
       {
@@ -61,21 +51,5 @@
          "default":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
       }
    ]
-=======
-  "name": "404 page",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "404 Banner Image"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "coming soon description (optional)",
-      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
-    }
-  ]
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
 }
 {% endschema %}

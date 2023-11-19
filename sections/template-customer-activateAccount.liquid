@@ -1,13 +1,13 @@
-<div class="2xl:w-[1280px] m-auto" style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
+<div class="2xl:w-[1280px] m-auto" style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;" {% if section.settings.animation_setting == true %}data-aos="fade-in"data-aos-duration="3000"data-aos-duration="1500"{% endif %}>
   <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-16 customer_title_color tracking-wider">
     {{ 'customer.activate_account.title' | t }}
   </h1>
 
-  {% form 'activate_customer_password', class: 'max-w-lg mx-auto' %}
+  {% form 'activate_customer_password', class:'max-w-lg mx-auto' %}
     {% if form.errors %}
       {% capture error_text %}
         {{ form.errors | default_errors }}
-      {% endcapture %}
+      {% endcapture%}
 
       {% render 'layout-message',
             type: 'error'
@@ -47,34 +47,32 @@
 </div>
 
 {% schema %}
-{
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "animation_setting",
-      "default": true,
-      "label": "Animation turn on"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top controll",
-      "default": 15,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom controll",
-      "default": 6,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    }
-  ]
-}
+  {
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animation_setting",
+        "default": true,
+        "label": "Animation turn on"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top controll",
+        "default": 15,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom controll",
+        "default": 6,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "unit": "rem"
+      }
+    ]
+  }
 {% endschema %} 

@@ -8,7 +8,7 @@
   }
 
   .collection_button_style:hover{
-        color: {{ section.settings.mo_button_color }};
+        color: {{ section.settings.mo_button_color}};
         border:1px solid {{ section.settings.mo_border_color }};
         background-color: {{ section.settings.mo_button_bg }};
   }
@@ -18,20 +18,20 @@
 
 {% endstyle %}
 
-<div class="{{ section.settings.color_schema }}">
+<div class="{{section.settings.color_schema}}">
  <div class="xl:max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" 
-   style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
+   style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;"
    {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-offset="600" {% endif %}>
    
    {%- comment -%} headline {%- endcomment -%}
    <div class="md:mx-[1rem] flex flex-col md:flex-row justify-between">
        <div class="w-full Left_titlebox">
            {% if section.settings.headline != blank %}
-               <h1 class="{{ section.settings.title_align }} mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{ section.settings.color_title }};">
+               <h1 class="{{section.settings.title_align}} mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
                    {{ section.settings.headline }}
                </h1>
            {% endif %}
-               <div class="subfont_size {{ section.settings.title_align }} my-8 leading-8 tracking-wider" style="color:{{ section.settings.color_sub_title }};">
+               <div class="subfont_size {{section.settings.title_align}} my-8 leading-8 tracking-wider" style="color:{{section.settings.color_sub_title}};">
                    {{ section.settings.text }}
                </div>  
        </div>
@@ -44,17 +44,17 @@
         {% for product in collection.products %}
             <div class="product-content-{{ section.id }} ">
               {% render 'layout-product', product: product
-              show_vendor: section.settings.show_vendor  
+              show_vendor:section.settings.show_vendor  
               product_title_color: section.settings.product_title_color
               point_color: section.settings.point_color
-              mouseover_image: section.settings.mouseover_image
+              mouseover_image:section.settings.mouseover_image
               show_rating: section.settings.show_rating 
-              show_symbol: section.settings.show_symbol
-              product_font_size: section.settings.product_font_size
-              product_point_color: section.settings.product_point_color
-              iconbox1: settings.iconbox1
-              iconbox2: settings.iconbox2
-              iconbox3: settings.iconbox3
+              show_symbol:section.settings.show_symbol
+              product_font_size:section.settings.product_font_size
+              product_point_color:section.settings.product_point_color
+              iconbox1:settings.iconbox1
+              iconbox2:settings.iconbox2
+              iconbox3:settings.iconbox3
             %}
             </div>
           {% endfor %}
@@ -71,8 +71,8 @@
      <div class="w-full mt-14 flex Right_titlebox {{ section.settings.button_align }}">
          {%- if section.settings.button-text != blank -%}
              <div class="py-2 inline-block">
-                 <a id="loadMore-{{ section.id }}" class="tracking-widest mx-2 collection_button_style  text-center transition {{ section.settings.button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}">
-                   {{ section.settings.button-text }}</a>
+                 <a id="loadMore-{{ section.id }}" class="tracking-widest mx-2 collection_button_style  text-center transition {{section.settings.button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}">
+                   {{section.settings.button-text }}</a>
              </div>
              
          {% endif %}
@@ -167,337 +167,337 @@ $("#loadMore-{{ section.id }}").on("click", function(e){
 
 {% schema %}
 {
-  "name": "t:sections.collection.name",
-  "class": "shopify-section-vue",
-  "settings": [
-    {
-      "type": "select",
-      "id": "color_schema",
-      "label": "Background color",
-      "options": [
+ "name": "t:sections.collection.name",
+ "class": "shopify-section-vue",
+ "settings": [
+  {
+    "type":"select",
+    "id":"color_schema",
+    "label":"Background color",
+    "options":[
         {
-          "value": "first_color",
-          "label": "First Color"
+          "value":"first_color",
+          "label":"First Color"
         },
         {
-          "value": "second_color",
-          "label": "Second Color"
+          "value":"second_color",
+          "label":"Second Color"
         },
         {
-          "value": "third_color",
-          "label": "Third Color"
+          "value":"third_color",
+          "label":"Third Color"
         },
         {
-          "value": "forth_color",
-          "label": "Forth Color"
-        },
-        {
-          "value": "fifth_color",
-          "label": "Fifth Color"
-        },
-        {
-          "value": "background_transparent",
-          "label": "Transparent Color"
-        }
-      ],
-      "default": "fifth_color"
+        "value":"forth_color",
+        "label":"Forth Color"
+      },
+      {
+        "value":"fifth_color",
+        "label":"Fifth Color"
+      },
+      {
+        "value":"background_transparent",
+        "label":"Transparent Color"
+      }
+    ],
+    "default":"fifth_color"
     },
     {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top controll",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom controll",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "header",
-      "content": "Collection settings",
-      "info": "Collection product settings"
-    },
-    {
-      "type": "select",
-      "id": "column_design",
-      "label": "Column selector",
-      "options": [
-        {
-          "value": "two_column",
-          "label": "Two column"
-        },
-        {
-          "value": "three_column",
-          "label": "Three column"
-        },
-        {
-          "value": "four_column",
-          "label": "Four column"
-        }
-      ],
-      "default": "three_column"
-    },
-    {
-      "type": "collection",
-      "id": "collection_featured",
-      "label": "t:common.collection"
-    },
-    {
-      "type": "select",
-      "id": "collection_products_limit",
-      "label": "t:sections.collection.settings.max-products-to-display",
-      "default": "3",
-      "options": [
-        {
-          "value": "3",
-          "label": "3 Products"
-        },
-        {
-          "value": "4",
-          "label": "4 Products"
-        },
-        {
-          "value": "6",
-          "label": "6 products"
-        },
-        {
-          "value": "8",
-          "label": "8 products"
-        },
-        {
-          "value": "9",
-          "label": "9 products"
-        },
-        {
-          "value": "12",
-          "label": "12 products"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "animation_setting",
-      "default": false,
-      "label": "Animation turn on"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_rating",
-      "default": true,
-      "label": "show rating"
-    },
-    {
-      "type": "checkbox",
-      "id": "mouseover_image",
-      "default": true,
-      "label": "Show mouseover Image"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_symbol",
-      "default": true,
-      "label": "show metafield symbol",
-      "info": "You must set metafield"
-    },
-    {
-      "type": "header",
-      "content": "Title content settings",
-      "info": "Collection title text settings"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "headline",
-      "default": "Selected products"
-    },
-    {
-      "type": "color",
-      "id": "color_title",
-      "label": "Section title color",
-      "default": "#808080"
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "text",
-      "default": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>"
-    },
-    {
-      "type": "color",
-      "id": "color_sub_title",
-      "label": "Section Description color",
-      "default": "#808080"
-    },
-    {
-      "type": "select",
-      "id": "title_align",
-      "label": "Title align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center"
-    },
-    {
-      "type": "header",
-      "content": "Title Button settings",
-      "info": "Title button, mouseover color"
-    },
-    {
-      "type": "select",
-      "id": "button_align",
-      "label": "Button align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center"
-    },
-    {
-      "type": "select",
-      "id": "button_size",
-      "label": "Button size",
-      "options": [
-        {
-          "value": "button_small",
-          "label": "Small"
-        },
-        {
-          "value": "button_medium",
-          "label": "Medium"
-        },
-        {
-          "value": "button_large",
-          "label": "Large"
-        },
-        {
-          "value": "button_xlarge",
-          "label": "Extra large"
-        }
-      ],
-      "default": "button_medium"
-    },
-    {
-      "type": "checkbox",
-      "id": "button_round_off",
-      "default": false,
-      "label": "Button round"
-    },
-    {
-      "type": "url",
-      "id": "button-url",
-      "label": "t:common.button.url"
-    },
-    {
-      "type": "text",
-      "id": "button-text",
-      "label": "t:common.button.text",
-      "default": "Button"
-    },
-    {
-      "type": "header",
-      "content": "Button color"
-    },
-    {
-      "type": "color",
-      "id": "button_bg",
-      "label": "Button background color",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "button_color",
-      "label": "button font color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "border_colors",
-      "label": "border color",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "mo_button_bg",
-      "label": "Mouseover background",
-      "default": "#808080"
-    },
-    {
-      "type": "color",
-      "id": "mo_button_color",
-      "label": "Mouseover font color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "mo_border_color",
-      "label": "Mouseover border color",
-      "default": "transparent"
-    },
-    {
-      "type": "header",
-      "content": "Text Colors"
-    },
-    {
-      "type": "color",
-      "id": "product_title_color",
-      "label": "Title Color",
-      "info": " Product title and base price color",
-      "default": "#4b4b4b"
-    },
-    {
-      "type": "color",
-      "id": "product_point_color",
-      "label": "Product point color",
-      "info": "Discount Price Tag Colors",
-      "default": "#C33131"
-    },
-    {
-      "type": "range",
-      "id": "product_font_size",
-      "label": "Prodcut Font size",
-      "default": 1,
-      "min": 0.1,
-      "max": 3,
-      "step": 0.1,
-      "unit": "rem"
-    }
+    "type": "range",
+    "id": "padding_top",
+    "label": "Padding Top controll",
+    "default":4,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "unit": "rem"
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "label": "Padding Bottom controll",
+    "default":4,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "unit": "rem"
+  },
+  {
+    "type": "header",
+    "content": "Collection settings",
+    "info": "Collection product settings"
+  },
+  {
+  "type":"select",
+  "id":"column_design",
+  "label":"Column selector",
+  "options":[
+      {
+        "value":"two_column",
+        "label":"Two column"
+      },
+      {
+        "value":"three_column",
+        "label":"Three column"
+      },
+      {
+        "value":"four_column",
+        "label":"Four column"
+      }
   ],
-  "presets": [
+  "default":"three_column"
+  },
+  {
+    "type": "collection",
+    "id": "collection_featured",
+    "label": "t:common.collection"
+  },
+  {
+    "type": "select",
+    "id": "collection_products_limit",
+    "label": "t:sections.collection.settings.max-products-to-display",
+    "default": "3",
+    "options": [
+      {
+        "value": "3",
+        "label": "3 Products"
+      },
+      {
+        "value": "4",
+        "label": "4 Products"
+      },
+      {
+        "value": "6",
+        "label": "6 products"
+      },
+      {
+        "value": "8",
+        "label": "8 products"
+      },
+      {
+        "value": "9",
+        "label": "9 products"
+      },
+      {
+        "value": "12",
+        "label": "12 products"
+      }
+    ]
+  },
+  {
+   "type": "checkbox",
+   "id": "animation_setting",
+   "default": false,
+   "label": "Animation turn on"
+   },
+   {
+   "type": "checkbox",
+   "id": "show_rating",
+   "default": true,
+   "label": "show rating"
+ },
+  {
+   "type": "checkbox",
+   "id": "mouseover_image",
+   "default": true,
+   "label": "Show mouseover Image"
+ },
+ {
+ "type": "checkbox",
+ "id": "show_symbol",
+ "default": true,
+ "label": "show metafield symbol",
+ "info" : "You must set metafield"
+},
+  {
+   "type": "header",
+   "content": "Title content settings",
+   "info": "Collection title text settings"
+   },
+   {
+     "type": "text",
+     "id": "headline",
+     "label": "headline",
+     "default": "Selected products"
+   },
+   {
+     "type": "color",
+     "id": "color_title",
+     "label": "Section title color",
+     "default": "#808080"
+   },
+   {
+     "type":"richtext",
+     "id":"text",
+     "label":"text",
+     "default":"<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>"
+  },
+  {
+   "type": "color",
+   "id": "color_sub_title",
+   "label": "Section Description color",
+   "default": "#808080"
+ },
+  {
+   "type":"select",
+   "id":"title_align",
+   "label":"Title align",
+   "options":[
+         {
+         "value":"font_left",
+         "label":"Left"
+         },
+         {
+         "value":"font_right",
+         "label":"Right"
+         },
+         {
+         "value":"font_center",
+         "label":"Center"
+         }
+   ],
+   "default":"font_center"
+   },
+   {
+     "type": "header",
+     "content": "Title Button settings",
+     "info": "Title button, mouseover color"
+   },
     {
-      "name": "t:sections.collection.name",
-      "category": "Collection"
-    }
-  ]
+             "type":"select",
+             "id":"button_align",
+             "label":"Button align",
+             "options":[
+                   {
+                   "value":"font_left",
+                   "label":"Left"
+                   },
+                   {
+                   "value":"font_right",
+                   "label":"Right"
+                   },
+                   {
+                   "value":"font_center",
+                   "label":"Center"
+                   }
+             ],
+             "default":"font_center"
+         },
+          {
+           "type":"select",
+           "id":"button_size",
+           "label":"Button size",
+           "options":[
+           {
+           "value":"button_small",
+           "label":"Small"
+           },
+           {
+           "value":"button_medium",
+           "label":"Medium"
+           },
+           {
+           "value":"button_large",
+           "label":"Large"
+           },
+           {
+           "value":"button_xlarge",
+           "label":"Extra large"
+     }
+     ],
+           "default":"button_medium"
+     },
+     {
+     "type": "checkbox",
+     "id": "button_round_off",
+     "default": false,
+     "label": "Button round"
+     },
+     {
+     "type": "url",
+     "id": "button-url",
+     "label": "t:common.button.url"
+     },
+     {
+     "type": "text",
+     "id": "button-text",
+     "label": "t:common.button.text",
+     "default": "Button"
+     },
+     {
+       "type": "header",
+       "content": "Button color"
+     },
+     {
+     "type": "color",
+     "id": "button_bg",
+     "label": "Button background color",
+     "default": "transparent"
+     },
+     {
+     "type": "color",
+     "id": "button_color",
+     "label": "button font color",
+     "default": "#808080"
+     },
+     {
+     "type": "color",
+     "id": "border_colors",
+     "label": "border color",
+     "default": "#808080"
+     },
+     {
+     "type": "color",
+     "id": "mo_button_bg",
+     "label": "Mouseover background",
+     "default": "#808080"
+     },
+     {
+     "type": "color",
+     "id": "mo_button_color",
+     "label": "Mouseover font color",
+     "default": "#fff"
+     },
+     {
+     "type": "color",
+     "id": "mo_border_color",
+     "label": "Mouseover border color",
+     "default": "transparent"
+     },
+     {
+       "type": "header",
+       "content": "Text Colors"
+     },
+     {
+       "type":"color",
+       "id":"product_title_color",
+       "label": "Title Color",
+       "info":" Product title and base price color",
+       "default": "#4b4b4b"
+     },
+     {
+         "type": "color",
+         "id":"product_point_color",
+         "label": "Product point color",
+         "info": "Discount Price Tag Colors",
+         "default": "#C33131"
+     },
+     {
+       "type": "range",
+       "id": "product_font_size",
+       "label": "Prodcut Font size",
+       "default":1,
+       "min": 0.1,
+       "max": 3,
+       "step": 0.1,
+       "unit": "rem"
+     }
+ ],
+ "presets": [
+   {
+     "name": "t:sections.collection.name",
+     "category": "Collection"
+   }
+ ]
 }
 {% endschema %}

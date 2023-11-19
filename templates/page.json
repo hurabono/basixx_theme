@@ -3,7 +3,7 @@
     "banner": {
       "type": "main-page-contact",
       "settings": {
-        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.</p>"
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.<\/p>"
       }
     },
     "main": {

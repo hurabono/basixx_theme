@@ -33,13 +33,9 @@
 </style>
 
 
-<div class="{{ section.settings.color_schema }}">
+<div class="{{section.settings.color_schema}}">
       <div class="xl:max-w-[1320px] m-auto overflow-hidden px-4 md:px-8" 
-<<<<<<< HEAD
       style="padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
-=======
-      style="padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;"
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
       {% if section.settings.animation_setting == true %} data-aos="fade-up" data-aos-duration="3000" {% endif %}>
 
         {%- comment -%} headline {%- endcomment -%}
@@ -71,12 +67,12 @@
                   {% when 'about_product' %}
                         <label
                               x-on:click = "activeTab = 'about_product' "
-                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{ section.settings.collection_button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}"
+                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{section.settings.collection_button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}"
                               :class="{ 'tab_active': activeTab === 'about_product'}"
                         >
                         {% if block.settings.headline_tab_title != blank %}
                         <div class="cursor-pointer">
-                              {{ block.settings.headline_tab_title }}
+                              {{ block.settings.headline_tab_title}}
                         </div>
                         {% else %}
                               <div class="cursor-pointer"> {{ block.settings.headline_tab_title }} </div>
@@ -86,7 +82,7 @@
                   {% when 'product_review' %}
                         <label
                               x-on:click="activeTab = 'product_review' "
-                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{ section.settings.collection_button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}"
+                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{section.settings.collection_button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}"
                               
                               :class="{ 'tab_active': activeTab === 'product_review' }"
                         >
@@ -103,7 +99,7 @@
                   {% when 'tables' %}
                         <label
                               x-on:click="activeTab = 'tables' "
-                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{ section.settings.collection_button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}"
+                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{section.settings.collection_button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}"
                               
                               :class="{ 'tab_active': activeTab === 'tables' }"
                         >
@@ -112,14 +108,14 @@
                               {{ block.settings.information_tab_title }}
                         </div>
                         {% else %}
-                              <div class="cursor-pointer"> {{ block.settings.information_tab_title }} </div>
+                              <div class="cursor-pointer"> {{ block.settings.information_tab_title}} </div>
                         {% endif %}
                         </label>
 
                   {% when 'featured_list' %}
                         <label
                               x-on:click="activeTab = 'featured_list' "
-                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{ section.settings.collection_button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}"
+                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{section.settings.collection_button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}"
                               
                               :class="{ 'tab_active': activeTab === 'featured_list' }"
                         >
@@ -136,13 +132,13 @@
                   {% when 'map' %}
                         <label
                               x-on:click="activeTab = 'map' "
-                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{ section.settings.collection_button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}"
+                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{section.settings.collection_button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}"
                               
                               :class="{ 'tab_active': activeTab === 'map' }"
                         >
                         {% if block.settings.tab_map_title != blank %}
                         <div class="cursor-pointer">
-                              {{ block.settings.tab_map_title }}
+                              {{ block.settings.tab_map_title}}
                         </div>
                         {% else %}
                               <div class="cursor-pointer"> {{ block.settings.tab_map_title }} </div>
@@ -152,13 +148,13 @@
                   {% when 'custom_tab' %}
                         <label
                               x-on:click="activeTab = 'custom_tab'"
-                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{ section.settings.collection_button_size }} {% if section.settings.button_round_off == true %} button_round {% endif %}"
+                              class="min-w-[33%] tab-control px-3 py-2 mx-2 tracking-widest mx-2 tab_buttons text-center outline-none transition duration-100 {{section.settings.collection_button_size}} {% if section.settings.button_round_off == true %} button_round {% endif %}"
                               
                               :class="{ 'tab_active': activeTab === 'custom_tab' }"
                         >
                         {% if block.settings.custom_tab_title != blank %}
                         <div class="cursor-pointer">
-                              {{ block.settings.custom_tab_title }}
+                              {{ block.settings.custom_tab_title}}
                         </div>
                         {% else %}
                               <div class="cursor-pointer"> {{ block.settings.custom_tab_title }} </div>
@@ -195,21 +191,12 @@
                                                 (min-width: 640px) 720px,
                                                 600px
                                                 " srcset="
-<<<<<<< HEAD
                                                 {{ block.settings.image | image_url: '600x' }} 600w,
                                                 {{ block.settings.image | image_url: '720x' }} 720w,
                                                 {{ block.settings.image | image_url: '1000x' }} 1000w,
                                                 {{ block.settings.image | image_url: '1250x' }} 1250w,
                                                 {{ block.settings.image | image_url: '1500x' }} 1500w
                                                 " src="{{ block.settings.image | image_url: '1500x' }}" alt="{{ block.settings.image.alt }}" loading="lazy"
-=======
-                                                {{ block.settings.image | image_url: width: 600 }} 600w,
-                                                {{ block.settings.image | image_url: width: 720 }} 720w,
-                                                {{ block.settings.image | image_url: width: 1000 }} 1000w,
-                                                {{ block.settings.image | image_url: width: 1250 }} 1250w,
-                                                {{ block.settings.image | image_url: width: 1500 }} 1500w
-                                                " src="{{ block.settings.image | image_url: width: 1500 }}" alt="{{ block.settings.image.alt }}" loading="lazy"
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                                                 class="w-full h-full object-cover object-center rounded-md"
                                                 width="{{ block.settings.image.width }}"
                                                 height="{{ block.settings.image.height }}"
@@ -220,11 +207,7 @@
 
                                           <div class="about_product_Box w-full {% if block.settings.image != blank %} md:w-1/2 {% endif %}">
                                                 <h1 class="px-6 text-2xl font-bold" 
-<<<<<<< HEAD
                                                 style="color: {{block.settings.headline_text_color}};">
-=======
-                                                style="color: {{ block.settings.headline_text_color }};">
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                                                       {{ block.settings.headline_title }}
                                                 </h1>
                                                 <div class="py-6 px-6 leading-8 tracking-wider" 
@@ -264,11 +247,7 @@
                               <div class="tab_contents lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 py-4">
                                     <h1 class="pb-4 text-2xl font-bold" 
                                           style="color: {{ block.settings.info_title_color }};">
-<<<<<<< HEAD
                                           {{ block.settings.information_title}}
-=======
-                                          {{ block.settings.information_title }}
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                                     </h1>
                                     <div class="subfont_size pb-4 leading-8 tracking-wider" 
                                           style="color:{{ block.settings.info_title_color }};">
@@ -287,7 +266,7 @@
                                           </div>
                                           
                                           <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                          style="color: {{ block.settings.table_text_color }};">
+                                          style="color: {{block.settings.table_text_color}};">
                                                 {{ block.settings.first_desc }}
                                           </div>
 
@@ -508,7 +487,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{ block.settings.table_text_color }};">
+                                    style="color: {{block.settings.table_text_color}};">
                                           {{ block.settings.twelfth_desc }}
                                     </div>
 
@@ -528,7 +507,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-                                    style="color: {{ block.settings.table_text_color }}; ">
+                                    style="color: {{block.settings.table_text_color}}; ">
                                           {{ block.settings.thirteenth_desc }}
                                     </div>
 
@@ -570,11 +549,7 @@
                                     </div>
                                     
                                     <div class="mobile-border bg-white col-span-4 p-2 px-4 text-sm" 
-<<<<<<< HEAD
                                     style="color: {{ block.settings.table_text_color }}; border-right: 1px solid {{ block.settings.table_border_color}};  border-bottom: 1px solid {{ block.settings.table_border_color}}; ">
-=======
-                                    style="color: {{ block.settings.table_text_color }}; border-right: 1px solid {{ block.settings.table_border_color }};  border-bottom: 1px solid {{ block.settings.table_border_color}}; ">
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                                           {{ block.settings.fifteenth_desc }}
                                     </div>
 
@@ -615,17 +590,17 @@
                               {%- if block.settings.show_icon == true -%}
                                 {% if block.settings.icon_box1 != blank %}
                                     <span class="mr-4"> 
-                                      {{ block.settings.icon_box1 }}
+                                      {{block.settings.icon_box1}}
                                     </span>
                                 {% else %}
                                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" 
-                                        style="color: {{ block.settings.featured_symbol_color }};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                        style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                         <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                         <path d="M22 4L12 14.01l-3-3"></path>
                                   </svg>
                                   {%- endif -%}
                               {%- endif -%}
-                              <span class="title-font font-medium" style="color: {{ block.settings.featured_text_color }};">
+                              <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text1 }}
                               </span>
                               </div>
@@ -638,18 +613,18 @@
                                 {%- if block.settings.show_icon == true -%}
                                 {% if block.settings.icon_box2 != blank %}
                                     <span class="mr-4"> 
-                                      {{ block.settings.icon_box2 }}
+                                      {{block.settings.icon_box2}}
                                     </span>
                                 {% else %}
                                   
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" 
-                                      style="color: {{ block.settings.featured_symbol_color }};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                      style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                       <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                       <path d="M22 4L12 14.01l-3-3"></path>
                                 </svg>
                                  {% endif %}
                                 {% endif %}
-                              <span class="title-font font-medium" style="color: {{ block.settings.featured_text_color }};">
+                              <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text2 }}
                               </span>
                               </div>
@@ -668,7 +643,7 @@
                                 {% else %}
                                   
                               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                    style="color: {{ block.settings.featured_symbol_color }};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                    style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                     <path d="M22 4L12 14.01l-3-3"></path>
                               </svg>
@@ -693,13 +668,13 @@
                                   {% else %}
                                     
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                      style="color: {{ block.settings.featured_symbol_color }};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                      style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                       <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                       <path d="M22 4L12 14.01l-3-3"></path>
                                 </svg>
                                 {% endif %}
                                {% endif %}
-                              <span class="title-font font-medium" style="color: {{ block.settings.featured_text_color }};">
+                              <span class="title-font font-medium" style="color: {{block.settings.featured_text_color}};">
                                     {{ block.settings.featured_text4 }}
                               </span>
                               </div>
@@ -720,7 +695,7 @@
                                   {% else %}
                                     
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                      style="color: {{ block.settings.featured_symbol_color }};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                      style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                       <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                       <path d="M22 4L12 14.01l-3-3"></path>
                                 </svg>
@@ -746,7 +721,7 @@
                                   {% else %}
                                     
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                      style="color: {{ block.settings.featured_symbol_color }};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                      style="color: {{block.settings.featured_symbol_color}};" class="w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                       <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                       <path d="M22 4L12 14.01l-3-3"></path>
                                 </svg>
@@ -776,12 +751,12 @@
                         <div class="tab_contents lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 py-4">
                         
                         <h1 class="pb-8 px-2 text-2xl font-bold" 
-                        style="color: {{ block.settings.map_title_font_color }};">
+                        style="color: {{block.settings.map_title_font_color}};">
                               {{ block.settings.map_title }}
                         </h1>
 
                         <div class="subfont_size pb-2 px-2 leading-8 tracking-wider" 
-                              style="color:{{ block.settings.map_info_font_color }};">
+                              style="color:{{block.settings.map_info_font_color}};">
                               {{ block.settings.map_info }}
                         </div>  
 
@@ -807,19 +782,19 @@
 
                         <div class="title_box pb-6">
                               <h1 class="pb-3 px-2 text-2xl font-bold" 
-                              style="color: {{ block.settings.custom_title_color }};">
+                              style="color: {{block.settings.custom_title_color}};">
                               {{ block.settings.custom_title }}
                         </h1>
 
                         <div class="subfont_size px-2 leading-8 tracking-wider" 
-                              style="color:{{ block.settings.custom_text_color }};">
+                              style="color:{{block.settings.custom_text_color}};">
                               {{ block.settings.sub_text }}
                         </div>  
                         </div>
 
                         <div class="px-2 overflow-hidden">
                               <div  class="w-full h-full object-cover object-center"
-                              style="color:{{ block.settings.custom_contents_color }};" >
+                              style="color:{{block.settings.custom_contents_color}};" >
                               {{ block.settings.content_area }}
                               </div>
                         </div>
@@ -847,850 +822,849 @@
       </script>
 
 {% schema %}
-{
-  "name": "Product Description",
-  "class": "shopify-section-vue",
-  "settings": [
-    {
-      "type": "select",
-      "id": "color_schema",
-      "label": "Background color",
-      "options": [
-        {
-          "value": "first_color",
-          "label": "First Color"
-        },
-        {
-          "value": "second_color",
-          "label": "Second Color"
-        },
-        {
-          "value": "third_color",
-          "label": "Third Color"
-        },
-        {
-          "value": "forth_color",
-          "label": "Forth Color"
-        },
-        {
-          "value": "fifth_color",
-          "label": "Fifth Color"
-        },
-        {
-          "value": "background_transparent",
-          "label": "Transparent Color"
-        }
-      ],
-      "default": "background_transparent"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top controll",
-      "default": 1,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom controll",
-      "default": 6,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "subtitle"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "t:common.headline"
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "t:common.headline"
-    },
-    {
-      "type": "select",
-      "id": "text_align",
-      "label": "Text align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center"
-    },
-    {
-      "type": "color",
-      "id": "color_title",
-      "label": "Section title color",
-      "default": "#4b4b4b"
-    },
-    {
-      "type": "color",
-      "id": "color_text_title",
-      "label": "Section Description color",
-      "default": "#4b4b4b"
-    },
-    {
-      "type": "header",
-      "content": "Title Button settings",
-      "info": "Title button, mouseover color"
-    },
-    {
-      "type": "select",
-      "id": "collection_button_align",
-      "label": "Collection Button align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center"
-    },
-    {
-      "type": "select",
-      "id": "collection_button_size",
-      "label": "Collection Button size",
-      "options": [
-        {
-          "value": "button_small",
-          "label": "Small"
-        },
-        {
-          "value": "button_medium",
-          "label": "Medium"
-        },
-        {
-          "value": "button_large",
-          "label": "Large"
-        },
-        {
-          "value": "button_xlarge",
-          "label": "Extra large"
-        }
-      ],
-      "default": "button_small"
-    },
-    {
-      "type": "checkbox",
-      "id": "button_round_off",
-      "default": false,
-      "label": "Button round"
-    },
-    {
-      "type": "header",
-      "content": "Button color"
-    },
-    {
-      "type": "color",
-      "id": "color_button",
-      "label": "Button background",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "button_font_color",
-      "label": "Button Font",
-      "default": "#A9A9A9"
-    },
-    {
-      "type": "color",
-      "id": "button_border_color",
-      "label": "Button border color",
-      "default": "transparent"
-    },
-    {
-      "type": "header",
-      "content": "Button Mouseover"
-    },
-    {
-      "type": "color",
-      "id": "button_color_hover",
-      "label": "Button Background",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "button_font_hover",
-      "label": "Button font",
-      "default": "#5E5E5E"
-    },
-    {
-      "type": "color",
-      "id": "button_border_hover",
-      "label": "Button border",
-      "default": "#5E5E5E"
-    },
-    {
-      "type": "header",
-      "content": "Button Active"
-    },
-    {
-      "type": "color",
-      "id": "active_button_color",
-      "label": "Active Button Color",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "active_font_color",
-      "label": "Active font Color",
-      "default": "#5E5E5E"
-    },
-    {
-      "type": "color",
-      "id": "active_border_color",
-      "label": "Active border Color",
-      "default": "#5E5E5E"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "about_product",
-      "name": "About Product",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Background Image"
-        },
-        {
-          "type": "text",
-          "id": "headline_tab_title",
-          "label": "Tab Title",
-          "default": "About product"
-        },
-        {
-          "type": "text",
-          "id": "headline_title",
-          "label": "Description Title",
-          "default": "About product"
-        },
-        {
-          "type": "color",
-          "id": "headline_text_color",
-          "label": "Title Text Color",
-          "default": "#5E5E5E"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Description Text Color",
-          "default": "#787D80"
-        }
-      ]
-    },
-    {
-      "type": "product_review",
-      "name": "Product Review",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "review_tab",
-          "label": "Review Tab Title",
-          "default": "Review"
-        }
-      ]
-    },
-    {
-      "type": "tables",
-      "name": "Information",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "information_tab_title",
-          "label": "Tab Title",
-          "default": "Information"
-        },
-        {
-          "type": "text",
-          "id": "information_title",
-          "label": "Section Title",
-          "default": "Information"
-        },
-        {
-          "type": "textarea",
-          "id": "information_desc",
-          "label": "Section short description"
-        },
-        {
-          "type": "header",
-          "content": "Font color, Table colors"
-        },
-        {
-          "type": "color",
-          "id": "info_title_color",
-          "label": "Title Color",
-          "default": "#5E5E5E"
-        },
-        {
-          "type": "color",
-          "id": "info_text_color",
-          "label": "Table Title Font Color",
-          "default": "#FFFFFF"
-        },
-        {
-          "type": "color",
-          "id": "table_text_color",
-          "label": "Table Text Color",
-          "default": "#787D80"
-        },
-        {
-          "type": "color",
-          "id": "table_column_color",
-          "label": "Table Column Color",
-          "default": "#C0C0C0"
-        },
-        {
-          "type": "color",
-          "id": "table_border_color",
-          "label": "Table border Color",
-          "default": "#ECECEC"
-        },
-        {
-          "type": "color",
-          "id": "table_symbol_color",
-          "label": "Table Symbol Color",
-          "default": "#FFFFFF"
-        },
-        {
-          "type": "header",
-          "content": "Line 1"
-        },
-        {
-          "type": "text",
-          "id": "first_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "first_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 2"
-        },
-        {
-          "type": "text",
-          "id": "second_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "second_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 3"
-        },
-        {
-          "type": "text",
-          "id": "thrid_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "third_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 4"
-        },
-        {
-          "type": "text",
-          "id": "forth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "forth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 5"
-        },
-        {
-          "type": "text",
-          "id": "fifth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "fifth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 6"
-        },
-        {
-          "type": "text",
-          "id": "sixth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "sixth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 7"
-        },
-        {
-          "type": "text",
-          "id": "seventh_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "seventh_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 8"
-        },
-        {
-          "type": "text",
-          "id": "eighth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "eighth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 9"
-        },
-        {
-          "type": "text",
-          "id": "ninth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "ninth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 10"
-        },
-        {
-          "type": "text",
-          "id": "tenth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "tenth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 11"
-        },
-        {
-          "type": "text",
-          "id": "eleventh_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "eleventh_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 12"
-        },
-        {
-          "type": "text",
-          "id": "twelfth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "twelfth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 13"
-        },
-        {
-          "type": "text",
-          "id": "thirteenth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "thirteenth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 14"
-        },
-        {
-          "type": "text",
-          "id": "fourteenth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "fourteenth_desc",
-          "label": "Description",
-          "default": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Line 15"
-        },
-        {
-          "type": "text",
-          "id": "fifteenth_title",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "text",
-          "id": "fifteenth_desc",
-          "label": "Description",
-          "default": "Description"
-        }
-      ]
-    },
-    {
-      "type": "featured_list",
-      "name": "Featured List",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "header",
-          "content": "General Settings"
-        },
-        {
-          "type": "text",
-          "id": "featured_tab_title",
-          "label": "List Tab Title",
-          "default": "Featured List"
-        },
-        {
-          "type": "text",
-          "id": "featured_title",
-          "label": "Featured List Title",
-          "default": "About product"
-        },
-        {
-          "type": "richtext",
-          "id": "featured_description",
-          "label": "Featured List Description"
-        },
-        {
-          "type": "header",
-          "content": "Color Settings"
-        },
-        {
-          "type": "color",
-          "id": "featured_title_color",
-          "label": "Title Text Color",
-          "default": "#5E5E5E"
-        },
-        {
-          "type": "color",
-          "id": "featured_text_color",
-          "label": "Description Text Color",
-          "default": "#C0C0C0"
-        },
-        {
-          "type": "color",
-          "id": "featured_symbol_color",
-          "label": "Symbol Color",
-          "default": "#808080"
-        },
-        {
-          "type": "color",
-          "id": "featured_column_color",
-          "label": "Column Color",
-          "default": "#F4F4F4"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_icon",
-          "default": true,
-          "label": "Show icon"
-        },
-        {
-          "type": "header",
-          "content": "Line 1"
-        },
-        {
-          "type": "html",
-          "id": "icon_box1",
-          "label": "Custom SVG Iconbox",
-          "info": "copy and paste your custom SVG icon source"
-        },
-        {
-          "type": "text",
-          "id": "featured_text1",
-          "label": "Title",
-          "default": "1st Title"
-        },
-        {
-          "type": "header",
-          "content": "Line 2"
-        },
-        {
-          "type": "html",
-          "id": "icon_box2",
-          "label": "Custom SVG Iconbox",
-          "info": "copy and paste your custom SVG icon source"
-        },
-        {
-          "type": "text",
-          "id": "featured_text2",
-          "label": "Title",
-          "default": "2st Title"
-        },
-        {
-          "type": "header",
-          "content": "Line 3"
-        },
-        {
-          "type": "html",
-          "id": "icon_box3",
-          "label": "Custom SVG Iconbox",
-          "info": "copy and paste your custom SVG icon source"
-        },
-        {
-          "type": "text",
-          "id": "featured_text3",
-          "label": "Title",
-          "default": "3st Title"
-        },
-        {
-          "type": "header",
-          "content": "Line 4"
-        },
-        {
-          "type": "html",
-          "id": "icon_box4",
-          "label": "Custom SVG Iconbox",
-          "info": "copy and paste your custom SVG icon source"
-        },
-        {
-          "type": "text",
-          "id": "featured_text4",
-          "label": "Title",
-          "default": "4st Title"
-        },
-        {
-          "type": "header",
-          "content": "Line 5"
-        },
-        {
-          "type": "html",
-          "id": "icon_box5",
-          "label": "Custom SVG Iconbox",
-          "info": "copy and paste your custom SVG icon source"
-        },
-        {
-          "type": "text",
-          "id": "featured_text5",
-          "label": "Title",
-          "default": "5st Title"
-        },
-        {
-          "type": "header",
-          "content": "Line 6"
-        },
-        {
-          "type": "html",
-          "id": "icon_box6",
-          "label": "Custom SVG Iconbox",
-          "info": "copy and paste your custom SVG icon source"
-        },
-        {
-          "type": "text",
-          "id": "featured_text6",
-          "label": "Title",
-          "default": "6st Title"
-        }
-      ]
-    },
-    {
-      "type": "map",
-      "name": "Map",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "header",
-          "content": "Map contents",
-          "info": "Setting title, copy and paste iframe google map "
-        },
-        {
-          "type": "text",
-          "id": "tab_map_title",
-          "label": "Tab Title",
-          "default": "Map"
-        },
-        {
-          "type": "text",
-          "id": "map_title",
-          "label": "Title",
-          "default": "This is the Map section"
-        },
-        {
-          "type": "text",
-          "id": "map_info",
-          "label": "Map information",
-          "default": "This is map information text area"
-        },
-        {
-          "type": "richtext",
-          "id": "iframe_map",
-          "label": "Map Settings"
-        },
-        {
-          "type": "header",
-          "content": "Setting Color"
-        },
-        {
-          "type": "color",
-          "id": "map_title_font_color",
-          "label": "Map title font color",
-          "default": "#5E5E5E"
-        },
-        {
-          "type": "color",
-          "id": "map_info_font_color",
-          "label": "info text font color",
-          "default": "#C0C0C0"
-        }
-      ]
-    },
-    {
-      "type": "custom_tab",
-      "name": "Custom Tab",
-      "limit": 2,
-      "settings": [
-        {
-          "type": "header",
-          "content": "Contents"
-        },
-        {
-          "type": "text",
-          "id": "custom_tab_title",
-          "label": "Custom tab title",
-          "default": "Custom Tab"
-        },
-        {
-          "type": "text",
-          "id": "custom_title",
-          "label": "Title",
-          "default": "This is the title text area"
-        },
-        {
-          "type": "textarea",
-          "id": "sub_text",
-          "label": "Subtext",
-          "default": "This is your custom contents area"
-        },
-        {
-          "type": "richtext",
-          "id": "content_area",
-          "label": "Content"
-        },
-        {
-          "type": "header",
-          "content": "Color"
-        },
-        {
-          "type": "color",
-          "id": "custom_title_color",
-          "label": "Title Color",
-          "default": "#5E5E5E"
-        },
-        {
-          "type": "color",
-          "id": "custom_text_color",
-          "label": "Description Color",
-          "default": "#C0C0C0"
-        },
-        {
-          "type": "color",
-          "id": "custom_contents_color",
-          "label": "Contents Text Color",
-          "default": "#808080"
-        }
-      ]
-    }
-  ]
-}
+      {
+            "name": "Product Description",
+            "class": "shopify-section-vue",
+            "settings": [
+                  {
+                  "type":"select",
+                  "id":"color_schema",
+                  "label":"Background color",
+                  "options":[
+                        {
+                        "value":"first_color",
+                        "label":"First Color"
+                        },
+                        {
+                        "value":"second_color",
+                        "label":"Second Color"
+                        },
+                        {
+                        "value":"third_color",
+                        "label":"Third Color"
+                        },
+                        {
+                        "value":"forth_color",
+                        "label":"Forth Color"
+                        },
+                        {
+                        "value":"fifth_color",
+                        "label":"Fifth Color"
+                        },
+                        {
+                        "value":"background_transparent",
+                        "label":"Transparent Color"
+                        }
+                  ],
+                  "default":"background_transparent"
+                  },
+                  {
+                  "type": "range",
+                  "id": "padding_top",
+                  "label": "Padding Top controll",
+                  "default":1,
+                  "min": 1,
+                  "max": 20,
+                  "step": 1,
+                  "unit": "rem"
+                  },
+                  {
+                  "type": "range",
+                  "id": "padding_bottom",
+                  "label": "Padding Bottom controll",
+                  "default":6,
+                  "min": 1,
+                  "max": 20,
+                  "step": 1,
+                  "unit": "rem"
+                  },
+                  {
+                      "type":"text",
+                      "id":"subtitle",
+                      "label":"subtitle"
+                   },
+                   {
+                      "type":"text",
+                      "id":"headline",
+                      "label":"t:common.headline"
+                   },
+                   {
+                    "type":"richtext",
+                    "id":"text",
+                    "label":"t:common.headline"
+                  },
+                  {
+                          "type": "select",
+                          "id": "text_align",
+                          "label": "Text align",
+                          "options": [
+                            {
+                              "value": "font_left",
+                              "label": "Left"
+                            }, {
+                              "value": "font_right",
+                              "label": "Right"
+                            }, {
+                              "value": "font_center",
+                              "label": "Center"
+                            }
+                          ],
+                          "default": "font_center"
+                  },
+                 {
+                    "type": "color",
+                    "id": "color_title",
+                    "label": "Section title color",
+                    "default": "#4b4b4b"
+                  },
+                  {
+                    "type": "color",
+                    "id": "color_text_title",
+                    "label": "Section Description color",
+                    "default": "#4b4b4b"
+                  },
+                  {
+                        "type": "header",
+                        "content": "Title Button settings",
+                        "info": "Title button, mouseover color"
+                  },
+                  {
+                        "type":"select",
+                        "id":"collection_button_align",
+                        "label":"Collection Button align",
+                        "options":[
+                              {
+                              "value":"font_left",
+                              "label":"Left"
+                              },
+                              {
+                              "value":"font_right",
+                              "label":"Right"
+                              },
+                              {
+                              "value":"font_center",
+                              "label":"Center"
+                              }
+                        ],
+                        "default":"font_center"
+                  },
+                  {
+                        "type":"select",
+                        "id":"collection_button_size",
+                        "label":"Collection Button size",
+                        "options":[
+                        {
+                        "value":"button_small",
+                        "label":"Small"
+                        },
+                        {
+                        "value":"button_medium",
+                        "label":"Medium"
+                        },
+                        {
+                        "value":"button_large",
+                        "label":"Large"
+                        },
+                        {
+                        "value":"button_xlarge",
+                        "label":"Extra large"
+                  }
+                  ],
+                        "default":"button_small"
+                  },
+                  {
+                        "type": "checkbox",
+                        "id": "button_round_off",
+                        "default": false,
+                        "label": "Button round"
+                  },
+                  {
+                        "type": "header",
+                        "content": "Button color"
+                  },
+                  {
+                        "type": "color",
+                        "id": "color_button",
+                        "label": "Button background",
+                        "default": "transparent"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_font_color",
+                        "label": "Button Font",
+                        "default": "#A9A9A9"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_border_color",
+                        "label": "Button border color",
+                        "default": "transparent"
+                  },
+                  {
+                        "type": "header",
+                        "content": "Button Mouseover"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_color_hover",
+                        "label": "Button Background",
+                        "default": "transparent"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_font_hover",
+                        "label": "Button font",
+                        "default": "#5E5E5E"
+                  },
+                  {
+                        "type": "color",
+                        "id": "button_border_hover",
+                        "label": "Button border",
+                        "default": "#5E5E5E"
+                  },
+                  {
+                        "type": "header",
+                        "content": "Button Active"
+                  },
+                  {
+                        "type": "color",
+                        "id": "active_button_color",
+                        "label": "Active Button Color",
+                        "default": "transparent"
+                  },
+                  {
+                        "type": "color",
+                        "id": "active_font_color",
+                        "label": "Active font Color",
+                        "default": "#5E5E5E"
+                  },
+                  {
+                        "type": "color",
+                        "id": "active_border_color",
+                        "label": "Active border Color",
+                        "default": "#5E5E5E"
+                  }
+                  
+            ],
+            "blocks": [
+                  {
+                  "type":"about_product",
+                  "name":"About Product",
+                  "limit":1,
+                  "settings": [
+                        {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Background Image"
+                        },
+                        {
+                        "type": "text",
+                        "id": "headline_tab_title",
+                        "label": "Tab Title",
+                        "default": "About product"
+                        },
+                        {
+                        "type": "text",
+                        "id": "headline_title",
+                        "label": "Description Title",
+                        "default": "About product"
+                        },
+                        {
+                        "type": "color",
+                        "id": "headline_text_color",
+                        "label": "Title Text Color",
+                        "default": "#5E5E5E"
+                        },
+                        {
+                        "type": "color",
+                        "id": "text_color",
+                        "label": "Description Text Color",
+                        "default": "#787D80"
+                        }
+                  ]
+                  },
+                  {
+                  "type":"product_review",
+                  "name":"Product Review",
+                  "limit":1,
+                   "settings": [
+                    {
+                        "type": "text",
+                        "id": "review_tab",
+                        "label": "Review Tab Title",
+                        "default": "Review"
+                        }
+                   ]
+                  },
+                  {
+                  "type":"tables",
+                  "name":"Information",
+                  "limit":1,
+                  "settings": [
+                  {
+                  "type": "text",
+                  "id": "information_tab_title",
+                  "label": "Tab Title",
+                  "default": "Information"
+                  },
+                  {
+                  "type": "text",
+                  "id": "information_title",
+                  "label": "Section Title",
+                  "default": "Information"
+                  },
+                  {
+                  "type": "textarea",
+                  "id": "information_desc",
+                  "label": "Section short description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Font color, Table colors"
+                  },
+                  {
+                  "type": "color",
+                  "id": "info_title_color",
+                  "label": "Title Color",
+                  "default": "#5E5E5E"
+                  },
+                  {
+                  "type": "color",
+                  "id": "info_text_color",
+                  "label": "Table Title Font Color",
+                  "default": "#FFFFFF"
+                  },
+                  {
+                  "type": "color",
+                  "id": "table_text_color",
+                  "label": "Table Text Color",
+                  "default": "#787D80"
+                  },
+                  {
+                  "type": "color",
+                  "id": "table_column_color",
+                  "label": "Table Column Color",
+                  "default": "#C0C0C0"
+                  },
+                  {
+                  "type": "color",
+                  "id": "table_border_color",
+                  "label": "Table border Color",
+                  "default": "#ECECEC"
+                  },
+                  {
+                  "type": "color",
+                  "id": "table_symbol_color",
+                  "label": "Table Symbol Color",
+                  "default": "#FFFFFF"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 1"
+                  },
+                  {
+                  "type": "text",
+                  "id": "first_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "first_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 2"
+                  },
+                  {
+                  "type": "text",
+                  "id": "second_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "second_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 3"
+                  },
+                  {
+                  "type": "text",
+                  "id": "thrid_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "third_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 4"
+                  },
+                  {
+                  "type": "text",
+                  "id": "forth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "forth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 5"
+                  },
+                  {
+                  "type": "text",
+                  "id": "fifth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "fifth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 6"
+                  },
+                  {
+                  "type": "text",
+                  "id": "sixth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "sixth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 7"
+                  },
+                  {
+                  "type": "text",
+                  "id": "seventh_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "seventh_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 8"
+                  },
+                  {
+                  "type": "text",
+                  "id": "eighth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "eighth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 9"
+                  },
+                  {
+                  "type": "text",
+                  "id": "ninth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "ninth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 10"
+                  },
+                  {
+                  "type": "text",
+                  "id": "tenth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "tenth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 11"
+                  },
+                  {
+                  "type": "text",
+                  "id": "eleventh_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "eleventh_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 12"
+                  },
+                  {
+                  "type": "text",
+                  "id": "twelfth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "twelfth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 13"
+                  },
+                  {
+                  "type": "text",
+                  "id": "thirteenth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "thirteenth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 14"
+                  },
+                  {
+                  "type": "text",
+                  "id": "fourteenth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "fourteenth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 15"
+                  },
+                  {
+                  "type": "text",
+                  "id": "fifteenth_title",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "text",
+                  "id": "fifteenth_desc",
+                  "label": "Description",
+                  "default": "Description"
+                  }
+                  ]
+                  },
+                  {
+                  "type":"featured_list",
+                  "name":"Featured List",
+                  "limit":1,
+                  "settings": [
+                  {
+                  "type": "header",
+                  "content": "General Settings"
+                  },
+                  {
+                  "type": "text",
+                  "id": "featured_tab_title",
+                  "label": "List Tab Title",
+                  "default": "Featured List"
+                  },
+                  {
+                  "type": "text",
+                  "id": "featured_title",
+                  "label": "Featured List Title",
+                  "default": "About product"
+                  },
+                  {
+                  "type": "richtext",
+                  "id": "featured_description",
+                  "label": "Featured List Description"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Color Settings"
+                  },
+                  {
+                  "type": "color",
+                  "id": "featured_title_color",
+                  "label": "Title Text Color",
+                  "default": "#5E5E5E"
+                  },
+                  {
+                  "type": "color",
+                  "id": "featured_text_color",
+                  "label": "Description Text Color",
+                  "default": "#C0C0C0"
+                  },
+                  {
+                  "type": "color",
+                  "id": "featured_symbol_color",
+                  "label": "Symbol Color",
+                  "default": "#808080"
+                  },
+                  {
+                  "type": "color",
+                  "id": "featured_column_color",
+                  "label": "Column Color",
+                  "default": "#F4F4F4"
+                  },
+                  {
+                    "type":"checkbox",
+                    "id": "show_icon",
+                    "default": true,
+                    "label":"Show icon"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 1"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box1",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
+                  "type": "text",
+                  "id": "featured_text1",
+                  "label": "Title",
+                  "default": "1st Title"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 2"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box2",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
+                  "type": "text",
+                  "id": "featured_text2",
+                  "label": "Title",
+                  "default": "2st Title"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 3"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box3",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
+                  "type": "text",
+                  "id": "featured_text3",
+                  "label": "Title",
+                  "default": "3st Title"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 4"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box4",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
+                  "type": "text",
+                  "id": "featured_text4",
+                  "label": "Title",
+                  "default": "4st Title"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 5"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box5",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
+                  "type": "text",
+                  "id": "featured_text5",
+                  "label": "Title",
+                  "default": "5st Title"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Line 6"
+                  },
+                  {
+                  "type": "html",
+                  "id": "icon_box6",
+                  "label": "Custom SVG Iconbox",
+                  "info":"copy and paste your custom SVG icon source"    
+                  },
+                  {
+                  "type": "text",
+                  "id": "featured_text6",
+                  "label": "Title",
+                  "default": "6st Title"
+                  }
+                  ]
+                  },
+                  {
+                  "type":"map",
+                  "name":"Map",
+                  "limit":1,
+                  "settings": [
+                  {
+                  "type": "header",
+                  "content": "Map contents",
+                  "info": "Setting title, copy and paste iframe google map "
+                  },
+                  {
+                  "type": "text",
+                  "id": "tab_map_title",
+                  "label": "Tab Title",
+                  "default": "Map"
+                  },
+                  {
+                  "type": "text",
+                  "id": "map_title",
+                  "label": "Title",
+                  "default": "This is the Map section"
+                  },
+                  {
+                  "type": "text",
+                  "id": "map_info",
+                  "label": "Map information",
+                  "default": "This is map information text area"
+                  },
+                  {
+                  "type": "richtext",
+                  "id": "iframe_map",
+                  "label": "Map Settings"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Setting Color"
+                  },
+                  {
+                  "type": "color",
+                  "id": "map_title_font_color",
+                  "label": "Map title font color",
+                  "default": "#5E5E5E"
+                  },
+                   {
+                  "type": "color",
+                  "id": "map_info_font_color",
+                  "label": "info text font color",
+                  "default": "#C0C0C0"
+                  }
+                  ]
+                  },
+                  {
+                  "type":"custom_tab",
+                  "name":"Custom Tab",
+                  "limit":2,
+                  "settings": [
+                  {
+                  "type": "header",
+                  "content": "Contents"
+                  },
+                  {
+                  "type": "text",
+                  "id": "custom_tab_title",
+                  "label": "Custom tab title",
+                  "default": "Custom Tab"
+                  },
+                  {
+                  "type": "text",
+                  "id": "custom_title",
+                  "label": "Title",
+                  "default": "This is the title text area"
+                  },
+                  {
+                  "type": "textarea",
+                  "id": "sub_text",
+                  "label": "Subtext",
+                  "default": "This is your custom contents area"
+                  },
+                  {
+                  "type": "richtext",
+                  "id": "content_area",
+                  "label": "Content"
+                  },
+                  {
+                  "type": "header",
+                  "content": "Color"
+                  },
+                  {
+                  "type": "color",
+                  "id": "custom_title_color",
+                  "label": "Title Color",
+                  "default": "#5E5E5E"
+                  },
+                  {
+                  "type": "color",
+                  "id": "custom_text_color",
+                  "label": "Description Color",
+                  "default": "#C0C0C0"
+                  },
+                  {
+                  "type": "color",
+                  "id": "custom_contents_color",
+                  "label": "Contents Text Color",
+                  "default": "#808080"
+                  }
+                  ]
+                  }
+            ]
+      }
 {% endschema %}

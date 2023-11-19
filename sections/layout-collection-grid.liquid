@@ -1,36 +1,28 @@
 
 <!-- collaction grid -->
 <div id="bg-image" class="{{ section.settings.color_schema }}" 
-<<<<<<< HEAD
       style="{% if section.settings.image %} background-image:url('{{ section.settings.image.src | img_url: 'master' }}'); background-size: cover; background-position: center; {% endif %} padding-top:{{section.settings.padding_top}}rem; padding-bottom:{{section.settings.padding_bottom}}rem;">
-=======
-      style="{% if section.settings.image %} background-image:url('{{ section.settings.image.src | image_url }}'); background-size: cover; background-position: center; {% endif %} padding-top:{{ section.settings.padding_top }}rem; padding-bottom:{{ section.settings.padding_bottom }}rem;">
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
       
       {%- comment -%} headline {%- endcomment -%}
-      <div class="xl:max-w-[1320px] mx-auto md:px-[2rem] mb-[1.5rem] flex flex-col {{ section.settings.title_text_align }}">
+      <div class="xl:max-w-[1320px] mx-auto md:px-[2rem] mb-[1.5rem] flex flex-col {{section.settings.title_text_align}}">
           <div class="Left_titlebox">
               {% if section.settings.subtitle != blank %}
-<<<<<<< HEAD
                 <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
-=======
-                <span class="text-xs my-9 leading-8 tracking-wider" style="color:{{ section.settings.color_text_title }};">
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
                   {{ section.settings.subtitle }}
                 </span>
               {% endif %}
               {% if section.settings.headline != blank %}
-                <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{ section.settings.color_title }};">
+                <h1 class="mb-[1.2rem] text-2xl lg:text-3xl font-bold tracking-wider" style="color:{{section.settings.color_title}};">
                   {{ section.settings.headline }}
                 </h1>
               {% endif %}
-                <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{ section.settings.color_text_title }};">
+                <div class="subfont_size my-8 leading-8 tracking-wider" style="color:{{section.settings.color_text_title}};">
                   {{ section.settings.text }}
                  </div>  
             </div>
       </div>
       
-      <div class="hidden xl:max-w-[1320px] mx-auto sm:grid  md:grid-cols-2 lg:grid-cols-3 {{ section.settings.column_design }} gap-4 md:gap-6 px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up"{% endif %}>
+      <div class="hidden xl:max-w-[1320px] mx-auto sm:grid  md:grid-cols-2 lg:grid-cols-3 {{section.settings.column_design}} gap-4 md:gap-6 px-4 md:px-8 mx-auto" {% if section.settings.animation_setting == true %} data-aos="fade-up"{% endif %}>
       
       {% for block in section.blocks %}
           <!-- product - start -->
@@ -63,9 +55,9 @@
             {% endif %}
             <!-- overlay - end -->
 
-              <div class="flex flex-col {{ section.settings.textbox_position }} {{ section.settings.text_align }} relative p-4
+              <div class="flex flex-col {{section.settings.textbox_position}} {{section.settings.text_align}} relative p-4
               " style="width:100%; justify-content:center;">
-                <span class="px-2 py-3 font-bold {{ section.settings.color_textbox }} {% if section.settings.rounded_nametag == true %} rounded_tag {% endif %}" style="font-size:{{ section.settings.font_size }}rem; color:{{ block.settings.color_collection_title }};">{{ block.settings.collection.title | escape }}</span>
+                <span class="px-2 py-3 font-bold {{section.settings.color_textbox}} {% if section.settings.rounded_nametag == true %} rounded_tag {% endif %}" style="font-size:{{section.settings.font_size}}rem; color:{{block.settings.color_collection_title}};">{{ block.settings.collection.title | escape}}</span>
               </div>
             </a>
         <!-- product - end -->
@@ -105,9 +97,9 @@
                     class="w-full h-full object-cover object-center absolute inset-0"
                     
                   >  
-                    <div class="w-full flex flex-col {{ section.settings.color_textbox }} {{ section.settings.textbox_position }} {{ section.settings.text_align }} relative p-4
+                    <div class="w-full flex flex-col {{section.settings.color_textbox}} {{section.settings.textbox_position}} {{section.settings.text_align}} relative p-4
                     {% if section.settings.rounded_nametag == true %} rounded_tag {% endif %}">
-                      <span class="font-bold" style="font-size:{{ section.settings.font_size }}rem; color:{{ block.settings.color_collection_title }};">{{ block.settings.collection.title | escape }}</span>
+                      <span class="font-bold" style="font-size:{{section.settings.font_size}}rem; color:{{block.settings.color_collection_title}};">{{ block.settings.collection.title | escape}}</span>
                     </div>
                   </a>
                     
@@ -130,7 +122,6 @@
 
 
 {% schema %}
-<<<<<<< HEAD
 
   {
    "name":"Featured Collection List",
@@ -422,295 +413,4 @@
    ]
 }
 
-=======
-{
-  "name": "Featured Collection List",
-  "class": "shopify-section-vue",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Section Title Settings",
-      "info": "Setting section title and description"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "subtitle",
-      "default": "Subtitle"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "t:common.headline",
-      "default": "Our store"
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "t:common.headline",
-      "default": "<p>Lorem ipsum dolor sit amet. Vel corporis aliquid hic </p><p>tempora omnis est sunt enim ut voluptatem commodi id eius distinctio qui unde enim.</p>"
-    },
-    {
-      "type": "select",
-      "id": "title_text_align",
-      "label": "Text align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center"
-    },
-    {
-      "type": "color",
-      "id": "color_title",
-      "label": "Section title color",
-      "default": "#4b4b4b"
-    },
-    {
-      "type": "color",
-      "id": "color_text_title",
-      "label": "Section Description color",
-      "default": "#4b4b4b"
-    },
-    {
-      "type": "header",
-      "content": "General Settings",
-      "info": "Settings animation, background color and column design"
-    },
-    {
-      "type": "select",
-      "id": "color_schema",
-      "label": "Background color",
-      "options": [
-        {
-          "value": "first_color",
-          "label": "First Color"
-        },
-        {
-          "value": "second_color",
-          "label": "Second Color"
-        },
-        {
-          "value": "third_color",
-          "label": "Third Color"
-        },
-        {
-          "value": "forth_color",
-          "label": "Forth Color"
-        },
-        {
-          "value": "fifth_color",
-          "label": "Fifth Color"
-        },
-        {
-          "value": "background_transparent",
-          "label": "Transparent Color"
-        }
-      ],
-      "default": "fifth_color"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Background Image"
-    },
-    {
-      "type": "range",
-      "id": "font_size",
-      "label": "Prodcut Font size",
-      "default": 1,
-      "min": 0.1,
-      "max": 3,
-      "step": 0.1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top controll",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom controll",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "unit": "rem"
-    },
-    {
-      "type": "select",
-      "id": "text_align",
-      "label": "Title align",
-      "options": [
-        {
-          "value": "font_left",
-          "label": "Left"
-        },
-        {
-          "value": "font_right",
-          "label": "Right"
-        },
-        {
-          "value": "font_center",
-          "label": "Center"
-        }
-      ],
-      "default": "font_center",
-      "info": "Please turn off rounded nametag to set text align"
-    },
-    {
-      "type": "select",
-      "id": "column_design",
-      "label": "Column selector",
-      "options": [
-        {
-          "value": "two_column",
-          "label": "Two column"
-        },
-        {
-          "value": "three_column",
-          "label": "Three column"
-        },
-        {
-          "value": "four_column",
-          "label": "Four column"
-        }
-      ],
-      "default": "four_column"
-    },
-    {
-      "type": "select",
-      "id": "color_textbox",
-      "label": "Textbox color",
-      "options": [
-        {
-          "value": "first_color",
-          "label": "First Color"
-        },
-        {
-          "value": "second_color",
-          "label": "Second Color"
-        },
-        {
-          "value": "third_color",
-          "label": "Third Color"
-        },
-        {
-          "value": "forth_color",
-          "label": "Forth Color"
-        },
-        {
-          "value": "fifth_color",
-          "label": "Fifth Color"
-        },
-        {
-          "value": "background_transparent",
-          "label": "Transparent Color"
-        }
-      ],
-      "default": "forth_color"
-    },
-    {
-      "type": "checkbox",
-      "id": "animation_setting",
-      "default": false,
-      "label": "Animation turn on"
-    },
-    {
-      "type": "checkbox",
-      "id": "image_round",
-      "default": false,
-      "label": "Image Round Top"
-    },
-    {
-      "type": "checkbox",
-      "id": "rounded_nametag",
-      "default": true,
-      "label": "Rounded nameTag"
-    },
-    {
-      "type": "select",
-      "id": "textbox_position",
-      "label": "Text box position",
-      "options": [
-        {
-          "value": "collection_top",
-          "label": "Top"
-        },
-        {
-          "value": "collection_center",
-          "label": "Center"
-        },
-        {
-          "value": "collection_bottom",
-          "label": "Bottom"
-        }
-      ],
-      "default": "collection_bottom"
-    }
-  ],
-  "max_blocks": 16,
-  "blocks": [
-    {
-      "type": "featured_collection",
-      "name": "Collection",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "featured collection"
-        },
-        {
-          "type": "checkbox",
-          "id": "overlay_set",
-          "default": true,
-          "label": "Overlay cover"
-        },
-        {
-          "type": "color",
-          "id": "color_collection_title",
-          "label": "Section title color",
-          "default": "#4b4b4b"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Featured Collection List",
-      "blocks": [
-        {
-          "type": "featured_collection"
-        },
-        {
-          "type": "featured_collection"
-        },
-        {
-          "type": "featured_collection"
-        },
-        {
-          "type": "featured_collection"
-        }
-      ]
-    }
-  ]
-}
->>>>>>> d5627e36af72db6a87180e9ca562ba1c34221776
 {% endschema %}
