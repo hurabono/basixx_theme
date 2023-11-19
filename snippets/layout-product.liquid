@@ -43,12 +43,12 @@
       630px
     "
     srcset="
-      {{ product.featured_image.src | img_url: '450x' }} 450w,
-      {{ product.featured_image.src | img_url: '630x' }} 630w
+      {{ product.featured_image.src | image_url: '450x' }} 450w,
+      {{ product.featured_image.src | image_url: '630x' }} 630w
     "
     width="{{ product.featured_image.width }}"
     height="{{ product.featured_image.height }}"
-    src="{{ product.featured_image.src | img_url: '630x' }}"
+    src="{{ product.featured_image.src | image_url: '630x' }}"
     alt="{{ product.featured_image.alt | escape }}"
     loading="lazy"
     class="w-full h-full object-cover object-center rounded-sm {% if mouseover_image == true %}grid-view-item__image {% endif %}"
@@ -61,12 +61,12 @@
           630px
         "
         srcset="
-          {{ product.images.last | img_url: '450x' }} 450w,
-          {{ product.images.last | img_url: '630x' }} 630w
+          {{ product.images.last | image_url: '450x' }} 450w,
+          {{ product.images.last | image_url: '630x' }} 630w
         "
         width="{{ product.images.last.width }}"
         height="{{ product.images.last.height }}"
-        src="{{ product.images.last | img_url: '630x' }}"
+        src="{{ product.images.last | image_url: '630x' }}"
         alt="{{ product.images.last.alt | escape }}"
         loading="lazy" > 
      {% endif %}

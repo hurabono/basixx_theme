@@ -1,15 +1,15 @@
 <style>
   
 .badge_design {
-  background-color: {{  settings.product_badge_color }};
+  background-color: {{ settings.product_badge_color }};
   color:{{settings.badge_font }};
   border: 1px solid {{ settings.badge_border }};
 }
 
 
 .wishlist_button{
-  background-color: {{settings.wl_bg_color}};
-  border: 0.5px solid {{settings.wl_border_color}};
+  background-color: {{ settings.wl_bg_color }};
+  border: 0.5px solid {{ settings.wl_border_color }};
   
 }
   
@@ -36,9 +36,9 @@
 </div>
   <a href="{{ product.url | within: collection }}" class="block group block relative grid-view-item__link {% if product.images.size > 1 %} has-secondary{% endif %}">
     <img sizes="(min-width: 768px) 450px,630px"
-          srcset="{{ product.featured_image.src | img_url: '450x' }} 450w,
-                  {{ product.featured_image.src | img_url: '630x' }} 630w" 
-                  src="{{ product.featured_image.src | img_url: '630x' }}" 
+          srcset="{{ product.featured_image.src | image_url: '450x' }} 450w,
+                  {{ product.featured_image.src | image_url: '630x' }} 630w" 
+                  src="{{ product.featured_image.src | image_url: '630x' }}" 
                   alt="{{ product.featured_image.alt | escape }}" 
                   loading="lazy"
                   width="{{ product.featured_image.width }}"
@@ -52,13 +52,14 @@
           630px
         "
         srcset="
-          {{ product.images.last | img_url: '450x' }} 450w,
-          {{ product.images.last | img_url: '630x' }} 630w
+          {{ product.images.last | image_url: '450x' }} 450w,
+          {{ product.images.last | image_url: '630x' }}       630w
         "
         width="{{ product.images.last.width }}"
         height="{{ product.images.last.height }}"
-        src="{{ product.images.last | img_url: '630x' }}"
+        src="{{ product.images.last | image_url: '630x' }}"
         alt="{{ product.images.last.alt | escape }}"
+        loading="lazy"
         > 
      {% endif %}
     {% endif %}
@@ -69,7 +70,7 @@
     {% endif %}    
   </a>
 
-  <div class="{{product_title}} mt-4" style="color: {{product_title_color}};">
+  <div class="{{ product_title }} mt-4" style="color: {{product_title_color}};">
 
     {% if vendor_set == true %}
       <a href="{{ product.url | within: collection }}" class="block text-xs">
@@ -118,7 +119,7 @@
           </div>
         {% endif %}
       </div>
-    {%endif%}
+    {% endif %}
     </div>
 
     {%- comment -%} line 2 - Metafield option box {%- endcomment -%}

@@ -21,11 +21,13 @@ input[type=number] {
             400px
           "
           srcset="
-            {{ product | img_url: '275x' }} 275w,
-            {{ product | img_url: '400x' }} 400w
+            {{ product | image_url: '275x' }} 275w,
+            {{ product | image_url: '400x' }} 400w
           "
-          src="{{ product | img_url: '400x' }}"
+          src="{{ product | image_url: '400x' }}"
           alt="{{ product.title | escape }}"
+          width="{{ product.image.width }}"
+          height="{{ product.image.height }}"  
           loading="lazy"
           class="w-full h-full object-cover object-center"
         >
