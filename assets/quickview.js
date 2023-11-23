@@ -63,6 +63,7 @@ function quickView() {
       } else{
         $("#quick-view .qv-product-symbol.qv-box3").css("display", "none");
       }
+      
 
       
       const $jq = jQuery.noConflict();
@@ -272,9 +273,9 @@ function quickView() {
         $('#quick-view').removeClass().empty();
       }
     });
-    
-    
-    
+
+
+
   });
 };
 
@@ -286,3 +287,10 @@ $(window).resize(function () {
     $('.qv-product-thumnail').not('.slick-initialized').slick('setPosition');
   }
 });
+
+
+$('.quick-view').on('change',function(e) {
+        if ($(this).prop('checked')) {
+            $('body').css('overflow', 'hidden');
+        } 
+      });
