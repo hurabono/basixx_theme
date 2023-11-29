@@ -20,7 +20,8 @@
     "sold_out": "Sold out",
     "no_products": "No products",
     "including_tax": "Including VAT",
-    "excluding_tax": "Excluding VAT"
+    "excluding_tax": "Excluding VAT",
+    "star_review": "Star review"
   },
   "action": {
     "search": "Search",

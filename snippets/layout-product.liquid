@@ -43,12 +43,12 @@
       630px
     "
     srcset="
-      {{ product.featured_image.src | image_url: '450x' }} 450w,
-      {{ product.featured_image.src | image_url: '630x' }} 630w
+      {{ product.featured_image.src | img_url: '450x' }} 450w,
+      {{ product.featured_image.src | img_url: '630x' }} 630w
     "
     width="{{ product.featured_image.width }}"
     height="{{ product.featured_image.height }}"
-    src="{{ product.featured_image.src | image_url: '630x' }}"
+    src="{{ product.featured_image.src | img_url: '630x' }}"
     alt="{{ product.featured_image.alt | escape }}"
     loading="lazy"
     class="w-full h-full object-cover object-center rounded-sm {% if mouseover_image == true %}grid-view-item__image {% endif %}"
@@ -61,12 +61,12 @@
           630px
         "
         srcset="
-          {{ product.images.last | image_url: '450x' }} 450w,
-          {{ product.images.last | image_url: '630x' }} 630w
+          {{ product.images.last | img_url: '450x' }} 450w,
+          {{ product.images.last | img_url: '630x' }} 630w
         "
         width="{{ product.images.last.width }}"
         height="{{ product.images.last.height }}"
-        src="{{ product.images.last | image_url: '630x' }}"
+        src="{{ product.images.last | img_url: '630x' }}"
         alt="{{ product.images.last.alt | escape }}"
         loading="lazy" > 
      {% endif %}
@@ -109,14 +109,14 @@
     %}
       <div>
         {% if product.metafields.reviews.rating_count > 0 %}
-        <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+        <div class="rating" role="img" aria-label="{{ 'common.star_review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
           <span class="no-rating" >
            {{ product.metafields.reviews.rating.value.rating | floor }}
            </span>
         </div>
   
           {% else %}
-          <div class="rating" role="img" aria-label="{{ 'star review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+          <div class="rating" role="img" aria-label="{{ 'common.star_review' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
             <span aria-hidden="true" class="no-rating" 
             style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};
              --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; 
@@ -126,14 +126,14 @@
           </div>
         {% endif %}
       </div>
-    {%endif%}
+    {% endif %}
     </div>
     {%- comment -%} line 1 - end {%- endcomment -%}
 
 
 
     {%- comment -%} line 2 - Metafield option box {%- endcomment -%}
-    {% if show_symbol  == true  %}
+    {% if show_symbol == true %}
       <div class="relative">
       
         <ul class="flex justify-between gap-[0.5rem] py-2 text-xs text-center">
